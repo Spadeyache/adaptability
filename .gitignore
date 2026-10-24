@@ -1,8 +1,40 @@
-.venv/
-.maniskill/
-.cache/
+# Local environment and simulator caches
+/.venv/
+/.maniskill/
+/.cache/
+/.aws/
+/.codex/
+/.claude/
+
+# Python-generated files
 __pycache__/
-*.pyc
-runs/
-checkpoints/
-data/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+/build/
+/dist/
+
+# Datasets, checkpoints and experiment outputs
+/runs/
+/checkpoints/
+/data/
+/failure_discovery/results/
+
+# Local tooling and editor output
+node_modules/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Presentation and preview artifacts have scoped rules in their folders.
+# Already tracked historical artifacts remain tracked; these rules prevent
+# additional generated files from being added accidentally.

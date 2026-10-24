@@ -1,0 +1,33 @@
+# Generated presentation media and exports (existing tracked files stay tracked).
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.mp4
+*.pdf
+*.pptx
+**/previews/
+**/renders/
+**/bin/
+
+# Generated native-deck snapshots and helper output.
+**/raw-*.json
+**/*design-system.json
+**/*design-catalog.md
+**/*output-issues.json
+**/output-issues.json
+**/requests*.json
+**/native-*.json
+**/scene.json
+**/images.json
+**/validation.json
+**/two_analyses_plot_values.json
+
+# Known generated HTML deck exports; other HTML can be authored source.
+**/initial_physical_understanding.html
+**/robot_adaptation_pi.html
+
+# Curated input assets remain visible even when their extensions match above.
+!**/assets/
+!**/assets/**

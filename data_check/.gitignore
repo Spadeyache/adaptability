@@ -1,2 +1,7 @@
 __pycache__/
 code_archive/**/.deps/
+
+# Historical generated reports stay in place; ignore new report artifacts.
+/plots/
+/plots_archive/
+/code_archive/

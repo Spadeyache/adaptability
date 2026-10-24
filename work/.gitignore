@@ -1,0 +1,16 @@
+# Generated preview media and animation frames.
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.mp4
+**/frames/
+
+# Local generated animation variants and captured copies of served pages.
+/portfolio-preview/adaptation-bottom-captions/
+/portfolio-preview/adaptation-concept/
+/portfolio-preview/adaptation-studio/
+/portfolio-preview/adaptation-website-colors/
+/portfolio-preview/served-*.html
+/portfolio-preview/served-*.css
