@@ -1,5 +1,0 @@
-# numpy, scipy, matplotlib and Pillow come from the project environment.
-# Isolated extras: uv pip install --python ../.venv/bin/python --target .deps --no-deps -r requirements.txt
-scikit-learn==1.7.2
-joblib==1.5.2
-threadpoolctl==3.6.0

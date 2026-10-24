@@ -1,9 +1,0 @@
-#!/usr/bin/python3
-import sys,subprocess
-exe='/mnt/c/Users/magic/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe'
-args=[]
-for a in sys.argv[1:]:
- if a.startswith('/'):
-  a='\\\\wsl.localhost\\Ubuntu'+a.replace('/','\\')
- args.append(a)
-sys.exit(subprocess.run([exe,*args]).returncode)

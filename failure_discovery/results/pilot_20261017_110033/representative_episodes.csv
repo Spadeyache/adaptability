@@ -1,7 +1,0 @@
-group,episode,source_file,split
-group_1,e75c925e09d6ac12_seed2005,/home/ubuntu/faliure/runs/failure_collection/varied_fixed40g/e75c925e09d6ac12_seed2005.npz,training_seed
-group_1,96de40ee8cea8876_seed2003,/home/ubuntu/faliure/runs/failure_collection/varied_fixed40g/96de40ee8cea8876_seed2003.npz,training_seed
-group_1,f77d662c199ac786_seed2000,/home/ubuntu/faliure/runs/failure_collection/varied_fixed40g/f77d662c199ac786_seed2000.npz,training_seed
-group_2,6812d82a711556f1_seed2008,/home/ubuntu/faliure/runs/failure_collection/varied_fixed40g/6812d82a711556f1_seed2008.npz,held_out_seed
-group_2,2ef91d391f15fa82_seed2009,/home/ubuntu/faliure/runs/failure_collection/varied_fixed40g/2ef91d391f15fa82_seed2009.npz,held_out_seed
-group_2,e3aeb649751f9a2a_seed2008,/home/ubuntu/faliure/runs/failure_collection/varied_fixed40g/e3aeb649751f9a2a_seed2008.npz,held_out_seed

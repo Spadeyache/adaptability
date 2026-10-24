@@ -1,4 +1,0 @@
-#!/usr/bin/python3
-import sys,json
-x=json.load(open(sys.argv[-1]))
-print(json.dumps({'presentationId':x['source']['presentation']['id'],'slides':[{'slideIndex':s['index'],'slideObjectId':s['slideId'],'titlePreview':s.get('titlePreview'),'layoutId':s.get('layoutId'),'isSkipped':s.get('isSkipped')==True} for s in sorted(x['slides'],key=lambda t:t['index'])]},separators=(',',':')))
