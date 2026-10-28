@@ -12,11 +12,14 @@ robot_adaptation/
   simulation/                  environments, controllers, task variants
   policy/                      model, training, inspection, frozen v1 inference
   estimators/visual_mass/       image generation, model, training, prediction
+  estimators/interaction/       contact snippets, recurrent physics estimation
   collection/                  physical sweeps, recorder, schemas, source provenance
   analysis/failure_discovery/   grouping and intervention-response reports
   analysis/plots/               plot plans and report generation
   runtime/                     initial image to estimator to policy rollout
 experiments/crest/              CREST-specific search, repair and experiment driver
+experiments/physics_conditioning/ matched physics-input evaluation and long training
+experiments/interaction_adaptation/ actual retries and conservative assessment
 configs/                       experiment settings
 runs/                          generated outputs and source snapshots
 docs/                          project-level explanations and experiment index
@@ -61,6 +64,10 @@ source scripts/activate_grip.sh
 | Inspect saved policy | `python -m robot_adaptation.policy.inspect` |
 | Generate images and train mass estimator | `python -m robot_adaptation.estimators.visual_mass` |
 | Run estimator with policy in simulation | `python -m robot_adaptation.runtime --record-video` |
+| Train explicit mass/friction policy | `python -m robot_adaptation.policy.train --condition-on-friction --iterations 50000` |
+| Train/evaluate interaction estimator | See `robot_adaptation/estimators/interaction/README.md` |
+| Compare actual adaptive/fixed/true retries | `python -m experiments.interaction_adaptation --help` |
+| Audit completed training and evaluation evidence | `python -m experiments.interaction_adaptation.completion --help` |
 | Preview dense collection | `bash scripts/collect_varied.sh --plan-only` |
 | Collect dense physical sweeps | `bash scripts/collect_varied.sh` |
 | Preview official-policy collection | `bash scripts/collect_stock_short.sh --plan-only` |
@@ -92,6 +99,29 @@ other experiment settings are under `configs/` and recorded with each run.
   ordering and architecture version, and checks the supplied weight each step.
 - Episode schemas and input/label separation are owned by `collection/`.
   Simulator-only labels do not automatically become deployment observations.
+- The explicit friction mode appends index 45 and records a new v3 architecture;
+  historical 45-input checkpoint/runtime interfaces retain their meaning.
+- `configs/adaptation_assessment.json` separates successful implementation from
+  held-out evidence of policy benefit, estimator recovery and retry improvement.
+- `experiments/interaction_adaptation/completion.py` checks actual training
+  counters, final model hashes, evaluation coverage and raw matched episodes.
+  `overall_ready` must be true before claiming the requested run and evaluation
+  are finished. Negative scientific results do not by themselves fail this audit.
+
+For the current long run, after the original pipeline, final crossed-grid
+transfer test and combined assessment have finished:
+
+```bash
+python -m experiments.interaction_adaptation.completion \
+  runs/physics_conditioning/long_50000_guarded_20261026 \
+  --transfer /absolute/path/to/final_transfer \
+  --combined-assessment /absolute/path/to/combined_assessment \
+  --require-guarded-updates \
+  --output runs/physics_conditioning/long_50000_guarded_20261026/completion_audit_final.json
+```
+
+The final transfer and combined-assessment paths above are placeholders for
+fresh output directories. Preserve the frozen pipeline's original artifacts.
 
 Use the existing `.venv`, `scripts/activate_grip.sh`, and root
 `requirements-lock.txt`. Analysis and estimator code share that environment;

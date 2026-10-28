@@ -19,6 +19,7 @@ SOURCE_COMMIT = 'a4a4f9272ad64b1564035874b605ceb687b63ed8'
 SOURCE = Path(__file__).resolve().parent / 'examples' / 'maniskill_pick_cube' / 'ppo_upstream.py'
 LEGACY_POLICY_ARCHITECTURE = 'frozen_movement_independent_strength_v1'
 POLICY_ARCHITECTURE = 'independent_movement_strength_v2'
+FRICTION_POLICY_ARCHITECTURE = 'independent_movement_strength_friction_v3'
 OPTIMIZATION_MODES = ('strength_only', 'joint')
 
 
@@ -33,14 +34,15 @@ def _upstream():
 
 
 class Agent(_upstream().Agent):
-    def __init__(self, envs=None, optimization_mode='strength_only'):
+    def __init__(self, envs=None, optimization_mode='strength_only', observation_count=45):
         if optimization_mode not in OPTIMIZATION_MODES:
             raise ValueError(f'optimization_mode must be one of {OPTIMIZATION_MODES}')
         if envs is None:
-            envs = SimpleNamespace(single_observation_space=SimpleNamespace(shape=(45,)),
+            envs = SimpleNamespace(single_observation_space=SimpleNamespace(shape=(observation_count,)),
                                    single_action_space=SimpleNamespace(shape=(5,)))
-        if envs.single_observation_space.shape != (45,) or envs.single_action_space.shape != (5,):
-            raise ValueError('Grip-aware policy requires 45 measurements and five actions')
+        if envs.single_observation_space.shape not in ((45,), (46,)) or envs.single_action_space.shape != (5,):
+            raise ValueError('Grip-aware policy requires 45 or 46 measurements and five actions')
+        self.observation_count = envs.single_observation_space.shape[0]
         super().__init__(envs)
         self.optimization_mode = optimization_mode
         self.strength_mean = deepcopy(self.actor_mean)
@@ -99,7 +101,18 @@ def initialize_from_pretrained(agent, checkpoint, initial_strength_action=1.):
     if 'strength_mean.0.weight' in source:
         if set(source) != set(current):
             raise ValueError('Unsupported branched checkpoint architecture')
-        agent.load_state_dict(source)
+        for name, target in current.items():
+            old = source[name]
+            if name in ('actor_mean.0.weight', 'strength_mean.0.weight', 'critic.0.weight'):
+                if old.shape[0] != target.shape[0] or old.shape[1] > target.shape[1]:
+                    raise ValueError('Cannot truncate a conditioned checkpoint')
+                target.zero_()
+                target[:, :old.shape[1]].copy_(old)
+            elif old.shape != target.shape:
+                raise ValueError('Branched checkpoint architecture mismatch: ' + name)
+            else:
+                target.copy_(old)
+        agent.load_state_dict(current)
         return agent
     legacy = {k: v for k, v in current.items() if not k.startswith('strength_')}
     if set(source) != set(legacy):

@@ -1,0 +1,17 @@
+{
+  "purpose": "Falsify transfer claims beyond historical single-factor/diagonal recordings without selecting a new model from these results.",
+  "mass_kg": [0.08, 0.16, 0.32, 0.48],
+  "object_friction": [0.25, 0.45, 0.65, 0.85],
+  "design": "Full independent 4 by 4 physical grid, static equals dynamic object friction",
+  "fixed_nuisance_physics": {"cube_side_m": 0.04, "finger_friction": 0.2, "table_friction": 0.3, "goal_clearance_m": 0.2},
+  "fixed_policy_inputs": {"supplied_mass_kg": 0.1, "supplied_friction": 0.4},
+  "episode_steps": 50,
+  "independent_attempts_per_condition": 5,
+  "prefix_counts": [1, 2, 3, 5],
+  "pilot_seed_start": 62000,
+  "final_seed_start": 64000,
+  "supported_when": "Both mass and friction beat the training-median constant baseline with positive lower 95% condition-bootstrap improvement bounds at five attempts.",
+  "report_separately": ["Mass recovery", "Friction recovery", "Five-versus-one evidence improvement", "Historical held-condition evidence", "Actual adaptive retry success"],
+  "confidence_scope": "Conditional on the five shared starting seeds; physical conditions are bootstrap units, and reordered attempts are not independent new samples.",
+  "immutability": "Do not retrain or select deployment checkpoints/hyperparameters from pilot or final transfer errors. Preserve the original frozen long-run pipeline and its assessment artifacts."
+}

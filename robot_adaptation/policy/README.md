@@ -338,3 +338,43 @@ configuration explicitly; the inspection manifest flags that physics differs
 from training. The per-step logs, episode/group summaries, GIF/PNG overlays and
 aggregate plots all identify the changing friction. The original baseline
 inspection artifacts and saved model weights are not rewritten.
+
+## Explicit mass and friction conditioning
+
+The historical 45-input task and runtime remain available. The new explicit mode
+appends object friction at index 45, after the original weight at index 42 and the
+two measured force inputs. Its manifest uses
+`independent_movement_strength_friction_v3` and records 46 observations. Loading
+an older branched policy into this model copies both actors and critic, adding
+zero columns for friction so the initial deterministic behavior is preserved.
+
+```bash
+python -m robot_adaptation.policy.train --condition-on-friction --prepare-only --iterations 200
+```
+
+This mode independently crosses the five physical masses with object friction
+coefficients 0.2, 0.5, 1.0. Static and dynamic coefficients are equal; finger friction
+is fixed at 0.2 and the native table material is fixed. Sixty training environments
+cover four robots per condition, and 15 evaluation environments cover every
+condition. This is separate from the older mass-correlated hidden-friction test.
+The full pick/carry/hold task and all five PPO actions remain trainable.
+
+Use a short diagnostic run before a long run. The paired evaluator rebuilds the
+physics scene for every supplied-input condition, checks identical reset-state
+fingerprints, and compares true inputs against fixed and deliberately wrong
+mass/friction. It reports final success, continuous success over the final ten
+steps, grasp loss after lifting, force usage, and descriptive seed-block bootstrap
+intervals. Action sensitivity is secondary evidence, not a success claim.
+
+```bash
+export LD_LIBRARY_PATH="/usr/lib/wsl/lib:${LD_LIBRARY_PATH:-}"
+python -m experiments.physics_conditioning.evaluate CHECKPOINT --seed-start 81000 --seed-count 5
+```
+
+Reserve 910xx seeds for the final assessment. The optional
+`experiments.physics_conditioning.run_long` supervisor runs 50,000 rollout/update
+cycles from a reviewed pilot, saves checkpoints every 500 cycles, then performs
+untouched final evaluation automatically. It writes separate training/evaluation
+status to its output directory. 50,000 cycles at 60 × 50 transitions require 150M
+interactions; the internal PPO minibatch epoch count remains four. Long-run
+continuation loads model weights and restarts Adam and simulation.

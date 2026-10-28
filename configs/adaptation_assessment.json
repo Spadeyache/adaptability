@@ -1,0 +1,33 @@
+{
+  "schema_version": "adaptation_assessment_v1",
+  "purpose": "Define evidence required before calling physics conditioning or interaction estimation successful.",
+  "policy": {
+    "primary_metric": "final held-goal success on matched, previously unused starting seeds",
+    "comparisons": ["true inputs versus fixed mass and friction", "true inputs versus incorrect friction at true mass", "true inputs versus incorrect mass at true friction"],
+    "supported_when": "Paired success improvement has a 95% bootstrap interval strictly above zero for each comparison; report each parameter separately if only some comparisons pass.",
+    "secondary_metrics": ["continuous held-goal duration", "grasp loss after lift", "measured finger compression", "requested grip limit", "actor input sensitivity"],
+    "insufficient_alone": ["reward increase", "updated input weights", "actor sensitivity", "successful training process"],
+    "bootstrap_unit": "matched starting seed, retaining every physical condition and input intervention for that seed",
+    "bootstrap_seed": 73517,
+    "bootstrap_samples": 10000
+  },
+  "estimator": {
+    "targets": ["mass_kg", "object static/dynamic friction, constrained equal"],
+    "primary_metric": "per-target absolute error on held-out physical conditions",
+    "baseline": "training-only per-target median (constant absolute-error baseline)",
+    "supported_when": "Both mass and friction improve over the constant baseline with condition-bootstrap 95% intervals strictly above zero; report partial success if only one target passes.",
+    "attempt_counts": [1, 2, 3, 5],
+    "sequence_claim": "More evidence helps only if held-out error decreases relative to one attempt; a monotonic curve is not assumed.",
+    "split_rule": "Physical conditions and every episode/snippet/window belonging to them stay entirely within one split.",
+    "bootstrap_unit": "physical condition, retaining repeated starting seeds and evidence prefixes",
+    "bootstrap_seed": 73518,
+    "bootstrap_samples": 10000,
+    "deployment_check": "Evaluate inference using observable inputs and timestamp metadata only; simulator contact masks and actual parameter labels are excluded."
+  },
+  "closed_loop": {
+    "primary_metric": "success within an equal three-attempt budget",
+    "comparisons": ["interaction-updated estimates", "fixed initial estimates with blind retries", "true parameters as a reference"],
+    "rules": ["Policy weights remain frozen", "Physical properties remain fixed within a retry sequence", "Each method receives the same ordered starting seeds", "Estimator sees only completed attempts", "Fresh scene reset removes solver history across matched methods"],
+    "limitation": "Pooling historical independent attempts is estimator evidence only; it does not establish improved adaptive retry success."
+  }
+}

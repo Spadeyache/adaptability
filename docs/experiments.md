@@ -32,11 +32,12 @@ paths.
 
 | Study | Status | What it would establish |
 | --- | --- | --- |
-| [Interaction estimate updates](experiments/interaction_estimate_updates.md) | Proposed | Whether interaction can correct an initial estimate and improve later execution. |
+| [Policy conditioning on mass and friction](experiments/physics_conditioned_policy.md) | Implemented; training/evaluation ongoing | Whether accurate independent mass/friction inputs improve the fixed policy. |
+| [Interaction estimate updates](experiments/interaction_estimate_updates.md) | Historical estimator evaluated; transfer partial | More attempts reduce errors. New-policy crossed-grid mass recovery is supported; friction transfer and retry benefit remain unestablished. |
 
-The immediate next steps are reading and manual failure review. The updater,
-failure-to-update decision and retention across attempts are not yet implemented
-as a complete learning loop.
+The next checks separate parameter estimation from task benefit. Complete policy
+training, compare true and altered physical inputs on matched starts, and then
+evaluate actual estimate-updating retries with equal interaction budgets.
 
 ## Supporting experiments
 

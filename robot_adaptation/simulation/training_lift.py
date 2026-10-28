@@ -26,24 +26,29 @@ ENV_SETTINGS = {"masses_kg": [0.040, 0.064, 0.100, 0.250, 0.500],
                 "friction_profile": "mass_correlated_linear",
                 "friction_mass_range_kg": [0.040, 0.500],
                 "cube_friction_range": [1.0, 0.4],
-                "finger_friction_coefficient": 0.2}
+                "finger_friction_coefficient": 0.2,
+                "cube_friction_coefficients": [0.2, 0.5, 1.0]}
+FRICTION_ORIGIN = "maniskill_grip_mass_friction_pick_cube_v3"
+FRICTION_INPUT_INDEX = 45
 WEIGHT_INPUT_INDEX = 42
 INPUT_FIELDS = ["joint_positions", "joint_velocities", "is_grasped", "tcp_pose_world_m_wxyz",
                 "goal_position_world_m", "cube_pose_world_m_wxyz", "tcp_to_cube_world_m",
                 "cube_to_goal_world_m", "object_weight_n", "left_finger_force_n", "right_finger_force_n"]
 INPUT_SIZES = [9, 9, 1, 7, 3, 7, 3, 3, 1, 1, 1]
+FRICTION_INPUT_FIELDS = INPUT_FIELDS + ["object_friction_coefficient"]
+FRICTION_INPUT_SIZES = INPUT_SIZES + [1]
 ACTION_DESCRIPTION = "5 actions: native root-frame XYZ increments, finger opening (-1 closed, +1 open), per-finger motor strength limit (-1 minimum, +1 maximum)"
 
 
-FRICTION_KEYS = ("friction_profile", "friction_mass_range_kg", "cube_friction_range", "finger_friction_coefficient")
+FRICTION_KEYS = ("friction_profile", "friction_mass_range_kg", "cube_friction_range", "finger_friction_coefficient", "cube_friction_coefficients")
 
 
 def friction_settings(settings):
     """Resolve old manifests to native friction; new settings record all values."""
     values = {key: settings.get(key, ENV_SETTINGS[key]) for key in FRICTION_KEYS}
     values["friction_profile"] = settings.get("friction_profile", "native")
-    if values["friction_profile"] not in ("native", "mass_correlated_linear"):
-        raise ValueError("Choose native or mass_correlated_linear friction")
+    if values["friction_profile"] not in ("native", "mass_correlated_linear", "independent_grid"):
+        raise ValueError("Choose native, mass_correlated_linear, or independent_grid friction")
     bounds = values["friction_mass_range_kg"]
     coefficients = values["cube_friction_range"]
     if len(bounds) != 2 or not np.isfinite(bounds).all() or not 0 < bounds[0] < bounds[1]:
@@ -53,6 +58,9 @@ def friction_settings(settings):
     finger = values["finger_friction_coefficient"]
     if not np.isfinite(finger) or finger <= 0:
         raise ValueError("Finger friction must be positive and finite")
+    grid = values["cube_friction_coefficients"]
+    if not grid or not np.isfinite(grid).all() or np.any(np.asarray(grid) <= 0):
+        raise ValueError("Choose positive finite independent cube friction coefficients")
     return values
 
 
@@ -67,6 +75,13 @@ def cube_friction_at_mass(mass, settings):
 def friction_experiment(settings, masses):
     config = friction_settings(settings)
     changing = config["friction_profile"] == "mass_correlated_linear"
+    if config["friction_profile"] == "independent_grid":
+        return dict(settings=config, hidden_from_policy=not settings.get("condition_on_friction", False),
+                    changes_with_actual_mass=False, independently_crossed=True,
+                    conditions=[dict(mass_kg=float(mass), cube_static_friction=float(mu),
+                                     cube_dynamic_friction=float(mu), finger_friction=config["finger_friction_coefficient"])
+                                for mu in config["cube_friction_coefficients"] for mass in masses],
+                    note="Mass and object friction are independently crossed; static equals dynamic; finger/table materials are fixed.")
     return dict(settings=config, hidden_from_policy=True, changes_with_actual_mass=changing,
                 coefficients_by_mass=[dict(mass_kg=float(mass),
                     cube_static_friction=cube_friction_at_mass(mass, config) if changing else None,
@@ -92,11 +107,17 @@ def reward_components(distance, goal_distance, grasped, joint_speed, at_goal, st
 @register_env(ENV_ID, max_episode_steps=HORIZON)
 class LiftTask(PickCubeEnv):
     def __init__(self, *args, masses_kg=None, goal_clearance_m=None, grip_force_limits_n=None, grip_force_cost=None, friction_profile=None,
-                 friction_mass_range_kg=None, cube_friction_range=None, finger_friction_coefficient=None, **kwargs):
+                 friction_mass_range_kg=None, cube_friction_range=None, finger_friction_coefficient=None,
+                 cube_friction_coefficients=None, condition_on_friction=False, **kwargs):
         supplied = dict(friction_profile=friction_profile, friction_mass_range_kg=friction_mass_range_kg,
-                        cube_friction_range=cube_friction_range, finger_friction_coefficient=finger_friction_coefficient)
+                        cube_friction_range=cube_friction_range, finger_friction_coefficient=finger_friction_coefficient,
+                        cube_friction_coefficients=cube_friction_coefficients)
         self.friction_config = friction_settings({key: ENV_SETTINGS[key] if value is None else value
                                                  for key, value in supplied.items()})
+        self.condition_on_friction = bool(condition_on_friction)
+        if self.condition_on_friction and self.friction_config["friction_profile"] != "independent_grid":
+            raise ValueError("Friction-conditioned training requires independent_grid physics")
+        self._cpu_friction = float(self.friction_config["cube_friction_coefficients"][0])
         self.grip_force_limits_n = tuple(grip_force_limits_n or ENV_SETTINGS["grip_force_limits_n"])
         self.grip_force_cost = ENV_SETTINGS["grip_force_cost"] if grip_force_cost is None else grip_force_cost
         if (len(self.grip_force_limits_n) != 2 or not np.isfinite(self.grip_force_limits_n).all()
@@ -127,7 +148,7 @@ class LiftTask(PickCubeEnv):
     def _load_agent(self, options):
         super()._load_agent(options)
         install_strength_controller(self)
-        if self.friction_config["friction_profile"] == "mass_correlated_linear":
+        if self.friction_config["friction_profile"] in ("mass_correlated_linear", "independent_grid"):
             for link in (self.agent.finger1_link, self.agent.finger2_link):
                 for body in link._objs:
                     self._set_friction(body, self.friction_config["finger_friction_coefficient"])
@@ -143,16 +164,21 @@ class LiftTask(PickCubeEnv):
                     and np.isclose(shape.physical_material.dynamic_friction, coefficient)):
                 raise RuntimeError("Physical friction assignment failed")
 
-    def _apply_cube_friction(self, body, mass):
+    def _apply_cube_friction(self, body, mass, index=0):
         if self.friction_config["friction_profile"] == "mass_correlated_linear":
             self._set_friction(body, cube_friction_at_mass(mass, self.friction_config))
+        elif self.friction_config["friction_profile"] == "independent_grid":
+            mu = (self.friction_config["cube_friction_coefficients"][(index // len(self.masses_kg)) % len(self.friction_config["cube_friction_coefficients"])]
+                  if self.gpu_sim_enabled else self._cpu_friction)
+            self._set_friction(body, mu)
 
     def friction_details(self):
-        """Human inspection only: read real materials; never append policy inputs."""
+        """Inspect real materials; estimates are supplied through observations separately."""
         materials = dict(cube=self.cube._bodies[0].get_collision_shapes()[0].physical_material,
                          left_finger=self.agent.finger1_link._objs[0].get_collision_shapes()[0].physical_material,
-                         right_finger=self.agent.finger2_link._objs[0].get_collision_shapes()[0].physical_material)
-        return dict(profile=self.friction_config["friction_profile"], hidden_from_policy=True,
+                         right_finger=self.agent.finger2_link._objs[0].get_collision_shapes()[0].physical_material,
+                         table=self.table_scene.table._bodies[0].get_collision_shapes()[0].physical_material)
+        return dict(profile=self.friction_config["friction_profile"], hidden_from_policy=not self.condition_on_friction,
                     **{name + "_" + kind: float(getattr(material, kind))
                        for name, material in materials.items() for kind in ("static_friction", "dynamic_friction")})
 
@@ -171,7 +197,7 @@ class LiftTask(PickCubeEnv):
         for index, body in enumerate(self.cube._bodies):
             mass = self.masses_kg[index % len(self.masses_kg)]
             self._set_mass(body, mass)
-            self._apply_cube_friction(body, mass)
+            self._apply_cube_friction(body, mass, index)
 
     def _initialize_episode(self, env_idx, options):
         # Reset moves bodies without stepping physics. PhysX contact queries can
@@ -181,6 +207,13 @@ class LiftTask(PickCubeEnv):
             self._contacts_stale = torch.zeros(self.num_envs, dtype=torch.bool, device=self.device)
         self._contacts_stale[env_idx] = True
         self.agent.controller.controllers["gripper"].reset_env_idx = env_idx.clone()
+        # CPU cycles the complete crossed grid; explicit reset options support matched evaluation.
+        if not self.gpu_sim_enabled and self.friction_config["friction_profile"] == "independent_grid":
+            grid = self.friction_config["cube_friction_coefficients"]
+            mu = float(options.get("friction_coefficient", grid[(self._cpu_episode // len(self.masses_kg)) % len(grid)]))
+            if not np.isfinite(mu) or mu <= 0:
+                raise ValueError("friction_coefficient must be positive and finite")
+            self._cpu_friction = mu
         # CPU inspection can select a different physical mass each attempt.
         if not self.gpu_sim_enabled and "mass_kg" not in options:
             options = {**options, "mass_kg": self.masses_kg[self._cpu_episode % len(self.masses_kg)]}
@@ -216,6 +249,14 @@ class LiftTask(PickCubeEnv):
         forces = normal_forces(self)
         measurements["left_finger_force_n"] = forces[:, :1]
         measurements["right_finger_force_n"] = forces[:, 1:2]
+        if self.condition_on_friction:
+            if self.gpu_sim_enabled:
+                grid = torch.as_tensor(self.friction_config["cube_friction_coefficients"], device=self.device)
+                indices = (torch.arange(self.num_envs, device=self.device) // len(self.masses_kg)) % len(grid)
+                mu = grid[indices]
+            else:
+                mu = torch.full((self.num_envs,), self._cpu_friction, device=self.device)
+            measurements["object_friction_coefficient"] = mu.reshape(-1, 1)
         return measurements
 
     def evaluate(self):
@@ -251,10 +292,12 @@ def read_inputs(task, observation):
     """45 inputs: previous 43 unchanged, then left/right compression force in N."""
     vector = flatten_state_dict(observation, use_torch=True, device=task.device) if isinstance(observation, dict) else observation
     vector = vector.detach().clone().float()
-    if vector.shape != (task.num_envs, 45) or not torch.isfinite(vector).all():
-        raise ValueError("Expected 45 finite measurements per robot")
+    conditioned = getattr(task, "condition_on_friction", False)
+    fields, sizes = (FRICTION_INPUT_FIELDS, FRICTION_INPUT_SIZES) if conditioned else (INPUT_FIELDS, INPUT_SIZES)
+    if vector.shape != (task.num_envs, sum(sizes)) or not torch.isfinite(vector).all():
+        raise ValueError(f"Expected {sum(sizes)} finite measurements per robot")
     inputs, start = {}, 0
-    for name, size in zip(INPUT_FIELDS, INPUT_SIZES):
+    for name, size in zip(fields, sizes):
         inputs[name] = vector[:, start:start + size]
         start += size
     return inputs, vector

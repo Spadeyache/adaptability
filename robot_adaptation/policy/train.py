@@ -16,9 +16,10 @@ import shlex
 import sys
 import uuid
 import torch
-from robot_adaptation.simulation.training_lift import ACTION_DESCRIPTION, ENV_ID, ENV_SETTINGS, HORIZON, INPUT_FIELDS, INPUT_SIZES, ORIGIN, LEGACY_ORIGIN, FRICTION_KEYS, friction_settings, friction_experiment
-from robot_adaptation.policy.model import Agent, SOURCE_COMMIT, POLICY_ARCHITECTURE, initialize_from_pretrained
+from robot_adaptation.simulation.training_lift import ACTION_DESCRIPTION, ENV_ID, ENV_SETTINGS, HORIZON, INPUT_FIELDS, INPUT_SIZES, ORIGIN, LEGACY_ORIGIN, FRICTION_KEYS, friction_settings, friction_experiment, FRICTION_ORIGIN, FRICTION_INPUT_FIELDS, FRICTION_INPUT_SIZES
+from robot_adaptation.policy.model import Agent, SOURCE_COMMIT, POLICY_ARCHITECTURE, FRICTION_POLICY_ARCHITECTURE, initialize_from_pretrained
 from robot_adaptation.simulation.training_hold import HOLD_ENV_ID
+from robot_adaptation.policy.trust_region import OPTIMIZATION_SEMANTICS
 
 HERE = Path(__file__).resolve().parent
 from robot_adaptation.paths import ROOT
@@ -27,6 +28,7 @@ SIMULATION_DIR = ROOT / "robot_adaptation" / "simulation"
 SOURCE = HERE / "examples" / "maniskill_pick_cube" / "ppo_upstream.py"
 SETTINGS = {
     "seed": 1,
+    "condition_on_friction": False, # Explicit 46-input mode; preserves historical 45-input defaults.
     "training_stage": "carry_joint", # Learn movement/opening AND strength in the full picking task.
     # hold_strength and carry_strength retain the earlier strength-only training.
     "total_timesteps": 10_500_000, # 3,500 rollout/learning cycles; override with --iterations.
@@ -36,6 +38,10 @@ SETTINGS = {
     "num_eval_envs": 10,          # Two separate evaluation robots per mass.
     "num_eval_steps": 50,
     "eval_freq": 25,
+    "guard_policy_updates": False, # Optional exact rollout-wide Gaussian KL transactions.
+    "max_exact_kl": 0.05,
+    "guard_max_backtracks": 6,
+    "guard_backtrack_factor": 0.5,
     "learning_rate": 1e-4,         # Smaller updates while extending the trained policy.
     "gamma": 0.8,
     "gae_lambda": 0.9,
@@ -72,16 +78,18 @@ def load_checkpoint(path):
     if not manifest_path.exists():
         raise ValueError("This checkpoint has no weighted-run manifest; old custom checkpoints require a new run")
     saved = json.loads(manifest_path.read_text())
-    if (saved.get("artifact_origin") != ORIGIN or saved.get("input_sizes") != INPUT_SIZES
+    conditioned = saved.get("artifact_origin") == FRICTION_ORIGIN
+    expected_sizes = FRICTION_INPUT_SIZES if conditioned else INPUT_SIZES
+    if (saved.get("artifact_origin") not in (ORIGIN, FRICTION_ORIGIN) or saved.get("input_sizes") != expected_sizes
             or saved.get("action_description") != ACTION_DESCRIPTION):
-        raise ValueError("Choose a 45-input/five-output grip-aware checkpoint; train_ppo converts previous weighted policies")
+        raise ValueError("Choose a matching 45/46-input five-action grip-aware checkpoint; training converts previous weighted policies")
     mode = saved.get("optimization_mode", "strength_only")
-    agent = initialize_from_pretrained(Agent(optimization_mode=mode), path)
+    agent = initialize_from_pretrained(Agent(optimization_mode=mode, observation_count=sum(expected_sizes)), path)
     agent.eval()
     return agent, saved
 
 
-def latest_checkpoint(allow_legacy=False):
+def latest_checkpoint(allow_legacy=False, condition_on_friction=False):
     """Select completed main-training models; exclude check runs and unsupported layouts."""
     choices = sorted([*(ROOT / "runs" / "policy").glob("*/final_ckpt.pt"),
                       *(ROOT / "runs" / "learning").glob("*/final_ckpt.pt")],
@@ -98,7 +106,10 @@ def latest_checkpoint(allow_legacy=False):
                    saved.get("action_description") == ACTION_DESCRIPTION)
         legacy = (allow_legacy and saved.get("artifact_origin") == LEGACY_ORIGIN and
                   saved.get("observations") == 43 and saved.get("actions") == 4)
-        if current or legacy:
+        conditioned = (condition_on_friction and saved.get("artifact_origin") == FRICTION_ORIGIN and
+                       saved.get("input_sizes") == FRICTION_INPUT_SIZES and
+                       saved.get("action_description") == ACTION_DESCRIPTION)
+        if conditioned or current or legacy:
             return path
     raise FileNotFoundError("No compatible completed training model. Set checkpoint=None to use the published policy.")
 
@@ -115,6 +126,19 @@ def resolve_settings(settings=None):
     if settings['training_stage'] == 'hold_strength' and (settings['partial_reset'] or settings['eval_partial_reset']):
         raise ValueError('Hold practice needs synchronized full resets: partial_reset=False and eval_partial_reset=False')
     settings.update(friction_settings(settings))
+    if type(settings["condition_on_friction"]) is not bool:
+        raise ValueError("condition_on_friction must be a boolean")
+    if settings["condition_on_friction"] and settings["friction_profile"] != "independent_grid":
+        raise ValueError("Friction conditioning requires independently crossed physics")
+    if type(settings["guard_policy_updates"]) is not bool:
+        raise ValueError("guard_policy_updates must be a boolean")
+    if settings["guard_policy_updates"] and optimization_mode != "joint":
+        raise ValueError("Five-action KL guarding requires carry_joint training")
+    if type(settings["guard_max_backtracks"]) is not int or settings["guard_max_backtracks"] < 0:
+        raise ValueError("guard_max_backtracks must be a nonnegative integer")
+    factor = settings["guard_backtrack_factor"]
+    if isinstance(factor, bool) or not isinstance(factor, (int, float)) or not math.isfinite(factor) or not 0 < factor < 1:
+        raise ValueError("guard_backtrack_factor must be between zero and one")
     training_env_id = HOLD_ENV_ID if settings['training_stage'] == 'hold_strength' else ENV_ID
     for key in ("total_timesteps", "num_envs", "num_steps", "num_minibatches", "num_eval_envs", "num_eval_steps", "eval_freq", "update_epochs"):
         if type(settings[key]) is not int or settings[key] <= 0:
@@ -134,9 +158,13 @@ def resolve_settings(settings=None):
             raise ValueError("CPU physics supports one robot; its mass cycles at reset")
     elif settings["num_envs"] % len(masses) or settings["num_eval_envs"] % len(masses):
         raise ValueError(f"With {len(masses)} masses, num_envs ({settings['num_envs']}) and num_eval_envs ({settings['num_eval_envs']}) must both be multiples of {len(masses)}")
+    if settings["sim_backend"] == "physx_cuda" and settings["friction_profile"] == "independent_grid":
+        conditions = len(masses) * len(settings["cube_friction_coefficients"])
+        if settings["num_envs"] % conditions or settings["num_eval_envs"] % conditions:
+            raise ValueError(f"Independent physics requires training/eval environment counts divisible by {conditions}")
     if type(settings["seed"]) is not int or not 0 <= settings["seed"] < 2**31:
         raise ValueError("seed must be a nonnegative 31-bit integer")
-    for key in ("learning_rate", "max_grad_norm", "target_kl"):
+    for key in ("learning_rate", "max_grad_norm", "target_kl", "max_exact_kl"):
         value = settings[key]
         if not isinstance(value, (int, float)) or isinstance(value, bool) or not math.isfinite(value) or value <= 0:
             raise ValueError(f"{key} must be positive and finite")
@@ -156,6 +184,7 @@ def _snapshot_sources(output):
         "grip_controller.py": SIMULATION_DIR / "grip_controller.py",
         "ppo.py": HERE / "model.py",
         "train_ppo.py": HERE / "train.py",
+        "trust_region.py": HERE / "trust_region.py",
     }
     # A frozen trainer may itself be used later without the source package.
     flat_names = {"training_lift.py": "lift_task.py", "training_hold.py": "hold_task.py",
@@ -165,6 +194,7 @@ def _snapshot_sources(output):
         "from robot_adaptation.simulation.training_hold import ": "from hold_task import ",
         "from robot_adaptation.simulation.grip_controller import ": "from grip_controller import ",
         "from robot_adaptation.policy.model import ": "from ppo import ",
+        "from robot_adaptation.policy.trust_region import ": "from trust_region import ",
         "from robot_adaptation.paths import ROOT": "ROOT = Path(" + repr(str(ROOT)) + ")",
         'SIMULATION_DIR = ROOT / "robot_adaptation" / "simulation"': "SIMULATION_DIR = HERE",
     }
@@ -185,6 +215,8 @@ def main(settings=None, *, prepare_only=False):
     """
     settings, training_env_id, optimization_mode = resolve_settings(settings)
     masses = settings["masses_kg"]
+    conditioned = settings["condition_on_friction"]
+    observation_count = 46 if conditioned else 45
     optimized_actions = (["x", "y", "z", "finger_opening", "grip_strength_limit"]
                          if optimization_mode == "joint" else ["grip_strength_limit"])
     frozen_actions = [] if optimization_mode == "joint" else ["x", "y", "z", "finger_opening"]
@@ -207,7 +239,7 @@ def main(settings=None, *, prepare_only=False):
     replacement = 'env_kwargs = ' + repr(dict(obs_mode="state", render_mode="rgb_array", sim_backend=settings["sim_backend"],
         render_backend="cpu", reward_mode="normalized_dense", masses_kg=masses, goal_clearance_m=settings["goal_clearance_m"],
         grip_force_limits_n=settings["grip_force_limits_n"], grip_force_cost=settings["grip_force_cost"],
-        **friction_settings(settings),
+        **friction_settings(settings), condition_on_friction=conditioned,
         sensor_configs={"shader_pack": "minimal"}, human_render_camera_configs={"shader_pack": "minimal"}))
     if original.count(old) != 1:
         raise RuntimeError("Pinned upstream source changed")
@@ -224,15 +256,43 @@ def main(settings=None, *, prepare_only=False):
     runtime = runtime.replace("eval_envs.step(agent.get_action(eval_obs, deterministic=True))", "eval_envs.step(clip_action(agent.get_action(eval_obs, deterministic=True)))")
     runtime = runtime.replace("runs/{run_name}", "{run_name}")
     runtime = runtime.replace("torch.load(args.checkpoint)", "torch.load(args.checkpoint, map_location=device, weights_only=True)")
+    if settings["guard_policy_updates"]:
+        runtime = runtime.replace("from ppo import Agent\n", "from ppo import Agent\nfrom trust_region import guarded_ppo_update\n", 1)
+        runtime = runtime.replace("import os\n", "import os\nimport json\n", 1)
+        update_start = runtime.index("        # Optimizing the policy and value network\n")
+        update_end_anchor = "        update_time = time.time() - update_time\n"
+        update_end = runtime.index(update_end_anchor, update_start) + len(update_end_anchor)
+        guarded = """        # Exact KL uses one immutable behavior comparator across this full rollout.
+        agent.train()
+        update_time = time.time()
+        guard_metrics = guarded_ppo_update(agent, optimizer, b_obs, b_actions, b_logprobs,
+            b_advantages, b_returns, b_values, args,
+            max_exact_kl=MAX_KL, max_backtracks=MAX_BACKTRACKS, backtrack_factor=BACKTRACK_FACTOR)
+        v_loss = torch.as_tensor(guard_metrics["value_loss"])
+        pg_loss = torch.as_tensor(guard_metrics["policy_loss"])
+        entropy_loss = torch.as_tensor(guard_metrics["entropy"])
+        old_approx_kl = torch.as_tensor(guard_metrics["old_approx_kl"])
+        approx_kl = torch.as_tensor(guard_metrics["approx_kl"])
+        clipfracs = [guard_metrics["clipfrac"]]
+        with open(f"{run_name}/trust_region.jsonl", "a") as guard_log:
+            guard_log.write(json.dumps(dict(iteration=iteration, global_step=global_step, **guard_metrics), allow_nan=False) + "\\n")
+        print("Exact rollout KL:", guard_metrics["rollout_exact_kl"], "accepted:", guard_metrics["accepted_updates"],
+              "rejected:", guard_metrics["rejected_candidates"], "backtracked:", guard_metrics["backtracked_updates"], flush=True)
+        for metric_name in ("rollout_exact_kl", "rollout_state_kl_max", "accepted_updates", "rejected_candidates", "backtracked_updates"):
+            logger.add_scalar("trust_region/" + metric_name, guard_metrics[metric_name], global_step)
+        update_time = time.time() - update_time
+"""
+        guarded = guarded.replace("MAX_KL", repr(settings["max_exact_kl"])).replace("MAX_BACKTRACKS", repr(settings["guard_max_backtracks"])).replace("BACKTRACK_FACTOR", repr(settings["guard_backtrack_factor"]))
+        runtime = runtime[:update_start] + guarded + runtime[update_end:]
     (output / "ppo_runtime.py").write_text(runtime)
     initialization = dict(kind="random")
     checkpoint = settings["checkpoint"]
     if checkpoint:
-        source_checkpoint = latest_checkpoint(allow_legacy=True) if checkpoint == "latest" else Path(checkpoint).resolve()
+        source_checkpoint = latest_checkpoint(allow_legacy=True, condition_on_friction=conditioned) if checkpoint == "latest" else Path(checkpoint).resolve()
         previous = json.loads((source_checkpoint.parent / "manifest.json").read_text())
-        if previous.get("artifact_origin") not in (ORIGIN, LEGACY_ORIGIN):
+        if previous.get("artifact_origin") not in (ORIGIN, LEGACY_ORIGIN, FRICTION_ORIGIN):
             raise ValueError("Choose a grip-aware or previous weighted training checkpoint")
-        agent = initialize_from_pretrained(Agent(optimization_mode=optimization_mode), source_checkpoint)
+        agent = initialize_from_pretrained(Agent(optimization_mode=optimization_mode, observation_count=observation_count), source_checkpoint)
         initialization = dict(kind="latest_trained_policy" if settings["checkpoint"] == "latest" else "trained_policy",
                               checkpoint=str(source_checkpoint), sha256=digest(source_checkpoint),
                               source_observations=previous.get("observations"), source_actions=previous.get("actions"),
@@ -245,24 +305,35 @@ def main(settings=None, *, prepare_only=False):
         sys.path.insert(0, str(SOURCE.parent))
         from run_pretrained import download_model
         published, _, url = download_model("pd_ee_delta_pos")
-        agent = initialize_from_pretrained(Agent(optimization_mode=optimization_mode), published)
+        agent = initialize_from_pretrained(Agent(optimization_mode=optimization_mode, observation_count=observation_count), published)
         initialization = dict(kind="published_42_input_policy", checkpoint=str(published), url=url,
                               sha256=digest(published), added_weight_and_force_columns="zero", added_strength_action="maximum", weight_input_initially_used=False)
     else:
-        agent = Agent(optimization_mode=optimization_mode)
+        agent = Agent(optimization_mode=optimization_mode, observation_count=observation_count)
+    if conditioned:
+        initialization["added_friction_column"] = dict(index=45, initialization="retained" if initialization.get("source_observations") == 46 else "zero" if settings["checkpoint"] or settings["initialize_from_pretrained"] else "random")
     # Always save the exact starting weights, including random initialization.
     # A later --from-prepared run does not depend on a moving latest selection.
     checkpoint = str(output / "initialization.pt")
     torch.save(agent.state_dict(), checkpoint)
     initialization["snapshot_sha256"] = digest(checkpoint)
-    manifest = dict(artifact_origin=ORIGIN, environment=training_env_id, evaluation_environment=training_env_id, deployment_environment=ENV_ID, observations=45, actions=5,
-                    policy_architecture=POLICY_ARCHITECTURE, optimization_mode=optimization_mode,
+    manifest = dict(artifact_origin=FRICTION_ORIGIN if conditioned else ORIGIN, environment=training_env_id, evaluation_environment=training_env_id, deployment_environment=ENV_ID, observations=observation_count, actions=5,
+                    policy_architecture=FRICTION_POLICY_ARCHITECTURE if conditioned else POLICY_ARCHITECTURE, optimization_mode=optimization_mode,
                     optimized_actions=optimized_actions, frozen_actions=frozen_actions,
                     planned_iterations=settings["total_timesteps"] // (settings["num_envs"] * settings["num_steps"]),
+                    optimization_semantics=OPTIMIZATION_SEMANTICS if settings["guard_policy_updates"] else "pinned_upstream_clipped_ppo_sampled_kl_stop",
+                    trust_region=dict(enabled=settings["guard_policy_updates"], max_exact_kl=settings["max_exact_kl"],
+                                      criterion="full rollout mean KL(old Gaussian || candidate Gaussian), summed over five effective raw actions",
+                                      comparator="fixed rollout behavior, cached once before updates", max_backtracks=settings["guard_max_backtracks"],
+                                      backtrack_factor=settings["guard_backtrack_factor"], rollback="all model state and Adam moments/step counters",
+                                      learning_rate_policy="temporary bounded trials; restore configured LR; stop remaining updates on exhaustion; reset budget next rollout"),
+                    trust_region_sha256=digest(output / "trust_region.py"),
                     ppo_likelihood="joint five-action Gaussian" if optimization_mode == "joint" else "strength-only Gaussian",
                     action_storage="unclipped sampled actions with matching log probabilities; clipping only at simulator application",
-                    action_description=ACTION_DESCRIPTION, input_fields=INPUT_FIELDS, input_sizes=INPUT_SIZES,
+                    action_description=ACTION_DESCRIPTION, input_fields=FRICTION_INPUT_FIELDS if conditioned else INPUT_FIELDS, input_sizes=FRICTION_INPUT_SIZES if conditioned else INPUT_SIZES,
                     settings=settings, horizon=HORIZON, initialization=initialization,
+                    conditioning_parameters=(dict(object_weight_n=dict(index=42, units="newtons", source="true mass times gravity during training"),
+                                                  object_friction_coefficient=dict(index=45, units="dimensionless", definition="object material coefficient; static=dynamic, fixed finger material")) if conditioned else None),
                     source_commit=SOURCE_COMMIT, source_sha256=digest(SOURCE),
                     task_sha256=digest(output / "lift_task.py"), model_sha256=digest(output / "ppo.py"), controller_sha256=digest(output / "grip_controller.py"),
                     versions={p: version(p) for p in ("torch", "mani_skill", "sapien")},
@@ -271,7 +342,7 @@ def main(settings=None, *, prepare_only=False):
                                               "smaller balanced parallel batch", "warm start from latest trained policy", "full-episode holding during training",
                                               "both independent actor branches trainable" if optimization_mode == "joint" else "independent strength branch and frozen movement",
                                               "joint five-action PPO likelihood" if optimization_mode == "joint" else "strength-only PPO likelihood",
-                                              "explicitly recorded hidden mass-correlated friction profile",
+                                              "explicit supplied object friction and independently crossed physics" if conditioned else "explicitly recorded hidden friction profile",
                                               "physical hold preparation" if settings["training_stage"] == "hold_strength" else "full pickup and carrying"],
                     friction_experiment=friction_experiment(settings, masses),
                     training_stage=settings["training_stage"],
@@ -280,7 +351,7 @@ def main(settings=None, *, prepare_only=False):
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
     (output / "settings.json").write_text(json.dumps(settings, indent=2) + "\n")
     command = [sys.executable, "-u", str(output / "ppo_runtime.py"), "--exp-name", str(output), "--env-id", training_env_id, "--no-capture-video", "--no-track"]
-    excluded = set(FRICTION_KEYS) | {"training_stage", "run_root", "masses_kg", "goal_clearance_m", "initialize_from_pretrained", "checkpoint", "sim_backend", "grip_force_limits_n", "grip_force_cost"}
+    excluded = set(FRICTION_KEYS) | {"guard_policy_updates", "max_exact_kl", "guard_max_backtracks", "guard_backtrack_factor", "condition_on_friction", "training_stage", "run_root", "masses_kg", "goal_clearance_m", "initialize_from_pretrained", "checkpoint", "sim_backend", "grip_force_limits_n", "grip_force_cost"}
     for key, value in settings.items():
         if key in excluded:
             continue
@@ -336,13 +407,22 @@ def cli(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--prepare-only", action="store_true", help="Save validated settings, runtime and initialization without starting training")
     parser.add_argument("--iterations", type=int, help="Number of rollout/learning cycles (not PPO minibatch epochs)")
+    parser.add_argument("--condition-on-friction", action="store_true", help="Train with 46 observations and independently crossed mass/friction")
+    parser.add_argument("--guard-policy-updates", action="store_true", help="Bound full-rollout exact Gaussian KL with transactional backtracking")
+    parser.add_argument("--max-exact-kl", type=float)
+    parser.add_argument("--guard-max-backtracks", type=int)
+    parser.add_argument("--guard-backtrack-factor", type=float)
+    parser.add_argument("--learning-rate", type=float)
+    parser.add_argument("--sim-backend", choices=("physx_cpu", "physx_cuda"))
+    parser.add_argument("--num-envs", type=int)
+    parser.add_argument("--num-eval-envs", type=int)
     parser.add_argument("--checkpoint", help="Existing model checkpoint path, or latest")
     parser.add_argument("--from-prepared", type=Path, help="Use saved settings and pin the source weights from an earlier preparation; creates a new run")
     args = parser.parse_args(argv)
     settings = dict(SETTINGS)
     if args.from_prepared:
         prepared = json.loads((args.from_prepared / "manifest.json").read_text())
-        if prepared.get("artifact_origin") != ORIGIN or prepared.get("status") != "prepared":
+        if prepared.get("artifact_origin") not in (ORIGIN, FRICTION_ORIGIN) or prepared.get("status") != "prepared":
             parser.error("--from-prepared requires a prepared grip-policy run")
         settings = prepared["settings"]
         snapshot = args.from_prepared.resolve() / "initialization.pt"
@@ -350,6 +430,13 @@ def cli(argv=None):
         if not snapshot.is_file() or expected_hash is None or digest(snapshot) != expected_hash:
             parser.error("Prepared initialization snapshot is missing or changed; prepare again")
         settings["checkpoint"] = str(snapshot)
+    if args.condition_on_friction:
+        settings.update(condition_on_friction=True, friction_profile="independent_grid", num_eval_envs=15)
+    if args.guard_policy_updates:
+        settings["guard_policy_updates"] = True
+    for key in ("sim_backend", "num_envs", "num_eval_envs", "learning_rate", "max_exact_kl", "guard_max_backtracks", "guard_backtrack_factor"):
+        if getattr(args, key) is not None:
+            settings[key] = getattr(args, key)
     if args.checkpoint:
         settings["checkpoint"] = args.checkpoint
     if args.iterations is not None:
