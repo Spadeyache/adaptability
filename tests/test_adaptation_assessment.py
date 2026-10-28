@@ -1,10 +1,32 @@
 """A successful run or sensitive actor must not turn into a capability claim."""
 import unittest
 
-from experiments.interaction_adaptation.assess import assess
+from experiments.interaction_adaptation.assess import assess, markdown
+from tests.test_checkpoint_metadata import manifest, stopped_record
 
 
 class AssessmentTests(unittest.TestCase):
+    def test_user_stop_reports_saved_and_executed_progress_without_50k_completion(self):
+        report = assess(training=manifest(), early_stop=stopped_record())
+        training = report["training"]
+        self.assertEqual(training["saved_checkpoint_completed_cycles"], 19000)
+        self.assertEqual(training["executed_rollout_cycles"], 19489)
+        self.assertFalse(training["requested_50000_iterations_completed"])
+        text = markdown(report)
+        self.assertIn("19,489", text)
+        self.assertIn("19,000", text)
+        self.assertIn("budget was not completed", text)
+        self.assertEqual(report["policy"]["status"], "pending")
+
+    def test_cross_task_reports_and_wrong_stopped_checkpoint_fail(self):
+        with self.assertRaisesRegex(ValueError, "same declared task"):
+            assess(retry={"task":"vertical"}, transfer={"task":"native_carry"})
+        early = stopped_record()
+        early["latest_saved_checkpoint_sha256"] = "pinned-stopped-policy"
+        with self.assertRaisesRegex(ValueError, "early-stop pinned"):
+            assess(policy=dict(paired_comparisons={}, metrics={}, checkpoint="ckpt_19001.pt",
+                               checkpoint_sha256="other-policy"), training=manifest(), early_stop=early)
+
     def test_friction_sensitivity_alone_does_not_establish_task_benefit(self):
         policy = dict(paired_comparisons={}, metrics={}, checkpoint="pilot.pt",
                       friction_input_sensitivity_mean_abs_action=99.)

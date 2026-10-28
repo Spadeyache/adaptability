@@ -10,20 +10,21 @@ import argparse
 from datetime import datetime, timezone
 import json
 from pathlib import Path
-import shutil
 import time
 
 import numpy as np
 import torch
 
 from robot_adaptation.collection.collect import rollout, runtime_metadata, write_json
+from robot_adaptation.collection.provenance import source_hashes, snapshot_sources
 from robot_adaptation.estimators.interaction.data import sha256
 from robot_adaptation.estimators.interaction.evaluate import bootstrap_mean_ci
 from robot_adaptation.estimators.interaction.predict import InteractionPredictor
 from robot_adaptation.policy.train import load_checkpoint
-from robot_adaptation.simulation.collection_lift import WeightedCollectionEnv
+from robot_adaptation.policy.checkpoint_metadata import checkpoint_progress
 
-from .evaluate import estimator_inputs, supplied_observation
+from .evaluate import (TASK_DESCRIPTIONS, estimator_inputs, evaluation_source_paths,
+                       make_task, supplied_observation)
 
 
 def summarize_transfer(records, prior):
@@ -74,31 +75,32 @@ def summarize_transfer(records, prior):
 
 def evaluate_transfer(args):
     torch.set_num_threads(args.threads)
+    task = getattr(args, "task", "vertical")
     policy_path, estimator_path = Path(args.policy).resolve(), Path(args.estimator).resolve()
     policy, trained = load_checkpoint(policy_path)
     if trained.get("observations") != 46:
         raise ValueError("Transfer collection requires the explicit46-input policy")
     policy.cpu().eval().requires_grad_(False)
+    progress = checkpoint_progress(policy_path, trained)
     predictor = InteractionPredictor(estimator_path)
     prior = predictor.normalization["prior_median"]
     output = Path(args.output or ("runs/interaction_adaptation/transfer_" +
                   datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%f"))).resolve()
     output.mkdir(parents=True, exist_ok=False)
     (output / "episodes").mkdir()
-    source = output / "source"
-    source.mkdir()
-    source_files = [Path(__file__), Path(__file__).with_name("evaluate.py")]
-    source_files += list((Path(__file__).resolve().parents[2] / "robot_adaptation" /
-                          "estimators" / "interaction").glob("*.py"))
-    for p in source_files:
-        prefix = "estimator_" if "estimators" in p.parts else "experiment_"
-        shutil.copy2(p, source / (prefix + p.name))
+    source_files = evaluation_source_paths(task)
+    source_identity = source_hashes(source_files)
+    snapshot_sources(output / "source", source_files)
     hashes = dict(policy=sha256(policy_path), estimator=sha256(estimator_path))
     manifest = dict(status="running", settings=vars(args), checkpoint_sha256=hashes,
                     policy_training_status=trained.get("status"),
-                    policy_training_iterations=trained.get("planned_iterations"),
+                    policy_training_iterations=progress["completed_learning_cycles"],
+                    policy_training_steps=progress["checkpoint_transitions"],
+                    original_planned_policy_training_iterations=progress["original_planned_iterations"],
+                    original_planned_policy_training_steps=progress["original_planned_transitions"],
+                    policy_checkpoint_progress=progress, task=task, task_description=TASK_DESCRIPTIONS[task],
                     policy=str(policy_path), estimator=str(estimator_path),
-                    runtime=runtime_metadata(), source_sha256={p.name: sha256(p) for p in source.glob("*.py")},
+                    runtime=runtime_metadata(), source_sha256=source_identity,
                     estimator_input_boundary="input__ plus timestamp/frequency metadata only",
                     policy_input="45 collection observations including fixed supplied mass plus fixed supplied friction",
                     purpose="Controlled transfer falsification; no retraining or model selection on these data")
@@ -111,8 +113,7 @@ def evaluate_transfer(args):
                 predictor.reset()
                 properties = dict(mass_kg=mass, static_friction=friction, dynamic_friction=friction,
                                   finger_friction=.2, table_friction=.3, size_xyz_m=[.04] * 3)
-                env = WeightedCollectionEnv(properties, reported_mass_kg=args.supplied_mass,
-                    goal_clearance_m=.2, grip_force_limits_n=trained["settings"]["grip_force_limits_n"])
+                env = make_task(task, properties, reported_mass_kg=args.supplied_mass, settings=trained["settings"])
                 try:
                     for attempt in range(1, args.attempts + 1):
                         seed = args.seed + attempt - 1
@@ -135,10 +136,17 @@ def evaluate_transfer(args):
                     env.close()
         if hashes != dict(policy=sha256(policy_path), estimator=sha256(estimator_path)):
             raise RuntimeError("A pinned checkpoint changed during transfer evaluation")
+        if source_hashes(source_files) != source_identity:
+            raise RuntimeError("Evaluation source changed during transfer collection")
         result = summarize_transfer(records, prior)
         result.update(checkpoint=str(estimator_path), checkpoint_sha256=hashes["estimator"],
                       policy_checkpoint=str(policy_path), policy_checkpoint_sha256=hashes["policy"],
-                      collecting_policy_iterations=trained.get("planned_iterations"))
+                      collecting_policy_iterations=progress["completed_learning_cycles"],
+                      policy_training_iterations=progress["completed_learning_cycles"],
+                      policy_training_steps=progress["checkpoint_transitions"],
+                      original_planned_policy_training_iterations=progress["original_planned_iterations"],
+                      original_planned_policy_training_steps=progress["original_planned_transitions"],
+                      policy_checkpoint_progress=progress, task=task, task_description=TASK_DESCRIPTIONS[task])
         result["elapsed_seconds"] = time.monotonic() - started
         result["final_held_goal_successes"] = sum(row["success"] for row in records)
         result["episodes"] = len(records)
@@ -165,6 +173,7 @@ def main(argv=None):
     p.add_argument("--supplied-mass", type=float, default=.1)
     p.add_argument("--supplied-friction", type=float, default=.4)
     p.add_argument("--threads", type=int, default=1)
+    p.add_argument("--task", choices=tuple(TASK_DESCRIPTIONS), default="vertical")
     args = p.parse_args(argv)
     if min(args.attempts, args.steps, args.threads) < 1 or args.seed < 0:
         p.error("Attempts, steps and threads must be positive; seed must be nonnegative")

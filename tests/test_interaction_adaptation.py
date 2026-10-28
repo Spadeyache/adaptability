@@ -1,15 +1,28 @@
 """Boundaries and matched-budget accounting for the real retry experiment."""
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 import torch
 
 from experiments.interaction_adaptation.evaluate import (
-    estimator_inputs, supplied_observation, summarize,
+    estimator_inputs, evaluation_source_paths, make_task, supplied_observation, summarize,
 )
 
 
 class InteractionAdaptationTests(unittest.TestCase):
+    def test_task_factory_preserves_vertical_protocol_and_declares_native_dependencies(self):
+        settings=dict(grip_force_limits_n=[.25,40],goal_clearance_m=[.1,.3],grip_force_cost=.1)
+        with patch("experiments.interaction_adaptation.evaluate.WeightedCollectionEnv") as vertical:
+            make_task("vertical", {}, reported_mass_kg=.1, settings=settings)
+            self.assertEqual(vertical.call_args.kwargs["goal_clearance_m"], .2)
+        paths={p.name for p in evaluation_source_paths("native_carry")}
+        self.assertIn("checkpoint_probe.py", paths)
+        self.assertIn("checkpoint_metadata.py", paths)
+        self.assertNotIn("checkpoint_probe.py", {p.name for p in evaluation_source_paths("vertical")})
+        with self.assertRaises(ValueError):
+            make_task("unknown", {}, reported_mass_kg=.1, settings=settings)
+
     def test_estimator_boundary_drops_targets_and_simulator_contact_masks(self):
         source = {"input__finger_width_m": np.asarray([.03, .03]),
                   "meta__state_time_s": np.asarray([0., .05]),

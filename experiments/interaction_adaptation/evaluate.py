@@ -17,9 +17,47 @@ import numpy as np
 import torch
 
 from robot_adaptation.collection.collect import rollout, write_json
+from robot_adaptation.collection.provenance import source_hashes, snapshot_sources
 from robot_adaptation.estimators.interaction.predict import InteractionPredictor
+from robot_adaptation.paths import ROOT
+from robot_adaptation.policy.checkpoint_metadata import checkpoint_progress
 from robot_adaptation.policy.train import load_checkpoint
 from robot_adaptation.simulation.collection_lift import WeightedCollectionEnv
+
+TASK_DESCRIPTIONS = {
+    "vertical": "Legacy vertical pick-and-hold: goal directly above the spawn at fixed 0.2 m clearance",
+    "native_carry": "Native trained carry goal geometry: randomized PickCube XY and saved floating-Z clearance range; CPU adapter preserves trained reward",
+}
+
+
+def make_task(task, properties, *, reported_mass_kg, settings):
+    """Keep legacy protocol the default; explicitly select the trained carry geometry."""
+    if task == "vertical":
+        return WeightedCollectionEnv(properties, reported_mass_kg=reported_mass_kg,
+            goal_clearance_m=.2, grip_force_limits_n=settings["grip_force_limits_n"])
+    if task == "native_carry":
+        # Lazy import: the adapter also imports supplied_observation from here.
+        from experiments.physics_conditioning.checkpoint_probe import ProbeCarryTask
+        return ProbeCarryTask(properties, reported_mass_kg=reported_mass_kg,
+            goal_clearance_m=settings["goal_clearance_m"],
+            grip_force_limits_n=settings["grip_force_limits_n"],
+            grip_force_cost=settings["grip_force_cost"])
+    raise ValueError("Choose vertical or native_carry task geometry")
+
+
+def evaluation_source_paths(task):
+    if task not in TASK_DESCRIPTIONS:
+        raise ValueError("Unknown evaluation task")
+    paths = [Path(__file__), Path(__file__).with_name("transfer.py"),
+             ROOT / "robot_adaptation/policy/checkpoint_metadata.py",
+             ROOT / "robot_adaptation/policy/model.py", ROOT / "robot_adaptation/policy/train.py",
+             ROOT / "robot_adaptation/policy/trust_region.py",
+             ROOT / "robot_adaptation/policy/examples/maniskill_pick_cube/ppo_upstream.py"]
+    paths += list((ROOT / "robot_adaptation/estimators/interaction").glob("*.py"))
+    if task == "native_carry":
+        paths += [ROOT / "experiments/physics_conditioning/checkpoint_probe.py",
+                  ROOT / "experiments/physics_conditioning/evaluate.py"]
+    return paths
 
 
 def estimator_inputs(data):
@@ -85,12 +123,14 @@ def summarize(records, budget):
 
 def evaluate(args):
     torch.set_num_threads(args.threads)
+    task = getattr(args, "task", "vertical")
     policy_path = Path(args.policy).resolve()
     estimator_path = Path(args.estimator).resolve()
     policy, manifest = load_checkpoint(policy_path)
     if manifest.get("observations") != 46:
         raise ValueError("Retry evaluation requires the explicit 46-input friction policy")
     policy.cpu().eval().requires_grad_(False)
+    progress = checkpoint_progress(policy_path, manifest)
     predictor = InteractionPredictor(estimator_path)
     conditions = json.loads(Path(args.conditions).read_text()) if args.conditions else [
         {"mass_kg": .04, "friction": .2},
@@ -104,10 +144,18 @@ def evaluate(args):
                          for name, path in (("policy", policy_path), ("estimator", estimator_path))}
     settings = dict(vars(args), conditions=conditions, policy=str(policy_path),
                     estimator=str(estimator_path), output=str(output))
+    source_paths = evaluation_source_paths(task)
+    source_identity = source_hashes(source_paths)
+    snapshot_sources(output / "source", source_paths)
     write_json(output / "manifest.json", {
         "status": "running", "settings": settings, "checkpoint_sha256": checkpoint_hashes,
         "policy_training_status": manifest.get("status"),
-        "policy_training_steps": manifest.get("settings", {}).get("total_timesteps"),
+        "policy_training_steps": progress["checkpoint_transitions"],
+        "policy_training_iterations": progress["completed_learning_cycles"],
+        "original_planned_policy_training_steps": progress["original_planned_transitions"],
+        "original_planned_policy_training_iterations": progress["original_planned_iterations"],
+        "policy_checkpoint_progress": progress,
+        "task": task, "task_description": TASK_DESCRIPTIONS[task], "source_sha256": source_identity,
         "estimator_input_boundary": "input__ fields and timestamp/frequency metadata only",
         "method": "fixed policy, true/fixed/adaptive estimates, fresh matched scene resets",
         "assessment_spec": str(Path("configs/adaptation_assessment.json").resolve())})
@@ -121,9 +169,7 @@ def evaluate(args):
             for method in ("fixed", "adaptive", "true"):
                 predictor.reset()
                 estimated_mass, estimated_friction = args.initial_mass, args.initial_friction
-                env = WeightedCollectionEnv(properties, reported_mass_kg=estimated_mass,
-                    goal_clearance_m=.2,
-                    grip_force_limits_n=manifest["settings"]["grip_force_limits_n"])
+                env = make_task(task, properties, reported_mass_kg=estimated_mass, settings=manifest["settings"])
                 try:
                     for attempt in range(args.attempts):
                         if method == "true":
@@ -165,6 +211,18 @@ def evaluate(args):
                 finally:
                     env.close()
     result = summarize(records, args.attempts)
+    result.update(task=task, task_description=TASK_DESCRIPTIONS[task],
+                  policy_checkpoint=str(policy_path), estimator_checkpoint=str(estimator_path),
+                  checkpoint_sha256=checkpoint_hashes, policy_checkpoint_progress=progress,
+                  policy_training_iterations=progress["completed_learning_cycles"],
+                  policy_training_steps=progress["checkpoint_transitions"],
+                  original_planned_policy_training_iterations=progress["original_planned_iterations"],
+                  original_planned_policy_training_steps=progress["original_planned_transitions"])
+    if source_hashes(source_paths) != source_identity:
+        raise RuntimeError("Evaluation source changed during retry collection")
+    if checkpoint_hashes != {name: hashlib.sha256(path.read_bytes()).hexdigest()
+                            for name, path in (("policy", policy_path), ("estimator", estimator_path))}:
+        raise RuntimeError("A pinned checkpoint changed during retry collection")
     result["elapsed_seconds"] = time.monotonic() - started
     write_json(output / "summary.json", result)
     saved = json.loads((output / "manifest.json").read_text())
@@ -188,6 +246,7 @@ def main(argv=None):
     parser.add_argument("--initial-mass", type=float, default=.1)
     parser.add_argument("--initial-friction", type=float, default=.4)
     parser.add_argument("--threads", type=int, default=1)
+    parser.add_argument("--task", choices=tuple(TASK_DESCRIPTIONS), default="vertical")
     args = parser.parse_args(argv)
     for name in ("sequences", "attempts", "steps", "threads"):
         if getattr(args, name) < 1:

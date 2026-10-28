@@ -2,13 +2,18 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
 import numpy as np
 
+from robot_adaptation.policy.checkpoint_metadata import stopped_training_progress
 
-def assess(policy=None, estimator=None, retry=None, training=None, transfer=None):
+
+def assess(policy=None, estimator=None, retry=None, training=None, transfer=None, early_stop=None):
+    if retry is not None and transfer is not None and retry.get("task", "vertical") != transfer.get("task", "vertical"):
+        raise ValueError("Retry and estimator-transfer reports must use the same declared task")
     report = {"assessment_spec": "configs/adaptation_assessment.json"}
     if policy is None:
         report["policy"] = {"status": "pending", "reason": "No completed policy comparison supplied."}
@@ -50,6 +55,9 @@ def assess(policy=None, estimator=None, retry=None, training=None, transfer=None
                 for method, values in retry["methods"].items()
                 if "success_rate_within_budget" in values},
             "attempt_budget": retry["attempt_budget"],
+            "task": retry.get("task", "vertical"),
+            "task_description": retry.get("task_description", "Legacy vertical pick-and-hold protocol"),
+            "policy_checkpoint_progress": retry.get("policy_checkpoint_progress"),
             "scope": "Adaptive-versus-fixed retry success can reflect a useful estimator prior or parameter shifts as well as information recovered from episodes. Interpret any gain alongside held-out transfer errors; retry improvement alone does not establish accurate physical inference as its cause."}
     if training is not None:
         report["training"] = {
@@ -67,6 +75,23 @@ def assess(policy=None, estimator=None, retry=None, training=None, transfer=None
             "constant_prior_mae":transfer["prior_median_mae"],
             "attempts":transfer["attempts"],
             "scope":"Frozen estimator, new policy, full independent mass/friction grid, fixed supplied guesses. Confidence is conditional on the shared starting seeds; historical recovery and task benefit remain separate checks."}
+        report["estimator_transfer"].update(task=transfer.get("task", "vertical"),
+            task_description=transfer.get("task_description", "Legacy vertical pick-and-hold protocol"),
+            policy_checkpoint_progress=transfer.get("policy_checkpoint_progress"))
+    if early_stop is not None:
+        progress = stopped_training_progress(early_stop, training)
+        pinned = early_stop.get("latest_saved_checkpoint_sha256")
+        evaluated_hashes = []
+        if policy is not None and policy.get("checkpoint_sha256"):
+            evaluated_hashes.append(policy["checkpoint_sha256"])
+        if retry is not None and isinstance(retry.get("checkpoint_sha256"), dict):
+            evaluated_hashes.append(retry["checkpoint_sha256"].get("policy"))
+        if transfer is not None and transfer.get("policy_checkpoint_sha256"):
+            evaluated_hashes.append(transfer["policy_checkpoint_sha256"])
+        if pinned and any(value != pinned for value in evaluated_hashes):
+            raise ValueError("Evaluation policy checkpoint differs from the early-stop pinned checkpoint")
+        report["training"] = dict(progress, planned_iterations=progress["original_planned_iterations"],
+                                  original_manifest_status=training.get("status") if training else None)
     return report
 
 
@@ -83,8 +108,16 @@ def markdown(report):
         lines.insert(-1,f"| Estimator transfers to new policy and full crossed grid | {transfer['status']} |")
     if "training" in report:
         value = report["training"]
-        lines += [f"Training status: **{value['status']}**. Planned cycles: {value['planned_iterations']}. The requested 50,000-cycle run is " +
-                  ("complete." if value["requested_50000_iterations_completed"] else "not complete."), ""]
+        if value["status"] == "stopped_by_user":
+            lines += [f"Training was **stopped by the user** after {value['executed_rollout_cycles']:,} executed rollouts "
+                      f"({value['collected_transitions']:,} collected transitions). The evaluated saved checkpoint contains "
+                      f"**{value['saved_checkpoint_completed_cycles']:,} completed learning cycles / "
+                      f"{value['saved_checkpoint_transitions']:,} transitions**. The original {value['planned_iterations']:,}-cycle "
+                      "budget was not completed; the unsaved later rollouts are not represented in this checkpoint. "
+                      "Training remains stopped.", ""]
+        else:
+            lines += [f"Training status: **{value['status']}**. Planned cycles: {value['planned_iterations']}. The requested 50,000-cycle run is " +
+                      ("complete." if value["requested_50000_iterations_completed"] else "not complete."), ""]
     if "attempts" in estimator:
         lines += ["## Estimator held-condition errors", "",
                   "| Evidence | Mass MAE (g) | Friction MAE |", "| --- | ---: | ---: |"]
@@ -98,6 +131,8 @@ def markdown(report):
             lines += [estimator["robustness_caveat"], ""]
     if "metrics" in policy:
         lines += ["## Policy matched comparisons", "",
+                  f"Frozen policy checkpoint: `{policy['checkpoint']}`.", "",
+                  "These rows compare supplied physics inputs for this one checkpoint on identical actual physics and starts. They do not compare training durations.", "",
                   "| Supplied inputs | Final success | Final 0.5 s continuous success |",
                   "| --- | ---: | ---: |"]
         for mode, value in policy["metrics"].items():
@@ -109,7 +144,7 @@ def markdown(report):
                 lines.append(f"- {name}: {value['true_minus_comparison_success']:+.1%}, 95% interval [{interval[0]:+.1%}, {interval[1]:+.1%}].")
         lines += ["", policy["scope"], ""]
     if "success_rates_within_budget" in loop:
-        lines += ["## Actual retry comparison", ""]
+        lines += ["## Actual retry comparison", "", "Task: " + loop.get("task_description", "Unspecified task") + ".", ""]
         for name, value in loop["success_rates_within_budget"].items():
             lines.append(f"- {name}: {value:.1%} success within {loop['attempt_budget']} attempts.")
         lines += ["", "A small diagnostic may establish that the loop runs while leaving a performance benefit unproven.", "",
@@ -117,6 +152,7 @@ def markdown(report):
     if "estimator_transfer" in report:
         transfer=report["estimator_transfer"]
         lines += ["## Estimator transfer falsification", "",
+                  "Task: " + transfer.get("task_description", "Unspecified task") + ".", "",
                   "| Evidence | Mass MAE (g) | Friction MAE |", "| --- | ---: | ---: |"]
         prior=transfer["constant_prior_mae"]
         lines.append(f"| Constant training median | {prior[0]*1000:.1f} | {prior[1]:.4f} |")
@@ -156,13 +192,14 @@ def main(argv=None):
     parser.add_argument("--training-manifest", type=Path)
     parser.add_argument("--estimator-robustness", type=Path)
     parser.add_argument("--transfer-evaluation", type=Path)
+    parser.add_argument("--early-stop-record", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
     def read(path):
         return json.loads(path.read_text()) if path else None
     policy, estimator, retry, training = map(read, (args.policy_evaluation, args.estimator_evaluation,
                                                    args.retry_evaluation, args.training_manifest))
-    report = assess(policy, estimator, retry, training,read(args.transfer_evaluation))
+    report = assess(policy, estimator, retry, training, read(args.transfer_evaluation), read(args.early_stop_record))
     if args.estimator_robustness:
         robustness=read(args.estimator_robustness)
         results=robustness.get("results",[])
@@ -177,6 +214,9 @@ def main(argv=None):
             f"has positive intervals for mass in {counts['constant_prior'][0]} seeds and friction "
             f"in {counts['constant_prior'][1]}. Primary-seed support alone does not establish robustness.")
     report["sources"] = {key: str(value.resolve()) for key, value in vars(args).items() if value and key != "output"}
+    report["source_sha256"] = {key: hashlib.sha256(Path(value).read_bytes()).hexdigest()
+                                for key, value in report["sources"].items()}
+    report["assessment_source_sha256"] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     args.output.mkdir(parents=True, exist_ok=True)
     (args.output / "assessment.json").write_text(json.dumps(report, indent=2) + "\n")
     (args.output / "assessment.md").write_text(markdown(report) + "\n")

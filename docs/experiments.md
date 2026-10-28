@@ -30,14 +30,17 @@ paths.
 
 ## Learning through interaction
 
-| Study | Status | What it would establish |
+| Study | Status | What it establishes |
 | --- | --- | --- |
-| [Policy conditioning on mass and friction](experiments/physics_conditioned_policy.md) | Implemented; training/evaluation ongoing | Whether accurate independent mass/friction inputs improve the fixed policy. |
-| [Interaction estimate updates](experiments/interaction_estimate_updates.md) | Historical estimator evaluated; transfer partial | More attempts reduce errors. New-policy crossed-grid mass recovery is supported; friction transfer and retry benefit remain unestablished. |
+| [Policy conditioning on mass and friction](experiments/physics_conditioned_policy.md) | Final evaluation complete; training ended by user | Accurate physics improves the saved 19,000-cycle policy: true-input success 95.3%, versus 87.3% with constant friction. |
+| [Interaction estimate updates](experiments/interaction_estimate_updates.md) | Final evaluation complete; estimator transfer partial | Historical mass/friction recovery and actual adaptive retry benefit are supported. New-policy mass recovery transfers; friction recovery and consistent improvement with more attempts remain unestablished. |
 
-The next checks separate parameter estimation from task benefit. Complete policy
-training, compare true and altered physical inputs on matched starts, and then
-evaluate actual estimate-updating retries with equal interaction budgets.
+The [final objective report](../runs/physics_conditioning/long_50000_guarded_20261026/post_stop_evaluation/final_summary.md)
+separates accurate-input benefit, historical recovery, new-policy transfer and
+actual retry success. Native-carry retries succeed in 86/90 adaptive sequences
+versus 78/90 with fixed guesses. The user ended training after 19,489 rollouts;
+the evaluated checkpoint contains 19,000 cycles, and 50,000 was not completed.
+Reliable friction inference remains the central open question.
 
 ## Supporting experiments
 
