@@ -1,0 +1,18 @@
+{
+  "seed": 73001,
+  "masses_kg": [0.02, 0.04, 0.06, 0.08, 0.10, 0.12],
+  "frictions": [0.3, 0.475, 0.65, 0.825, 1.0],
+  "num_envs": 60,
+  "num_eval_envs": 30,
+  "horizon": 50,
+  "history_length": 50,
+  "goal_clearance_m": [0.10, 0.30],
+  "finger_friction": 0.2,
+  "learning_rate": 0.0003,
+  "iterations": 1000,
+  "adaptation_episodes": 1000,
+  "eval_seed": 83000,
+  "test_seed": 95000,
+  "test_mass_kg": [0.02, 0.07, 0.12, 0.15, 0.20, 0.25],
+  "test_friction": [0.05, 0.15, 0.25, 0.3, 0.65, 1.0]
+}

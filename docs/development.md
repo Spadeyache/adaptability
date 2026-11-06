@@ -19,6 +19,7 @@ robot_adaptation/
   runtime/                     initial image to estimator to policy rollout
 experiments/crest/              CREST-specific search, repair and experiment driver
 experiments/physics_conditioning/ matched physics-input evaluation and long training
+experiments/rma/                  two-stage RMA baseline and visual matched sweeps
 experiments/interaction_adaptation/ actual retries and conservative assessment
 configs/                       experiment settings
 runs/                          generated outputs and source snapshots
@@ -65,6 +66,7 @@ source scripts/activate_grip.sh
 | Generate images and train mass estimator | `python -m robot_adaptation.estimators.visual_mass` |
 | Run estimator with policy in simulation | `python -m robot_adaptation.runtime --record-video` |
 | Train explicit mass/friction policy | `python -m robot_adaptation.policy.train --condition-on-friction --iterations 50000` |
+| Train and inspect RMA | See [RMA experiment guide](../experiments/rma/README.md) |
 | Train/evaluate interaction estimator | See `robot_adaptation/estimators/interaction/README.md` |
 | Compare actual adaptive/fixed/true retries | `python -m experiments.interaction_adaptation --help` |
 | Audit completed training and evaluation evidence | `python -m experiments.interaction_adaptation.completion --help` |

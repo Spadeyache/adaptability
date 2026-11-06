@@ -17,6 +17,7 @@ paths.
 
 | Study | Status | What it establishes |
 | --- | --- | --- |
+| [RMA adaptation baseline](experiments/rma_baseline.md) | Integration verified; GPU training started | Two-stage latent adaptation and matched visual evaluation. |
 | [Initial visual mass](experiments/initial_visual_mass.md) | Completed baseline | 2.76 g test MAE for fixed-density cubes with held-out sizes. |
 | [Estimator–policy integration](experiments/estimator_policy_integration.md) | Completed integration | Initial image → mass estimate → fixed policy → simulated lift; three configured examples. |
 
