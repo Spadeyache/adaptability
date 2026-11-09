@@ -2,7 +2,7 @@
 
 [Experiment index](../experiments.md)
 
-**Status:** Integration checks passed; GPU training started in `runs/rma/baseline_20261106/`. Learned task performance is not yet established.
+**Status:** Integration checks passed; GPU training runs in `runs/rma/baseline_20261106_persistent/` under the user systemd service `rma-baseline-20261106.service`. The earlier detached run was interrupted at update 3; only its pre-learning checkpoint was saved. Learned task performance is not yet established.
 
 ## Question
 

@@ -91,3 +91,32 @@ used to choose or retrain a model.
 The root `index.html` and `training_progress.png` update about once a minute while
 subprocesses run. `manifest.json` records the current step and status. Task limits
 and dataset splits are fixed in `config.json`. The PC must remain awake.
+
+## Persistent service on this PC
+
+The active launch uses the user service `rma-baseline-20261106.service`, which
+survives the chat command ending. Its output is
+`runs/rma/baseline_20261106_persistent/`. The earlier `nohup` launch did not
+survive; its manifest is marked interrupted. A manifest alone is not proof of
+a live process. Verify service state, advancing logs, and GPU activity:
+
+```bash
+systemctl --user status rma-baseline-20261106.service
+nvidia-smi
+tail -20 runs/rma/baseline_20261106_persistent/base_01/console.log
+```
+
+To stop all stages and their child processes:
+
+```bash
+systemctl --user stop rma-baseline-20261106.service
+```
+
+This transient service survives chat sessions, but does not automatically resume
+after a PC/WSL shutdown. Checkpoints remain on disk.
+
+## Decode a frozen latent into mass and friction
+
+`python -m experiments.rma.decoder fit --checkpoint CHECKPOINT --output RUN` fits an affine ridge decoder to the privileged latents of the 30 training physics pairs. The encoder and policy stay frozen. The reconstruction plot and CSV show errors on the 20 cell midpoints, which the decoder never fitted, plus leave-one-pair-out results for the original grid. The mean predictor uses only each split's training labels.
+
+`python -m experiments.rma.decoder compare --checkpoint CHECKPOINT --decoder RUN/decoder.pt --reference ORACLE_EVAL --output COMPARISON` uses matched starts and the saved oracle episodes to measure control after decoding and re-encoding physics. The reported paired interval resamples starting seeds. `python -m experiments.rma.decoder history` accepts the same arguments with an adapted evaluation as its reference. It reads the frozen decoder on the teacher and adapter latents at reset, mid-episode, and the final action, and saves per-step physical predictions against simulator truth.

@@ -1,0 +1,9 @@
+{
+  "physics_config": "configs/context_dynamics.json",
+  "seed": 9110329,
+  "pilot_seed": 9100329,
+  "episodes": 40000,
+  "steps": 50,
+  "parallel_envs": 250,
+  "scene_spacing_m": 64.0
+}

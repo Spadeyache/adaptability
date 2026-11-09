@@ -1,0 +1,22 @@
+{
+  "source": "runs/failure_collection/varied_fixed40g",
+  "train_seed": 410000,
+  "validation_seed": 420000,
+  "calibration_seed": 430000,
+  "test_seed": 440000,
+  "seed": 1711,
+  "train_episodes": 100,
+  "validation_episodes": 24,
+  "calibration_episodes": 40,
+  "horizon": 100,
+  "window": 25,
+  "mass_range_g": [40, 500],
+  "heavy_g": 400,
+  "sequences": 12,
+  "trials": 5,
+  "probe_g": 40,
+  "friction": 0.4,
+  "goal_clearance_m": 0.2,
+  "settle_tolerance_g": 40,
+  "settle_consecutive_steps": 10
+}
