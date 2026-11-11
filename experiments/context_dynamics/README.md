@@ -40,6 +40,20 @@ The 39 state values contain nine joint positions, nine joint velocities, a tool 
 
 [Dataset guide](../../runs/context_dynamics/pick_gpu_2m/DATASET.md) · [Field order](../../runs/context_dynamics/pick_gpu_2m/data/dataset.json) · [Episode index](../../runs/context_dynamics/pick_gpu_2m/data/episodes.csv) · [Actual transition](../../runs/context_dynamics/pick_gpu_2m/transition.json) · [Collection figure](../../runs/context_dynamics/pick_gpu_2m/collection.png)
 
+### Five-step context and zero-context comparison
+
+The paired study fits an eight-dimensional encoder and a four-layer, 512-unit dynamics MLP. Its independently trained baseline uses the same initial shared weights, minibatches and update count. The baseline's context inputs are fixed at zero. The objective averages normalized prediction error equally over horizons 1–5. Both checkpoints use the fixed final update. All 4,000 held-out episodes remain available for the forecast comparison and frozen collapse checks.
+
+```bash
+run=runs/context_dynamics/pick_gpu_2m
+study="$run/world_model_z8"
+python -m experiments.context_dynamics.pick_train "$run/data" "$study"
+python -m experiments.context_dynamics.pick_evaluate compare "$run/data" "$study"
+python -m experiments.context_dynamics.pick_evaluate checks "$run/data" "$study"
+```
+
+Every comparison uses the same 46 starts per episode. Bootstrap draws resample complete episodes. Swaps use a seeded, distinct held-out donor of the same action type. The mean z comes from the training episodes. For interpolation, the first two held-out episodes per action source are evaluated along the straight line to their donors. The linear probe fits raw physics labels on training encodings and scores the held-out encodings. [Results and figures](../../runs/context_dynamics/pick_gpu_2m/world_model_z8/RESULTS.md)
+
 ## Collection
 
 Activate the project environment with `source scripts/activate_grip.sh`. Use a new output root for a different specification.

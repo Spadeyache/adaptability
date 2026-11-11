@@ -53,12 +53,16 @@ class ContextDynamics(nn.Module):
             future.append(state)
         return torch.stack(future,dim=-2)
 
-    def loss_per_window(self, states, commands, z, feature_weights=None):
+    def error_by_horizon(self, states, commands, z, feature_weights=None):
+        """Free-running MSE in units of the training one-step delta variance."""
         predicted = self.rollout(states[...,0,:],commands,z)
-        # Express accumulated displacement error in training delta-SD units.
         residual = (predicted-states[...,1:,:])*(self.state_sd/self.delta_sd)
-        horizons = torch.arange(1,1+commands.shape[-2],device=commands.device)
         squared = residual.square()
         if feature_weights is not None:
             squared = squared*feature_weights
-        return (squared.mean(-1)/horizons).mean(-1)
+        return squared.mean(-1)
+
+    def loss_per_window(self, states, commands, z, feature_weights=None):
+        errors = self.error_by_horizon(states, commands, z, feature_weights)
+        horizons = torch.arange(1,1+commands.shape[-2],device=commands.device)
+        return (errors/horizons).mean(-1)
