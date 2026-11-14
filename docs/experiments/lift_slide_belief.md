@@ -1,5 +1,7 @@
 # Does a cube belief learned from lifts transfer to sliding?
 
+The current experiment uses scripted lifts, slow slides and capped shoves. The code and commands now follow that three-task protocol. This page preserves the completed two-task measurements. [Current experiment](lift_slide_shove_belief.md)
+
 This experiment fits a shared dynamics model and a four-number vector per training cube. The test asks whether a new cube’s lift transitions can identify a vector that improves prediction on that cube’s slides. The simulator’s physical labels enter only the final diagnostic readout.
 
 ## Results

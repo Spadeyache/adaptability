@@ -31,6 +31,7 @@ def run(args):
     from .collect import load_rows
     from .evaluation import evaluate_seed, write_results
     from .plotting import plot_results
+    from .target_control import evaluate_targets
 
     output = args.output
     device = args.device
@@ -46,8 +47,10 @@ def run(args):
     config = TrainConfig(max_epochs=args.max_epochs, patience=args.patience)
     protocol = dict(data=str(args.data.resolve()), training_sha256=training_digest(train),
                     source_sha256={name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
-                                   for name in ("model.py", "evaluation.py", "plotting.py", "__main__.py")},
+                                   for name in ("model.py", "evaluation.py", "plotting.py", "planner.py",
+                                                "scripted.py", "target_control.py", "__main__.py")},
                     dataset_manifest_sha256=hashlib.sha256((args.data / "dataset.json").read_bytes()).hexdigest(),
+                    validation_required_controls=["shuffled"],
                     optimizer_seeds=args.seeds, training=asdict(config), fit_steps=args.fit_steps,
                     device=device, torch_version=str(torch.__version__))
     manifest = output / "protocol.json"
@@ -95,6 +98,7 @@ def run(args):
         del model
     results_path = output / "results.csv"
     write_results(results, results_path)
+    evaluate_targets(args.data, output, device=device, workers=args.workers)
     plot_results(results_path, output)
     print(f"Wrote {len(results)} results to {results_path}", flush=True)
     return 0 if len(passed_seeds) == len(args.seeds) else 2
@@ -107,14 +111,15 @@ def main():
     parser.add_argument("--seeds", nargs="+", type=int, default=[0, 1, 2, 3, 4])
     parser.add_argument("--device", default="auto")
     parser.add_argument("--threads", type=int, default=4)
+    parser.add_argument("--workers", type=int, default=8, help="CPU workers for matched target-directed shoves")
     parser.add_argument("--max-epochs", type=int, default=1000)
     parser.add_argument("--patience", type=int, default=12)
     parser.add_argument("--fit-steps", type=int, default=100)
     args = parser.parse_args()
     if len(set(args.seeds)) != len(args.seeds):
         parser.error("seeds must be distinct")
-    if min(args.fit_steps, args.max_epochs, args.patience, args.threads) < 1:
-        parser.error("fit steps, epochs, patience and threads must be positive")
+    if min(args.fit_steps, args.max_epochs, args.patience, args.threads, args.workers) < 1:
+        parser.error("fit steps, epochs, patience, threads and workers must be positive")
     args.output.mkdir(parents=True, exist_ok=True)
     with (args.output / ".study.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)

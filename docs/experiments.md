@@ -33,6 +33,9 @@ paths.
 
 | Study | Status | What it establishes |
 | --- | --- | --- |
+| [Grip variation and observable slip](experiments/slip_belief.md) | Five paired seeds and same-task checks complete | Grip variation created 980 clean slips but did not establish better friction readout and worsened mass readout. Fixed-grip lift beliefs reduce held-out same-task error by 11.6%; varied-grip lift beliefs do not beat the training mean. |
+| [Beliefs from lifts and slow slides for capped shoves](experiments/lift_slide_shove_belief.md) | Five seeds and target landing test complete | Combined experience reduced one-step shove error by 4.76%. Target landing success was 10.1% versus 9.1% with the training mean, with an inconclusive paired advantage. |
+| [Shove transfer diagnostics](experiments/lift_slide_shove_diagnostics.md) | Simulator oracle and four-link audit complete | Simulator best-force success is 62.7% versus 10.1% for the combined belief. Cube one-step prediction improves, long rollouts remain inaccurate, and the command cap does not guarantee a contact-force limit. |
 | [Lift-to-slide transfer of a learned cube belief](experiments/lift_slide_belief.md) | Five seeds complete | Five lifts reduced held-out slide error by 4.65% versus zero z. The first lift gave the lowest error. The comparison with another cube’s lifts was inconclusive. |
 | [Hidden physical context from Panda motion](experiments/context_dynamics.md) | Forecasting confirmed, deployment held at Step 4 | On 1,000 fresh episodes, swapping context doubled prediction loss. The designated Pick grasp passed three of four coordinate recovery checks. |
 | [Mass belief across five lifts](experiments/mass_belief.md) | Completed baseline | For a held-out 400 g cube, carrying the filter across trials reduced fifth-trial mass error by 46.2 g compared with resetting the same filter. |

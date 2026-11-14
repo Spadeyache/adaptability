@@ -76,6 +76,12 @@ class DeltaModel(nn.Module):
     def forward(self, normalized_inputs, z):
         return self.network(torch.cat((normalized_inputs, z), dim=-1))
 
+    def advance(self, state, action, z):
+        inputs = torch.cat((state, action), dim=-1)
+        normalized = (inputs - self.input_mean) / self.input_sd
+        delta = self(normalized, z) * self.delta_sd + self.delta_mean
+        return state + delta
+
 
 def _transitions(rows, device):
     state, action, next_state = [torch.as_tensor(rows[key], dtype=torch.float32, device=device)
@@ -120,7 +126,9 @@ def _validation_gate(model, inputs, targets, indices, cube_index, cube_ids, tabl
     order = rng.permutation(len(cube_ids))
     donors = np.empty_like(order)
     donors[order] = np.roll(order, 1)
+    required_controls = ['zero', 'shuffled'] if prior == 'zero' else ['shuffled']
     result = dict(passed=False, moving_rows=len(indices), min_gain_fraction=0.01,
+                  required_controls=required_controls,
                   shuffled_donor_ids=cube_ids[donors].tolist(), bootstrap_draws=2000,
                   mse={}, comparisons={})
     if len(indices) == 0:
@@ -149,7 +157,7 @@ def _validation_gate(model, inputs, targets, indices, cube_index, cube_ids, tabl
         fraction = gain / result['mse'][name] if result['mse'][name] > 0 else 0.0
         result['comparisons'][name] = dict(difference=gain, difference_ci95=interval,
             relative_gain=fraction, passed=len(active) >= 2 and fraction >= result['min_gain_fraction'] and interval[0] > 0)
-    result['passed'] = all(entry['passed'] for entry in result['comparisons'].values())
+    result['passed'] = all(result['comparisons'][name]['passed'] for name in required_controls)
     return result
 
 
@@ -198,6 +206,47 @@ class TrainedModel:
                 opt.step()
         return self._latent(z).detach().cpu().numpy().copy()
 
+    def fit_many_z(self, groups, steps=100, initials=None):
+        """Independently adapt one latent per group in a shared forward pass.
+
+        Each group's MSE is averaged over its own rows and state dimensions.
+        Summing the group losses preserves the gradient scale of separate Adam
+        fits, even when groups contain different numbers of observed steps.
+        """
+        if steps < 1 or not groups:
+            raise ValueError('At least one group and one adaptation update are required')
+        for rows in groups:
+            if 'cube_id' in rows and len(np.unique(rows['cube_id'])) != 1:
+                raise ValueError('Each adaptation group must belong to one cube')
+        transitions = [_transitions(rows, self.device) for rows in groups]
+        counts = torch.tensor([len(inputs) for inputs, _ in transitions], device=self.device)
+        inputs, targets = self.model.normalize(torch.cat([pair[0] for pair in transitions]),
+                                              torch.cat([pair[1] for pair in transitions]))
+        group_index = torch.arange(len(groups), device=self.device).repeat_interleave(counts)
+        if self.config.inference_prior == 'training_distribution':
+            center, scale = self._latent(self.prior_mean), self._latent(self.prior_sd)
+        else:
+            center, scale = inputs.new_zeros(LATENT_DIM), inputs.new_ones(LATENT_DIM)
+        start = center.expand(len(groups), -1) if initials is None else torch.as_tensor(
+            initials, dtype=torch.float32, device=self.device)
+        if start.shape != (len(groups), LATENT_DIM) or not torch.isfinite(start).all():
+            raise ValueError('Expected one finite initial latent per adaptation group')
+        z = nn.Parameter(start.detach().clone())
+        optimizer = torch.optim.Adam([z], lr=1e-2)
+        with torch.enable_grad():
+            for _ in range(steps):
+                optimizer.zero_grad(set_to_none=True)
+                predictions = self.model(inputs, z[group_index])
+                row_errors = (predictions - targets).square().mean(dim=1)
+                group_errors = row_errors.new_zeros(len(groups)).scatter_add_(0, group_index, row_errors)
+                prior = ((z - center) / scale).square().mean(dim=1)
+                loss = (group_errors / counts).sum() + self.config.z_penalty * prior.sum()
+                loss.backward()
+                optimizer.step()
+        if not torch.isfinite(z).all():
+            raise ValueError('Nonfinite adapted latent')
+        return z.detach().cpu().numpy().copy()
+
     @torch.no_grad()
     def predict_next_state(self, state, action, z):
         """Advance the entire measured state by one issued action, in physical units."""
@@ -205,61 +254,98 @@ class TrainedModel:
         action = torch.as_tensor(action, dtype=torch.float32, device=self.device)
         if state.ndim != 1 or state.shape != self.model.delta_mean.shape or action.ndim != 1:
             raise ValueError('Expected one state vector and one action vector')
-        inputs = torch.cat((state, action))
-        if inputs.shape != self.model.input_mean.shape:
+        if len(state) + len(action) != len(self.model.input_mean):
             raise ValueError('State/action dimensions disagree with the trained model')
-        normalized = (inputs - self.model.input_mean) / self.model.input_sd
-        delta = self.model(normalized, self._latent(z)) * self.model.delta_sd + self.model.delta_mean
-        # Keep the model's ordinary float32 numerical behavior for rollout checks.
-        return (state + delta).cpu().numpy()
+        return self.model.advance(state, action, self._latent(z)).cpu().numpy()
 
-    def stopping_error(self, rows, z, *, cube_xy=(19, 20)):
-        """Free-run from the first state to the observed resting step of one shove.
+    def stopping_error(self, rows, z, *, cube_xy=(19, 20), cube_velocity=(28, 29, 30)):
+        """Score the autonomous endpoint of one complete, ordered shove episode."""
+        return self.stopping_errors([rows], z, cube_xy=cube_xy, cube_velocity=cube_velocity)[0]
+
+    @torch.no_grad()
+    def stopping_errors(self, episodes, z, *, cube_xy=(19, 20), cube_velocity=(28, 29, 30)):
+        """Batch full-state rollouts through each episode's observed resting step.
 
         ``stop_step`` is the inclusive zero-based terminal transition index.
-        No later measured state is provided to the network. Finite endpoints keep
-        their full error, including physically implausible values. A nonfinite
-        state terminates the rollout and returns a missing error with its failed
-        step, so callers can count failures without averaging them away.
+        ``force_start_step`` selects the measured state at pulse onset, defaulting
+        to zero for older episodes. Later states supply only the endpoint target.
+        Finite endpoints
+        retain their full error even when implausibly large or still moving.
+        A nonfinite state yields a missing error and its first failing step.
+        Callers must count these failures instead of averaging them away.
         """
-        states, actions, next_states = [np.asarray(rows[key]) for key in ('state', 'action', 'next_state')]
-        if states.ndim != 2 or states.shape != next_states.shape or len(states) != len(actions) or not len(states):
-            raise ValueError('Expected aligned nonempty transition arrays from one ordered episode')
-        if not all(np.isfinite(values).all() for values in (states, actions, next_states)):
-            raise ValueError('Nonfinite recorded shove transition')
-        if 'step' in rows and not np.array_equal(rows['step'], np.arange(len(states))):
-            raise ValueError('Stopping error requires one complete episode in step order')
-        stops = np.asarray(rows['observed_stopped'], dtype=bool)
-        terminal = np.asarray(rows['stop_step'])
-        if stops.shape != (len(states),) or terminal.shape != stops.shape or not np.all(stops == stops[0]):
-            raise ValueError('Expected a constant observed-stopped flag for the episode')
-        if not np.all(terminal == terminal[0]):
-            raise ValueError('Expected a constant stop step for the episode')
-        result = dict(endpoint_error_m=None, endpoint_status='observed_not_stopped', endpoint_steps=0,
-                      predicted_endpoint_xy=None, observed_endpoint_xy=None,
-                      divergence_step=None, last_finite_state_max_abs=None)
-        if not stops[0]:
-            return result
-        stop = int(terminal[0])
-        if stop != terminal[0] or not 0 <= stop < len(states):
-            raise ValueError('Observed stop step falls outside the recorded episode')
-        xy = np.asarray(cube_xy, dtype=int)
-        if xy.shape != (2,) or (xy < 0).any() or (xy >= states.shape[1]).any():
+        state_dim = len(self.model.delta_mean)
+        action_dim = len(self.model.input_mean) - state_dim
+        xy, velocity = np.asarray(cube_xy, dtype=int), np.asarray(cube_velocity, dtype=int)
+        if xy.shape != (2,) or (xy < 0).any() or (xy >= state_dim).any():
             raise ValueError('Expected two valid state columns for the cube XY position')
-        state = states[0].copy()
-        observed = next_states[stop, xy].astype(np.float64)
-        result.update(observed_endpoint_xy=observed.tolist(), endpoint_steps=stop + 1)
-        for step, action in enumerate(actions[:stop + 1]):
-            result['last_finite_state_max_abs'] = float(np.max(np.abs(state)))
-            state = self.predict_next_state(state, action, z)
-            if not np.isfinite(state).all():
-                result.update(endpoint_status='nonfinite_prediction', divergence_step=step)
-                return result
-        predicted = state[xy].astype(np.float64)
-        difference = predicted - observed
-        result.update(endpoint_error_m=float(np.hypot(*difference)), endpoint_status='finite',
-                      predicted_endpoint_xy=predicted.tolist(),
-                      last_finite_state_max_abs=float(np.max(np.abs(state))))
+        if velocity.shape != (3,) or (velocity < 0).any() or (velocity >= state_dim).any():
+            raise ValueError('Expected three valid state columns for cube linear velocity')
+        result, initial, commands, positions, start_steps = [], [], [], [], []
+        for episode in episodes:
+            states, actions, next_states = [np.asarray(episode[key]) for key in ('state', 'action', 'next_state')]
+            if (states.ndim != 2 or states.shape[1] != state_dim or not len(states)
+                    or states.shape != next_states.shape or actions.shape != (len(states), action_dim)):
+                raise ValueError('Expected aligned transition arrays from one complete episode')
+            if not all(np.isfinite(values).all() for values in (states, actions, next_states)):
+                raise ValueError('Nonfinite recorded shove transition')
+            if 'step' in episode and not np.array_equal(episode['step'], np.arange(len(states))):
+                raise ValueError('Stopping error requires one complete episode in step order')
+            stopped = np.asarray(episode['observed_stopped'], dtype=bool)
+            terminal = np.asarray(episode['stop_step'])
+            if stopped.shape != (len(states),) or terminal.shape != stopped.shape or not np.all(stopped == stopped[0]):
+                raise ValueError('Expected a constant observed-stopped flag for the episode')
+            if not np.all(terminal == terminal[0]):
+                raise ValueError('Expected a constant stop step for the episode')
+            record = dict(endpoint_error_m=None, endpoint_status='observed_not_stopped', endpoint_steps=0,
+                          predicted_endpoint_xy=None, observed_endpoint_xy=None, divergence_step=None,
+                          last_finite_state_max_abs=None, predicted_final_speed_m_s=None, endpoint_valid=False)
+            result.append(record)
+            if not stopped[0]:
+                continue
+            stop = int(terminal[0])
+            if stop != terminal[0] or not 0 <= stop < len(states):
+                raise ValueError('Observed stop step falls outside the recorded episode')
+            starts = np.asarray(episode.get('force_start_step', np.zeros(len(states), dtype=int)))
+            if starts.shape != (len(states),) or not np.all(starts == starts[0]):
+                raise ValueError('Expected a constant force-start step for the episode')
+            start = int(starts[0])
+            if start != starts[0] or not 0 <= start <= stop:
+                raise ValueError('Force-start step must precede or equal the resting step')
+            record.update(observed_endpoint_xy=next_states[stop, xy].astype(float).tolist(), endpoint_steps=stop-start+1)
+            positions.append(len(result) - 1)
+            initial.append(states[start])
+            commands.append(actions[start:stop + 1])
+            start_steps.append(start)
+        if not positions:
+            return result
+        horizons = torch.tensor([len(c) for c in commands], device=self.device)
+        max_steps = max(map(len, commands))
+        actions = torch.zeros((max_steps, len(positions), action_dim), device=self.device)
+        for column, command in enumerate(commands):
+            actions[:len(command), column] = torch.as_tensor(command, device=self.device)
+        state = torch.as_tensor(np.stack(initial), dtype=torch.float32, device=self.device)
+        latent = self._latent(z).expand(len(state), -1)
+        divergence = torch.full((len(state),), -1, dtype=torch.long, device=self.device)
+        for step in range(max_steps):
+            active = (step < horizons) & (divergence < 0)
+            predicted = self.model.advance(state, actions[step], latent)
+            finite = torch.isfinite(predicted).all(dim=1)
+            divergence = torch.where(active & ~finite, step, divergence)
+            # Completed and failed rows retain their last finite state for diagnostics.
+            state = torch.where((active & finite)[:, None], predicted, state)
+        final_states, failed_steps = state.cpu().numpy(), divergence.cpu().numpy()
+        for position, final_state, failed_step, start in zip(positions, final_states, failed_steps, start_steps):
+            record = result[position]
+            record['last_finite_state_max_abs'] = float(np.max(np.abs(final_state)))
+            if failed_step >= 0:
+                record.update(endpoint_status='nonfinite_prediction', divergence_step=start + int(failed_step))
+                continue
+            predicted_xy = final_state[xy].astype(np.float64)
+            difference = predicted_xy - np.asarray(record['observed_endpoint_xy'])
+            record.update(endpoint_error_m=float(np.hypot(*difference)), endpoint_status='finite',
+                          predicted_endpoint_xy=predicted_xy.tolist(), endpoint_valid=True,
+                          predicted_final_speed_m_s=float(np.linalg.norm(final_state[velocity].astype(np.float64))))
         return result
 
     @torch.no_grad()
