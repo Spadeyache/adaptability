@@ -33,6 +33,7 @@ paths.
 
 | Study | Status | What it establishes |
 | --- | --- | --- |
+| [Lift-to-slide transfer of a learned cube belief](experiments/lift_slide_belief.md) | Five seeds complete | Five lifts reduced held-out slide error by 4.65% versus zero z. The first lift gave the lowest error. The comparison with another cube’s lifts was inconclusive. |
 | [Hidden physical context from Panda motion](experiments/context_dynamics.md) | Forecasting confirmed, deployment held at Step 4 | On 1,000 fresh episodes, swapping context doubled prediction loss. The designated Pick grasp passed three of four coordinate recovery checks. |
 | [Mass belief across five lifts](experiments/mass_belief.md) | Completed baseline | For a held-out 400 g cube, carrying the filter across trials reduced fifth-trial mass error by 46.2 g compared with resetting the same filter. |
 | [Policy conditioning on mass and friction](experiments/physics_conditioned_policy.md) | Final evaluation complete; training ended by user | Accurate physics improves the saved 19,000-cycle policy: true-input success 95.3%, versus 87.3% with constant friction. |
