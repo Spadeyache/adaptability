@@ -1,0 +1,4535 @@
+{
+  "selection": "Archived fixed-policy lift attempts with only mass and equal static/dynamic cube friction varying. Restrict both properties to the checkpoint's marginal ranges.",
+  "policy_training_support": [
+    {
+      "cube_dynamic_friction": 1.0,
+      "cube_static_friction": 1.0,
+      "finger_dynamic_friction": 0.2,
+      "finger_static_friction": 0.2,
+      "mass_kg": 0.04
+    },
+    {
+      "cube_dynamic_friction": 0.9686956521739131,
+      "cube_static_friction": 0.9686956521739131,
+      "finger_dynamic_friction": 0.2,
+      "finger_static_friction": 0.2,
+      "mass_kg": 0.064
+    },
+    {
+      "cube_dynamic_friction": 0.9217391304347826,
+      "cube_static_friction": 0.9217391304347826,
+      "finger_dynamic_friction": 0.2,
+      "finger_static_friction": 0.2,
+      "mass_kg": 0.1
+    },
+    {
+      "cube_dynamic_friction": 0.7260869565217392,
+      "cube_static_friction": 0.7260869565217392,
+      "finger_dynamic_friction": 0.2,
+      "finger_static_friction": 0.2,
+      "mass_kg": 0.25
+    },
+    {
+      "cube_dynamic_friction": 0.4,
+      "cube_static_friction": 0.4,
+      "finger_dynamic_friction": 0.2,
+      "finger_static_friction": 0.2,
+      "mass_kg": 0.5
+    }
+  ],
+  "mass_bounds_kg": [
+    0.04,
+    0.5
+  ],
+  "friction_bounds": [
+    0.4,
+    1.0
+  ],
+  "source_clean_conditions": 44,
+  "in_range_conditions": 32,
+  "counts": {
+    "attempts": 320,
+    "any_finger_contact": 320,
+    "lifted": 236,
+    "slip": 175,
+    "final_task_success": 102,
+    "contact_steps": 17510,
+    "control_steps": 32000
+  },
+  "conditions_with_any": {
+    "any_finger_contact": 32,
+    "lifted": 31,
+    "slip": 30,
+    "final_task_success": 14
+  },
+  "condition_counts_by_value": {
+    "mass_kg": {
+      "0.04": 2,
+      "0.086": 2,
+      "0.1": 8,
+      "0.132": 2,
+      "0.178": 2,
+      "0.224": 3,
+      "0.27": 2,
+      "0.316": 3,
+      "0.362": 2,
+      "0.408": 2,
+      "0.454": 2,
+      "0.5": 2
+    },
+    "cube_friction": {
+      "0.4": 12,
+      "0.46": 3,
+      "0.55": 2,
+      "0.64": 3,
+      "0.73": 3,
+      "0.82": 3,
+      "0.91": 3,
+      "1.0": 3
+    },
+    "historical_split": {
+      "test": 8,
+      "train": 17,
+      "validation": 7
+    }
+  },
+  "clean_historical_matches": 60,
+  "clean_historical_equal_trajectories": 60,
+  "historical_arrays_compared": [
+    "input__joint_position_rad_m",
+    "input__joint_velocity_rad_m_s",
+    "input__action_applied",
+    "input__object_pose_world_m_wxyz",
+    "input__tcp_pose_world_m_wxyz",
+    "sim__object_linear_velocity_world_m_s",
+    "sim__object_angular_velocity_world_rad_s",
+    "sim__physics_object_pair_force_world_n",
+    "sim__is_grasped",
+    "sim__slip_event_mask"
+  ],
+  "definitions": {
+    "contact_steps": "Issued commands with a physics tick during which either finger exerted a pair force above 0.05 N on the cube.",
+    "lifted": "First archived state with simultaneous grasp and cube bottom clearance of at least 0.02 m above the support. A first state index of -1 means no lift.",
+    "slip": "Recorded after or during a lift when relative finger/tool-to-cube motion during a continuous grasp meets 5 mm translation or 0.15 rad rotation between state samples.",
+    "final_task_success": "The task's end-of-trial goal and hold criterion."
+  },
+  "controls_checked": {
+    "checkpoint_sha256": "fea5153b71fe2d5eb22a7b05376533427429433d7fb8810592b742c762ba389b",
+    "policy_guess_kg": 0.04,
+    "controller": {
+      "arm": {
+        "damping": 100.0,
+        "delta_solver_config": {
+          "alpha": 1.0,
+          "type": "levenberg_marquardt"
+        },
+        "drive_mode": "force",
+        "ee_link": "panda_hand_tcp",
+        "force_limit": 100,
+        "frame": "root_translation",
+        "friction": 0.0,
+        "interpolate": false,
+        "joint_names": [
+          "panda_joint1",
+          "panda_joint2",
+          "panda_joint3",
+          "panda_joint4",
+          "panda_joint5",
+          "panda_joint6",
+          "panda_joint7"
+        ],
+        "normalize_action": true,
+        "pos_lower": -0.1,
+        "pos_upper": 0.1,
+        "root_link_name": null,
+        "stiffness": 1000.0,
+        "urdf_path": "/home/ubuntu/faliure/.venv/lib/python3.10/site-packages/mani_skill/assets/robots/panda/panda_v2.urdf",
+        "use_delta": true,
+        "use_target": false
+      },
+      "gripper": {
+        "damping": 100.0,
+        "drive_mode": "force",
+        "force_limit": 40.0,
+        "friction": 0.0,
+        "interpolate": false,
+        "joint_names": [
+          "panda_finger_joint1",
+          "panda_finger_joint2"
+        ],
+        "lower": -0.01,
+        "mimic": {
+          "panda_finger_joint2": {
+            "joint": "panda_finger_joint1"
+          }
+        },
+        "normalize_action": true,
+        "stiffness": 1000.0,
+        "strength_max_n": 40.0,
+        "strength_min_n": 0.25,
+        "upper": 0.04,
+        "use_delta": false,
+        "use_target": false
+      }
+    },
+    "fixed_fields": {
+      "inertia_per_kg": [
+        0.00026666666201975513,
+        0.00026666666201975513,
+        0.00026666666201975513
+      ],
+      "label__angular_damping": 0.05000000074505806,
+      "label__com_offset_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label__finger_dynamic_friction": [
+        0.20000000298023224,
+        0.20000000298023224
+      ],
+      "label__finger_restitution": [
+        0.0,
+        0.0
+      ],
+      "label__finger_static_friction": [
+        0.20000000298023224,
+        0.20000000298023224
+      ],
+      "label__goal_clearance_m": 0.2,
+      "label__gravity_world_m_s2": [
+        0.0,
+        0.0,
+        -9.8100004196167
+      ],
+      "label__linear_damping": 0.0,
+      "label__object_restitution": 0.0,
+      "label__size_xyz_m": [
+        0.03999999910593033,
+        0.03999999910593033,
+        0.03999999910593033
+      ],
+      "label__spawn_offset_xy_m": [
+        0.0,
+        0.0
+      ],
+      "label__spawn_yaw_offset_rad": 0.0,
+      "label__table_dynamic_friction": 0.30000001192092896,
+      "label__table_restitution": 0.0,
+      "label__table_static_friction": 0.30000001192092896,
+      "shape": "cube"
+    }
+  },
+  "sources_sha256": {
+    "runs/failure_collection/dense_single_pair_fixed40g/manifest.json": "72bf3c9eee8a9ed1764d09fb84499eae703736e64f954067d6371b566adad5db",
+    "runs/interaction_estimator/contact_dataset_v1/episodes.json": "836a21ee58868a683e19f9028297ade739aecfbbfc7a882c359b51a968193656",
+    "runs/interaction_estimator/contact_dataset_v1/physical_readback_audit.json": "51f855e00bb69c1e0b4a377f1ea15b9c6374293ef36247da29c30765bd2282ff",
+    "runs/failure_collection/varied_fixed40g/episodes.json": "27229d7c6f217fb2d102fbc984d9bbf172c6aa60538d94e7b55e067b73a44cff"
+  },
+  "conditions": [
+    {
+      "condition_id": "d4173a83245d252d",
+      "mass_kg": 0.04,
+      "cube_friction": 0.4,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d4173a83245d252d_seed2000.npz",
+          "contact_steps": 93,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/ab80c716f19e1cbf_seed2000.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d4173a83245d252d_seed2001.npz",
+          "contact_steps": 93,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 12,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/ab80c716f19e1cbf_seed2001.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d4173a83245d252d_seed2002.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/ab80c716f19e1cbf_seed2002.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d4173a83245d252d_seed2003.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/ab80c716f19e1cbf_seed2003.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d4173a83245d252d_seed2004.npz",
+          "contact_steps": 94,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/ab80c716f19e1cbf_seed2004.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d4173a83245d252d_seed2005.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/ab80c716f19e1cbf_seed2005.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d4173a83245d252d_seed2006.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/ab80c716f19e1cbf_seed2006.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d4173a83245d252d_seed2007.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/ab80c716f19e1cbf_seed2007.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d4173a83245d252d_seed2008.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/ab80c716f19e1cbf_seed2008.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d4173a83245d252d_seed2009.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/ab80c716f19e1cbf_seed2009.npz",
+            "trajectory_arrays_equal": true
+          }
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 10,
+        "slip": 1,
+        "final_task_success": 10,
+        "contact_steps": 957,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "44f3d28e7358fb80",
+      "mass_kg": 0.04,
+      "cube_friction": 1.0,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/44f3d28e7358fb80_seed2000.npz",
+          "contact_steps": 98,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/9dd6edad3a42d94e_seed2000.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/44f3d28e7358fb80_seed2001.npz",
+          "contact_steps": 93,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 12,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/9dd6edad3a42d94e_seed2001.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/44f3d28e7358fb80_seed2002.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/9dd6edad3a42d94e_seed2002.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/44f3d28e7358fb80_seed2003.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/9dd6edad3a42d94e_seed2003.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/44f3d28e7358fb80_seed2004.npz",
+          "contact_steps": 94,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/9dd6edad3a42d94e_seed2004.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/44f3d28e7358fb80_seed2005.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/9dd6edad3a42d94e_seed2005.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/44f3d28e7358fb80_seed2006.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/9dd6edad3a42d94e_seed2006.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/44f3d28e7358fb80_seed2007.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/9dd6edad3a42d94e_seed2007.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/44f3d28e7358fb80_seed2008.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/9dd6edad3a42d94e_seed2008.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/44f3d28e7358fb80_seed2009.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/9dd6edad3a42d94e_seed2009.npz",
+            "trajectory_arrays_equal": true
+          }
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 10,
+        "slip": 0,
+        "final_task_success": 10,
+        "contact_steps": 962,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "f7997ac669be0e02",
+      "mass_kg": 0.086,
+      "cube_friction": 0.4,
+      "historical_split": "test",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/f7997ac669be0e02_seed2000.npz",
+          "contact_steps": 10,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/f7997ac669be0e02_seed2001.npz",
+          "contact_steps": 84,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/f7997ac669be0e02_seed2002.npz",
+          "contact_steps": 73,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/f7997ac669be0e02_seed2003.npz",
+          "contact_steps": 73,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/f7997ac669be0e02_seed2004.npz",
+          "contact_steps": 30,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/f7997ac669be0e02_seed2005.npz",
+          "contact_steps": 85,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/f7997ac669be0e02_seed2006.npz",
+          "contact_steps": 74,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/f7997ac669be0e02_seed2007.npz",
+          "contact_steps": 83,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/f7997ac669be0e02_seed2008.npz",
+          "contact_steps": 21,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/f7997ac669be0e02_seed2009.npz",
+          "contact_steps": 26,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 9,
+        "slip": 9,
+        "final_task_success": 3,
+        "contact_steps": 559,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "a781dc1a08e505d9",
+      "mass_kg": 0.086,
+      "cube_friction": 0.91,
+      "historical_split": "test",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a781dc1a08e505d9_seed2000.npz",
+          "contact_steps": 90,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 20,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a781dc1a08e505d9_seed2001.npz",
+          "contact_steps": 85,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 21,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a781dc1a08e505d9_seed2002.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a781dc1a08e505d9_seed2003.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a781dc1a08e505d9_seed2004.npz",
+          "contact_steps": 95,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a781dc1a08e505d9_seed2005.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a781dc1a08e505d9_seed2006.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a781dc1a08e505d9_seed2007.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a781dc1a08e505d9_seed2008.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a781dc1a08e505d9_seed2009.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 10,
+        "slip": 3,
+        "final_task_success": 10,
+        "contact_steps": 947,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "e66c6f24e261b16e",
+      "mass_kg": 0.1,
+      "cube_friction": 0.4,
+      "historical_split": "validation",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/e66c6f24e261b16e_seed2000.npz",
+          "contact_steps": 14,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/6d2b00bd416f8d25_seed2000.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/e66c6f24e261b16e_seed2001.npz",
+          "contact_steps": 70,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/6d2b00bd416f8d25_seed2001.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/e66c6f24e261b16e_seed2002.npz",
+          "contact_steps": 69,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/6d2b00bd416f8d25_seed2002.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/e66c6f24e261b16e_seed2003.npz",
+          "contact_steps": 69,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/6d2b00bd416f8d25_seed2003.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/e66c6f24e261b16e_seed2004.npz",
+          "contact_steps": 15,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/6d2b00bd416f8d25_seed2004.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/e66c6f24e261b16e_seed2005.npz",
+          "contact_steps": 67,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/6d2b00bd416f8d25_seed2005.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/e66c6f24e261b16e_seed2006.npz",
+          "contact_steps": 68,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/6d2b00bd416f8d25_seed2006.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/e66c6f24e261b16e_seed2007.npz",
+          "contact_steps": 54,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/6d2b00bd416f8d25_seed2007.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/e66c6f24e261b16e_seed2008.npz",
+          "contact_steps": 90,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/6d2b00bd416f8d25_seed2008.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/e66c6f24e261b16e_seed2009.npz",
+          "contact_steps": 65,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/6d2b00bd416f8d25_seed2009.npz",
+            "trajectory_arrays_equal": true
+          }
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 9,
+        "slip": 9,
+        "final_task_success": 4,
+        "contact_steps": 581,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "4dcc5ca961ba0539",
+      "mass_kg": 0.1,
+      "cube_friction": 0.46,
+      "historical_split": "test",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/4dcc5ca961ba0539_seed2000.npz",
+          "contact_steps": 68,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/4dcc5ca961ba0539_seed2001.npz",
+          "contact_steps": 88,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/4dcc5ca961ba0539_seed2002.npz",
+          "contact_steps": 91,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/4dcc5ca961ba0539_seed2003.npz",
+          "contact_steps": 65,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/4dcc5ca961ba0539_seed2004.npz",
+          "contact_steps": 63,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/4dcc5ca961ba0539_seed2005.npz",
+          "contact_steps": 80,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/4dcc5ca961ba0539_seed2006.npz",
+          "contact_steps": 67,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/4dcc5ca961ba0539_seed2007.npz",
+          "contact_steps": 84,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/4dcc5ca961ba0539_seed2008.npz",
+          "contact_steps": 90,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/4dcc5ca961ba0539_seed2009.npz",
+          "contact_steps": 74,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 10,
+        "slip": 10,
+        "final_task_success": 6,
+        "contact_steps": 770,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "948aad22280f049e",
+      "mass_kg": 0.1,
+      "cube_friction": 0.55,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/948aad22280f049e_seed2000.npz",
+          "contact_steps": 92,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/948aad22280f049e_seed2001.npz",
+          "contact_steps": 95,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/948aad22280f049e_seed2002.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/948aad22280f049e_seed2003.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/948aad22280f049e_seed2004.npz",
+          "contact_steps": 67,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/948aad22280f049e_seed2005.npz",
+          "contact_steps": 85,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/948aad22280f049e_seed2006.npz",
+          "contact_steps": 91,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/948aad22280f049e_seed2007.npz",
+          "contact_steps": 90,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/948aad22280f049e_seed2008.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/948aad22280f049e_seed2009.npz",
+          "contact_steps": 64,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 10,
+        "slip": 7,
+        "final_task_success": 7,
+        "contact_steps": 874,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "2cd7ac83fe4fc97e",
+      "mass_kg": 0.1,
+      "cube_friction": 0.64,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/2cd7ac83fe4fc97e_seed2000.npz",
+          "contact_steps": 16,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/2cd7ac83fe4fc97e_seed2001.npz",
+          "contact_steps": 95,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/2cd7ac83fe4fc97e_seed2002.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/2cd7ac83fe4fc97e_seed2003.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/2cd7ac83fe4fc97e_seed2004.npz",
+          "contact_steps": 56,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/2cd7ac83fe4fc97e_seed2005.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/2cd7ac83fe4fc97e_seed2006.npz",
+          "contact_steps": 90,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/2cd7ac83fe4fc97e_seed2007.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/2cd7ac83fe4fc97e_seed2008.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/2cd7ac83fe4fc97e_seed2009.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 9,
+        "slip": 4,
+        "final_task_success": 8,
+        "contact_steps": 837,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "6c05d20d4a019ea6",
+      "mass_kg": 0.1,
+      "cube_friction": 0.73,
+      "historical_split": "test",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6c05d20d4a019ea6_seed2000.npz",
+          "contact_steps": 21,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6c05d20d4a019ea6_seed2001.npz",
+          "contact_steps": 95,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6c05d20d4a019ea6_seed2002.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6c05d20d4a019ea6_seed2003.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6c05d20d4a019ea6_seed2004.npz",
+          "contact_steps": 95,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6c05d20d4a019ea6_seed2005.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6c05d20d4a019ea6_seed2006.npz",
+          "contact_steps": 91,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6c05d20d4a019ea6_seed2007.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6c05d20d4a019ea6_seed2008.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6c05d20d4a019ea6_seed2009.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 9,
+        "slip": 5,
+        "final_task_success": 9,
+        "contact_steps": 882,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "a4d475e97e04e77e",
+      "mass_kg": 0.1,
+      "cube_friction": 0.82,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a4d475e97e04e77e_seed2000.npz",
+          "contact_steps": 10,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a4d475e97e04e77e_seed2001.npz",
+          "contact_steps": 95,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a4d475e97e04e77e_seed2002.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a4d475e97e04e77e_seed2003.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a4d475e97e04e77e_seed2004.npz",
+          "contact_steps": 95,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a4d475e97e04e77e_seed2005.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a4d475e97e04e77e_seed2006.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a4d475e97e04e77e_seed2007.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a4d475e97e04e77e_seed2008.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a4d475e97e04e77e_seed2009.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 9,
+        "slip": 3,
+        "final_task_success": 9,
+        "contact_steps": 877,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "c94229c237755603",
+      "mass_kg": 0.1,
+      "cube_friction": 0.91,
+      "historical_split": "validation",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/c94229c237755603_seed2000.npz",
+          "contact_steps": 95,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 14,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/c94229c237755603_seed2001.npz",
+          "contact_steps": 91,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 17,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/c94229c237755603_seed2002.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/c94229c237755603_seed2003.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/c94229c237755603_seed2004.npz",
+          "contact_steps": 95,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/c94229c237755603_seed2005.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/c94229c237755603_seed2006.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/c94229c237755603_seed2007.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/c94229c237755603_seed2008.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/c94229c237755603_seed2009.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 10,
+        "slip": 3,
+        "final_task_success": 9,
+        "contact_steps": 958,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "d1d8c0bf25745743",
+      "mass_kg": 0.1,
+      "cube_friction": 1.0,
+      "historical_split": "validation",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d1d8c0bf25745743_seed2000.npz",
+          "contact_steps": 91,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 14,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/2757e9a1aed1725c_seed2000.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d1d8c0bf25745743_seed2001.npz",
+          "contact_steps": 87,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 22,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/2757e9a1aed1725c_seed2001.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d1d8c0bf25745743_seed2002.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/2757e9a1aed1725c_seed2002.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d1d8c0bf25745743_seed2003.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/2757e9a1aed1725c_seed2003.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d1d8c0bf25745743_seed2004.npz",
+          "contact_steps": 95,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/2757e9a1aed1725c_seed2004.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d1d8c0bf25745743_seed2005.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/2757e9a1aed1725c_seed2005.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d1d8c0bf25745743_seed2006.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/2757e9a1aed1725c_seed2006.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d1d8c0bf25745743_seed2007.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/2757e9a1aed1725c_seed2007.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d1d8c0bf25745743_seed2008.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/2757e9a1aed1725c_seed2008.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d1d8c0bf25745743_seed2009.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/2757e9a1aed1725c_seed2009.npz",
+            "trajectory_arrays_equal": true
+          }
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 10,
+        "slip": 3,
+        "final_task_success": 10,
+        "contact_steps": 950,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "9e5657db99b14a6c",
+      "mass_kg": 0.132,
+      "cube_friction": 0.4,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/9e5657db99b14a6c_seed2000.npz",
+          "contact_steps": 57,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/9e5657db99b14a6c_seed2001.npz",
+          "contact_steps": 21,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/9e5657db99b14a6c_seed2002.npz",
+          "contact_steps": 33,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/9e5657db99b14a6c_seed2003.npz",
+          "contact_steps": 65,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/9e5657db99b14a6c_seed2004.npz",
+          "contact_steps": 50,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/9e5657db99b14a6c_seed2005.npz",
+          "contact_steps": 41,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/9e5657db99b14a6c_seed2006.npz",
+          "contact_steps": 35,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 8,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/9e5657db99b14a6c_seed2007.npz",
+          "contact_steps": 16,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 17,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/9e5657db99b14a6c_seed2008.npz",
+          "contact_steps": 65,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/9e5657db99b14a6c_seed2009.npz",
+          "contact_steps": 67,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 9,
+        "slip": 9,
+        "final_task_success": 0,
+        "contact_steps": 450,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "64ba2ce5c563f74d",
+      "mass_kg": 0.132,
+      "cube_friction": 0.82,
+      "historical_split": "test",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64ba2ce5c563f74d_seed2000.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64ba2ce5c563f74d_seed2001.npz",
+          "contact_steps": 95,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64ba2ce5c563f74d_seed2002.npz",
+          "contact_steps": 74,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64ba2ce5c563f74d_seed2003.npz",
+          "contact_steps": 97,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64ba2ce5c563f74d_seed2004.npz",
+          "contact_steps": 70,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64ba2ce5c563f74d_seed2005.npz",
+          "contact_steps": 85,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64ba2ce5c563f74d_seed2006.npz",
+          "contact_steps": 91,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64ba2ce5c563f74d_seed2007.npz",
+          "contact_steps": 91,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64ba2ce5c563f74d_seed2008.npz",
+          "contact_steps": 96,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": false,
+          "final_task_success": true
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64ba2ce5c563f74d_seed2009.npz",
+          "contact_steps": 88,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 10,
+        "slip": 7,
+        "final_task_success": 6,
+        "contact_steps": 883,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "646e57b71bccfe86",
+      "mass_kg": 0.178,
+      "cube_friction": 0.4,
+      "historical_split": "validation",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/646e57b71bccfe86_seed2000.npz",
+          "contact_steps": 56,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/646e57b71bccfe86_seed2001.npz",
+          "contact_steps": 21,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/646e57b71bccfe86_seed2002.npz",
+          "contact_steps": 55,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 15,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/646e57b71bccfe86_seed2003.npz",
+          "contact_steps": 47,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/646e57b71bccfe86_seed2004.npz",
+          "contact_steps": 40,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 16,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/646e57b71bccfe86_seed2005.npz",
+          "contact_steps": 26,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/646e57b71bccfe86_seed2006.npz",
+          "contact_steps": 35,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 14,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/646e57b71bccfe86_seed2007.npz",
+          "contact_steps": 38,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 13,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/646e57b71bccfe86_seed2008.npz",
+          "contact_steps": 65,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/646e57b71bccfe86_seed2009.npz",
+          "contact_steps": 52,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 9,
+        "slip": 9,
+        "final_task_success": 0,
+        "contact_steps": 435,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "573bd183c3aac4ae",
+      "mass_kg": 0.178,
+      "cube_friction": 0.73,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/573bd183c3aac4ae_seed2000.npz",
+          "contact_steps": 68,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/573bd183c3aac4ae_seed2001.npz",
+          "contact_steps": 57,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 22,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/573bd183c3aac4ae_seed2002.npz",
+          "contact_steps": 65,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/573bd183c3aac4ae_seed2003.npz",
+          "contact_steps": 66,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/573bd183c3aac4ae_seed2004.npz",
+          "contact_steps": 64,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 15,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/573bd183c3aac4ae_seed2005.npz",
+          "contact_steps": 67,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/573bd183c3aac4ae_seed2006.npz",
+          "contact_steps": 66,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/573bd183c3aac4ae_seed2007.npz",
+          "contact_steps": 30,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 39,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/573bd183c3aac4ae_seed2008.npz",
+          "contact_steps": 60,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/573bd183c3aac4ae_seed2009.npz",
+          "contact_steps": 64,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": true
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 10,
+        "slip": 10,
+        "final_task_success": 1,
+        "contact_steps": 607,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "5d76685733360240",
+      "mass_kg": 0.224,
+      "cube_friction": 0.4,
+      "historical_split": "test",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/5d76685733360240_seed2000.npz",
+          "contact_steps": 9,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/5d76685733360240_seed2001.npz",
+          "contact_steps": 20,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/5d76685733360240_seed2002.npz",
+          "contact_steps": 17,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/5d76685733360240_seed2003.npz",
+          "contact_steps": 32,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/5d76685733360240_seed2004.npz",
+          "contact_steps": 20,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/5d76685733360240_seed2005.npz",
+          "contact_steps": 19,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/5d76685733360240_seed2006.npz",
+          "contact_steps": 23,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 14,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/5d76685733360240_seed2007.npz",
+          "contact_steps": 11,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/5d76685733360240_seed2008.npz",
+          "contact_steps": 39,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/5d76685733360240_seed2009.npz",
+          "contact_steps": 38,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 5,
+        "slip": 5,
+        "final_task_success": 0,
+        "contact_steps": 228,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "6d4122f8d10d1565",
+      "mass_kg": 0.224,
+      "cube_friction": 0.46,
+      "historical_split": "validation",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6d4122f8d10d1565_seed2000.npz",
+          "contact_steps": 20,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6d4122f8d10d1565_seed2001.npz",
+          "contact_steps": 23,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6d4122f8d10d1565_seed2002.npz",
+          "contact_steps": 45,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 12,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6d4122f8d10d1565_seed2003.npz",
+          "contact_steps": 60,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6d4122f8d10d1565_seed2004.npz",
+          "contact_steps": 31,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6d4122f8d10d1565_seed2005.npz",
+          "contact_steps": 49,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6d4122f8d10d1565_seed2006.npz",
+          "contact_steps": 38,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 41,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6d4122f8d10d1565_seed2007.npz",
+          "contact_steps": 49,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 20,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6d4122f8d10d1565_seed2008.npz",
+          "contact_steps": 41,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/6d4122f8d10d1565_seed2009.npz",
+          "contact_steps": 50,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 13,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 9,
+        "slip": 9,
+        "final_task_success": 0,
+        "contact_steps": 406,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "531b82d308ebe470",
+      "mass_kg": 0.224,
+      "cube_friction": 0.64,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/531b82d308ebe470_seed2000.npz",
+          "contact_steps": 36,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/531b82d308ebe470_seed2001.npz",
+          "contact_steps": 18,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/531b82d308ebe470_seed2002.npz",
+          "contact_steps": 27,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 12,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/531b82d308ebe470_seed2003.npz",
+          "contact_steps": 66,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/531b82d308ebe470_seed2004.npz",
+          "contact_steps": 40,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/531b82d308ebe470_seed2005.npz",
+          "contact_steps": 64,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/531b82d308ebe470_seed2006.npz",
+          "contact_steps": 16,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 8,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/531b82d308ebe470_seed2007.npz",
+          "contact_steps": 55,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 12,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/531b82d308ebe470_seed2008.npz",
+          "contact_steps": 59,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/531b82d308ebe470_seed2009.npz",
+          "contact_steps": 26,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 9,
+        "slip": 9,
+        "final_task_success": 0,
+        "contact_steps": 407,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "a3e83ae995a4a08b",
+      "mass_kg": 0.27,
+      "cube_friction": 0.4,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a3e83ae995a4a08b_seed2000.npz",
+          "contact_steps": 14,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a3e83ae995a4a08b_seed2001.npz",
+          "contact_steps": 15,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a3e83ae995a4a08b_seed2002.npz",
+          "contact_steps": 29,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 18,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a3e83ae995a4a08b_seed2003.npz",
+          "contact_steps": 39,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a3e83ae995a4a08b_seed2004.npz",
+          "contact_steps": 23,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a3e83ae995a4a08b_seed2005.npz",
+          "contact_steps": 13,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 13,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a3e83ae995a4a08b_seed2006.npz",
+          "contact_steps": 36,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 32,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a3e83ae995a4a08b_seed2007.npz",
+          "contact_steps": 39,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a3e83ae995a4a08b_seed2008.npz",
+          "contact_steps": 41,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 13,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/a3e83ae995a4a08b_seed2009.npz",
+          "contact_steps": 17,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 5,
+        "slip": 5,
+        "final_task_success": 0,
+        "contact_steps": 266,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "3fd5f45b18b9b0a2",
+      "mass_kg": 0.27,
+      "cube_friction": 0.55,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/3fd5f45b18b9b0a2_seed2000.npz",
+          "contact_steps": 25,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/3fd5f45b18b9b0a2_seed2001.npz",
+          "contact_steps": 19,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/3fd5f45b18b9b0a2_seed2002.npz",
+          "contact_steps": 15,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/3fd5f45b18b9b0a2_seed2003.npz",
+          "contact_steps": 44,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/3fd5f45b18b9b0a2_seed2004.npz",
+          "contact_steps": 41,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/3fd5f45b18b9b0a2_seed2005.npz",
+          "contact_steps": 23,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 28,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/3fd5f45b18b9b0a2_seed2006.npz",
+          "contact_steps": 30,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/3fd5f45b18b9b0a2_seed2007.npz",
+          "contact_steps": 28,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/3fd5f45b18b9b0a2_seed2008.npz",
+          "contact_steps": 57,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/3fd5f45b18b9b0a2_seed2009.npz",
+          "contact_steps": 50,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 24,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 5,
+        "slip": 5,
+        "final_task_success": 0,
+        "contact_steps": 332,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "97032c28af3a6254",
+      "mass_kg": 0.316,
+      "cube_friction": 0.4,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/97032c28af3a6254_seed2000.npz",
+          "contact_steps": 20,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/97032c28af3a6254_seed2001.npz",
+          "contact_steps": 12,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/97032c28af3a6254_seed2002.npz",
+          "contact_steps": 25,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/97032c28af3a6254_seed2003.npz",
+          "contact_steps": 28,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/97032c28af3a6254_seed2004.npz",
+          "contact_steps": 32,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/97032c28af3a6254_seed2005.npz",
+          "contact_steps": 37,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 17,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/97032c28af3a6254_seed2006.npz",
+          "contact_steps": 39,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/97032c28af3a6254_seed2007.npz",
+          "contact_steps": 26,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/97032c28af3a6254_seed2008.npz",
+          "contact_steps": 30,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/97032c28af3a6254_seed2009.npz",
+          "contact_steps": 35,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 23,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 4,
+        "slip": 4,
+        "final_task_success": 0,
+        "contact_steps": 284,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "7535ca6c1562781c",
+      "mass_kg": 0.316,
+      "cube_friction": 0.46,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/7535ca6c1562781c_seed2000.npz",
+          "contact_steps": 31,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/7535ca6c1562781c_seed2001.npz",
+          "contact_steps": 16,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/7535ca6c1562781c_seed2002.npz",
+          "contact_steps": 51,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 17,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/7535ca6c1562781c_seed2003.npz",
+          "contact_steps": 30,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/7535ca6c1562781c_seed2004.npz",
+          "contact_steps": 29,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 16,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/7535ca6c1562781c_seed2005.npz",
+          "contact_steps": 16,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/7535ca6c1562781c_seed2006.npz",
+          "contact_steps": 48,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 71,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/7535ca6c1562781c_seed2007.npz",
+          "contact_steps": 31,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 27,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/7535ca6c1562781c_seed2008.npz",
+          "contact_steps": 23,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/7535ca6c1562781c_seed2009.npz",
+          "contact_steps": 12,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 6,
+        "slip": 6,
+        "final_task_success": 0,
+        "contact_steps": 287,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "60a390dd0b1363ec",
+      "mass_kg": 0.316,
+      "cube_friction": 0.64,
+      "historical_split": "test",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/60a390dd0b1363ec_seed2000.npz",
+          "contact_steps": 32,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/60a390dd0b1363ec_seed2001.npz",
+          "contact_steps": 19,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 27,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/60a390dd0b1363ec_seed2002.npz",
+          "contact_steps": 47,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 12,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/60a390dd0b1363ec_seed2003.npz",
+          "contact_steps": 21,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/60a390dd0b1363ec_seed2004.npz",
+          "contact_steps": 23,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/60a390dd0b1363ec_seed2005.npz",
+          "contact_steps": 32,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/60a390dd0b1363ec_seed2006.npz",
+          "contact_steps": 27,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/60a390dd0b1363ec_seed2007.npz",
+          "contact_steps": 28,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 21,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/60a390dd0b1363ec_seed2008.npz",
+          "contact_steps": 18,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/60a390dd0b1363ec_seed2009.npz",
+          "contact_steps": 32,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 13,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 7,
+        "slip": 7,
+        "final_task_success": 0,
+        "contact_steps": 279,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "debcc732ec75c99c",
+      "mass_kg": 0.362,
+      "cube_friction": 0.4,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/debcc732ec75c99c_seed2000.npz",
+          "contact_steps": 25,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/debcc732ec75c99c_seed2001.npz",
+          "contact_steps": 10,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/debcc732ec75c99c_seed2002.npz",
+          "contact_steps": 8,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/debcc732ec75c99c_seed2003.npz",
+          "contact_steps": 28,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 12,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/debcc732ec75c99c_seed2004.npz",
+          "contact_steps": 29,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/debcc732ec75c99c_seed2005.npz",
+          "contact_steps": 14,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/debcc732ec75c99c_seed2006.npz",
+          "contact_steps": 25,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/debcc732ec75c99c_seed2007.npz",
+          "contact_steps": 43,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/debcc732ec75c99c_seed2008.npz",
+          "contact_steps": 20,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/debcc732ec75c99c_seed2009.npz",
+          "contact_steps": 24,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 1,
+        "slip": 1,
+        "final_task_success": 0,
+        "contact_steps": 226,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "968bebae41e7f23d",
+      "mass_kg": 0.362,
+      "cube_friction": 0.73,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/968bebae41e7f23d_seed2000.npz",
+          "contact_steps": 37,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/968bebae41e7f23d_seed2001.npz",
+          "contact_steps": 24,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/968bebae41e7f23d_seed2002.npz",
+          "contact_steps": 34,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 25,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/968bebae41e7f23d_seed2003.npz",
+          "contact_steps": 51,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/968bebae41e7f23d_seed2004.npz",
+          "contact_steps": 40,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 15,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/968bebae41e7f23d_seed2005.npz",
+          "contact_steps": 23,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/968bebae41e7f23d_seed2006.npz",
+          "contact_steps": 46,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 32,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/968bebae41e7f23d_seed2007.npz",
+          "contact_steps": 41,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 19,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/968bebae41e7f23d_seed2008.npz",
+          "contact_steps": 42,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/968bebae41e7f23d_seed2009.npz",
+          "contact_steps": 50,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 8,
+        "slip": 8,
+        "final_task_success": 0,
+        "contact_steps": 388,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "64cf8a5c004829ac",
+      "mass_kg": 0.408,
+      "cube_friction": 0.4,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64cf8a5c004829ac_seed2000.npz",
+          "contact_steps": 34,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64cf8a5c004829ac_seed2001.npz",
+          "contact_steps": 26,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64cf8a5c004829ac_seed2002.npz",
+          "contact_steps": 17,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64cf8a5c004829ac_seed2003.npz",
+          "contact_steps": 20,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64cf8a5c004829ac_seed2004.npz",
+          "contact_steps": 21,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64cf8a5c004829ac_seed2005.npz",
+          "contact_steps": 33,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 24,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64cf8a5c004829ac_seed2006.npz",
+          "contact_steps": 31,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64cf8a5c004829ac_seed2007.npz",
+          "contact_steps": 28,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64cf8a5c004829ac_seed2008.npz",
+          "contact_steps": 41,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/64cf8a5c004829ac_seed2009.npz",
+          "contact_steps": 24,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 2,
+        "slip": 2,
+        "final_task_success": 0,
+        "contact_steps": 275,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "1072b56a0d6e0312",
+      "mass_kg": 0.408,
+      "cube_friction": 0.82,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/1072b56a0d6e0312_seed2000.npz",
+          "contact_steps": 51,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/1072b56a0d6e0312_seed2001.npz",
+          "contact_steps": 33,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 11,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/1072b56a0d6e0312_seed2002.npz",
+          "contact_steps": 17,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/1072b56a0d6e0312_seed2003.npz",
+          "contact_steps": 49,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/1072b56a0d6e0312_seed2004.npz",
+          "contact_steps": 41,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 17,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/1072b56a0d6e0312_seed2005.npz",
+          "contact_steps": 37,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 19,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/1072b56a0d6e0312_seed2006.npz",
+          "contact_steps": 32,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 23,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/1072b56a0d6e0312_seed2007.npz",
+          "contact_steps": 40,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 13,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/1072b56a0d6e0312_seed2008.npz",
+          "contact_steps": 16,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/1072b56a0d6e0312_seed2009.npz",
+          "contact_steps": 66,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 8,
+        "slip": 8,
+        "final_task_success": 0,
+        "contact_steps": 382,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "961c9e38a4b0f995",
+      "mass_kg": 0.454,
+      "cube_friction": 0.4,
+      "historical_split": "validation",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/961c9e38a4b0f995_seed2000.npz",
+          "contact_steps": 31,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/961c9e38a4b0f995_seed2001.npz",
+          "contact_steps": 15,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/961c9e38a4b0f995_seed2002.npz",
+          "contact_steps": 36,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/961c9e38a4b0f995_seed2003.npz",
+          "contact_steps": 37,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/961c9e38a4b0f995_seed2004.npz",
+          "contact_steps": 33,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/961c9e38a4b0f995_seed2005.npz",
+          "contact_steps": 22,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/961c9e38a4b0f995_seed2006.npz",
+          "contact_steps": 28,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/961c9e38a4b0f995_seed2007.npz",
+          "contact_steps": 27,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/961c9e38a4b0f995_seed2008.npz",
+          "contact_steps": 28,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 20,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/961c9e38a4b0f995_seed2009.npz",
+          "contact_steps": 49,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 30,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 2,
+        "slip": 2,
+        "final_task_success": 0,
+        "contact_steps": 306,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "177e30b8b02bf1d5",
+      "mass_kg": 0.454,
+      "cube_friction": 0.91,
+      "historical_split": "validation",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/177e30b8b02bf1d5_seed2000.npz",
+          "contact_steps": 57,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/177e30b8b02bf1d5_seed2001.npz",
+          "contact_steps": 44,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 31,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/177e30b8b02bf1d5_seed2002.npz",
+          "contact_steps": 15,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/177e30b8b02bf1d5_seed2003.npz",
+          "contact_steps": 26,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/177e30b8b02bf1d5_seed2004.npz",
+          "contact_steps": 29,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/177e30b8b02bf1d5_seed2005.npz",
+          "contact_steps": 23,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/177e30b8b02bf1d5_seed2006.npz",
+          "contact_steps": 54,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 65,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/177e30b8b02bf1d5_seed2007.npz",
+          "contact_steps": 34,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/177e30b8b02bf1d5_seed2008.npz",
+          "contact_steps": 24,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/177e30b8b02bf1d5_seed2009.npz",
+          "contact_steps": 46,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 5,
+        "slip": 5,
+        "final_task_success": 0,
+        "contact_steps": 352,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "d282e9db20b191be",
+      "mass_kg": 0.5,
+      "cube_friction": 0.4,
+      "historical_split": "test",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d282e9db20b191be_seed2000.npz",
+          "contact_steps": 19,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/e8fb95a71713a92f_seed2000.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d282e9db20b191be_seed2001.npz",
+          "contact_steps": 16,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/e8fb95a71713a92f_seed2001.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d282e9db20b191be_seed2002.npz",
+          "contact_steps": 45,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/e8fb95a71713a92f_seed2002.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d282e9db20b191be_seed2003.npz",
+          "contact_steps": 29,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/e8fb95a71713a92f_seed2003.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d282e9db20b191be_seed2004.npz",
+          "contact_steps": 16,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/e8fb95a71713a92f_seed2004.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d282e9db20b191be_seed2005.npz",
+          "contact_steps": 14,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/e8fb95a71713a92f_seed2005.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d282e9db20b191be_seed2006.npz",
+          "contact_steps": 42,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/e8fb95a71713a92f_seed2006.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d282e9db20b191be_seed2007.npz",
+          "contact_steps": 46,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/e8fb95a71713a92f_seed2007.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d282e9db20b191be_seed2008.npz",
+          "contact_steps": 16,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/e8fb95a71713a92f_seed2008.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/d282e9db20b191be_seed2009.npz",
+          "contact_steps": 19,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/e8fb95a71713a92f_seed2009.npz",
+            "trajectory_arrays_equal": true
+          }
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 0,
+        "slip": 0,
+        "final_task_success": 0,
+        "contact_steps": 262,
+        "control_steps": 1000
+      }
+    },
+    {
+      "condition_id": "49a84e0f6da4153d",
+      "mass_kg": 0.5,
+      "cube_friction": 1.0,
+      "historical_split": "train",
+      "trials": [
+        {
+          "seed": 2000,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/49a84e0f6da4153d_seed2000.npz",
+          "contact_steps": 31,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 10,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/5965b9f30e99c42d_seed2000.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2001,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/49a84e0f6da4153d_seed2001.npz",
+          "contact_steps": 17,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 67,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/5965b9f30e99c42d_seed2001.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2002,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/49a84e0f6da4153d_seed2002.npz",
+          "contact_steps": 25,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 13,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/5965b9f30e99c42d_seed2002.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2003,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/49a84e0f6da4153d_seed2003.npz",
+          "contact_steps": 18,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/5965b9f30e99c42d_seed2003.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2004,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/49a84e0f6da4153d_seed2004.npz",
+          "contact_steps": 25,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 18,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/5965b9f30e99c42d_seed2004.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2005,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/49a84e0f6da4153d_seed2005.npz",
+          "contact_steps": 35,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 20,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/5965b9f30e99c42d_seed2005.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2006,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/49a84e0f6da4153d_seed2006.npz",
+          "contact_steps": 39,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/5965b9f30e99c42d_seed2006.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2007,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/49a84e0f6da4153d_seed2007.npz",
+          "contact_steps": 31,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": -1,
+          "lifted": false,
+          "slip": false,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/5965b9f30e99c42d_seed2007.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2008,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/49a84e0f6da4153d_seed2008.npz",
+          "contact_steps": 34,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 7,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/5965b9f30e99c42d_seed2008.npz",
+            "trajectory_arrays_equal": true
+          }
+        },
+        {
+          "seed": 2009,
+          "path": "runs/failure_collection/dense_single_pair_fixed40g/49a84e0f6da4153d_seed2009.npz",
+          "contact_steps": 46,
+          "any_finger_contact": true,
+          "control_steps": 100,
+          "first_lift_state_index": 6,
+          "lifted": true,
+          "slip": true,
+          "final_task_success": false,
+          "historical_match": {
+            "path": "runs/failure_collection/varied_fixed40g/5965b9f30e99c42d_seed2009.npz",
+            "trajectory_arrays_equal": true
+          }
+        }
+      ],
+      "counts": {
+        "attempts": 10,
+        "any_finger_contact": 10,
+        "lifted": 7,
+        "slip": 7,
+        "final_task_success": 0,
+        "contact_steps": 301,
+        "control_steps": 1000
+      }
+    }
+  ]
+}

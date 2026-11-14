@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="570" height="205" viewBox="0 0 570 205" font-family="sans-serif" font-size="15" fill="#182630">
+<title>Slide prediction error on held-out blocks</title>
+<rect width="570" height="205" fill="white"/>
+<text x="18" y="32" font-size="21">Slide prediction error</text>
+<text x="18" y="57">Next-velocity MSE across 30 held-out blocks</text>
+<path d="M130 74 V182" stroke="#9aa6ae"/>
+<text x="116" y="103" text-anchor="end">Lift-fitted z</text>
+<rect x="130" y="82" width="14.824" height="32" fill="#147d75"/>
+<text x="154.824" y="103">0.008610</text>
+<text x="116" y="161" text-anchor="end">Zero z</text>
+<rect x="130" y="140" width="320.000" height="32" fill="#67758a"/>
+<text x="460.000" y="161">0.185852</text>
+</svg>

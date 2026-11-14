@@ -1,0 +1,64 @@
+{
+  "metric": "Mean normalized squared state prediction error over horizons 1 through 5",
+  "population": "All 46 five-step windows of each held-out PickCube episode, including free motion",
+  "held_out_episodes": 4000,
+  "context": "Eight coordinates encoded from ten true simulator constants",
+  "swapped": "A different held-out episode with the same action source",
+  "training_mean": "Mean of encoded training contexts",
+  "interval": {
+    "method": "Percentile bootstrap resampling whole paired episodes",
+    "level": 0.95,
+    "draws": 3000,
+    "seed": 110962
+  },
+  "series": [
+    {
+      "key": "W",
+      "label": "Own encoded constants",
+      "mse": 1.3068559743703154,
+      "ci95": [
+        1.2195507480593921,
+        1.4009008301057262
+      ]
+    },
+    {
+      "key": "swapped",
+      "label": "Swapped context",
+      "mse": 1.9029502346389402,
+      "ci95": [
+        1.7972722753599633,
+        2.015103695199211
+      ]
+    },
+    {
+      "key": "mean",
+      "label": "Training-mean context",
+      "mse": 1.6375038611442698,
+      "ci95": [
+        1.5375987432697351,
+        1.7425509354226743
+      ]
+    }
+  ],
+  "paired_alternative_minus_own": {
+    "swapped": {
+      "mse_difference": 0.5960942602686248,
+      "ci95": [
+        0.5688896806545032,
+        0.6242286518776934
+      ]
+    },
+    "mean": {
+      "mse_difference": 0.3306478867739544,
+      "ci95": [
+        0.31381544967953373,
+        0.3489861554659736
+      ]
+    }
+  },
+  "source_sha256": {
+    "runs/context_dynamics/pick_gpu_2m/world_model_z8/intervention_errors.npz": "8f746127a304067f6736abe92f29ae82f9f04b90b7b19a051dec6acb67b06f77",
+    "runs/context_dynamics/pick_gpu_2m/world_model_z8/checks.json": "c82b40e1095a0d82a6c317693f95ddf36f122808930d12729c977d0c5d70b344",
+    "runs/context_dynamics/pick_gpu_2m/world_model_z8/settings.json": "41054ff79d53ac04b4ab39dd7466a8e2a57559d40926e6da2530457e8502f25e"
+  }
+}

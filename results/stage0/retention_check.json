@@ -1,0 +1,287 @@
+{
+  "dataset": "runs/mass_belief/nov17_v1",
+  "scope": {
+    "mass_g": 400,
+    "friction": 0.4,
+    "trial_count": 5,
+    "sequences": 12,
+    "steps_per_trial": 100,
+    "policy_mass_guess_g": 40
+  },
+  "criterion": {
+    "tolerance_g_inclusive": 40,
+    "required_consecutive_recorded_steps_through_trial_end": 10
+  },
+  "metric": "Count recorded observations preceding the first entry that holds through trial end. Count the full horizon on non-attainment. Zero means already within tolerance at the first post-action observation and sustained through the end. The log has no step zero. The entry is identified retrospectively, using true mass for scoring.",
+  "uncertainty": {
+    "method": "Paired percentile bootstrap, resampling whole five-trial sequences",
+    "draws": 10000,
+    "seed": 1712,
+    "level": 0.95
+  },
+  "raw_estimator_crosscheck": {
+    "settled": 10,
+    "episodes": 60,
+    "median_step": 79.0
+  },
+  "by_trial": [
+    {
+      "trial": 1,
+      "attempts_per_arm": 12,
+      "carried_reached": 3,
+      "reset_reached": 3,
+      "carried_mean_capped_steps_before_entry": 91.41666666666667,
+      "reset_mean_capped_steps_before_entry": 91.41666666666667,
+      "paired_mean_saving_reset_minus_carried_steps": 0.0,
+      "paired_95pct_interval_for_saving_steps": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "trial": 2,
+      "attempts_per_arm": 12,
+      "carried_reached": 7,
+      "reset_reached": 3,
+      "carried_mean_capped_steps_before_entry": 55.916666666666664,
+      "reset_mean_capped_steps_before_entry": 93.5,
+      "paired_mean_saving_reset_minus_carried_steps": 37.583333333333336,
+      "paired_95pct_interval_for_saving_steps": [
+        16.916666666666668,
+        58.416666666666664
+      ]
+    },
+    {
+      "trial": 3,
+      "attempts_per_arm": 12,
+      "carried_reached": 6,
+      "reset_reached": 6,
+      "carried_mean_capped_steps_before_entry": 54.083333333333336,
+      "reset_mean_capped_steps_before_entry": 84.91666666666667,
+      "paired_mean_saving_reset_minus_carried_steps": 30.833333333333332,
+      "paired_95pct_interval_for_saving_steps": [
+        3.6666666666666665,
+        57.91874999999997
+      ]
+    },
+    {
+      "trial": 4,
+      "attempts_per_arm": 12,
+      "carried_reached": 8,
+      "reset_reached": 3,
+      "carried_mean_capped_steps_before_entry": 39.416666666666664,
+      "reset_mean_capped_steps_before_entry": 91.41666666666667,
+      "paired_mean_saving_reset_minus_carried_steps": 52.0,
+      "paired_95pct_interval_for_saving_steps": [
+        20.916666666666668,
+        79.25
+      ]
+    },
+    {
+      "trial": 5,
+      "attempts_per_arm": 12,
+      "carried_reached": 7,
+      "reset_reached": 1,
+      "carried_mean_capped_steps_before_entry": 41.666666666666664,
+      "reset_mean_capped_steps_before_entry": 97.83333333333333,
+      "paired_mean_saving_reset_minus_carried_steps": 56.166666666666664,
+      "paired_95pct_interval_for_saving_steps": [
+        25.0,
+        83.33333333333333
+      ]
+    }
+  ],
+  "trials_two_through_five": {
+    "attempts_per_arm": 48,
+    "carried_reached": 28,
+    "reset_reached": 13,
+    "carried_mean_capped_steps_before_entry": 47.770833333333336,
+    "reset_mean_capped_steps_before_entry": 91.91666666666667,
+    "paired_mean_saving_reset_minus_carried_steps": 44.145833333333336,
+    "paired_95pct_interval_for_saving_steps": [
+      22.680729166666673,
+      65.5
+    ]
+  },
+  "first_qualifying_observed_step_by_sequence_then_trial": {
+    "carried": [
+      [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        75,
+        1,
+        null,
+        null,
+        1
+      ],
+      [
+        null,
+        25,
+        1,
+        1,
+        1
+      ],
+      [
+        null,
+        null,
+        null,
+        50,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        25,
+        null,
+        null,
+        null
+      ],
+      [
+        50,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        null,
+        null,
+        50,
+        1,
+        1
+      ],
+      [
+        75,
+        50,
+        1,
+        1,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        25,
+        1
+      ],
+      [
+        null,
+        75,
+        1,
+        1,
+        1
+      ]
+    ],
+    "reset": [
+      [
+        null,
+        null,
+        null,
+        null,
+        75
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        75,
+        75,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        75,
+        75,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        75,
+        50,
+        50,
+        null
+      ],
+      [
+        50,
+        75,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        75,
+        null,
+        null
+      ],
+      [
+        75,
+        null,
+        75,
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        75,
+        75,
+        null
+      ],
+      [
+        null,
+        null,
+        75,
+        null,
+        null
+      ]
+    ]
+  },
+  "limitations": "Retrospective comparison of a supervised mass estimator and filter on one 400 g, fixed-friction setting. Five same-physics trials per sequence versus ten requested. Intervals quantify reset-sequence variability at this setting. The study did not test faster inference with the proposed frozen world model, or transfer of a starting guess between cubes.",
+  "source_sha256": {
+    "runs/mass_belief/nov17_v1/steps.csv": "ce94a7e651a976ffa9209b8c7b68aed61831fd8fcdb285b6242c047b9e8ef437",
+    "runs/mass_belief/nov17_v1/config.json": "0b164dc2b395dd41a95a132f2b9c67b1c5d0a051cb028b72ad53946567e94e6d",
+    "runs/mass_belief/nov17_v1/summary.json": "6f3142ab6cfc18dd51d59dec178e7aa5cfb708692df53a0bd1dff4c92ae32f53",
+    "runs/mass_belief/nov17_v1/source/experiments/mass_belief/report.py": "d7391495d6c088fac120c2694f6c00d2d004be0406014b083b31c9391fb73288"
+  }
+}

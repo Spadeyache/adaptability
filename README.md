@@ -20,6 +20,7 @@ inconclusive.
 | What we tried, what we found, and what is next | [Experiment index](docs/experiments.md) |
 | Where code lives and how to run it | [Development guide](docs/development.md) |
 | The research presentation and its local assets | [Presentation guide](presentations/README.md) |
+| What the saved data establish about object beliefs, stage by stage | [Research log](RESEARCH_LOG.md) · [Advisor note, slides, plots and rerun commands](results/README.md) |
 
 ## Research map
 
