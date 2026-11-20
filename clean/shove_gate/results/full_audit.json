@@ -1,0 +1,88 @@
+{
+  "status": "passed",
+  "stage": "full",
+  "cubes": 230,
+  "episodes": 2300,
+  "transitions": 148076,
+  "untrimmed_transitions": 726892,
+  "trimmed_transitions": 578816,
+  "push_transitions": 36892,
+  "coast_transitions": 111184,
+  "moving_coast_transitions": 99684,
+  "moving_coast_fraction": 0.896567851489423,
+  "untrimmed_coast_transitions": 690000,
+  "untrimmed_moving_coast_transitions": 99684,
+  "untrimmed_moving_coast_fraction": 0.1444695652173913,
+  "launches": 2300,
+  "launch_fraction": 1.0,
+  "launches_over_1mm_s": 2300,
+  "launch_threshold_m_s": 0.02,
+  "launch_target_passed": true,
+  "maximum_coast_distance_m": 1.4487086138886374,
+  "maximum_time_to_stop_s": 0.902,
+  "maximum_applied_force_n": 6.998671054840088,
+  "maximum_coast_force_n": 0.0,
+  "maximum_force_plan_error_n": 2.3825466488602842e-07,
+  "maximum_tilt_deg": 0.053097787954983044,
+  "all_stopped": true,
+  "episode_length_min": 22,
+  "episode_length_max": 206,
+  "push_duration_steps_histogram": {
+    "12": 250,
+    "13": 250,
+    "14": 243,
+    "15": 262,
+    "16": 261,
+    "17": 268,
+    "18": 239,
+    "19": 264,
+    "20": 263
+  },
+  "conditional_collection_gate_passed": true,
+  "pilot_authorization_gate_passed": true,
+  "stage_meets_pilot_thresholds": false,
+  "full_dataset_meets_pilot_thresholds": false,
+  "continuation_scope": "The user condition is evaluated on the ten-cube pilot. Full-data outliers are reported and retained; they do not trigger retrospective resampling or undo the recorded pilot authorization.",
+  "coast_distance_at_least_1m_count": 3,
+  "coast_distance_at_least_1m_train_count": 3,
+  "coast_distance_at_least_1m_test_count": 0,
+  "coast_distance_at_least_1m_episodes": [
+    {
+      "cube_id": 68,
+      "episode_id": 1,
+      "coast_distance_m": 1.4487086138886374,
+      "raw_sha256": "8157bcd9c60f99051f7712802a2ba6f8d2759ab4fec6b11e8d7b955d58acd9a2"
+    },
+    {
+      "cube_id": 126,
+      "episode_id": 6,
+      "coast_distance_m": 1.1238830056980955,
+      "raw_sha256": "141ae7a2f4edaa9c9481cd6686232d48c683a60ee8aab3461206fc96cdc4de36"
+    },
+    {
+      "cube_id": 128,
+      "episode_id": 5,
+      "coast_distance_m": 1.165653878174046,
+      "raw_sha256": "cc91c8379646abe520c5304ff5801fe0e007d80ff3f54ed85a879e174ef2ba23"
+    }
+  ],
+  "maximum_coast_distance_episode": {
+    "cube_id": 68,
+    "episode_id": 1,
+    "raw_sha256": "8157bcd9c60f99051f7712802a2ba6f8d2759ab4fec6b11e8d7b955d58acd9a2"
+  },
+  "checks": [
+    "original and active source/data seals",
+    "same cube identities and nuisance positions/yaws/directions",
+    "independent discrete-uniform commanded duration stream",
+    "cube-only15D state and applied-force-only3D action",
+    "no pusher, direct native cube force withzero applied torque atCOM",
+    "hidden labels only physical setup setter",
+    "applied force schedule matches plan, exactlyzero during coast",
+    "raw/model state/action alignment",
+    "stop onset independently recomputed",
+    "five-step stationary tail and no moving step removed",
+    "launch and distance conditional gate independently recomputed"
+  ],
+  "limitation": "Direct external force is an idealized actuator. Length, IDs, true stop timing and masks are forbidden model features. This audit does not evaluate prediction accuracy."
+}

@@ -1,0 +1,7 @@
+Creating CPU environment
+/home/ubuntu/faliure/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:1174: UserWarning: Can't initialize NVML
+  raw_cnt = _raw_device_count_nvml()
+Reading explicit state
+Planning without simulator feedback
+Executing nominal diagnostic episode without reading object properties
+{"status": "pass", "state_columns": 48, "action_columns": 9, "planned_steps": 138, "elapsed_seconds": 0.3800340789894108, "diagnostic_only": true, "properties": "Environment defaults; not read, recorded, or used for experiment", "max_cube_height_m": 0.12505993247032166, "initial_cube_height_m": 0.019999999552965164, "max_height_gain_m": 0.10505993664264679, "moving_speed_threshold_m_s": 0.005, "moving_step_fraction": 0.4492753623188406, "trajectory_path": "/home/ubuntu/faliure/clean/results/preflight_repaired_v2.npz"}

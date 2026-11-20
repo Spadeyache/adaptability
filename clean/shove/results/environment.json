@@ -1,0 +1,11 @@
+{
+  "sapien": "3.0.3",
+  "mani_skill": "3.0.1",
+  "torch": "2.14.0",
+  "numpy": "1.26.4",
+  "imported_numpy": "1.26.4",
+  "python": "3.10.18",
+  "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "native_setter_sha256": "86da7c0340aa80edf05230adb0cfa744415977b880151f28c00dd3e83d6ca730",
+  "physics": "CPU, 1ms timestep, TGS, PCM, enhanced determinism, gravity [0,0,-9.81]"
+}

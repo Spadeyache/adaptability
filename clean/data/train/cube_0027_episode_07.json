@@ -1,0 +1,17 @@
+{
+  "cube_id": 27,
+  "episode_id": 7,
+  "steps": 137,
+  "path": "data/train/cube_0027_episode_07.npz",
+  "sha256": "b16b742146df6942efa54e3452da8055d25585813e93ae87b073c65214c4fe12",
+  "source_sha256": {
+    "parallel_collect.py": "87d2ea4a8f67834f58d8b6bc1bc86a369d84895967f72f89219db50a7494a8e4",
+    "collect.py": "de2c36362550e1bdf221398210f9dcbdf54ea17e25057a39ccb2c49e0343a6f6",
+    "schema.py": "91876c7ef3e2c4bebcf5e3d6db9c9712c26e00a8da99eae9b8b0b6da8211e1c6",
+    "native.py": "86da7c0340aa80edf05230adb0cfa744415977b880151f28c00dd3e83d6ca730",
+    "script.py": "f48bce69d66f87d5ea3cb5f78800e608783a2b813d0c006b945fa72c976c1652"
+  },
+  "plan_sha256": "8bea5ea0b8aeef9dc46747d62d4d3e724aecea8529cf0b9e9bfa6decffeaea93",
+  "collector": "parallel_collect.py",
+  "environment_scope": "one cube per worker task"
+}

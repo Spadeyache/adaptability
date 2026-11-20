@@ -1,0 +1,27 @@
+{
+  "code": {
+    "models.py": "6b182bef62bd92899097d15fc93fee05f737ec65339810289fff622690bde106",
+    "train.py": "ef837a9beb7b43224006e6bca7cdaf77a71a9c75e9b0401be1f2f77f4bfb480b",
+    "dataset.py": "8c2b0b8b7c6e6292aa3d012f63aa3f12a941084dbd6f90533d92831aeac29e9e",
+    "evaluate.py": "43069c51bc032c7c67ba8a346fbe8d34a77b7a736c4ca12d9b906b2eb7bbb0fa",
+    "audit.py": "4f8ed072192a40664d83312770adfff418f45ecdb27d77812a6eeb88c98218fb",
+    "protocol.py": "172eed7332e45358554617f0dab8b3a0dbd9a41e5a59fead5d4e4491bf3da4e0",
+    "run.py": "9b707f4a34e2140b9cb96ff9b9400cbc4d2cdb5a772d22f06ad2299de2cc031b"
+  },
+  "audit": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "normalizer": "f70f0c3111b8073f8f410f8f3a893b68d20ff862c3b5b9cc513ebe86d361cbe9",
+  "split": "4f2bc204931efd3ee48506b31d75b5bce9d59d05fc0bcccbaa61037d771fe88c",
+  "config": {
+    "width": 128,
+    "depth": 2,
+    "z_dim": 4,
+    "lr": 0.001,
+    "z_l2": 0.0,
+    "fit_steps": 1000,
+    "fit_lr": 0.02,
+    "moving_weight": 1.0,
+    "prediction_horizon": 1,
+    "grip_force_max": 8.0
+  },
+  "base_iteration": 7
+}

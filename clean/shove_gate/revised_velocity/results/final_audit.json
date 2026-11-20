@@ -1,0 +1,132 @@
+{
+  "status": "passed",
+  "audited_unix_seconds": 1794800088.4912596,
+  "audit_source_sha256": "3148809c582a98f9d6086c198bd662699ca22fbb33a516b886b4f582832607da",
+  "scope": "Saved artifacts and arithmetic only; no simulation, prediction, model fitting, or repeated test evaluation.",
+  "checked_hash_counts": {
+    "checkpoint_files": 10,
+    "training_source_manifest": 2014,
+    "test_data_manifest": 602,
+    "collection_source_manifest": 10,
+    "data_definitions": 5,
+    "retired_experiment_files": 626,
+    "pretraining_review_files": 6
+  },
+  "seed_group_metric_cells_checked": 150,
+  "test_cubes": [
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254,
+    255,
+    256,
+    257,
+    258,
+    259
+  ],
+  "test_episodes": 300,
+  "nonfinite_scored_start_metric_entries": 0,
+  "normalization_scalar": 0.0002986731520809156,
+  "paired_training": [
+    {
+      "seed": 101,
+      "completed_updates": 40000,
+      "selected_updates": {
+        "plain": 10500,
+        "oracle": 34500
+      },
+      "extension_decisions_verified": 4,
+      "convergence_not_established_at_cap": false
+    },
+    {
+      "seed": 211,
+      "completed_updates": 20000,
+      "selected_updates": {
+        "plain": 16500,
+        "oracle": 15000
+      },
+      "extension_decisions_verified": 2,
+      "convergence_not_established_at_cap": false
+    },
+    {
+      "seed": 307,
+      "completed_updates": 20000,
+      "selected_updates": {
+        "plain": 12000,
+        "oracle": 15500
+      },
+      "extension_decisions_verified": 2,
+      "convergence_not_established_at_cap": false
+    },
+    {
+      "seed": 401,
+      "completed_updates": 20000,
+      "selected_updates": {
+        "plain": 10500,
+        "oracle": 16000
+      },
+      "extension_decisions_verified": 2,
+      "convergence_not_established_at_cap": false
+    },
+    {
+      "seed": 503,
+      "completed_updates": 20000,
+      "selected_updates": {
+        "plain": 14500,
+        "oracle": 9500
+      },
+      "extension_decisions_verified": 2,
+      "convergence_not_established_at_cap": false
+    }
+  ],
+  "gate": {
+    "passed": false,
+    "relative_improvement": -0.19148778764326718,
+    "mean_gap": -0.04015323255536378,
+    "sum_seed_sds": 0.02838391689958109,
+    "at_least_twenty_percent": false,
+    "beyond_seed_spread": false
+  },
+  "chronology": {
+    "REVISED_PROTOCOL.md": 1794799335.58986,
+    "results/physics_floor.json": 1794799381.9678228,
+    "PHYSICS_FLOOR_REPORT.md": 1794799580.4774778,
+    "results/pretraining_review.json": 1794799600.33408,
+    "results/normalizer.json": 1794799628.9770503,
+    "results/checkpoint_seal.json": 1794800047.4247067,
+    "final_evaluation_started": 1794800047.608138,
+    "final_evaluation_completed": 1794800061.3717308
+  },
+  "chronology_limit": "Filesystem modification times corroborate ordering; pretraining manifests also bind unchanged protocol and physics report into each checkpoint.",
+  "evidence_sha256": {
+    "results/gate_summary.json": "cfbf9662475efb5d0adf1dfe59e7f86e5f59c1bbb8cb806c81abd7ba0a397684",
+    "results/final_evaluation.json": "073b00e9f42686272b19c906d7a4d05ee77640ae39f0fbd5b98d6de3542c009c",
+    "results/checkpoint_seal.json": "5448fc89245b5c410b99be462360e0da03cdbfd2be801de1826969a978f79074",
+    "results/model_protocol.json": "7467a8fec50bcb3702ebb792bccbcbb1c3c61931a36979a473d1adb4449911b6",
+    "results/normalizer.json": "4cd71ea1ae01d017b175fff0993c873fd76cf0ae6359072bec1874d591d2ce39",
+    "results/physics_floor.json": "922b9b33ff43e20aea1e6077241160b39e46b91160bb10b051d0fd28a9511cd5",
+    "results/test_physics_floor.json": "877925becbf649308273065e919104b0604b50654db269efdb23e16437b552b5",
+    "results/retired_experiment_seal.json": "b8eb6d107218ebec5388d5985a9ff1eb99dfc12f9bddd44733f3282f0a933761"
+  }
+}

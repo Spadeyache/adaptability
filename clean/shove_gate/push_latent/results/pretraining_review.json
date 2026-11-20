@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "reviewed_unix_seconds": 1794803709.40911,
+  "synthetic_contracts_passed": 27,
+  "actual_model_training_started": false,
+  "fresh_predictive_scoring_started": false,
+  "independent_source_reviews": [
+    "root reviewed models/evaluator against written protocol",
+    "model author independently reviewed evaluator",
+    "evaluator author independently reviewed models"
+  ],
+  "checks": [
+    "180weightfit/20latentvalidation/testsplit",
+    "pushenergy fittingonly independentcheck",
+    "past-only episode-localhistory with predicted rollout updates",
+    "zero embeddings and no property input",
+    "frozen-network z-only fitting with query exclusion",
+    "fixed dimension/lr/update grid and global validation choice",
+    "training-refitted-z affine mass decoder",
+    "all35freeze beforeC1; C1failure prevents testzfit",
+    "finite secondary errors retained; computational/integrity failures stop"
+  ],
+  "hashes": {
+    "PROTOCOL.md": "20fe5c2527ecbd061917d5f16fbf341397f1182b9cd2ec2369f2812794014ef1",
+    "models.py": "6f2936b4afd59e40cab9a72ee91fd5f9298e37d1ae191e7277895d7a7cd7b81e",
+    "evaluation.py": "64889cf0a90e6027211eed3cbb5e984a99fa451cd883d71c4cdc1902eb46c973",
+    "collection.py": "21e4f305d22cbcf5520249be2c141623f6f60da504ca78988de0aa71c40cb7db",
+    "models_tests.py": "e9b21b2f222d2cf01c2a50c6a9ba794d51f1e69ccef68785a53fc9be165dfa1a",
+    "evaluation_tests.py": "b18e518ed34abf10a78d36ec5fb42fb753a0e85b9fe04599eb523b86be399afc",
+    "results/pretraining_tests.log": "8ee1f1f197ed7610d1b514b61e288aa49daa0d8eaa0715469cf227d93f9dd6b0",
+    "results/pretraining_scale_audit.json": "872c92456e1b2e0404e7aad0c203b5ef9fbfe2ced3506de2b83b999bb832eff9",
+    "results/gpu_preflight.json": "2d44d7a248fbd183287456214c35a432fa5a7922740d301e1f629faf6abc7951",
+    "results/gpu_latent_preflight.json": "4934cf319a213e1744089e95022893102c1ac49ec62253c2c85aacb1dc4e60ea",
+    "results/gpu_embedding_preflight.json": "b6193f10c21af54ab7a836170dfc52a342f8fb9136542c9c208b39dd5e0e233f",
+    "results/full_audit.json": "79e4f1b41fcc3d62f09ae0c77482bd6c1b9b11606545838e4689ba0b74b66e12"
+  }
+}

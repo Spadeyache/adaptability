@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "source_checkpoint": "runs/baselines/B0/seed_0/checkpoint.pt",
+  "source_checkpoint_sha256": "67d7a98742c2f04bf70ce68346bb8331baf0b22b933599094c3e82eb8283df8c",
+  "normalization_file": "results/baselines/normalization.npz",
+  "normalization_sha256": "fd5614b158415b6392606243d78a0fca4f0d10e3fa8bc8a7909eea9be9a1a8d6",
+  "protocol_sha256": "abd637b0ab896dcadf8fbf0a31d62c5d71fb50c69e8ca47fa3d3619168a66afe",
+  "split_sha256": "7df8f1181bcd6f615ee5b17f769c98ad5398708ecf1ccfa531a8de224564f4cc",
+  "implementation_sha256": "f45d2b5caf1d485aa40add5d41353445596bbcbde76b9d29b33b10ca8a1849a4",
+  "arrays": {
+    "input_mean": {
+      "shape": [
+        59
+      ],
+      "dtype": "float32",
+      "description": "Mean of concatenated 51-state and 8-action inputs"
+    },
+    "input_sd": {
+      "shape": [
+        59
+      ],
+      "dtype": "float32",
+      "description": "Population standard deviation floored at 1e-4 of concatenated 51-state and 8-action inputs"
+    },
+    "delta_mean": {
+      "shape": [
+        51
+      ],
+      "dtype": "float32",
+      "description": "Mean of 51 next_state-minus-state deltas"
+    },
+    "delta_sd": {
+      "shape": [
+        51
+      ],
+      "dtype": "float32",
+      "description": "Population standard deviation floored at 1e-4 of 51 next_state-minus-state deltas"
+    }
+  },
+  "fit_scope": "Training episodes of the 200 training cubes only; excludes held-out validation episodes and all test cubes.",
+  "normalization_formula": {
+    "inputs": "(concat(state,action)-input_mean)/input_sd",
+    "deltas": "(next_state-state-delta_mean)/delta_sd",
+    "rollout_terminal_error": "mean(((predicted_state_t10-true_state_t10)/delta_sd)^2)"
+  },
+  "included_labels": false,
+  "completed_models_checked": [
+    "runs/baselines/B0/seed_0",
+    "runs/baselines/B0/seed_1",
+    "runs/baselines/B0/seed_2",
+    "runs/baselines/B0/seed_3",
+    "runs/baselines/B0/seed_4",
+    "runs/baselines/B1_K1/seed_0",
+    "runs/baselines/B1_K1/seed_1",
+    "runs/baselines/B1_K1/seed_2",
+    "runs/baselines/B1_K1/seed_3",
+    "runs/baselines/B1_K1/seed_4",
+    "runs/baselines/B1_K10/seed_0",
+    "runs/baselines/B1_K10/seed_1",
+    "runs/baselines/B1_K10/seed_2",
+    "runs/baselines/B1_K10/seed_3",
+    "runs/baselines/B1_K10/seed_4",
+    "runs/baselines/B1_K20/seed_0",
+    "runs/baselines/B1_K20/seed_1",
+    "runs/baselines/B1_K20/seed_2",
+    "runs/baselines/B1_K20/seed_3",
+    "runs/baselines/B1_K20/seed_4",
+    "runs/baselines/B1_K5/seed_0",
+    "runs/baselines/B1_K5/seed_1",
+    "runs/baselines/B1_K5/seed_2",
+    "runs/baselines/B1_K5/seed_3",
+    "runs/baselines/B1_K5/seed_4",
+    "runs/baselines/B2/seed_0",
+    "runs/baselines/B2/seed_1",
+    "runs/baselines/B2/seed_2",
+    "runs/baselines/B2/seed_3",
+    "runs/baselines/B2/seed_4"
+  ],
+  "completed_models_bitwise_equal": true,
+  "final_audit_file": "results/baselines/independent_final_audit.json",
+  "final_audit_sha256": "a32df72945d62141fc00e7deccd791dac1d5d1ea84dcfdc173833539581319a5"
+}

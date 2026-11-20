@@ -1,0 +1,14 @@
+Launch failure is contact loss, not force: the 5 g pusher loses contact early.
+Replace the pusher with a direct force on the cube.
+
+1. Remove the pusher. Apply a horizontal external force at the cube's center of mass
+   for the push duration, then zero force for the coast.
+   Randomize per shove, independent of mass/friction: force magnitude uniform 4-7 N,
+   direction uniform, duration uniform 60-100 ms. Keep start position and yaw random.
+2. Action saved per step = the applied force vector (zero during coast).
+3. Rerun the same 10-cube pilot. Report: launch rate (target >= 90%),
+   moving-coast fraction after trimming, max coast distance, actions-only probe.
+4. Keep everything else: trimming rule, forbidden length features,
+   the three reporting groups, and the moving-coast gate.
+If launch >= 90% and coast distance stays under about 1 m, proceed to collect all
+230 cubes and run the Plain vs Oracle gate. Otherwise stop and report.

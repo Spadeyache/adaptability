@@ -1,0 +1,13 @@
+{
+  "stage": "pilot",
+  "collected_cubes": 10,
+  "collected_episodes": 100,
+  "transitions": 7345,
+  "untrimmed_transitions": 31570,
+  "trimmed_transitions": 24225,
+  "this_invocation_wall_seconds": 7.160880181007087,
+  "episode_wall_seconds_sum": 3.911608006019378,
+  "mean_episode_wall_seconds": 0.03911608006019378,
+  "plain_oracle_training_started": false,
+  "belief_model_started": false
+}

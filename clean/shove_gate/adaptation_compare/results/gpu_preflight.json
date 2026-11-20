@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "device": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "synthetic_only": true,
+  "experiment_data_read": false,
+  "latent_frozen_weights": true,
+  "all_plain_parameter_gradients": true,
+  "score_finite": true
+}

@@ -1,0 +1,13 @@
+{
+  "cube_id": 2,
+  "episode_id": 5,
+  "steps": 147,
+  "path": "data/train/cube_0002_episode_05.npz",
+  "sha256": "86380045b20e5530ec0a6c2cd64876588d1e4aa355c22c9b86edc2dd6a2ff0f6",
+  "source_sha256": {
+    "collect.py": "cd260bab08c00c20d89aa1b657a396e79fc357ddc1c8e644a3c89e02070c17c7",
+    "native.py": "86da7c0340aa80edf05230adb0cfa744415977b880151f28c00dd3e83d6ca730",
+    "script.py": "bc5a9da9a4710f32d6a84963497ebf3b736f269b7fce9fd621742b4d6c9dc73a",
+    "schema.py": "91876c7ef3e2c4bebcf5e3d6db9c9712c26e00a8da99eae9b8b0b6da8211e1c6"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "iteration": 15,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "result_sha256": "344bf22013867e6f2d224f01c160abba139ec6f2f307137900bf1ce0b77b2cd8",
+  "base_iteration": 6,
+  "retained_iteration": 6,
+  "decision": "reverted",
+  "reason": "This candidate fails required F4 and cannot displace a reference that passes F4 and the other required checks, even with lower NMSE. Preserve the fixed feasibility constraint; the locked metric is unchanged.",
+  "option_id": "lr=0.003",
+  "one_step_nmse": {
+    "mean": 0.3987110579215215,
+    "std": 0.021330094353861937,
+    "values": [
+      0.4179384389564545,
+      0.3733754013864827,
+      0.4211374184129971,
+      0.3998316283829664,
+      0.3812724024687071
+    ]
+  },
+  "failure_checks": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": false,
+    "F5": true,
+    "F6": true,
+    "F7": true,
+    "F8": true,
+    "F9": true
+  },
+  "success": {
+    "S1": false,
+    "S2": true,
+    "S3": true,
+    "S4": false,
+    "plain_oracle_gap": -0.012188417558534226,
+    "gap_recovery": null
+  },
+  "command": "PYTHONPATH=clean/vendor:. OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m clean.run candidate --iteration 15 --config /home/ubuntu/faliure/clean/configs/search_iteration_15.json --base-iteration 6 --hypothesis 'Oracle has not established a positive Plain-to-Oracle error gap. A larger training learning rate may improve convergence within the unchanged update budget.' --change 'Change only lr from 0.001 to 0.003; every other configuration setting is retained.' --device cuda"
+}

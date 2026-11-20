@@ -1,0 +1,26 @@
+.................{"stage": "prefix_A", "seed": 101, "support_shoves": 1, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_A", "seed": 101, "support_shoves": 2, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_A", "seed": 101, "support_shoves": 3, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_A", "seed": 101, "support_shoves": 4, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_A", "seed": 101, "support_shoves": 5, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_B", "seed": 101, "learning_rate": 1e-05, "support_shoves": 1, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_B", "seed": 101, "learning_rate": 1e-05, "support_shoves": 2, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_B", "seed": 101, "learning_rate": 1e-05, "support_shoves": 3, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_B", "seed": 101, "learning_rate": 1e-05, "support_shoves": 4, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_B", "seed": 101, "learning_rate": 1e-05, "support_shoves": 5, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_B", "seed": 101, "learning_rate": 0.0001, "support_shoves": 1, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_B", "seed": 101, "learning_rate": 0.0001, "support_shoves": 2, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_B", "seed": 101, "learning_rate": 0.0001, "support_shoves": 3, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_B", "seed": 101, "learning_rate": 0.0001, "support_shoves": 4, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "prefix_B", "seed": 101, "learning_rate": 0.0001, "support_shoves": 5, "scores": {"push_velocity_nmse": 2.0, "coast_velocity_nmse": 2.0, "full_state_nmse": 2.0, "composite": 2.0}}
+{"stage": "sequence_B", "seed": 101, "learning_rate": 1e-05, "visits": 1, "first_cube": {"push_velocity_nmse": 1.0, "coast_velocity_nmse": 1.0, "full_state_nmse": 1.0, "composite": 1.0}, "training_validation": {"push_velocity_nmse": 1.0, "coast_velocity_nmse": 1.0, "full_state_nmse": 1.0, "composite": 1.0}}
+{"stage": "sequence_B", "seed": 101, "learning_rate": 1e-05, "visits": 2, "first_cube": {"push_velocity_nmse": 3.0, "coast_velocity_nmse": 3.0, "full_state_nmse": 3.0, "composite": 3.0}, "training_validation": {"push_velocity_nmse": 3.0, "coast_velocity_nmse": 3.0, "full_state_nmse": 3.0, "composite": 3.0}}
+{"stage": "sequence_B", "seed": 101, "learning_rate": 1e-05, "visits": 3, "first_cube": {"push_velocity_nmse": 6.0, "coast_velocity_nmse": 6.0, "full_state_nmse": 6.0, "composite": 6.0}, "training_validation": {"push_velocity_nmse": 6.0, "coast_velocity_nmse": 6.0, "full_state_nmse": 6.0, "composite": 6.0}}
+{"stage": "sequence_B", "seed": 101, "learning_rate": 0.0001, "visits": 1, "first_cube": {"push_velocity_nmse": 1.0, "coast_velocity_nmse": 1.0, "full_state_nmse": 1.0, "composite": 1.0}, "training_validation": {"push_velocity_nmse": 1.0, "coast_velocity_nmse": 1.0, "full_state_nmse": 1.0, "composite": 1.0}}
+{"stage": "sequence_B", "seed": 101, "learning_rate": 0.0001, "visits": 2, "first_cube": {"push_velocity_nmse": 3.0, "coast_velocity_nmse": 3.0, "full_state_nmse": 3.0, "composite": 3.0}, "training_validation": {"push_velocity_nmse": 3.0, "coast_velocity_nmse": 3.0, "full_state_nmse": 3.0, "composite": 3.0}}
+{"stage": "sequence_B", "seed": 101, "learning_rate": 0.0001, "visits": 3, "first_cube": {"push_velocity_nmse": 6.0, "coast_velocity_nmse": 6.0, "full_state_nmse": 6.0, "composite": 6.0}, "training_validation": {"push_velocity_nmse": 6.0, "coast_velocity_nmse": 6.0, "full_state_nmse": 6.0, "composite": 6.0}}
+........
+----------------------------------------------------------------------
+Ran 25 tests in 1.042s
+
+OK

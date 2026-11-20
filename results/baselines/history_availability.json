@@ -1,0 +1,3301 @@
+{
+  "schema_version": 1,
+  "definition": "On the fixed-grip test evaluation episodes (IDs5..9), score stored pre-action cube_moving rows. At zero-based step t exactly min(t,K) completed same-episode transitions are available; history is incomplete iff t<K.",
+  "interpretation": "These are input-availability counts, not evidence that the model forms a useful belief. Later error changes can reflect task phase even after history is full.",
+  "data_directory": "runs/lift_slide_belief/slip_probe/paired/fixed/data",
+  "protocol_sha256": "abd637b0ab896dcadf8fbf0a31d62c5d71fb50c69e8ca47fa3d3619168a66afe",
+  "split_sha256": "7df8f1181bcd6f615ee5b17f769c98ad5398708ecf1ccfa531a8de224564f4cc",
+  "source_sha256": {
+    "experiments/world_model_baselines/data.py": "1b999262e32e32996e37729fda674163770ba2d0fda47485ada9d35fa2a42978"
+  },
+  "dataset_manifest_sha256": "ab54572f64db1f8a22dae7bd71d61771d41a04a159a8f1fd76d7469af80b4787",
+  "history_lengths": [
+    1,
+    5,
+    10,
+    20
+  ],
+  "step_numbering": "Zero-based stored step; plotted human step is stored step+1.",
+  "per_task": {
+    "lift": {
+      "selected_rows": 18000,
+      "moving_rows": 11417,
+      "earliest_moving_step": 21,
+      "evaluation_episodes": 150,
+      "episodes_with_motion": 150,
+      "episode_first_motion_min": 21,
+      "episode_first_motion_median": 21.0,
+      "episode_first_motion_max": 33,
+      "by_k": {
+        "1": {
+          "moving_rows_with_incomplete_history": 0,
+          "moving_rows_with_full_history": 11417,
+          "incomplete_fraction": 0.0
+        },
+        "5": {
+          "moving_rows_with_incomplete_history": 0,
+          "moving_rows_with_full_history": 11417,
+          "incomplete_fraction": 0.0
+        },
+        "10": {
+          "moving_rows_with_incomplete_history": 0,
+          "moving_rows_with_full_history": 11417,
+          "incomplete_fraction": 0.0
+        },
+        "20": {
+          "moving_rows_with_incomplete_history": 0,
+          "moving_rows_with_full_history": 11417,
+          "incomplete_fraction": 0.0
+        }
+      }
+    },
+    "slow_slide": {
+      "selected_rows": 18000,
+      "moving_rows": 7734,
+      "earliest_moving_step": 52,
+      "evaluation_episodes": 150,
+      "episodes_with_motion": 150,
+      "episode_first_motion_min": 52,
+      "episode_first_motion_median": 67.0,
+      "episode_first_motion_max": 87,
+      "by_k": {
+        "1": {
+          "moving_rows_with_incomplete_history": 0,
+          "moving_rows_with_full_history": 7734,
+          "incomplete_fraction": 0.0
+        },
+        "5": {
+          "moving_rows_with_incomplete_history": 0,
+          "moving_rows_with_full_history": 7734,
+          "incomplete_fraction": 0.0
+        },
+        "10": {
+          "moving_rows_with_incomplete_history": 0,
+          "moving_rows_with_full_history": 7734,
+          "incomplete_fraction": 0.0
+        },
+        "20": {
+          "moving_rows_with_incomplete_history": 0,
+          "moving_rows_with_full_history": 7734,
+          "incomplete_fraction": 0.0
+        }
+      }
+    },
+    "shove": {
+      "selected_rows": 27000,
+      "moving_rows": 829,
+      "earliest_moving_step": 51,
+      "evaluation_episodes": 150,
+      "episodes_with_motion": 142,
+      "episode_first_motion_min": 51,
+      "episode_first_motion_median": 67.0,
+      "episode_first_motion_max": 87,
+      "by_k": {
+        "1": {
+          "moving_rows_with_incomplete_history": 0,
+          "moving_rows_with_full_history": 829,
+          "incomplete_fraction": 0.0
+        },
+        "5": {
+          "moving_rows_with_incomplete_history": 0,
+          "moving_rows_with_full_history": 829,
+          "incomplete_fraction": 0.0
+        },
+        "10": {
+          "moving_rows_with_incomplete_history": 0,
+          "moving_rows_with_full_history": 829,
+          "incomplete_fraction": 0.0
+        },
+        "20": {
+          "moving_rows_with_incomplete_history": 0,
+          "moving_rows_with_full_history": 829,
+          "incomplete_fraction": 0.0
+        }
+      }
+    }
+  },
+  "overall": {
+    "selected_rows": 63000,
+    "moving_rows": 19980,
+    "earliest_moving_step": 21,
+    "evaluation_episodes": 450,
+    "episodes_with_motion": 442,
+    "episode_first_motion_min": 21,
+    "episode_first_motion_median": 61.0,
+    "episode_first_motion_max": 87,
+    "by_k": {
+      "1": {
+        "moving_rows_with_incomplete_history": 0,
+        "moving_rows_with_full_history": 19980,
+        "incomplete_fraction": 0.0
+      },
+      "5": {
+        "moving_rows_with_incomplete_history": 0,
+        "moving_rows_with_full_history": 19980,
+        "incomplete_fraction": 0.0
+      },
+      "10": {
+        "moving_rows_with_incomplete_history": 0,
+        "moving_rows_with_full_history": 19980,
+        "incomplete_fraction": 0.0
+      },
+      "20": {
+        "moving_rows_with_incomplete_history": 0,
+        "moving_rows_with_full_history": 19980,
+        "incomplete_fraction": 0.0
+      }
+    }
+  },
+  "per_episode": [
+    {
+      "cube_id": 200,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 88,
+      "first_moving_step": 32
+    },
+    {
+      "cube_id": 200,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 200,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 87,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 200,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 86,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 200,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 200,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 46,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 200,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 58,
+      "first_moving_step": 62
+    },
+    {
+      "cube_id": 200,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 59,
+      "first_moving_step": 59
+    },
+    {
+      "cube_id": 200,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 55,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 200,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 53,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 200,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 8,
+      "first_moving_step": 68
+    },
+    {
+      "cube_id": 200,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 4,
+      "first_moving_step": 73
+    },
+    {
+      "cube_id": 200,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 7,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 200,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 52
+    },
+    {
+      "cube_id": 200,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 3,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 201,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 201,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 201,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 201,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 98,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 201,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 201,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 63,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 201,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 53,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 201,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 46,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 201,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 37,
+      "first_moving_step": 83
+    },
+    {
+      "cube_id": 201,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 46,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 201,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 70
+    },
+    {
+      "cube_id": 201,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 6,
+      "first_moving_step": 77
+    },
+    {
+      "cube_id": 201,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 7,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 201,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 56
+    },
+    {
+      "cube_id": 201,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 7,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 202,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 41,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 202,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 60,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 202,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 31,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 202,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 35,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 202,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 34,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 202,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 60,
+      "first_moving_step": 60
+    },
+    {
+      "cube_id": 202,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 45,
+      "first_moving_step": 72
+    },
+    {
+      "cube_id": 202,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 52,
+      "first_moving_step": 68
+    },
+    {
+      "cube_id": 202,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 42,
+      "first_moving_step": 78
+    },
+    {
+      "cube_id": 202,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 55,
+      "first_moving_step": 63
+    },
+    {
+      "cube_id": 202,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 202,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 1,
+      "first_moving_step": 72
+    },
+    {
+      "cube_id": 202,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 7,
+      "first_moving_step": 60
+    },
+    {
+      "cube_id": 202,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 3,
+      "first_moving_step": 62
+    },
+    {
+      "cube_id": 202,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 6,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 203,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 203,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 74,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 203,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 203,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 203,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 203,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 48,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 203,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 55,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 203,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 58,
+      "first_moving_step": 62
+    },
+    {
+      "cube_id": 203,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 54,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 203,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 39,
+      "first_moving_step": 76
+    },
+    {
+      "cube_id": 203,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 54
+    },
+    {
+      "cube_id": 203,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 53
+    },
+    {
+      "cube_id": 203,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 6,
+      "first_moving_step": 56
+    },
+    {
+      "cube_id": 203,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 60
+    },
+    {
+      "cube_id": 203,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 6,
+      "first_moving_step": 76
+    },
+    {
+      "cube_id": 204,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 88,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 204,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 59,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 204,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 88,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 204,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 96,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 204,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 97,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 204,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 63,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 204,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 46,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 204,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 36,
+      "first_moving_step": 84
+    },
+    {
+      "cube_id": 204,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 66,
+      "first_moving_step": 54
+    },
+    {
+      "cube_id": 204,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 57,
+      "first_moving_step": 63
+    },
+    {
+      "cube_id": 204,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 204,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 77
+    },
+    {
+      "cube_id": 204,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 7,
+      "first_moving_step": 72
+    },
+    {
+      "cube_id": 204,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 204,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 7,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 205,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 86,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 205,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 84,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 205,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 38,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 205,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 205,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 25,
+      "first_moving_step": 31
+    },
+    {
+      "cube_id": 205,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 59,
+      "first_moving_step": 61
+    },
+    {
+      "cube_id": 205,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 65,
+      "first_moving_step": 55
+    },
+    {
+      "cube_id": 205,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 53,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 205,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 42,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 205,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 44,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 205,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 7,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 205,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 72
+    },
+    {
+      "cube_id": 205,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 7,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 205,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 61
+    },
+    {
+      "cube_id": 205,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 7,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 206,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 86,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 206,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 87,
+      "first_moving_step": 31
+    },
+    {
+      "cube_id": 206,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 53,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 206,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 42,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 206,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 85,
+      "first_moving_step": 31
+    },
+    {
+      "cube_id": 206,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 47,
+      "first_moving_step": 72
+    },
+    {
+      "cube_id": 206,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 40,
+      "first_moving_step": 80
+    },
+    {
+      "cube_id": 206,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 66,
+      "first_moving_step": 54
+    },
+    {
+      "cube_id": 206,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 53,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 206,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 44,
+      "first_moving_step": 76
+    },
+    {
+      "cube_id": 206,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 7,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 206,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 63
+    },
+    {
+      "cube_id": 206,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 4,
+      "first_moving_step": 75
+    },
+    {
+      "cube_id": 206,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 7,
+      "first_moving_step": 58
+    },
+    {
+      "cube_id": 206,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 2,
+      "first_moving_step": 80
+    },
+    {
+      "cube_id": 207,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 79,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 207,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 41,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 207,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 98,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 207,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 98,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 207,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 207,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 58,
+      "first_moving_step": 61
+    },
+    {
+      "cube_id": 207,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 63,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 207,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 38,
+      "first_moving_step": 82
+    },
+    {
+      "cube_id": 207,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 43,
+      "first_moving_step": 77
+    },
+    {
+      "cube_id": 207,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 62,
+      "first_moving_step": 58
+    },
+    {
+      "cube_id": 207,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 77
+    },
+    {
+      "cube_id": 207,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 69
+    },
+    {
+      "cube_id": 207,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 6,
+      "first_moving_step": 69
+    },
+    {
+      "cube_id": 207,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 7,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 207,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 3,
+      "first_moving_step": 63
+    },
+    {
+      "cube_id": 208,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 67,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 208,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 90,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 208,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 86,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 208,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 208,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 208,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 54,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 208,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 51,
+      "first_moving_step": 68
+    },
+    {
+      "cube_id": 208,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 60,
+      "first_moving_step": 60
+    },
+    {
+      "cube_id": 208,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 61,
+      "first_moving_step": 59
+    },
+    {
+      "cube_id": 208,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 44,
+      "first_moving_step": 76
+    },
+    {
+      "cube_id": 208,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 55
+    },
+    {
+      "cube_id": 208,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 73
+    },
+    {
+      "cube_id": 208,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 6,
+      "first_moving_step": 53
+    },
+    {
+      "cube_id": 208,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 208,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 6,
+      "first_moving_step": 75
+    },
+    {
+      "cube_id": 209,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 89,
+      "first_moving_step": 31
+    },
+    {
+      "cube_id": 209,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 87,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 209,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 87,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 209,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 87,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 209,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 89,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 209,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 51,
+      "first_moving_step": 69
+    },
+    {
+      "cube_id": 209,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 34,
+      "first_moving_step": 86
+    },
+    {
+      "cube_id": 209,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 43,
+      "first_moving_step": 77
+    },
+    {
+      "cube_id": 209,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 62,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 209,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 56,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 209,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 0,
+      "first_moving_step": null
+    },
+    {
+      "cube_id": 209,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 1,
+      "first_moving_step": 62
+    },
+    {
+      "cube_id": 209,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 0,
+      "first_moving_step": null
+    },
+    {
+      "cube_id": 209,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 1,
+      "first_moving_step": 62
+    },
+    {
+      "cube_id": 209,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 0,
+      "first_moving_step": null
+    },
+    {
+      "cube_id": 210,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 86,
+      "first_moving_step": 32
+    },
+    {
+      "cube_id": 210,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 96,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 210,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 67,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 210,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 94,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 210,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 45,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 210,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 66,
+      "first_moving_step": 54
+    },
+    {
+      "cube_id": 210,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 61,
+      "first_moving_step": 58
+    },
+    {
+      "cube_id": 210,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 65,
+      "first_moving_step": 55
+    },
+    {
+      "cube_id": 210,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 55,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 210,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 52,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 210,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 59
+    },
+    {
+      "cube_id": 210,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 6,
+      "first_moving_step": 69
+    },
+    {
+      "cube_id": 210,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 6,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 210,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 0,
+      "first_moving_step": null
+    },
+    {
+      "cube_id": 210,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 6,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 211,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 97,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 211,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 98,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 211,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 88,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 211,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 93,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 211,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 30,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 211,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 39,
+      "first_moving_step": 81
+    },
+    {
+      "cube_id": 211,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 56,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 211,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 53,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 211,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 44,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 211,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 49,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 211,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 211,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 211,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 7,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 211,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 211,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 6,
+      "first_moving_step": 63
+    },
+    {
+      "cube_id": 212,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 98,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 212,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 212,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 212,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 97,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 212,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 212,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 57,
+      "first_moving_step": 63
+    },
+    {
+      "cube_id": 212,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 20,
+      "first_moving_step": 82
+    },
+    {
+      "cube_id": 212,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 49,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 212,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 64,
+      "first_moving_step": 56
+    },
+    {
+      "cube_id": 212,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 66,
+      "first_moving_step": 54
+    },
+    {
+      "cube_id": 212,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 7,
+      "first_moving_step": 62
+    },
+    {
+      "cube_id": 212,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 6,
+      "first_moving_step": 61
+    },
+    {
+      "cube_id": 212,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 7,
+      "first_moving_step": 60
+    },
+    {
+      "cube_id": 212,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 73
+    },
+    {
+      "cube_id": 212,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 6,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 213,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 97,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 213,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 94,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 213,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 26,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 213,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 25,
+      "first_moving_step": 32
+    },
+    {
+      "cube_id": 213,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 42,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 213,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 50,
+      "first_moving_step": 70
+    },
+    {
+      "cube_id": 213,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 46,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 213,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 50,
+      "first_moving_step": 70
+    },
+    {
+      "cube_id": 213,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 61,
+      "first_moving_step": 58
+    },
+    {
+      "cube_id": 213,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 39,
+      "first_moving_step": 81
+    },
+    {
+      "cube_id": 213,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 8,
+      "first_moving_step": 51
+    },
+    {
+      "cube_id": 213,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 6,
+      "first_moving_step": 82
+    },
+    {
+      "cube_id": 213,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 0,
+      "first_moving_step": null
+    },
+    {
+      "cube_id": 213,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 7,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 213,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 2,
+      "first_moving_step": 56
+    },
+    {
+      "cube_id": 214,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 97,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 214,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 97,
+      "first_moving_step": 23
+    },
+    {
+      "cube_id": 214,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 91,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 214,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 90,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 214,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 33,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 214,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 63,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 214,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 30,
+      "first_moving_step": 63
+    },
+    {
+      "cube_id": 214,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 63,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 214,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 56,
+      "first_moving_step": 60
+    },
+    {
+      "cube_id": 214,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 63,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 214,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 52
+    },
+    {
+      "cube_id": 214,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 6,
+      "first_moving_step": 78
+    },
+    {
+      "cube_id": 214,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 6,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 214,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 1,
+      "first_moving_step": 85
+    },
+    {
+      "cube_id": 214,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 7,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 215,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 92,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 215,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 94,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 215,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 85,
+      "first_moving_step": 33
+    },
+    {
+      "cube_id": 215,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 92,
+      "first_moving_step": 23
+    },
+    {
+      "cube_id": 215,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 87,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 215,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 60,
+      "first_moving_step": 60
+    },
+    {
+      "cube_id": 215,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 53,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 215,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 56,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 215,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 52,
+      "first_moving_step": 68
+    },
+    {
+      "cube_id": 215,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 45,
+      "first_moving_step": 75
+    },
+    {
+      "cube_id": 215,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 7,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 215,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 1,
+      "first_moving_step": 87
+    },
+    {
+      "cube_id": 215,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 6,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 215,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 215,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 0,
+      "first_moving_step": null
+    },
+    {
+      "cube_id": 216,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 91,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 216,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 97,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 216,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 44,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 216,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 87,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 216,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 216,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 53,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 216,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 60,
+      "first_moving_step": 60
+    },
+    {
+      "cube_id": 216,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 59,
+      "first_moving_step": 61
+    },
+    {
+      "cube_id": 216,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 56,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 216,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 43,
+      "first_moving_step": 77
+    },
+    {
+      "cube_id": 216,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 1,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 216,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 2,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 216,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 4,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 216,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 0,
+      "first_moving_step": null
+    },
+    {
+      "cube_id": 216,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 4,
+      "first_moving_step": 63
+    },
+    {
+      "cube_id": 217,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 23,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 217,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 217,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 29,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 217,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 217,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 35,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 217,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 62,
+      "first_moving_step": 56
+    },
+    {
+      "cube_id": 217,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 45,
+      "first_moving_step": 75
+    },
+    {
+      "cube_id": 217,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 62,
+      "first_moving_step": 58
+    },
+    {
+      "cube_id": 217,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 56,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 217,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 59,
+      "first_moving_step": 60
+    },
+    {
+      "cube_id": 217,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 217,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 217,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 4,
+      "first_moving_step": 81
+    },
+    {
+      "cube_id": 217,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 62
+    },
+    {
+      "cube_id": 217,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 5,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 218,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 218,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 98,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 218,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 218,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 218,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 98,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 218,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 60,
+      "first_moving_step": 60
+    },
+    {
+      "cube_id": 218,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 53,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 218,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 26,
+      "first_moving_step": 63
+    },
+    {
+      "cube_id": 218,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 55,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 218,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 65,
+      "first_moving_step": 55
+    },
+    {
+      "cube_id": 218,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 8,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 218,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 56
+    },
+    {
+      "cube_id": 218,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 6,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 218,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 7,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 218,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 7,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 219,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 22,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 219,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 219,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 28,
+      "first_moving_step": 31
+    },
+    {
+      "cube_id": 219,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 219,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 219,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 41,
+      "first_moving_step": 79
+    },
+    {
+      "cube_id": 219,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 44,
+      "first_moving_step": 76
+    },
+    {
+      "cube_id": 219,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 48,
+      "first_moving_step": 72
+    },
+    {
+      "cube_id": 219,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 51,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 219,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 54,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 219,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 69
+    },
+    {
+      "cube_id": 219,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 6,
+      "first_moving_step": 78
+    },
+    {
+      "cube_id": 219,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 6,
+      "first_moving_step": 77
+    },
+    {
+      "cube_id": 219,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 7,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 219,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 7,
+      "first_moving_step": 81
+    },
+    {
+      "cube_id": 220,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 89,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 220,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 96,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 220,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 87,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 220,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 96,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 220,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 95,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 220,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 37,
+      "first_moving_step": 83
+    },
+    {
+      "cube_id": 220,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 40,
+      "first_moving_step": 80
+    },
+    {
+      "cube_id": 220,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 62,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 220,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 57,
+      "first_moving_step": 63
+    },
+    {
+      "cube_id": 220,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 52,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 220,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 5,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 220,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 3,
+      "first_moving_step": 72
+    },
+    {
+      "cube_id": 220,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 0,
+      "first_moving_step": null
+    },
+    {
+      "cube_id": 220,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 62
+    },
+    {
+      "cube_id": 220,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 6,
+      "first_moving_step": 63
+    },
+    {
+      "cube_id": 221,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 39,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 221,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 69,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 221,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 71,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 221,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 83,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 221,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 30,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 221,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 59,
+      "first_moving_step": 61
+    },
+    {
+      "cube_id": 221,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 66,
+      "first_moving_step": 53
+    },
+    {
+      "cube_id": 221,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 58,
+      "first_moving_step": 62
+    },
+    {
+      "cube_id": 221,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 52,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 221,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 39,
+      "first_moving_step": 81
+    },
+    {
+      "cube_id": 221,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 83
+    },
+    {
+      "cube_id": 221,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 221,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 1,
+      "first_moving_step": 78
+    },
+    {
+      "cube_id": 221,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 78
+    },
+    {
+      "cube_id": 221,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 6,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 222,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 222,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 222,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 71,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 222,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 74,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 222,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 78,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 222,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 46,
+      "first_moving_step": 73
+    },
+    {
+      "cube_id": 222,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 67,
+      "first_moving_step": 52
+    },
+    {
+      "cube_id": 222,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 63,
+      "first_moving_step": 57
+    },
+    {
+      "cube_id": 222,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 62,
+      "first_moving_step": 58
+    },
+    {
+      "cube_id": 222,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 54,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 222,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 82
+    },
+    {
+      "cube_id": 222,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 222,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 7,
+      "first_moving_step": 55
+    },
+    {
+      "cube_id": 222,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 7,
+      "first_moving_step": 63
+    },
+    {
+      "cube_id": 222,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 6,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 223,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 223,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 37,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 223,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 223,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 98,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 223,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 98,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 223,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 51,
+      "first_moving_step": 69
+    },
+    {
+      "cube_id": 223,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 33,
+      "first_moving_step": 87
+    },
+    {
+      "cube_id": 223,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 56,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 223,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 51,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 223,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 41,
+      "first_moving_step": 79
+    },
+    {
+      "cube_id": 223,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 68
+    },
+    {
+      "cube_id": 223,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 3,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 223,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 6,
+      "first_moving_step": 68
+    },
+    {
+      "cube_id": 223,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 75
+    },
+    {
+      "cube_id": 223,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 7,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 224,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 50,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 224,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 33,
+      "first_moving_step": 31
+    },
+    {
+      "cube_id": 224,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 57,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 224,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 47,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 224,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 37,
+      "first_moving_step": 32
+    },
+    {
+      "cube_id": 224,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 39,
+      "first_moving_step": 81
+    },
+    {
+      "cube_id": 224,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 52,
+      "first_moving_step": 68
+    },
+    {
+      "cube_id": 224,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 67,
+      "first_moving_step": 53
+    },
+    {
+      "cube_id": 224,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 38,
+      "first_moving_step": 80
+    },
+    {
+      "cube_id": 224,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 38,
+      "first_moving_step": 82
+    },
+    {
+      "cube_id": 224,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 224,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 224,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 6,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 224,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 224,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 2,
+      "first_moving_step": 86
+    },
+    {
+      "cube_id": 225,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 89,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 225,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 225,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 225,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 225,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 45,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 225,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 44,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 225,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 45,
+      "first_moving_step": 75
+    },
+    {
+      "cube_id": 225,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 46,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 225,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 47,
+      "first_moving_step": 63
+    },
+    {
+      "cube_id": 225,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 60,
+      "first_moving_step": 60
+    },
+    {
+      "cube_id": 225,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 7,
+      "first_moving_step": 54
+    },
+    {
+      "cube_id": 225,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 70
+    },
+    {
+      "cube_id": 225,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 6,
+      "first_moving_step": 75
+    },
+    {
+      "cube_id": 225,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 7,
+      "first_moving_step": 77
+    },
+    {
+      "cube_id": 225,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 6,
+      "first_moving_step": 80
+    },
+    {
+      "cube_id": 226,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 97,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 226,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 52,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 226,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 34,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 226,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 35,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 226,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 30,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 226,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 48,
+      "first_moving_step": 72
+    },
+    {
+      "cube_id": 226,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 45,
+      "first_moving_step": 75
+    },
+    {
+      "cube_id": 226,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 66,
+      "first_moving_step": 54
+    },
+    {
+      "cube_id": 226,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 46,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 226,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 41,
+      "first_moving_step": 79
+    },
+    {
+      "cube_id": 226,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 7,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 226,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 6,
+      "first_moving_step": 74
+    },
+    {
+      "cube_id": 226,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 5,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 226,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 7,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 226,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 7,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 227,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 41,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 227,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 93,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 227,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 97,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 227,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 26,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 227,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 227,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 50,
+      "first_moving_step": 67
+    },
+    {
+      "cube_id": 227,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 48,
+      "first_moving_step": 72
+    },
+    {
+      "cube_id": 227,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 44,
+      "first_moving_step": 76
+    },
+    {
+      "cube_id": 227,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 44,
+      "first_moving_step": 76
+    },
+    {
+      "cube_id": 227,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 44,
+      "first_moving_step": 76
+    },
+    {
+      "cube_id": 227,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 227,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 76
+    },
+    {
+      "cube_id": 227,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 7,
+      "first_moving_step": 71
+    },
+    {
+      "cube_id": 227,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 7,
+      "first_moving_step": 61
+    },
+    {
+      "cube_id": 227,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 6,
+      "first_moving_step": 54
+    },
+    {
+      "cube_id": 228,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 46,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 228,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 51,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 228,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 26,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 228,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 51,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 228,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 27,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 228,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 52,
+      "first_moving_step": 68
+    },
+    {
+      "cube_id": 228,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 51,
+      "first_moving_step": 69
+    },
+    {
+      "cube_id": 228,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 40,
+      "first_moving_step": 80
+    },
+    {
+      "cube_id": 228,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 55,
+      "first_moving_step": 65
+    },
+    {
+      "cube_id": 228,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 51,
+      "first_moving_step": 69
+    },
+    {
+      "cube_id": 228,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 6,
+      "first_moving_step": 68
+    },
+    {
+      "cube_id": 228,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 6,
+      "first_moving_step": 66
+    },
+    {
+      "cube_id": 228,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 5,
+      "first_moving_step": 68
+    },
+    {
+      "cube_id": 228,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 6,
+      "first_moving_step": 55
+    },
+    {
+      "cube_id": 228,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 7,
+      "first_moving_step": 72
+    },
+    {
+      "cube_id": 229,
+      "task": "lift",
+      "episode_id": 5,
+      "moving_rows": 27,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 229,
+      "task": "lift",
+      "episode_id": 6,
+      "moving_rows": 95,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 229,
+      "task": "lift",
+      "episode_id": 7,
+      "moving_rows": 88,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 229,
+      "task": "lift",
+      "episode_id": 8,
+      "moving_rows": 38,
+      "first_moving_step": 22
+    },
+    {
+      "cube_id": 229,
+      "task": "lift",
+      "episode_id": 9,
+      "moving_rows": 99,
+      "first_moving_step": 21
+    },
+    {
+      "cube_id": 229,
+      "task": "slow_slide",
+      "episode_id": 5,
+      "moving_rows": 35,
+      "first_moving_step": 85
+    },
+    {
+      "cube_id": 229,
+      "task": "slow_slide",
+      "episode_id": 6,
+      "moving_rows": 57,
+      "first_moving_step": 62
+    },
+    {
+      "cube_id": 229,
+      "task": "slow_slide",
+      "episode_id": 7,
+      "moving_rows": 54,
+      "first_moving_step": 56
+    },
+    {
+      "cube_id": 229,
+      "task": "slow_slide",
+      "episode_id": 8,
+      "moving_rows": 65,
+      "first_moving_step": 55
+    },
+    {
+      "cube_id": 229,
+      "task": "slow_slide",
+      "episode_id": 9,
+      "moving_rows": 56,
+      "first_moving_step": 64
+    },
+    {
+      "cube_id": 229,
+      "task": "shove",
+      "episode_id": 5,
+      "moving_rows": 7,
+      "first_moving_step": 73
+    },
+    {
+      "cube_id": 229,
+      "task": "shove",
+      "episode_id": 6,
+      "moving_rows": 7,
+      "first_moving_step": 69
+    },
+    {
+      "cube_id": 229,
+      "task": "shove",
+      "episode_id": 7,
+      "moving_rows": 7,
+      "first_moving_step": 79
+    },
+    {
+      "cube_id": 229,
+      "task": "shove",
+      "episode_id": 8,
+      "moving_rows": 7,
+      "first_moving_step": 53
+    },
+    {
+      "cube_id": 229,
+      "task": "shove",
+      "episode_id": 9,
+      "moving_rows": 6,
+      "first_moving_step": 65
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "state_columns": 48,
+  "action_columns": 9,
+  "planned_steps": 168,
+  "elapsed_seconds": 0.6076544350071345,
+  "diagnostic_only": true,
+  "properties": "Environment defaults; not read, recorded, or used for experiment",
+  "max_cube_height_m": 0.12380584329366684,
+  "initial_cube_height_m": 0.019999999552965164,
+  "max_height_gain_m": 0.10380584001541138,
+  "moving_speed_threshold_m_s": 0.005,
+  "moving_step_fraction": 0.32142857142857145,
+  "trajectory_path": "/home/ubuntu/faliure/clean/results/preflight_numpy1_cpu_none.npz"
+}

@@ -1,0 +1,10 @@
+{
+  "version": "grip_max_8",
+  "grip_force_max": 8.0,
+  "source_sha256": {
+    "script.py": "f48bce69d66f87d5ea3cb5f78800e608783a2b813d0c006b945fa72c976c1652",
+    "native.py": "86da7c0340aa80edf05230adb0cfa744415977b880151f28c00dd3e83d6ca730",
+    "schema.py": "91876c7ef3e2c4bebcf5e3d6db9c9712c26e00a8da99eae9b8b0b6da8211e1c6"
+  },
+  "split_sha256": "db268f323a833731dc3b5f97f6493984794b1b07cc6fc5d0eee081a6b7e68e1e"
+}

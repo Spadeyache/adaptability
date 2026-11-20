@@ -1,0 +1,1565 @@
+{
+  "cubes": [
+    {
+      "cube_id": 0,
+      "split": "train",
+      "mass_kg": 0.3603268380152025,
+      "friction": 0.9930273080914361
+    },
+    {
+      "cube_id": 1,
+      "split": "train",
+      "mass_kg": 0.47603513246053003,
+      "friction": 0.440458901335009
+    },
+    {
+      "cube_id": 2,
+      "split": "train",
+      "mass_kg": 0.3849294035634997,
+      "friction": 0.7039626670651151
+    },
+    {
+      "cube_id": 3,
+      "split": "train",
+      "mass_kg": 0.07729872690988934,
+      "friction": 0.9826473109336509
+    },
+    {
+      "cube_id": 4,
+      "split": "train",
+      "mass_kg": 0.4326352653936103,
+      "friction": 0.5181600442229162
+    },
+    {
+      "cube_id": 5,
+      "split": "train",
+      "mass_kg": 0.3607640665716904,
+      "friction": 0.7450826088464887
+    },
+    {
+      "cube_id": 6,
+      "split": "train",
+      "mass_kg": 0.105318279428123,
+      "friction": 0.7668102074848908
+    },
+    {
+      "cube_id": 7,
+      "split": "train",
+      "mass_kg": 0.42621807573254944,
+      "friction": 0.6292436721809205
+    },
+    {
+      "cube_id": 8,
+      "split": "train",
+      "mass_kg": 0.43010687605562287,
+      "friction": 0.9160290022271264
+    },
+    {
+      "cube_id": 9,
+      "split": "train",
+      "mass_kg": 0.1337511987452622,
+      "friction": 0.7890126863722404
+    },
+    {
+      "cube_id": 10,
+      "split": "train",
+      "mass_kg": 0.27176313115679407,
+      "friction": 0.43215856517483453
+    },
+    {
+      "cube_id": 11,
+      "split": "train",
+      "mass_kg": 0.04868878878876831,
+      "friction": 0.4373949182978021
+    },
+    {
+      "cube_id": 12,
+      "split": "train",
+      "mass_kg": 0.1860596732282751,
+      "friction": 0.7295447100103871
+    },
+    {
+      "cube_id": 13,
+      "split": "train",
+      "mass_kg": 0.15184326465382536,
+      "friction": 0.8439056362170205
+    },
+    {
+      "cube_id": 14,
+      "split": "train",
+      "mass_kg": 0.12493105186828773,
+      "friction": 0.9731576804618846
+    },
+    {
+      "cube_id": 15,
+      "split": "train",
+      "mass_kg": 0.4528885309830041,
+      "friction": 0.45117209603788433
+    },
+    {
+      "cube_id": 16,
+      "split": "train",
+      "mass_kg": 0.19982284818716717,
+      "friction": 0.6530013755349089
+    },
+    {
+      "cube_id": 17,
+      "split": "train",
+      "mass_kg": 0.2026161853631881,
+      "friction": 0.5733779833393655
+    },
+    {
+      "cube_id": 18,
+      "split": "train",
+      "mass_kg": 0.15843931655263618,
+      "friction": 0.6280435427052384
+    },
+    {
+      "cube_id": 19,
+      "split": "train",
+      "mass_kg": 0.44689607091969674,
+      "friction": 0.4660166381425559
+    },
+    {
+      "cube_id": 20,
+      "split": "train",
+      "mass_kg": 0.4683284699284326,
+      "friction": 0.5679593849260792
+    },
+    {
+      "cube_id": 21,
+      "split": "train",
+      "mass_kg": 0.4190832704714695,
+      "friction": 0.6609776753960244
+    },
+    {
+      "cube_id": 22,
+      "split": "train",
+      "mass_kg": 0.40418671193798966,
+      "friction": 0.6819489185475145
+    },
+    {
+      "cube_id": 23,
+      "split": "train",
+      "mass_kg": 0.3281165382899742,
+      "friction": 0.70707210178293
+    },
+    {
+      "cube_id": 24,
+      "split": "train",
+      "mass_kg": 0.4569519246333276,
+      "friction": 0.5593067963691981
+    },
+    {
+      "cube_id": 25,
+      "split": "train",
+      "mass_kg": 0.27814645728319337,
+      "friction": 0.4126534720865506
+    },
+    {
+      "cube_id": 26,
+      "split": "train",
+      "mass_kg": 0.3574425067934218,
+      "friction": 0.47942578211208575
+    },
+    {
+      "cube_id": 27,
+      "split": "train",
+      "mass_kg": 0.4721435709782088,
+      "friction": 0.6685274151795033
+    },
+    {
+      "cube_id": 28,
+      "split": "train",
+      "mass_kg": 0.3373561662067588,
+      "friction": 0.7335858212811239
+    },
+    {
+      "cube_id": 29,
+      "split": "train",
+      "mass_kg": 0.15557581622139763,
+      "friction": 0.46994491826376456
+    },
+    {
+      "cube_id": 30,
+      "split": "train",
+      "mass_kg": 0.27509067466642034,
+      "friction": 0.4309428276399523
+    },
+    {
+      "cube_id": 31,
+      "split": "train",
+      "mass_kg": 0.4891942277117263,
+      "friction": 0.8745535918585633
+    },
+    {
+      "cube_id": 32,
+      "split": "train",
+      "mass_kg": 0.07885798291539484,
+      "friction": 0.5555335839355374
+    },
+    {
+      "cube_id": 33,
+      "split": "train",
+      "mass_kg": 0.31144155620159575,
+      "friction": 0.5439346162980732
+    },
+    {
+      "cube_id": 34,
+      "split": "train",
+      "mass_kg": 0.0684264761231736,
+      "friction": 0.463758033225511
+    },
+    {
+      "cube_id": 35,
+      "split": "train",
+      "mass_kg": 0.47771845907770755,
+      "friction": 0.5262698343574447
+    },
+    {
+      "cube_id": 36,
+      "split": "train",
+      "mass_kg": 0.34800588723488,
+      "friction": 0.7905508358061184
+    },
+    {
+      "cube_id": 37,
+      "split": "train",
+      "mass_kg": 0.11724151599273108,
+      "friction": 0.7715588816977337
+    },
+    {
+      "cube_id": 38,
+      "split": "train",
+      "mass_kg": 0.2672687696941111,
+      "friction": 0.5519037073141256
+    },
+    {
+      "cube_id": 39,
+      "split": "train",
+      "mass_kg": 0.26485277569919974,
+      "friction": 0.6444889855442988
+    },
+    {
+      "cube_id": 40,
+      "split": "train",
+      "mass_kg": 0.45243688528524695,
+      "friction": 0.5909674245604969
+    },
+    {
+      "cube_id": 41,
+      "split": "train",
+      "mass_kg": 0.3424103119475691,
+      "friction": 0.8972252106851442
+    },
+    {
+      "cube_id": 42,
+      "split": "train",
+      "mass_kg": 0.3491329914927683,
+      "friction": 0.7344390541092245
+    },
+    {
+      "cube_id": 43,
+      "split": "train",
+      "mass_kg": 0.31822293494046994,
+      "friction": 0.4893104468301371
+    },
+    {
+      "cube_id": 44,
+      "split": "train",
+      "mass_kg": 0.07035233731911919,
+      "friction": 0.7017549240692105
+    },
+    {
+      "cube_id": 45,
+      "split": "train",
+      "mass_kg": 0.055131399383954616,
+      "friction": 0.5605840559891946
+    },
+    {
+      "cube_id": 46,
+      "split": "train",
+      "mass_kg": 0.23562422475866382,
+      "friction": 0.7004273652538242
+    },
+    {
+      "cube_id": 47,
+      "split": "train",
+      "mass_kg": 0.09905545622903589,
+      "friction": 0.48492802547687086
+    },
+    {
+      "cube_id": 48,
+      "split": "train",
+      "mass_kg": 0.3742016400237382,
+      "friction": 0.5260727591637806
+    },
+    {
+      "cube_id": 49,
+      "split": "train",
+      "mass_kg": 0.29116102263557725,
+      "friction": 0.7174532957204232
+    },
+    {
+      "cube_id": 50,
+      "split": "train",
+      "mass_kg": 0.2476009545901196,
+      "friction": 0.5913475843074195
+    },
+    {
+      "cube_id": 51,
+      "split": "train",
+      "mass_kg": 0.04431341670676778,
+      "friction": 0.40740808649227067
+    },
+    {
+      "cube_id": 52,
+      "split": "train",
+      "mass_kg": 0.3513635800103837,
+      "friction": 0.7801777748479941
+    },
+    {
+      "cube_id": 53,
+      "split": "train",
+      "mass_kg": 0.14743102248898995,
+      "friction": 0.8902404843054332
+    },
+    {
+      "cube_id": 54,
+      "split": "train",
+      "mass_kg": 0.1127680048793078,
+      "friction": 0.921343775128604
+    },
+    {
+      "cube_id": 55,
+      "split": "train",
+      "mass_kg": 0.13121851268067783,
+      "friction": 0.6923946801097525
+    },
+    {
+      "cube_id": 56,
+      "split": "train",
+      "mass_kg": 0.26194295709672016,
+      "friction": 0.45278003956451973
+    },
+    {
+      "cube_id": 57,
+      "split": "train",
+      "mass_kg": 0.35354617301281016,
+      "friction": 0.8926664523349848
+    },
+    {
+      "cube_id": 58,
+      "split": "train",
+      "mass_kg": 0.22780248738134848,
+      "friction": 0.8943206138122737
+    },
+    {
+      "cube_id": 59,
+      "split": "train",
+      "mass_kg": 0.12399744233759091,
+      "friction": 0.7304991052304243
+    },
+    {
+      "cube_id": 60,
+      "split": "train",
+      "mass_kg": 0.15224151228190363,
+      "friction": 0.749322106667732
+    },
+    {
+      "cube_id": 61,
+      "split": "train",
+      "mass_kg": 0.3691598722870416,
+      "friction": 0.5200111847971634
+    },
+    {
+      "cube_id": 62,
+      "split": "train",
+      "mass_kg": 0.3685128008424754,
+      "friction": 0.6118939524145106
+    },
+    {
+      "cube_id": 63,
+      "split": "train",
+      "mass_kg": 0.4177251110035521,
+      "friction": 0.45449313071542813
+    },
+    {
+      "cube_id": 64,
+      "split": "train",
+      "mass_kg": 0.37708401819151605,
+      "friction": 0.6006048336021511
+    },
+    {
+      "cube_id": 65,
+      "split": "train",
+      "mass_kg": 0.10731479271102207,
+      "friction": 0.7494060821894917
+    },
+    {
+      "cube_id": 66,
+      "split": "train",
+      "mass_kg": 0.20954713093427174,
+      "friction": 0.8938633449332877
+    },
+    {
+      "cube_id": 67,
+      "split": "train",
+      "mass_kg": 0.11933551033988751,
+      "friction": 0.6390314887464749
+    },
+    {
+      "cube_id": 68,
+      "split": "train",
+      "mass_kg": 0.3483962713052841,
+      "friction": 0.9288183600152751
+    },
+    {
+      "cube_id": 69,
+      "split": "train",
+      "mass_kg": 0.372772218653202,
+      "friction": 0.9057539255478141
+    },
+    {
+      "cube_id": 70,
+      "split": "train",
+      "mass_kg": 0.46403625585390995,
+      "friction": 0.9935869413665702
+    },
+    {
+      "cube_id": 71,
+      "split": "train",
+      "mass_kg": 0.4575364297007812,
+      "friction": 0.7517061342170788
+    },
+    {
+      "cube_id": 72,
+      "split": "train",
+      "mass_kg": 0.043071497973265725,
+      "friction": 0.7518640666868476
+    },
+    {
+      "cube_id": 73,
+      "split": "train",
+      "mass_kg": 0.07262154332332019,
+      "friction": 0.45587411783569953
+    },
+    {
+      "cube_id": 74,
+      "split": "train",
+      "mass_kg": 0.483932557939662,
+      "friction": 0.4734949569780948
+    },
+    {
+      "cube_id": 75,
+      "split": "train",
+      "mass_kg": 0.21137610394820103,
+      "friction": 0.5877858142216817
+    },
+    {
+      "cube_id": 76,
+      "split": "train",
+      "mass_kg": 0.17766001274943433,
+      "friction": 0.6885679202123334
+    },
+    {
+      "cube_id": 77,
+      "split": "train",
+      "mass_kg": 0.31516012317615416,
+      "friction": 0.7051517874231481
+    },
+    {
+      "cube_id": 78,
+      "split": "train",
+      "mass_kg": 0.2922846332730796,
+      "friction": 0.507875529777609
+    },
+    {
+      "cube_id": 79,
+      "split": "train",
+      "mass_kg": 0.16905130030293083,
+      "friction": 0.580324991189147
+    },
+    {
+      "cube_id": 80,
+      "split": "train",
+      "mass_kg": 0.33785060101954867,
+      "friction": 0.6186188481907837
+    },
+    {
+      "cube_id": 81,
+      "split": "train",
+      "mass_kg": 0.334543505894338,
+      "friction": 0.9860718932127914
+    },
+    {
+      "cube_id": 82,
+      "split": "train",
+      "mass_kg": 0.40602440523818994,
+      "friction": 0.9351961811640914
+    },
+    {
+      "cube_id": 83,
+      "split": "train",
+      "mass_kg": 0.06375904225912417,
+      "friction": 0.46373941346062997
+    },
+    {
+      "cube_id": 84,
+      "split": "train",
+      "mass_kg": 0.24444284268598196,
+      "friction": 0.4713871959267554
+    },
+    {
+      "cube_id": 85,
+      "split": "train",
+      "mass_kg": 0.043196952147062505,
+      "friction": 0.8118282101878116
+    },
+    {
+      "cube_id": 86,
+      "split": "train",
+      "mass_kg": 0.34368780259304044,
+      "friction": 0.7192722978818507
+    },
+    {
+      "cube_id": 87,
+      "split": "train",
+      "mass_kg": 0.26642767052538313,
+      "friction": 0.6732508783367257
+    },
+    {
+      "cube_id": 88,
+      "split": "train",
+      "mass_kg": 0.43825067072320517,
+      "friction": 0.8776886192421804
+    },
+    {
+      "cube_id": 89,
+      "split": "train",
+      "mass_kg": 0.26818222222080956,
+      "friction": 0.9174621038563736
+    },
+    {
+      "cube_id": 90,
+      "split": "train",
+      "mass_kg": 0.17048742424541294,
+      "friction": 0.49346381365324404
+    },
+    {
+      "cube_id": 91,
+      "split": "train",
+      "mass_kg": 0.2967665303382522,
+      "friction": 0.9555265224457953
+    },
+    {
+      "cube_id": 92,
+      "split": "train",
+      "mass_kg": 0.4854931401768966,
+      "friction": 0.5304487194064149
+    },
+    {
+      "cube_id": 93,
+      "split": "train",
+      "mass_kg": 0.12735942613873633,
+      "friction": 0.4561502742098251
+    },
+    {
+      "cube_id": 94,
+      "split": "train",
+      "mass_kg": 0.3572062695486179,
+      "friction": 0.7830160512263442
+    },
+    {
+      "cube_id": 95,
+      "split": "train",
+      "mass_kg": 0.044105165060444575,
+      "friction": 0.4259741843517295
+    },
+    {
+      "cube_id": 96,
+      "split": "train",
+      "mass_kg": 0.28078443726948843,
+      "friction": 0.9895824698125675
+    },
+    {
+      "cube_id": 97,
+      "split": "train",
+      "mass_kg": 0.3471616444418291,
+      "friction": 0.5019321255888833
+    },
+    {
+      "cube_id": 98,
+      "split": "train",
+      "mass_kg": 0.4115801147210691,
+      "friction": 0.912332652378425
+    },
+    {
+      "cube_id": 99,
+      "split": "train",
+      "mass_kg": 0.3954451083492661,
+      "friction": 0.5784054397903275
+    },
+    {
+      "cube_id": 100,
+      "split": "train",
+      "mass_kg": 0.22416687385393036,
+      "friction": 0.5612044859065233
+    },
+    {
+      "cube_id": 101,
+      "split": "train",
+      "mass_kg": 0.16881523814469634,
+      "friction": 0.8176516488834775
+    },
+    {
+      "cube_id": 102,
+      "split": "train",
+      "mass_kg": 0.22815725806119905,
+      "friction": 0.6837102758183493
+    },
+    {
+      "cube_id": 103,
+      "split": "train",
+      "mass_kg": 0.049445963505609064,
+      "friction": 0.914306270065361
+    },
+    {
+      "cube_id": 104,
+      "split": "train",
+      "mass_kg": 0.1588492337447356,
+      "friction": 0.5553823871880313
+    },
+    {
+      "cube_id": 105,
+      "split": "train",
+      "mass_kg": 0.27653069783308226,
+      "friction": 0.696290028036803
+    },
+    {
+      "cube_id": 106,
+      "split": "train",
+      "mass_kg": 0.08198353121330346,
+      "friction": 0.801538658454269
+    },
+    {
+      "cube_id": 107,
+      "split": "train",
+      "mass_kg": 0.06174389075914001,
+      "friction": 0.8271842148534445
+    },
+    {
+      "cube_id": 108,
+      "split": "train",
+      "mass_kg": 0.23622788936130276,
+      "friction": 0.7695682342790473
+    },
+    {
+      "cube_id": 109,
+      "split": "train",
+      "mass_kg": 0.3994418620906498,
+      "friction": 0.41253639404695347
+    },
+    {
+      "cube_id": 110,
+      "split": "train",
+      "mass_kg": 0.07115974668466721,
+      "friction": 0.8557902047246605
+    },
+    {
+      "cube_id": 111,
+      "split": "train",
+      "mass_kg": 0.4438279282875828,
+      "friction": 0.5349395530061989
+    },
+    {
+      "cube_id": 112,
+      "split": "train",
+      "mass_kg": 0.1738451624971424,
+      "friction": 0.7507268832430145
+    },
+    {
+      "cube_id": 113,
+      "split": "train",
+      "mass_kg": 0.05131835486860899,
+      "friction": 0.6278713963985111
+    },
+    {
+      "cube_id": 114,
+      "split": "train",
+      "mass_kg": 0.30491922241047403,
+      "friction": 0.4722409826671534
+    },
+    {
+      "cube_id": 115,
+      "split": "train",
+      "mass_kg": 0.1701260059938233,
+      "friction": 0.8351302946806936
+    },
+    {
+      "cube_id": 116,
+      "split": "train",
+      "mass_kg": 0.17824920314217288,
+      "friction": 0.6708022842971759
+    },
+    {
+      "cube_id": 117,
+      "split": "train",
+      "mass_kg": 0.11010736282009229,
+      "friction": 0.9944004893552886
+    },
+    {
+      "cube_id": 118,
+      "split": "train",
+      "mass_kg": 0.4144414876147987,
+      "friction": 0.8111644038552057
+    },
+    {
+      "cube_id": 119,
+      "split": "train",
+      "mass_kg": 0.48677169975822837,
+      "friction": 0.44905059411057835
+    },
+    {
+      "cube_id": 120,
+      "split": "train",
+      "mass_kg": 0.30803769794913155,
+      "friction": 0.5571408320439073
+    },
+    {
+      "cube_id": 121,
+      "split": "train",
+      "mass_kg": 0.35215838283539364,
+      "friction": 0.6751662063071868
+    },
+    {
+      "cube_id": 122,
+      "split": "train",
+      "mass_kg": 0.20222607862220593,
+      "friction": 0.9571692441568004
+    },
+    {
+      "cube_id": 123,
+      "split": "train",
+      "mass_kg": 0.3809995713610544,
+      "friction": 0.4693021027261182
+    },
+    {
+      "cube_id": 124,
+      "split": "train",
+      "mass_kg": 0.2617486718379991,
+      "friction": 0.9929545579362035
+    },
+    {
+      "cube_id": 125,
+      "split": "train",
+      "mass_kg": 0.1958823172832264,
+      "friction": 0.9796839259206392
+    },
+    {
+      "cube_id": 126,
+      "split": "train",
+      "mass_kg": 0.196452043010725,
+      "friction": 0.7838930672486404
+    },
+    {
+      "cube_id": 127,
+      "split": "train",
+      "mass_kg": 0.35085058136785624,
+      "friction": 0.9234049016502469
+    },
+    {
+      "cube_id": 128,
+      "split": "train",
+      "mass_kg": 0.06821709815872161,
+      "friction": 0.687790064444536
+    },
+    {
+      "cube_id": 129,
+      "split": "train",
+      "mass_kg": 0.36845826289622285,
+      "friction": 0.6152731444950499
+    },
+    {
+      "cube_id": 130,
+      "split": "train",
+      "mass_kg": 0.055998064730877706,
+      "friction": 0.6349466555740465
+    },
+    {
+      "cube_id": 131,
+      "split": "train",
+      "mass_kg": 0.37458082843860935,
+      "friction": 0.7487647741777538
+    },
+    {
+      "cube_id": 132,
+      "split": "train",
+      "mass_kg": 0.22017883667383345,
+      "friction": 0.6406447653359896
+    },
+    {
+      "cube_id": 133,
+      "split": "train",
+      "mass_kg": 0.11628069491925638,
+      "friction": 0.5523443104446991
+    },
+    {
+      "cube_id": 134,
+      "split": "train",
+      "mass_kg": 0.27753439059219565,
+      "friction": 0.45136142061280576
+    },
+    {
+      "cube_id": 135,
+      "split": "train",
+      "mass_kg": 0.2068842293328588,
+      "friction": 0.463331585939069
+    },
+    {
+      "cube_id": 136,
+      "split": "train",
+      "mass_kg": 0.4012297015551139,
+      "friction": 0.7297637093408769
+    },
+    {
+      "cube_id": 137,
+      "split": "train",
+      "mass_kg": 0.27320512967091054,
+      "friction": 0.7028178274138952
+    },
+    {
+      "cube_id": 138,
+      "split": "train",
+      "mass_kg": 0.2527664237079332,
+      "friction": 0.9844071363126748
+    },
+    {
+      "cube_id": 139,
+      "split": "train",
+      "mass_kg": 0.3094690645103517,
+      "friction": 0.5170693765983393
+    },
+    {
+      "cube_id": 140,
+      "split": "train",
+      "mass_kg": 0.044537239774351624,
+      "friction": 0.4226346558876689
+    },
+    {
+      "cube_id": 141,
+      "split": "train",
+      "mass_kg": 0.15905599642107435,
+      "friction": 0.6766391622046346
+    },
+    {
+      "cube_id": 142,
+      "split": "train",
+      "mass_kg": 0.3892739204456371,
+      "friction": 0.5195662028911814
+    },
+    {
+      "cube_id": 143,
+      "split": "train",
+      "mass_kg": 0.371627000499344,
+      "friction": 0.6461179895975824
+    },
+    {
+      "cube_id": 144,
+      "split": "train",
+      "mass_kg": 0.28979066077943744,
+      "friction": 0.4729020227649336
+    },
+    {
+      "cube_id": 145,
+      "split": "train",
+      "mass_kg": 0.43626393900404536,
+      "friction": 0.4104339381558434
+    },
+    {
+      "cube_id": 146,
+      "split": "train",
+      "mass_kg": 0.14171260948417908,
+      "friction": 0.6635215492218726
+    },
+    {
+      "cube_id": 147,
+      "split": "train",
+      "mass_kg": 0.10109641159619487,
+      "friction": 0.8395663286716051
+    },
+    {
+      "cube_id": 148,
+      "split": "train",
+      "mass_kg": 0.4187590010140155,
+      "friction": 0.7465959371141727
+    },
+    {
+      "cube_id": 149,
+      "split": "train",
+      "mass_kg": 0.09816938046508916,
+      "friction": 0.4874797765503562
+    },
+    {
+      "cube_id": 150,
+      "split": "train",
+      "mass_kg": 0.3837270562551034,
+      "friction": 0.6629958335683577
+    },
+    {
+      "cube_id": 151,
+      "split": "train",
+      "mass_kg": 0.4034102079864079,
+      "friction": 0.8282484710256879
+    },
+    {
+      "cube_id": 152,
+      "split": "train",
+      "mass_kg": 0.26002652724178227,
+      "friction": 0.4559171664938963
+    },
+    {
+      "cube_id": 153,
+      "split": "train",
+      "mass_kg": 0.12130222653722303,
+      "friction": 0.5344614767671871
+    },
+    {
+      "cube_id": 154,
+      "split": "train",
+      "mass_kg": 0.05503753407271109,
+      "friction": 0.41847365977647333
+    },
+    {
+      "cube_id": 155,
+      "split": "train",
+      "mass_kg": 0.18044266236765297,
+      "friction": 0.9109069546661649
+    },
+    {
+      "cube_id": 156,
+      "split": "train",
+      "mass_kg": 0.11633622567091184,
+      "friction": 0.6362958105079235
+    },
+    {
+      "cube_id": 157,
+      "split": "train",
+      "mass_kg": 0.24860767458063712,
+      "friction": 0.5368366051897953
+    },
+    {
+      "cube_id": 158,
+      "split": "train",
+      "mass_kg": 0.28784118021717114,
+      "friction": 0.7839402478876747
+    },
+    {
+      "cube_id": 159,
+      "split": "train",
+      "mass_kg": 0.49415803808961656,
+      "friction": 0.7628498492844391
+    },
+    {
+      "cube_id": 160,
+      "split": "train",
+      "mass_kg": 0.3132970776500713,
+      "friction": 0.4050840418767996
+    },
+    {
+      "cube_id": 161,
+      "split": "train",
+      "mass_kg": 0.38952616140639196,
+      "friction": 0.5986311454689701
+    },
+    {
+      "cube_id": 162,
+      "split": "train",
+      "mass_kg": 0.0676819618013154,
+      "friction": 0.9841657243332893
+    },
+    {
+      "cube_id": 163,
+      "split": "train",
+      "mass_kg": 0.09129573125881867,
+      "friction": 0.7987868927876245
+    },
+    {
+      "cube_id": 164,
+      "split": "train",
+      "mass_kg": 0.4385173261653678,
+      "friction": 0.559280459768725
+    },
+    {
+      "cube_id": 165,
+      "split": "train",
+      "mass_kg": 0.4328757234267705,
+      "friction": 0.4360162966724581
+    },
+    {
+      "cube_id": 166,
+      "split": "train",
+      "mass_kg": 0.2417476429129507,
+      "friction": 0.41045841004568334
+    },
+    {
+      "cube_id": 167,
+      "split": "train",
+      "mass_kg": 0.05101926613318723,
+      "friction": 0.6982417401474383
+    },
+    {
+      "cube_id": 168,
+      "split": "train",
+      "mass_kg": 0.47007834230144613,
+      "friction": 0.5330302579211774
+    },
+    {
+      "cube_id": 169,
+      "split": "train",
+      "mass_kg": 0.2515566600159599,
+      "friction": 0.950455562113114
+    },
+    {
+      "cube_id": 170,
+      "split": "train",
+      "mass_kg": 0.38786322939699625,
+      "friction": 0.823852836281886
+    },
+    {
+      "cube_id": 171,
+      "split": "train",
+      "mass_kg": 0.32965508453247344,
+      "friction": 0.9992195565162882
+    },
+    {
+      "cube_id": 172,
+      "split": "train",
+      "mass_kg": 0.22687002622078367,
+      "friction": 0.7443706934026613
+    },
+    {
+      "cube_id": 173,
+      "split": "train",
+      "mass_kg": 0.13210315046943924,
+      "friction": 0.9144619211795395
+    },
+    {
+      "cube_id": 174,
+      "split": "train",
+      "mass_kg": 0.06643721822812876,
+      "friction": 0.8445700864521501
+    },
+    {
+      "cube_id": 175,
+      "split": "train",
+      "mass_kg": 0.370726066971998,
+      "friction": 0.8981236978856035
+    },
+    {
+      "cube_id": 176,
+      "split": "train",
+      "mass_kg": 0.2505769916342935,
+      "friction": 0.9247562645177064
+    },
+    {
+      "cube_id": 177,
+      "split": "train",
+      "mass_kg": 0.4301992800733472,
+      "friction": 0.6569982175010565
+    },
+    {
+      "cube_id": 178,
+      "split": "train",
+      "mass_kg": 0.34784215908037636,
+      "friction": 0.6904899061396964
+    },
+    {
+      "cube_id": 179,
+      "split": "train",
+      "mass_kg": 0.1290399081274125,
+      "friction": 0.7488742663221069
+    },
+    {
+      "cube_id": 180,
+      "split": "train",
+      "mass_kg": 0.34421859595434173,
+      "friction": 0.9076998742407463
+    },
+    {
+      "cube_id": 181,
+      "split": "train",
+      "mass_kg": 0.07234340218699989,
+      "friction": 0.7385044750843228
+    },
+    {
+      "cube_id": 182,
+      "split": "train",
+      "mass_kg": 0.0493859667294985,
+      "friction": 0.9232224877304482
+    },
+    {
+      "cube_id": 183,
+      "split": "train",
+      "mass_kg": 0.4421857081773799,
+      "friction": 0.6836270348373588
+    },
+    {
+      "cube_id": 184,
+      "split": "train",
+      "mass_kg": 0.27629306088557304,
+      "friction": 0.9383448795947056
+    },
+    {
+      "cube_id": 185,
+      "split": "train",
+      "mass_kg": 0.4130107042801533,
+      "friction": 0.5248600545207182
+    },
+    {
+      "cube_id": 186,
+      "split": "train",
+      "mass_kg": 0.275440830395641,
+      "friction": 0.9444346442845595
+    },
+    {
+      "cube_id": 187,
+      "split": "train",
+      "mass_kg": 0.43486216114618875,
+      "friction": 0.4427600268617671
+    },
+    {
+      "cube_id": 188,
+      "split": "train",
+      "mass_kg": 0.19596989643038965,
+      "friction": 0.7047054805095956
+    },
+    {
+      "cube_id": 189,
+      "split": "train",
+      "mass_kg": 0.13328166950351228,
+      "friction": 0.6733124468420604
+    },
+    {
+      "cube_id": 190,
+      "split": "train",
+      "mass_kg": 0.0403417926613616,
+      "friction": 0.44842040567120683
+    },
+    {
+      "cube_id": 191,
+      "split": "train",
+      "mass_kg": 0.370313296484781,
+      "friction": 0.8287216057739837
+    },
+    {
+      "cube_id": 192,
+      "split": "train",
+      "mass_kg": 0.41473557229702185,
+      "friction": 0.46819459167306277
+    },
+    {
+      "cube_id": 193,
+      "split": "train",
+      "mass_kg": 0.15085064855595093,
+      "friction": 0.9897505132397807
+    },
+    {
+      "cube_id": 194,
+      "split": "train",
+      "mass_kg": 0.37080955901319557,
+      "friction": 0.443373007237279
+    },
+    {
+      "cube_id": 195,
+      "split": "train",
+      "mass_kg": 0.40025236666252983,
+      "friction": 0.9831664328301907
+    },
+    {
+      "cube_id": 196,
+      "split": "train",
+      "mass_kg": 0.2032852202461099,
+      "friction": 0.9966306174878395
+    },
+    {
+      "cube_id": 197,
+      "split": "train",
+      "mass_kg": 0.07437623411632163,
+      "friction": 0.431869789538877
+    },
+    {
+      "cube_id": 198,
+      "split": "train",
+      "mass_kg": 0.20315025890392208,
+      "friction": 0.6957993268273768
+    },
+    {
+      "cube_id": 199,
+      "split": "train",
+      "mass_kg": 0.26233709480392753,
+      "friction": 0.5201949290323884
+    },
+    {
+      "cube_id": 200,
+      "split": "test",
+      "mass_kg": 0.3870280970972361,
+      "friction": 0.7370611152172757
+    },
+    {
+      "cube_id": 201,
+      "split": "test",
+      "mass_kg": 0.2581226616412323,
+      "friction": 0.9647408785255457
+    },
+    {
+      "cube_id": 202,
+      "split": "test",
+      "mass_kg": 0.14567235788042052,
+      "friction": 0.8172357319655472
+    },
+    {
+      "cube_id": 203,
+      "split": "test",
+      "mass_kg": 0.12775756346656938,
+      "friction": 0.6623005818507255
+    },
+    {
+      "cube_id": 204,
+      "split": "test",
+      "mass_kg": 0.12951846594810323,
+      "friction": 0.5861567373796055
+    },
+    {
+      "cube_id": 205,
+      "split": "test",
+      "mass_kg": 0.2206390800787143,
+      "friction": 0.5987587931804266
+    },
+    {
+      "cube_id": 206,
+      "split": "test",
+      "mass_kg": 0.45889997187790016,
+      "friction": 0.41642454129144396
+    },
+    {
+      "cube_id": 207,
+      "split": "test",
+      "mass_kg": 0.13569288039193197,
+      "friction": 0.7259623338150347
+    },
+    {
+      "cube_id": 208,
+      "split": "test",
+      "mass_kg": 0.3253463055552982,
+      "friction": 0.7434700682327076
+    },
+    {
+      "cube_id": 209,
+      "split": "test",
+      "mass_kg": 0.47355152440424697,
+      "friction": 0.8456690914260765
+    },
+    {
+      "cube_id": 210,
+      "split": "test",
+      "mass_kg": 0.04110871621465165,
+      "friction": 0.7720552754061014
+    },
+    {
+      "cube_id": 211,
+      "split": "test",
+      "mass_kg": 0.391574411464515,
+      "friction": 0.6319363076679448
+    },
+    {
+      "cube_id": 212,
+      "split": "test",
+      "mass_kg": 0.3976355100847777,
+      "friction": 0.5298260920824289
+    },
+    {
+      "cube_id": 213,
+      "split": "test",
+      "mass_kg": 0.08822714508705187,
+      "friction": 0.6455885044742611
+    },
+    {
+      "cube_id": 214,
+      "split": "test",
+      "mass_kg": 0.37278511965788175,
+      "friction": 0.4904937592717138
+    },
+    {
+      "cube_id": 215,
+      "split": "test",
+      "mass_kg": 0.10589760391100997,
+      "friction": 0.992906774794444
+    },
+    {
+      "cube_id": 216,
+      "split": "test",
+      "mass_kg": 0.3125447811782844,
+      "friction": 0.5555199891764296
+    },
+    {
+      "cube_id": 217,
+      "split": "test",
+      "mass_kg": 0.48333502559558267,
+      "friction": 0.8062939178841484
+    },
+    {
+      "cube_id": 218,
+      "split": "test",
+      "mass_kg": 0.26911725931032243,
+      "friction": 0.9153692757173567
+    },
+    {
+      "cube_id": 219,
+      "split": "test",
+      "mass_kg": 0.4614453604533332,
+      "friction": 0.8372760938745759
+    },
+    {
+      "cube_id": 220,
+      "split": "test",
+      "mass_kg": 0.33315661894547965,
+      "friction": 0.42237576350351475
+    },
+    {
+      "cube_id": 221,
+      "split": "test",
+      "mass_kg": 0.1869208260064508,
+      "friction": 0.5462251762612192
+    },
+    {
+      "cube_id": 222,
+      "split": "test",
+      "mass_kg": 0.4079035147462391,
+      "friction": 0.6481371111939414
+    },
+    {
+      "cube_id": 223,
+      "split": "test",
+      "mass_kg": 0.0963387560378277,
+      "friction": 0.5819019843253582
+    },
+    {
+      "cube_id": 224,
+      "split": "test",
+      "mass_kg": 0.34544181112982797,
+      "friction": 0.4487362561456175
+    },
+    {
+      "cube_id": 225,
+      "split": "test",
+      "mass_kg": 0.25740430918808704,
+      "friction": 0.9662253185949218
+    },
+    {
+      "cube_id": 226,
+      "split": "test",
+      "mass_kg": 0.23935347857649816,
+      "friction": 0.7017505123515315
+    },
+    {
+      "cube_id": 227,
+      "split": "test",
+      "mass_kg": 0.11070242660162832,
+      "friction": 0.7546712979688053
+    },
+    {
+      "cube_id": 228,
+      "split": "test",
+      "mass_kg": 0.27657327200476833,
+      "friction": 0.8063884690020194
+    },
+    {
+      "cube_id": 229,
+      "split": "test",
+      "mass_kg": 0.24405575264603896,
+      "friction": 0.8175980175972419
+    },
+    {
+      "cube_id": 230,
+      "split": "out_of_range",
+      "mass_kg": 0.8860822497108736,
+      "friction": 0.7427491405919375
+    },
+    {
+      "cube_id": 231,
+      "split": "out_of_range",
+      "mass_kg": 0.790471668270954,
+      "friction": 0.6644361031218564
+    },
+    {
+      "cube_id": 232,
+      "split": "out_of_range",
+      "mass_kg": 0.7999961671539952,
+      "friction": 0.40178244663277973
+    },
+    {
+      "cube_id": 233,
+      "split": "out_of_range",
+      "mass_kg": 0.857332643007934,
+      "friction": 0.45487813193329774
+    },
+    {
+      "cube_id": 234,
+      "split": "out_of_range",
+      "mass_kg": 0.6620315759496842,
+      "friction": 0.5990349242057156
+    },
+    {
+      "cube_id": 235,
+      "split": "out_of_range",
+      "mass_kg": 0.6872396151694941,
+      "friction": 0.6138432802728757
+    },
+    {
+      "cube_id": 236,
+      "split": "out_of_range",
+      "mass_kg": 0.7246150575296034,
+      "friction": 0.7901774871608958
+    },
+    {
+      "cube_id": 237,
+      "split": "out_of_range",
+      "mass_kg": 0.645407371445184,
+      "friction": 0.5158453306723289
+    },
+    {
+      "cube_id": 238,
+      "split": "out_of_range",
+      "mass_kg": 0.7233391260567057,
+      "friction": 0.5261266392275451
+    },
+    {
+      "cube_id": 239,
+      "split": "out_of_range",
+      "mass_kg": 0.8326728206794274,
+      "friction": 0.954170686213175
+    },
+    {
+      "cube_id": 240,
+      "split": "out_of_range",
+      "mass_kg": 0.7804086573845211,
+      "friction": 0.5955307376185526
+    },
+    {
+      "cube_id": 241,
+      "split": "out_of_range",
+      "mass_kg": 0.8580074492031367,
+      "friction": 0.7763529285055474
+    },
+    {
+      "cube_id": 242,
+      "split": "out_of_range",
+      "mass_kg": 0.7484216658912928,
+      "friction": 0.6136889869789105
+    },
+    {
+      "cube_id": 243,
+      "split": "out_of_range",
+      "mass_kg": 0.6191945679984387,
+      "friction": 0.772941583297835
+    },
+    {
+      "cube_id": 244,
+      "split": "out_of_range",
+      "mass_kg": 0.8236656146470483,
+      "friction": 0.9397060445586178
+    },
+    {
+      "cube_id": 245,
+      "split": "out_of_range",
+      "mass_kg": 0.7352082246197302,
+      "friction": 0.8691219992805725
+    },
+    {
+      "cube_id": 246,
+      "split": "out_of_range",
+      "mass_kg": 0.7529400230113614,
+      "friction": 0.9647154173947937
+    },
+    {
+      "cube_id": 247,
+      "split": "out_of_range",
+      "mass_kg": 0.6958526260469757,
+      "friction": 0.9310306506558419
+    },
+    {
+      "cube_id": 248,
+      "split": "out_of_range",
+      "mass_kg": 0.7926345828165495,
+      "friction": 0.6905093073305788
+    },
+    {
+      "cube_id": 249,
+      "split": "out_of_range",
+      "mass_kg": 0.8958664163685508,
+      "friction": 0.5443586428965255
+    },
+    {
+      "cube_id": 250,
+      "split": "out_of_range",
+      "mass_kg": 0.7336366888108669,
+      "friction": 0.9544750098744971
+    },
+    {
+      "cube_id": 251,
+      "split": "out_of_range",
+      "mass_kg": 0.7116446588118992,
+      "friction": 0.7199188027680947
+    },
+    {
+      "cube_id": 252,
+      "split": "out_of_range",
+      "mass_kg": 0.6250878110730487,
+      "friction": 0.9187432201051176
+    },
+    {
+      "cube_id": 253,
+      "split": "out_of_range",
+      "mass_kg": 0.6754977488859684,
+      "friction": 0.7456301096811453
+    },
+    {
+      "cube_id": 254,
+      "split": "out_of_range",
+      "mass_kg": 0.8935957727605055,
+      "friction": 0.9273745734582085
+    },
+    {
+      "cube_id": 255,
+      "split": "out_of_range",
+      "mass_kg": 0.8846238692113908,
+      "friction": 0.6250335074866511
+    },
+    {
+      "cube_id": 256,
+      "split": "out_of_range",
+      "mass_kg": 0.601394091359578,
+      "friction": 0.7539167851079558
+    },
+    {
+      "cube_id": 257,
+      "split": "out_of_range",
+      "mass_kg": 0.5862481730855342,
+      "friction": 0.818741443447572
+    },
+    {
+      "cube_id": 258,
+      "split": "out_of_range",
+      "mass_kg": 0.5551976686877299,
+      "friction": 0.7460844699827494
+    },
+    {
+      "cube_id": 259,
+      "split": "out_of_range",
+      "mass_kg": 0.7395163966361105,
+      "friction": 0.5442559513345785
+    }
+  ],
+  "sampling": "Independent uniform draws for mass and friction; fixed cube identities; property values stored only in this file."
+}

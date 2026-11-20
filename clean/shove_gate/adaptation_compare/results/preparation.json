@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "prepared_unix_seconds": 1794838572.2070594,
+  "protocol_sha256": "b7c290b7e65cad349cb22cacd278e8f0c4b81d7316b65195f0237d1cb3053675",
+  "reused_training_cubes": 200,
+  "reused_training_episodes": 2000,
+  "reused_trace_files": 4000,
+  "training_cubes_logical_sha256": "c3d0c1f288c966bdcc6f21b4abbae58e75ee9a5c52779ee479e616ff1db83eb5",
+  "training_plans_logical_sha256": "7429b99b3aa1de3ec35b2796525118ffc74cf52b0d29505f6fb72c82efd2cf9b",
+  "retired_artifacts_preserved": 6209,
+  "base_checkpoints_preserved": 35,
+  "no_fresh_properties_or_plans_generated": true,
+  "no_fresh_traces_accessed": true
+}

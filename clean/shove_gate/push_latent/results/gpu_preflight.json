@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "synthetic_only": true,
+  "experiment_traces_read": false,
+  "experiment_checkpoints_saved": false,
+  "torch_version": "2.14.0+cu130",
+  "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "variants": [
+    {
+      "variant": "plain",
+      "forward_backward_optimizer": "passed"
+    },
+    {
+      "variant": "oracle",
+      "forward_backward_optimizer": "passed"
+    },
+    {
+      "variant": "history",
+      "forward_backward_optimizer": "passed"
+    },
+    {
+      "variant": "z2",
+      "forward_backward_optimizer": "passed"
+    },
+    {
+      "variant": "z4",
+      "forward_backward_optimizer": "passed"
+    },
+    {
+      "variant": "z8",
+      "forward_backward_optimizer": "passed"
+    },
+    {
+      "variant": "z16",
+      "forward_backward_optimizer": "passed"
+    }
+  ],
+  "model_source_sha256": "6f2936b4afd59e40cab9a72ee91fd5f9298e37d1ae191e7277895d7a7cd7b81e",
+  "checked_unix_seconds": 1794803518.8001244
+}

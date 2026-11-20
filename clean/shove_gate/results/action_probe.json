@@ -1,0 +1,916 @@
+{
+  "generator": {
+    "scope": "200/30 independent cube split using planned force commands only; no test motion.",
+    "feature_names": [
+      "applied_force_x_N",
+      "applied_force_y_N",
+      "applied_force_z_N",
+      "force_magnitude_N",
+      "commanded_duration_s"
+    ],
+    "constant_train_mean_r2": {
+      "mass_kg": -0.05661678694417738,
+      "friction": -0.0155928470805613,
+      "combined_friction": -0.015592847080559746
+    },
+    "selection": "180/20 training-cube validation only, then refit 200; no test tuning.",
+    "records": [
+      {
+        "family": "polynomial_ridge",
+        "seed": 101,
+        "selected_parameter": 10.0,
+        "validation_standardized_mse": 1.1290877224775264,
+        "r2": {
+          "mass_kg": -0.060303431174657085,
+          "friction": -0.016686029364464616,
+          "combined_friction": -0.016686029364466837
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 101,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 1.1381482060017354,
+        "r2": {
+          "mass_kg": -0.05813726025624044,
+          "friction": -0.016515139400641754,
+          "combined_friction": -0.01651513940064442
+        }
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 211,
+        "selected_parameter": 1.0,
+        "validation_standardized_mse": 0.8689592665292273,
+        "r2": {
+          "mass_kg": -0.06116592235205842,
+          "friction": -0.018263022504458437,
+          "combined_friction": -0.01826302250446199
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 211,
+        "selected_parameter": 32,
+        "validation_standardized_mse": 0.8770061816714528,
+        "r2": {
+          "mass_kg": -0.059137277720712644,
+          "friction": -0.02047878797014069,
+          "combined_friction": -0.02047878797014402
+        }
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 307,
+        "selected_parameter": 10000.0,
+        "validation_standardized_mse": 0.8753112171376287,
+        "r2": {
+          "mass_kg": -0.05759764109654819,
+          "friction": -0.016675891417858635,
+          "combined_friction": -0.016675891417861077
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 307,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.87824021029916,
+        "r2": {
+          "mass_kg": -0.058078298796863104,
+          "friction": -0.01744990952414316,
+          "combined_friction": -0.017449909524145824
+        }
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 401,
+        "selected_parameter": 1000.0,
+        "validation_standardized_mse": 0.8819776349537699,
+        "r2": {
+          "mass_kg": -0.058706789978774765,
+          "friction": -0.01801417436909336,
+          "combined_friction": -0.018014174369096025
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 401,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.8837389675166264,
+        "r2": {
+          "mass_kg": -0.05836162344792739,
+          "friction": -0.017550255200806886,
+          "combined_friction": -0.01755025520081044
+        }
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 503,
+        "selected_parameter": 10000.0,
+        "validation_standardized_mse": 0.8992031104700621,
+        "r2": {
+          "mass_kg": -0.05759764109654819,
+          "friction": -0.016675891417858635,
+          "combined_friction": -0.016675891417861077
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 503,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.9032862110086706,
+        "r2": {
+          "mass_kg": -0.05812703672967645,
+          "friction": -0.017499862493909113,
+          "combined_friction": -0.017499862493912
+        }
+      }
+    ],
+    "aggregate": {
+      "extra_trees": {
+        "mass_kg": {
+          "mean_r2": -0.058368299390284005,
+          "seed_std_r2": 0.0004435818238844657,
+          "min_r2": -0.059137277720712644,
+          "max_r2": -0.058078298796863104,
+          "mean_r2_minus_baseline": -0.0017515124461066275
+        },
+        "friction": {
+          "mean_r2": -0.01789879091792832,
+          "seed_std_r2": 0.0015044095062515586,
+          "min_r2": -0.02047878797014069,
+          "max_r2": -0.016515139400641754,
+          "mean_r2_minus_baseline": -0.0023059438373670207
+        },
+        "combined_friction": {
+          "mean_r2": -0.01789879091793134,
+          "seed_std_r2": 0.0015044095062517783,
+          "min_r2": -0.02047878797014402,
+          "max_r2": -0.01651513940064442,
+          "mean_r2_minus_baseline": -0.0023059438373715935
+        }
+      },
+      "polynomial_ridge": {
+        "mass_kg": {
+          "mean_r2": -0.05907428513971733,
+          "seed_std_r2": 0.0016110364798033081,
+          "min_r2": -0.06116592235205842,
+          "max_r2": -0.05759764109654819,
+          "mean_r2_minus_baseline": -0.0024574981955399547
+        },
+        "friction": {
+          "mean_r2": -0.017263001814746735,
+          "seed_std_r2": 0.000804144892247016,
+          "min_r2": -0.018263022504458437,
+          "max_r2": -0.016675891417858635,
+          "mean_r2_minus_baseline": -0.0016701547341854348
+        },
+        "combined_friction": {
+          "mean_r2": -0.0172630018147494,
+          "seed_std_r2": 0.0008041448922474528,
+          "min_r2": -0.01826302250446199,
+          "max_r2": -0.016675891417861077,
+          "mean_r2_minus_baseline": -0.0016701547341896536
+        }
+      }
+    },
+    "all_r2_below_0_1": true
+  },
+  "pilot": {
+    "scope": "Actual saved ten-cube direct-force pilot; pooled leave-one-cube-out predictions; fixed probe hyperparameters.",
+    "n_cubes": 10,
+    "n_episodes": 100,
+    "feature_names": [
+      "applied_force_x_N",
+      "applied_force_y_N",
+      "applied_force_z_N",
+      "force_magnitude_N",
+      "commanded_duration_s"
+    ],
+    "episode_sha256": {
+      "cube_000_episode_00.npz": "2c6bb99a63c784e3e9662709e97c4daca983ffa2618d12f8e8f5b5c8291e335b",
+      "cube_000_episode_01.npz": "e6f3c58dfdfc1c25fb5545c04ec482b1ccd1f8c68a6d26c005b80c3b810775ba",
+      "cube_000_episode_02.npz": "f808cebae2071bf96fec32b4484c6e629698792ce085149a0abcb28ee5280512",
+      "cube_000_episode_03.npz": "944ed46d522f14d72638c8e810fa0ed5d412ac9a5f72c551399c4934702c8177",
+      "cube_000_episode_04.npz": "06ab4eb15eb1517680fc5fd7101c3c05d1c1623fb7926750701478397afa7a5e",
+      "cube_000_episode_05.npz": "34b5291b6094b650f08ce164d76da58cec43f0717f6c14b584288de0e81ed3a8",
+      "cube_000_episode_06.npz": "94a41816d94db1bc9feaa2336926841216444a3f71d516c18587638017a03cec",
+      "cube_000_episode_07.npz": "414854ae4e5c35dba12947c1d3194cc8c0f7b925eb12431ab31a399a4c0b77f4",
+      "cube_000_episode_08.npz": "432d18552f1b299f2eee34cc3a5de1adafbcceff8164c0c322fe71c1eee4194e",
+      "cube_000_episode_09.npz": "3f4d5bbe27b69a40d0fc7f835ad166fa956afddba720be6c568869233e0b2975",
+      "cube_001_episode_00.npz": "bc4fb16257f95356928782704f1d64ff6a82f46bb35faa9e49833bae2b4310f5",
+      "cube_001_episode_01.npz": "c8c2de95d45887b6561a6c570499d5d829d363cbf43eddf8aff57488f308d164",
+      "cube_001_episode_02.npz": "5945bac4bb77cfdde5c0942f5687ca3e5942cbffef89ce4672637911ca2135a3",
+      "cube_001_episode_03.npz": "4ebcb710cd206b0cbe22bebaf70a34a59f72a090c2f7164ec36e690098dfffe5",
+      "cube_001_episode_04.npz": "63f3192f6d5eadcedaa317092d6836ada414c73f777dd05b69bccf4a339214c4",
+      "cube_001_episode_05.npz": "610f549c8f34c85c85e65ad06a230600711d2890386ed5391de2605270eb32c6",
+      "cube_001_episode_06.npz": "6923b813833d4a5ac6050f0582701c4927346ebb4a58f81c1c43333c9a1551c5",
+      "cube_001_episode_07.npz": "104ab229e4cc9e56a3e10fed1b467f8374c52faf1a4c067fa9146d6cd1b2e7a3",
+      "cube_001_episode_08.npz": "000eb5a72b68da55c07a09aaa17d68da8cecfa34c6d0549dc1b5f11d2d6c167e",
+      "cube_001_episode_09.npz": "4aeba4eb91fdcc69acbbb418cb94b07a60024c88221f4979bc6163f66cd30df7",
+      "cube_002_episode_00.npz": "430ef96993451ba7c4333d67e4d56a1fc8547cba9608aa337a2cb46ac958dc3c",
+      "cube_002_episode_01.npz": "38d47ea65279cf00a6d486402543298c25b862c5731b2de6291d8cd14fe22aaa",
+      "cube_002_episode_02.npz": "603b63e6b8ffda6f269b6d78dd2fc4d707fba1773c88f26f8de355af348e39c7",
+      "cube_002_episode_03.npz": "a6c68688b6b23b1e9df3ef534c29027595924187d29bcf6a5ae16ccb5566f3de",
+      "cube_002_episode_04.npz": "5fa01087fd772a506393164dde88a537d8a825909dea22c4edf9ab70259c5d6f",
+      "cube_002_episode_05.npz": "d97e8e60303250833d64d12a5b682d46c0359dc4903ae5a05740020e1b1affa0",
+      "cube_002_episode_06.npz": "de07e7efc011b70d0f3f004b8cad3d61dcb4cd10471dde3667764712342bc9e1",
+      "cube_002_episode_07.npz": "1a9f4347b2be7a26917e37ea277c634c6b827154de50595c471980816e9fb31c",
+      "cube_002_episode_08.npz": "05b1fdcc46baa0c075e4df9e79fa2bccd6f65eeb3b62493ce7c728262a6db703",
+      "cube_002_episode_09.npz": "9e5d12c131c81ba80162782dab709e99746416f211adf4f08efaeb29f2c6b038",
+      "cube_003_episode_00.npz": "86e25fb5a3a6826c842d8973faa98d9bd4d586d71dcff24ad6808a0709a957db",
+      "cube_003_episode_01.npz": "64c1fa8cd5db1c875c7c323001746b1cc9b7a9bad940c186b847a9f19c45544c",
+      "cube_003_episode_02.npz": "5872f43026927ab46a7f5fd0f9174fc23335e488bda8cdb0b58da6f2a9cc3a26",
+      "cube_003_episode_03.npz": "7de9a0a8e2292714b26da4904e5bd8e46162304772903ad2ae94176797eeca8b",
+      "cube_003_episode_04.npz": "3c2678683464eef88150fa5f7a696e9c49e21eab239379f513b91b38e7ffb211",
+      "cube_003_episode_05.npz": "1d87a97c4e16e0b4b93fe69b6ae24f33dfcb0407d0c6998191fa574968a05fe5",
+      "cube_003_episode_06.npz": "999027fc61ba782903ff6c8416db470bc650e4f3b6a3bd34362c1054b2d4ca86",
+      "cube_003_episode_07.npz": "1060b172bc34e84065a08c5557f9b6d4b2314d0be107fa6cbeb2dd79d333b622",
+      "cube_003_episode_08.npz": "961f5aa21de0aa5fa38d551c351421a934d060c1f95a21c3403fcf0cdf67125d",
+      "cube_003_episode_09.npz": "3ffa5198cc322194a8b1e6f1d2de5e1db1f1cd176c4e90fc5aa86d4e45cda92c",
+      "cube_004_episode_00.npz": "a5ee19343f98910c739bd78acc13fd32d81688ff31deca48eb7981b038648a5d",
+      "cube_004_episode_01.npz": "9f31b3cadf070a9234de90c64bf557a043a097f59e79a20de3547d2e72d28e4a",
+      "cube_004_episode_02.npz": "c5ff8300f7b34821f2b715be2fae9a909ac0a5554b685782ec27daa20289961c",
+      "cube_004_episode_03.npz": "595c6bcb7eb46ff2b935a6f7a54d7af364e75330cb7fcbc6f68fed28b41e1da0",
+      "cube_004_episode_04.npz": "43d5eda134e9f62412bca7bf5ca7826902481d8c9706c9787d9d249f0670ab59",
+      "cube_004_episode_05.npz": "02bed6071732ecff4b33d87283e5eda84ff33b8d3a12bea9ccb32687b5a13ff3",
+      "cube_004_episode_06.npz": "8e15ab437f747185ea020c7680423632dbdac31d1d283ed2e1d8f05a987869ad",
+      "cube_004_episode_07.npz": "d2ba5938f91e566994006a22d8013de4ba773cc298009a0244033ba3ba6beeb5",
+      "cube_004_episode_08.npz": "5b8a4799937b0dfd19d6ba316bdf585cc289d87f26c45c54006e0ac117e42270",
+      "cube_004_episode_09.npz": "89e46cdc193d8e1d77a5ebb361a60c435274b3e7ce6519107fbfa2c3581e9b8f",
+      "cube_005_episode_00.npz": "f451745aaaec8a6d795725bf2a5dc457b62e8530f1c80e84f8e300250a392418",
+      "cube_005_episode_01.npz": "96fb623d1c56c34f86b10277db3988e26cda8e073d61ecf74ba97a299c6d392d",
+      "cube_005_episode_02.npz": "7a8138d1e9f6cabba0130ea826b422f132b96e17c23648ed4e3f4406845594ac",
+      "cube_005_episode_03.npz": "630d927d9ddf94e5f28f0eae14af2e57e60bac0c80d57bf66aff21572438f885",
+      "cube_005_episode_04.npz": "e8f08f85530e0050502d46b91c6bd5d4a9098a67f5949b036dfa04691df0b40b",
+      "cube_005_episode_05.npz": "5bb49dd1aef0fb947913f073efcf0afdfc182681d5f1237c534668c3606bb377",
+      "cube_005_episode_06.npz": "7c2165c7b099382cb42a1c05ba5d0b68fc309fe0f6cfc62d51dad0a380ed10df",
+      "cube_005_episode_07.npz": "24eafb5caa5cbfd47916d675a1fe1560fc4e29b0ef2c23094c23d3b1fd0bbaaa",
+      "cube_005_episode_08.npz": "00f45507fc6a25794dde36b2002d9379ce515ef140c950cb14c62f9ceeb04fec",
+      "cube_005_episode_09.npz": "86bc50f73eba73d26377108aacd74484d991b23470c217975c64bd0fcad8f2dd",
+      "cube_006_episode_00.npz": "3fbbe1dea90cdc8debcf96d184a31ae0de6e69d318272a9837b2ffd79837e913",
+      "cube_006_episode_01.npz": "ff1aae5f9d7660d6dbfe226b2c2282157e76910225e3c4c89968cc54c2ccb061",
+      "cube_006_episode_02.npz": "f9d95226255a2f4bab92aed0d3cd044a9052a207276c145bc2ab8da3dc08f3f6",
+      "cube_006_episode_03.npz": "653988b479d35285958e34f0a707a235211954a55818502d225de229631a3f9a",
+      "cube_006_episode_04.npz": "a8c498312bae6e4582e0dcf7434dd244ee6849a97b3fc186d5e8a3a471c43207",
+      "cube_006_episode_05.npz": "e6032d5711c63ee717f11a316268f1194bb277135b27aae177874acf8895b617",
+      "cube_006_episode_06.npz": "cdd420f4e912c0e533ece9bf8c16a3b9a74bbe9d6e6fc28dfd2fa1dee7ef6707",
+      "cube_006_episode_07.npz": "8c36d142cf87f9a9ac117675a857e9243fc45c67ed88b9f3f4ff319adba6cbd7",
+      "cube_006_episode_08.npz": "6c6f439acda38f9616a353afd4b01c8742dde730880948a3c0b0912391246c14",
+      "cube_006_episode_09.npz": "3d1e28ab725968dd1e7cf44921bc7e343e007ed905ee39e0bf5a84d81b5e34af",
+      "cube_007_episode_00.npz": "6e02b854459bb5f7da28bfe1eb5edbaa1a943c2dfa16e3ffcdfba8dbc1448634",
+      "cube_007_episode_01.npz": "e74d001c3375254c4c21ba596415937d62747f9d27a3c34cb4ccfec7c73a2881",
+      "cube_007_episode_02.npz": "e9bb7a86406d3a40f981007e99b642173a9af6eb910f2ce87951dff80e254aae",
+      "cube_007_episode_03.npz": "556e2131a74f84461fc884bad5faddf63ed539332766fd9acb7b4692fe6ea1a6",
+      "cube_007_episode_04.npz": "70985de1e34a4d7255467790528d2fcbc125facfea0ed7d71639394cdca3715e",
+      "cube_007_episode_05.npz": "cdf6cb130475929ed89f152ca6122906fe0271fe5ea499b9b14712ded5647f36",
+      "cube_007_episode_06.npz": "c6495aa025f9ce7cae886f38dd59f3ce06d7232d5e60118728cfb7b25f555d00",
+      "cube_007_episode_07.npz": "88e7a410d6fbb44388f6f3694ef024c3648808828907903ec57f470fc791397a",
+      "cube_007_episode_08.npz": "d7b2ac0853f353f46aedb816a94a60e96113287ca7d398a0bfff2e4af79215cf",
+      "cube_007_episode_09.npz": "9992f1159b4e6e28c0fdd11ddc0faf358b5640028f7a7f94cd8bf6042793ad37",
+      "cube_008_episode_00.npz": "ef9418c0b98d5290028a8ef178cf933348082134848a941afdb28bd93da97709",
+      "cube_008_episode_01.npz": "02b892da3e858d633680aa48d1eda4b643c6372dcefdd16b5ccc72a824732d03",
+      "cube_008_episode_02.npz": "db4c046ccd78b2c228be7569aa169e6e263424b90976f237e4c96c4fb3bf05bc",
+      "cube_008_episode_03.npz": "008d37aecefdbddf311620da49cc845406f690ce9ab67bed6a2a2d97768dfe1b",
+      "cube_008_episode_04.npz": "e59142890673bd6fb4aeb62bfd22ff07d5775fc24460d2e5ac3e211d58707736",
+      "cube_008_episode_05.npz": "33b36ead731f1f6865e48752bccbcb9bd32526ec5111b2cbb33dc30fe00e8176",
+      "cube_008_episode_06.npz": "647abbab80c89f7029463a84ffc64ee1c1a067ad2aa434629d70728f73d3c6be",
+      "cube_008_episode_07.npz": "7018ddf7aa6d3c3fcb361f903b69938c970904604dd0d77c8d73a77756f32252",
+      "cube_008_episode_08.npz": "d3a64e7e9b10f01cbbbb674d099420b61ff3c7e4bfcd797393e076fa53da8a54",
+      "cube_008_episode_09.npz": "b6f4759c1ddcb1e338e2763eb5ebc9632ea6f7b442213bf21c57b314688c043a",
+      "cube_009_episode_00.npz": "6cde57b988ad2cc0fd7af736ffa08e5596d1e95697d74640dc7f24d994a202cf",
+      "cube_009_episode_01.npz": "2b8c4c9ff0e69fd8769360f30fc4ecb992f84be2fcd8ec0812f39321820dde8f",
+      "cube_009_episode_02.npz": "db9dea29922c875342cc3f6e2b32a5a27fae27e8ebaf63c820a14141281fae98",
+      "cube_009_episode_03.npz": "820fae3d71e3c59d1a1a3a3403fe838042d47a9d0b91c26db94269c04738e960",
+      "cube_009_episode_04.npz": "8ce22c6e068a35ffc3d42d18117277a0a10f40ad7c95dff37ff9a7dbed5e6131",
+      "cube_009_episode_05.npz": "0bc287cd9b9c8e7191eda18ce3cec5a59b1cc7e4f77ce0ed2c783dac940502d0",
+      "cube_009_episode_06.npz": "1b348533d436cbde9888083c6ff6da918856366bac10f2583108257ab1291f0e",
+      "cube_009_episode_07.npz": "5994f5db18f7306a6fed9966a04cb8850ed695758ee11b9d644c23759f0e057c",
+      "cube_009_episode_08.npz": "d410240b9b3eb123adee2323bccb1cd55b9d3f9ec0d66b95a327022f2d67f1d1",
+      "cube_009_episode_09.npz": "f86fb87f411c4bba4c4a40dfb6c3f869a22dbe9f6a77a14fb5a33d97dc6d1dc8"
+    },
+    "fixed_raw_command_window_s": 0.1,
+    "commanded_duration_is_randomized_not_stop_time": true,
+    "fold_mean_baseline_r2": {
+      "mass_kg": -0.23456790123456672,
+      "friction": -0.23456790123456717,
+      "combined_friction": -0.23456790123457072
+    },
+    "feature_sets": {
+      "commands_only": {
+        "records": [
+          {
+            "family": "polynomial_ridge",
+            "seed": 101,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": -0.30911073197648187,
+              "friction": -0.3024965386100069,
+              "combined_friction": -0.30249653861000736
+            },
+            "baseline_relative_skill": {
+              "mass_kg": -0.060379692900951465,
+              "friction": -0.055022196274106205,
+              "combined_friction": -0.05502219627410354
+            }
+          },
+          {
+            "family": "polynomial_ridge",
+            "seed": 211,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": -0.30911073197648187,
+              "friction": -0.3024965386100069,
+              "combined_friction": -0.30249653861000736
+            },
+            "baseline_relative_skill": {
+              "mass_kg": -0.060379692900951465,
+              "friction": -0.055022196274106205,
+              "combined_friction": -0.05502219627410354
+            }
+          },
+          {
+            "family": "polynomial_ridge",
+            "seed": 307,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": -0.30911073197648187,
+              "friction": -0.3024965386100069,
+              "combined_friction": -0.30249653861000736
+            },
+            "baseline_relative_skill": {
+              "mass_kg": -0.060379692900951465,
+              "friction": -0.055022196274106205,
+              "combined_friction": -0.05502219627410354
+            }
+          },
+          {
+            "family": "polynomial_ridge",
+            "seed": 401,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": -0.30911073197648187,
+              "friction": -0.3024965386100069,
+              "combined_friction": -0.30249653861000736
+            },
+            "baseline_relative_skill": {
+              "mass_kg": -0.060379692900951465,
+              "friction": -0.055022196274106205,
+              "combined_friction": -0.05502219627410354
+            }
+          },
+          {
+            "family": "polynomial_ridge",
+            "seed": 503,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": -0.30911073197648187,
+              "friction": -0.3024965386100069,
+              "combined_friction": -0.30249653861000736
+            },
+            "baseline_relative_skill": {
+              "mass_kg": -0.060379692900951465,
+              "friction": -0.055022196274106205,
+              "combined_friction": -0.05502219627410354
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 101,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": -0.31878424417183115,
+              "friction": -0.3415232476523655,
+              "combined_friction": -0.34152324765236686
+            },
+            "baseline_relative_skill": {
+              "mass_kg": -0.06821523777918426,
+              "friction": -0.08663383059841667,
+              "combined_friction": -0.08663383059841467
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 211,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": -0.30734447078186355,
+              "friction": -0.34734208032469427,
+              "combined_friction": -0.3473420803246947
+            },
+            "baseline_relative_skill": {
+              "mass_kg": -0.05894902133331059,
+              "friction": -0.09134708506300315,
+              "combined_friction": -0.09134708506300027
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 307,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": -0.31776741607166437,
+              "friction": -0.3479860196545703,
+              "combined_friction": -0.34798601965457077
+            },
+            "baseline_relative_skill": {
+              "mass_kg": -0.06739160701804914,
+              "friction": -0.09186867592020276,
+              "combined_friction": -0.09186867592019987
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 401,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": -0.31006477350344697,
+              "friction": -0.3362324946398174,
+              "combined_friction": -0.33623249463981697
+            },
+            "baseline_relative_skill": {
+              "mass_kg": -0.06115246653779316,
+              "friction": -0.0823483206582527,
+              "combined_friction": -0.08234832065824937
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 503,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": -0.31667709333014904,
+              "friction": -0.33962931720457656,
+              "combined_friction": -0.33962931720457723
+            },
+            "baseline_relative_skill": {
+              "mass_kg": -0.06650844559742186,
+              "friction": -0.08509974693570777,
+              "combined_friction": -0.0850997469357051
+            }
+          }
+        ],
+        "aggregate": {
+          "extra_trees": {
+            "mass_kg": {
+              "mean_r2": -0.31412759957179104,
+              "seed_std_r2": 0.005097791515698208,
+              "min_r2": -0.31878424417183115,
+              "max_r2": -0.30734447078186355,
+              "mean_r2_minus_baseline": -0.07955969833722432
+            },
+            "friction": {
+              "mean_r2": -0.34254263189520484,
+              "seed_std_r2": 0.005049988971006433,
+              "min_r2": -0.3479860196545703,
+              "max_r2": -0.3362324946398174,
+              "mean_r2_minus_baseline": -0.10797473066063767
+            },
+            "combined_friction": {
+              "mean_r2": -0.3425426318952053,
+              "seed_std_r2": 0.005049988971006634,
+              "min_r2": -0.34798601965457077,
+              "max_r2": -0.33623249463981697,
+              "mean_r2_minus_baseline": -0.10797473066063457
+            }
+          },
+          "polynomial_ridge": {
+            "mass_kg": {
+              "mean_r2": -0.30911073197648187,
+              "seed_std_r2": 0.0,
+              "min_r2": -0.30911073197648187,
+              "max_r2": -0.30911073197648187,
+              "mean_r2_minus_baseline": -0.07454283074191514
+            },
+            "friction": {
+              "mean_r2": -0.3024965386100069,
+              "seed_std_r2": 0.0,
+              "min_r2": -0.3024965386100069,
+              "max_r2": -0.3024965386100069,
+              "mean_r2_minus_baseline": -0.06792863737543975
+            },
+            "combined_friction": {
+              "mean_r2": -0.30249653861000736,
+              "seed_std_r2": 0.0,
+              "min_r2": -0.30249653861000736,
+              "max_r2": -0.30249653861000736,
+              "mean_r2_minus_baseline": -0.06792863737543664
+            }
+          }
+        }
+      },
+      "retained_length_only": {
+        "records": [
+          {
+            "family": "polynomial_ridge",
+            "seed": 101,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": 0.09418998106161569,
+              "friction": -0.11471529967824057,
+              "combined_friction": -0.11471529967824057
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.2662938846599079,
+              "friction": 0.09708060726062462,
+              "combined_friction": 0.09708060726062717
+            }
+          },
+          {
+            "family": "polynomial_ridge",
+            "seed": 211,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": 0.09418998106161569,
+              "friction": -0.11471529967824057,
+              "combined_friction": -0.11471529967824057
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.2662938846599079,
+              "friction": 0.09708060726062462,
+              "combined_friction": 0.09708060726062717
+            }
+          },
+          {
+            "family": "polynomial_ridge",
+            "seed": 307,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": 0.09418998106161569,
+              "friction": -0.11471529967824057,
+              "combined_friction": -0.11471529967824057
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.2662938846599079,
+              "friction": 0.09708060726062462,
+              "combined_friction": 0.09708060726062717
+            }
+          },
+          {
+            "family": "polynomial_ridge",
+            "seed": 401,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": 0.09418998106161569,
+              "friction": -0.11471529967824057,
+              "combined_friction": -0.11471529967824057
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.2662938846599079,
+              "friction": 0.09708060726062462,
+              "combined_friction": 0.09708060726062717
+            }
+          },
+          {
+            "family": "polynomial_ridge",
+            "seed": 503,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": 0.09418998106161569,
+              "friction": -0.11471529967824057,
+              "combined_friction": -0.11471529967824057
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.2662938846599079,
+              "friction": 0.09708060726062462,
+              "combined_friction": 0.09708060726062717
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 101,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": 0.1579592707822618,
+              "friction": -0.16158068586074736,
+              "combined_friction": -0.16158068586074803
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.3179470093336313,
+              "friction": 0.05911964445279405,
+              "combined_friction": 0.05911964445279627
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 211,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": 0.15613051355677088,
+              "friction": -0.1467088321741512,
+              "combined_friction": -0.14670883217415187
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.3164657159809837,
+              "friction": 0.07116584593893693,
+              "combined_friction": 0.07116584593893904
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 307,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": 0.15502227948588054,
+              "friction": -0.15641578397857359,
+              "combined_friction": -0.15641578397857403
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.3155680463835626,
+              "friction": 0.0633032149773548,
+              "combined_friction": 0.06330321497735725
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 401,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": 0.15691974314656498,
+              "friction": -0.1586408118767939,
+              "combined_friction": -0.15864081187679524
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.3171049919487169,
+              "friction": 0.06150094237979642,
+              "combined_friction": 0.061500942379797974
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 503,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": 0.16083866862067997,
+              "friction": -0.15420272623392695,
+              "combined_friction": -0.15420272623392783
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.3202793215827501,
+              "friction": 0.06509579175051872,
+              "combined_friction": 0.0650957917505206
+            }
+          }
+        ],
+        "aggregate": {
+          "extra_trees": {
+            "mass_kg": {
+              "mean_r2": 0.15737409511843165,
+              "seed_std_r2": 0.00221526904090529,
+              "min_r2": 0.15502227948588054,
+              "max_r2": 0.16083866862067997,
+              "mean_r2_minus_baseline": 0.39194199635299837
+            },
+            "friction": {
+              "mean_r2": -0.1555097680248386,
+              "seed_std_r2": 0.005626836899465561,
+              "min_r2": -0.16158068586074736,
+              "max_r2": -0.1467088321741512,
+              "mean_r2_minus_baseline": 0.07905813320972857
+            },
+            "combined_friction": {
+              "mean_r2": -0.1555097680248394,
+              "seed_std_r2": 0.005626836899465632,
+              "min_r2": -0.16158068586074803,
+              "max_r2": -0.14670883217415187,
+              "mean_r2_minus_baseline": 0.07905813320973132
+            }
+          },
+          "polynomial_ridge": {
+            "mass_kg": {
+              "mean_r2": 0.09418998106161569,
+              "seed_std_r2": 0.0,
+              "min_r2": 0.09418998106161569,
+              "max_r2": 0.09418998106161569,
+              "mean_r2_minus_baseline": 0.3287578822961824
+            },
+            "friction": {
+              "mean_r2": -0.11471529967824057,
+              "seed_std_r2": 0.0,
+              "min_r2": -0.11471529967824057,
+              "max_r2": -0.11471529967824057,
+              "mean_r2_minus_baseline": 0.1198526015563266
+            },
+            "combined_friction": {
+              "mean_r2": -0.11471529967824057,
+              "seed_std_r2": 0.0,
+              "min_r2": -0.11471529967824057,
+              "max_r2": -0.11471529967824057,
+              "mean_r2_minus_baseline": 0.11985260155633015
+            }
+          }
+        }
+      },
+      "commands_plus_retained_length": {
+        "records": [
+          {
+            "family": "polynomial_ridge",
+            "seed": 101,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": 0.19908316132792137,
+              "friction": -0.19355011610719974,
+              "combined_friction": -0.19355011610719997
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.35125736067561564,
+              "friction": 0.03322440595316756,
+              "combined_friction": 0.03322440595317022
+            }
+          },
+          {
+            "family": "polynomial_ridge",
+            "seed": 211,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": 0.19908316132792137,
+              "friction": -0.19355011610719974,
+              "combined_friction": -0.19355011610719997
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.35125736067561564,
+              "friction": 0.03322440595316756,
+              "combined_friction": 0.03322440595317022
+            }
+          },
+          {
+            "family": "polynomial_ridge",
+            "seed": 307,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": 0.19908316132792137,
+              "friction": -0.19355011610719974,
+              "combined_friction": -0.19355011610719997
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.35125736067561564,
+              "friction": 0.03322440595316756,
+              "combined_friction": 0.03322440595317022
+            }
+          },
+          {
+            "family": "polynomial_ridge",
+            "seed": 401,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": 0.19908316132792137,
+              "friction": -0.19355011610719974,
+              "combined_friction": -0.19355011610719997
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.35125736067561564,
+              "friction": 0.03322440595316756,
+              "combined_friction": 0.03322440595317022
+            }
+          },
+          {
+            "family": "polynomial_ridge",
+            "seed": 503,
+            "fixed_parameter": 100.0,
+            "r2": {
+              "mass_kg": 0.19908316132792137,
+              "friction": -0.19355011610719974,
+              "combined_friction": -0.19355011610719997
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.35125736067561564,
+              "friction": 0.03322440595316756,
+              "combined_friction": 0.03322440595317022
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 101,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": 0.33914133827181947,
+              "friction": -0.2067089851919479,
+              "combined_friction": -0.20670898519194858
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.46470448400017317,
+              "friction": 0.02256572199452156,
+              "combined_friction": 0.02256572199452389
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 211,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": 0.3503718873223388,
+              "friction": -0.21617511763902453,
+              "combined_friction": -0.21617511763902497
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.47380122873109387,
+              "friction": 0.014898154712389422,
+              "combined_friction": 0.014898154712391976
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 307,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": 0.3730696098561741,
+              "friction": -0.2327619713096556,
+              "combined_friction": -0.23276197130965626
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.49218638398350045,
+              "friction": 0.0014628032391783563,
+              "combined_friction": 0.0014628032391806878
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 401,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": 0.3456860631857448,
+              "friction": -0.23085606683763005,
+              "combined_friction": -0.23085606683763094
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.47000571118045276,
+              "friction": 0.003006585861519029,
+              "combined_friction": 0.0030065858615211383
+            }
+          },
+          {
+            "family": "extra_trees",
+            "seed": 503,
+            "fixed_parameter": 5,
+            "r2": {
+              "mass_kg": 0.3544819983580375,
+              "friction": -0.21847722377533452,
+              "combined_friction": -0.21847722377533585
+            },
+            "baseline_relative_skill": {
+              "mass_kg": 0.4771304186700098,
+              "friction": 0.013033448741978426,
+              "combined_friction": 0.013033448741980203
+            }
+          }
+        ],
+        "aggregate": {
+          "extra_trees": {
+            "mass_kg": {
+              "mean_r2": 0.35255017939882294,
+              "seed_std_r2": 0.012810513445131568,
+              "min_r2": 0.33914133827181947,
+              "max_r2": 0.3730696098561741,
+              "mean_r2_minus_baseline": 0.5871180806333897
+            },
+            "friction": {
+              "mean_r2": -0.2209958729507185,
+              "seed_std_r2": 0.010832392756857401,
+              "min_r2": -0.2327619713096556,
+              "max_r2": -0.2067089851919479,
+              "mean_r2_minus_baseline": 0.013572028283848653
+            },
+            "combined_friction": {
+              "mean_r2": -0.22099587295071932,
+              "seed_std_r2": 0.01083239275685744,
+              "min_r2": -0.23276197130965626,
+              "max_r2": -0.20670898519194858,
+              "mean_r2_minus_baseline": 0.0135720282838514
+            }
+          },
+          "polynomial_ridge": {
+            "mass_kg": {
+              "mean_r2": 0.19908316132792137,
+              "seed_std_r2": 0.0,
+              "min_r2": 0.19908316132792137,
+              "max_r2": 0.19908316132792137,
+              "mean_r2_minus_baseline": 0.4336510625624881
+            },
+            "friction": {
+              "mean_r2": -0.19355011610719974,
+              "seed_std_r2": 0.0,
+              "min_r2": -0.19355011610719974,
+              "max_r2": -0.19355011610719974,
+              "mean_r2_minus_baseline": 0.04101778512736742
+            },
+            "combined_friction": {
+              "mean_r2": -0.19355011610719997,
+              "seed_std_r2": 0.0,
+              "min_r2": -0.19355011610719997,
+              "max_r2": -0.19355011610719997,
+              "mean_r2_minus_baseline": 0.041017785127370754
+            }
+          }
+        }
+      }
+    },
+    "interpretation": "With ten equal cube groups, leave-one-cube-out constant means have R2=-0.234568. Negative pilot R2 is not silently called zero. Length features are forbidden outcome-derived diagnostics, not permitted model inputs."
+  },
+  "source_sha256": "1602839c94ac5f4907f4c94e98927fc8572c279a4688e34d4c3b2af97821a44c",
+  "input_sha256": {
+    "cubes.json": "fecb7e660781b149cf932fbdf56fa6e49f54e408f3a63dea5828efbf3da5b9a0",
+    "plans.json": "074a14c3f8d9a1a91d6fa98886f8a9e27b36ee4258a4d05ff505864d0a314426"
+  },
+  "elapsed_seconds": 25.875627183006145,
+  "no_prediction_or_belief_model_training": true
+}

@@ -1,0 +1,10 @@
+{
+  "grip_force_max": 30.0,
+  "split_sha256": "db268f323a833731dc3b5f97f6493984794b1b07cc6fc5d0eee081a6b7e68e1e",
+  "cubes_sha256": "0333686bd22b11b089af2bd1fe6970f343f7de28afacac691426015e87a924e3",
+  "iterations": [
+    1,
+    2
+  ],
+  "heldout_evaluated": false
+}

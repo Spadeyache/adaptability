@@ -1,0 +1,25 @@
+Follow-up to clean/shove. STEP 1: the gate. No belief model yet.
+Question: does knowing true mass and friction clearly improve prediction
+on varied shoves?
+
+DATA (same leak-free rules as clean/):
+- 200 train cubes, 30 test cubes, newly sampled, mass and friction independent.
+  Narrow the mass range so light cubes don't travel absurdly far; report it.
+- 10 shoves per cube. Randomize every shove, never based on mass or friction:
+  force cap 2-4 N, push direction, contact point, cube start position and yaw.
+- Save per step: cube_id, episode_id, step, phase (push or coast), state,
+  action, next_state. True mass, friction, AND the combined cube-floor friction
+  go only in cubes.json.
+- Rerun the actions-only probe: R^2 must be near 0.
+
+MODELS (5 seeds, MLP 3x256, predict normalized change in state):
+- Plain: state + action.
+- Oracle: state + action + true mass + combined friction.
+
+REPORT on test cubes, separately for push steps and coast steps:
+- one-step error, 10-step rollout error, stopping-position error.
+- Oracle vs Plain: the gap, and whether it is larger than the seed spread.
+
+PASS: Oracle beats Plain by at least 20% on coast steps, beyond seed spread.
+If it fails, stop and report. Never invent numbers.
+Collect 10 cubes first, report timing, wait for my go.

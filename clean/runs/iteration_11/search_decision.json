@@ -1,0 +1,41 @@
+{
+  "iteration": 11,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "result_sha256": "819e0a43aeb8f5f4336c3be64ebab4359d6d8dd15bc00936c7d1b2f27120e9cb",
+  "base_iteration": 6,
+  "retained_iteration": 6,
+  "decision": "reverted",
+  "reason": "This candidate fails required F4 and cannot displace a reference that passes F4 and the other required checks, even with lower NMSE. Preserve the fixed feasibility constraint; the locked metric is unchanged.",
+  "option_id": "width=32",
+  "one_step_nmse": {
+    "mean": 0.3799163319925218,
+    "std": 0.01131254228382255,
+    "values": [
+      0.3877639458114183,
+      0.3837176091038091,
+      0.36024150018687623,
+      0.38680617845444226,
+      0.3810524264060631
+    ]
+  },
+  "failure_checks": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": false,
+    "F5": true,
+    "F6": true,
+    "F7": true,
+    "F8": true,
+    "F9": true
+  },
+  "success": {
+    "S1": false,
+    "S2": false,
+    "S3": true,
+    "S4": false,
+    "plain_oracle_gap": -0.004510144320607201,
+    "gap_recovery": null
+  },
+  "command": "PYTHONPATH=clean/vendor:. OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m clean.run candidate --iteration 11 --config /home/ubuntu/faliure/clean/configs/search_iteration_11.json --base-iteration 6 --hypothesis 'Oracle has not established a positive Plain-to-Oracle error gap. Further reducing shared-network width may test whether shared trajectory fitting suppresses object-specific latent use.' --change 'Change only width from 128 to 32; every other configuration setting is retained.' --device cuda"
+}

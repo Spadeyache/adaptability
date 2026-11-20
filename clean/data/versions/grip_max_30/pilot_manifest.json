@@ -1,0 +1,15 @@
+{
+  "stage": "pilot",
+  "cube_count": 10,
+  "episode_count": 100,
+  "completed_this_run": 100,
+  "elapsed_seconds": 18.911455845984165,
+  "versions": {
+    "mani_skill": "3.0.1",
+    "sapien": "3.0.3",
+    "mplib": "0.1.1",
+    "torch": "2.14.0",
+    "numpy": "1.26.4"
+  },
+  "split_sha256": "db268f323a833731dc3b5f97f6493984794b1b07cc6fc5d0eee081a6b7e68e1e"
+}

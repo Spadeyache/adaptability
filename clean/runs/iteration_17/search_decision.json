@@ -1,0 +1,41 @@
+{
+  "iteration": 17,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "result_sha256": "8a09d693cf7a584495deec0ccfbfd80dd76209b98bb978e17159727d0b287a28",
+  "base_iteration": 6,
+  "retained_iteration": 6,
+  "decision": "reverted",
+  "reason": "This candidate fails required F4 and cannot displace a reference that passes F4 and the other required checks, even with lower NMSE. Preserve the fixed feasibility constraint; the locked metric is unchanged.",
+  "option_id": "prediction_horizon=3",
+  "one_step_nmse": {
+    "mean": 0.3832855897524142,
+    "std": 0.02160288805296215,
+    "values": [
+      0.3940775602075617,
+      0.4013996067501161,
+      0.3460410705503679,
+      0.38711201137689755,
+      0.3877976998771277
+    ]
+  },
+  "failure_checks": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": false,
+    "F5": true,
+    "F6": true,
+    "F7": true,
+    "F8": true,
+    "F9": true
+  },
+  "success": {
+    "S1": false,
+    "S2": false,
+    "S3": true,
+    "S4": false,
+    "plain_oracle_gap": -0.007246936820743066,
+    "gap_recovery": null
+  },
+  "command": "PYTHONPATH=clean/vendor:. OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m clean.run candidate --iteration 17 --config /home/ubuntu/faliure/clean/configs/search_iteration_17.json --base-iteration 6 --hypothesis 'Oracle has not established a positive Plain-to-Oracle error gap. A short recursive training loss may favor shared dynamics that remain useful beyond one step.' --change 'Change only prediction_horizon from 1 to 3; every other configuration setting is retained.' --device cuda"
+}

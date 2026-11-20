@@ -1,0 +1,15 @@
+Not yet. Fix the launch rate first, then rerun the same 10-cube pilot.
+
+1. Raise the force cap range so every cube can launch: the minimum cap must
+   exceed max_mass x 9.8 x max_combined_friction (about 3.2 N) with margin.
+   Try caps uniformly in 4-7 N. Keep it random and independent of mass/friction.
+2. Report for the new pilot: fraction of shoves that launch (target >= 90%),
+   fraction of coast steps that are moving, and max coast distance.
+3. Trim each episode a few steps after the cube stops, so stationary steps don't
+   dominate the data. Report how many steps were trimmed.
+4. In every later comparison, report three scores separately:
+   push steps, moving-coast steps, and all steps.
+   The gate is judged on moving-coast steps.
+5. Rerun the actions-only probe on the new pilot.
+
+Then wait for my go.

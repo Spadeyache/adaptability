@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "figures_png_svg": [
+    "setup",
+    "fig_leak",
+    "fig_physics",
+    "fig_belief",
+    "fig_mass",
+    "fig_drift"
+  ],
+  "pdf_pages": 1,
+  "source_hashes_checked": 16,
+  "markdown_links_checked": 76,
+  "visual_review": "All six figures and final one-page layout inspected; PDF text wrapping corrected",
+  "new_training": false,
+  "new_collection": false,
+  "new_model_evaluation": false
+}

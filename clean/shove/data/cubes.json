@@ -1,0 +1,102 @@
+{
+  "cubes": [
+    {
+      "cube_id": 0,
+      "sweep": "mass",
+      "grid_index": 0,
+      "mass_kg": 0.04,
+      "friction": 0.7
+    },
+    {
+      "cube_id": 1,
+      "sweep": "mass",
+      "grid_index": 1,
+      "mass_kg": 0.11666666666666667,
+      "friction": 0.7
+    },
+    {
+      "cube_id": 2,
+      "sweep": "mass",
+      "grid_index": 2,
+      "mass_kg": 0.19333333333333336,
+      "friction": 0.7
+    },
+    {
+      "cube_id": 3,
+      "sweep": "mass",
+      "grid_index": 3,
+      "mass_kg": 0.27,
+      "friction": 0.7
+    },
+    {
+      "cube_id": 4,
+      "sweep": "mass",
+      "grid_index": 4,
+      "mass_kg": 0.3466666666666667,
+      "friction": 0.7
+    },
+    {
+      "cube_id": 5,
+      "sweep": "mass",
+      "grid_index": 5,
+      "mass_kg": 0.42333333333333334,
+      "friction": 0.7
+    },
+    {
+      "cube_id": 6,
+      "sweep": "mass",
+      "grid_index": 6,
+      "mass_kg": 0.5,
+      "friction": 0.7
+    },
+    {
+      "cube_id": 7,
+      "sweep": "friction",
+      "grid_index": 0,
+      "mass_kg": 0.27,
+      "friction": 0.4
+    },
+    {
+      "cube_id": 8,
+      "sweep": "friction",
+      "grid_index": 1,
+      "mass_kg": 0.27,
+      "friction": 0.5
+    },
+    {
+      "cube_id": 9,
+      "sweep": "friction",
+      "grid_index": 2,
+      "mass_kg": 0.27,
+      "friction": 0.6
+    },
+    {
+      "cube_id": 10,
+      "sweep": "friction",
+      "grid_index": 3,
+      "mass_kg": 0.27,
+      "friction": 0.7
+    },
+    {
+      "cube_id": 11,
+      "sweep": "friction",
+      "grid_index": 4,
+      "mass_kg": 0.27,
+      "friction": 0.8
+    },
+    {
+      "cube_id": 12,
+      "sweep": "friction",
+      "grid_index": 5,
+      "mass_kg": 0.27,
+      "friction": 0.8999999999999999
+    },
+    {
+      "cube_id": 13,
+      "sweep": "friction",
+      "grid_index": 6,
+      "mass_kg": 0.27,
+      "friction": 1.0
+    }
+  ]
+}

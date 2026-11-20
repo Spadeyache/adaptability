@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "context": {
+    "checkpoint_seal_sha256": "5448fc89245b5c410b99be462360e0da03cdbfd2be801de1826969a978f79074",
+    "data_seal_sha256": "0ae9a174f50f496c8377d69c442d33b3b2a22225f10d005c27985de9b8b13e76",
+    "test_data_seal_sha256": "112f5c7decb744afa80431390be0949f41ed72b2532c992c831fe2497af72739",
+    "source_sha256": "7e66858198f37002f9f782fb33c7089a694271aaf4c16e46a8bd47d4b8337ba9"
+  },
+  "started_unix_seconds": 1794800047.608138,
+  "note": "Alltencheckpoints sealed before any testmotionread. Resume onlycompletes identical invocation.",
+  "completed_unix_seconds": 1794800061.3717308,
+  "summary_sha256": "cfbf9662475efb5d0adf1dfe59e7f86e5f59c1bbb8cb806c81abd7ba0a397684",
+  "primary_gate_passed": false
+}

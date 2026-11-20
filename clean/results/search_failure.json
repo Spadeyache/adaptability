@@ -1,0 +1,11 @@
+{
+  "status": "error",
+  "iteration": 11,
+  "start": 4,
+  "end": 20,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "error": "KeyboardInterrupt()",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/ubuntu/faliure/clean/search.py\", line 318, in run_search\n    candidate(number, plan[\"config\"], plan[\"hypothesis\"], plan[\"change\"], device, base_iteration=plan[\"base_iteration\"])\n  File \"/home/ubuntu/faliure/clean/run.py\", line 109, in candidate\n    audit,static=require_audit()\n  File \"/home/ubuntu/faliure/clean/run.py\", line 58, in require_audit\n    static=static_provenance()\n  File \"/home/ubuntu/faliure/clean/audit.py\", line 108, in static_provenance\n    if isinstance(node, ast.Import):\nKeyboardInterrupt\n",
+  "timestamp": 1794777657.4771504,
+  "final_ledger_exists": false
+}

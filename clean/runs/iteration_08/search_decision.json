@@ -1,0 +1,41 @@
+{
+  "iteration": 8,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "result_sha256": "4b56299b9d839cbd9f2ada81acd2c31cc9db03a195e65524f0761fc11496a02b",
+  "base_iteration": 7,
+  "retained_iteration": 8,
+  "decision": "kept",
+  "reason": "Fitted-z validation NMSE decreased relative to the retained eligible reference. F4 still fails; kept only as a failed reference, not a successful model.",
+  "option_id": "fit_steps=1000",
+  "one_step_nmse": {
+    "mean": 0.33131654313549813,
+    "std": 0.014961859579981156,
+    "values": [
+      0.3149903157020938,
+      0.3512378225974032,
+      0.32135274863007723,
+      0.32700197280054893,
+      0.3419998559473674
+    ]
+  },
+  "failure_checks": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": false,
+    "F5": true,
+    "F6": true,
+    "F7": true,
+    "F8": true,
+    "F9": true
+  },
+  "success": {
+    "S1": false,
+    "S2": false,
+    "S3": true,
+    "S4": false,
+    "plain_oracle_gap": -0.0061639775829089305,
+    "gap_recovery": null
+  },
+  "command": "PYTHONPATH=clean/vendor:. OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m clean.run candidate --iteration 8 --config /home/ubuntu/faliure/clean/configs/search_iteration_08.json --base-iteration 7 --hypothesis 'The retained reference fails validation F4. Oracle has not established a positive Plain-to-Oracle error gap. More frozen-weight latent updates may resolve incomplete adaptation convergence.' --change 'Change only fit_steps from 200 to 1000; every other configuration setting is retained.' --device cuda"
+}

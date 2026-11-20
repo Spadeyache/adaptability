@@ -1,0 +1,71 @@
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794776142.9343143, "pid": 787959}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794776144.5078487, "pid": 787959}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794776146.341962, "pid": 787959}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794776147.3874283, "pid": 787959}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794776277.7108855, "pid": 3}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794776279.401865, "pid": 3}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794776318.201535, "pid": 788256}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794776320.2056618, "pid": 788256}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794776321.181268, "pid": 788256}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794776381.0621834, "pid": 3}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794776383.2178266, "pid": 3}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794777169.76581, "pid": 806588}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794777171.1216948, "pid": 806588}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794777172.8892376, "pid": 806588}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794777173.8214283, "pid": 806588}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794777367.5264142, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794777369.5252614, "pid": 807001}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794777370.4865096, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794777399.5910876, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794777401.3269749, "pid": 807001}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794777402.3060744, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794777432.86757, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794777434.4652174, "pid": 807001}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794777435.4850552, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794777465.968961, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794777467.5898223, "pid": 807001}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794777468.6024458, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794777498.1768858, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794777499.744974, "pid": 807001}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794777500.7870164, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794777518.98135, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794777520.5823867, "pid": 807001}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794777521.5655515, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794777541.3029003, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794777542.919024, "pid": 807001}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794777543.920732, "pid": 807001}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794778586.332089, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794778589.012703, "pid": 808288}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794778589.982612, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794778693.7035687, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794778695.4132357, "pid": 808288}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794778696.383063, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794778827.9833446, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794778829.6363506, "pid": 808288}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794778830.6408248, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794778950.1569765, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794778951.7668707, "pid": 808288}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794778952.775489, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794779065.875095, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794779067.504911, "pid": 808288}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794779068.522372, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794779181.1620138, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794779182.7515502, "pid": 808288}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794779183.7556455, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794779294.1782224, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794779295.779095, "pid": 808288}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794779296.8155391, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794779551.55286, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794779553.1805158, "pid": 808288}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794779554.2079508, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794779951.6617618, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794779953.3731346, "pid": 808288}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794779954.5061374, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4, 5, 6, 7], "purpose": "train", "cube_count": 200, "candidate": null, "timestamp": 1794779984.1944342, "pid": 808288}
+{"group": "train", "episodes": [0, 1, 2, 3, 4], "purpose": "validation_fit", "cube_count": 200, "candidate": null, "timestamp": 1794779985.877387, "pid": 808288}
+{"group": "train", "episodes": [8, 9], "purpose": "validation", "cube_count": 200, "candidate": null, "timestamp": 1794779986.9439294, "pid": 808288}
+{"group": "train", "episodes": [0], "purpose": "probe_train", "cube_count": 200, "candidate": null, "timestamp": 1794779996.2801087, "pid": 808288}
+{"group": "test", "episodes": [0, 1, 2, 3, 4], "purpose": "final_fit", "cube_count": 30, "candidate": "iteration_19_39534e75942a", "timestamp": 1794780009.5846233, "pid": 808288}
+{"group": "test", "episodes": [5, 6, 7, 8, 9], "purpose": "final_score", "cube_count": 30, "candidate": "iteration_19_39534e75942a", "timestamp": 1794780009.856197, "pid": 808288}
+{"group": "out_of_range", "episodes": [0, 1, 2, 3, 4], "purpose": "final_fit", "cube_count": 30, "candidate": "iteration_19_39534e75942a", "timestamp": 1794780012.0811765, "pid": 808288}
+{"group": "out_of_range", "episodes": [5, 6, 7, 8, 9], "purpose": "final_score", "cube_count": 30, "candidate": "iteration_19_39534e75942a", "timestamp": 1794780012.3638248, "pid": 808288}

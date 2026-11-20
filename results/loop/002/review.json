@@ -1,0 +1,13 @@
+{
+  "status": "STOP_INPUT_CORRELATION_GUARD",
+  "probe_runs": 0,
+  "lenses": {
+    "Leakage": "15 source-matched main runs clean;5 historical source gaps; shuffled probe unrun",
+    "Confounds": "FAIL input correlation guard, including vertical action",
+    "Splits": "Existing main cube IDs respected; normalization not fitted",
+    "Robustness": "Not tested",
+    "Skeptical PI": "Unresolved provenance and distinction between direct labels and physical response",
+    "Physics sanity": "Not established by held-out probes"
+  },
+  "unit_checks_passed": 3
+}

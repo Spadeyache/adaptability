@@ -1,0 +1,18 @@
+{
+  "status": "complete_gate_failed",
+  "pilot_passed": true,
+  "collected_episodes": 2300,
+  "trained_models": 10,
+  "seeds": [
+    101,
+    211,
+    307,
+    401,
+    503
+  ],
+  "model_architecture": "MLP3x256",
+  "primary_gate_passed": false,
+  "final_evaluation_status": "complete",
+  "belief_model_trained": false,
+  "further_experiments": "Stopped after the requested frozen comparison; no test-based tuning."
+}

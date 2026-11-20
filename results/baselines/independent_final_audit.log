@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "checked_model_runs": 30,
+  "checked_adaptation_trajectories": 50,
+  "scientific_scalar_checks": 908656
+}

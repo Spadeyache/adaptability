@@ -1,0 +1,276 @@
+{
+  "status": "passed",
+  "audit_scope": "Saved artifacts, independent arithmetic and byte hashes only. No simulation, training, or prediction rerun.",
+  "verified_checkpoint_count": 10,
+  "verified_test_trace_count": 600,
+  "verified_training_budget_updates_per_model": 10000,
+  "nonfinite_scored_starts": 0,
+  "primary_gate": {
+    "passed": false,
+    "moving_coast_improvement_fraction": 0.07086650749524617,
+    "required_fraction": 0.2,
+    "at_least_twenty_percent": false,
+    "beyond_seed_spread": false,
+    "plain_mean_minus_sd": 0.06288418047494297,
+    "oracle_mean_plus_sd": 0.06469754144056611,
+    "all30testcubes_covered": true
+  },
+  "coverage": {
+    "push/one_step_nmse": {
+      "cubes": 30,
+      "episodes": 300,
+      "eligible_starts": 4760
+    },
+    "push/rollout10_nmse": {
+      "cubes": 30,
+      "episodes": 300,
+      "eligible_starts": 2060
+    },
+    "push/rollout10_final_nmse": {
+      "cubes": 30,
+      "episodes": 300,
+      "eligible_starts": 2060
+    },
+    "push/stopping_position_error_m": {
+      "cubes": 30,
+      "episodes": 300,
+      "eligible_starts": 4760
+    },
+    "moving_coast/one_step_nmse": {
+      "cubes": 30,
+      "episodes": 300,
+      "eligible_starts": 11814
+    },
+    "moving_coast/rollout10_nmse": {
+      "cubes": 30,
+      "episodes": 300,
+      "eligible_starts": 11814
+    },
+    "moving_coast/rollout10_final_nmse": {
+      "cubes": 30,
+      "episodes": 300,
+      "eligible_starts": 11814
+    },
+    "moving_coast/stopping_position_error_m": {
+      "cubes": 30,
+      "episodes": 300,
+      "eligible_starts": 11814
+    },
+    "all_steps/one_step_nmse": {
+      "cubes": 30,
+      "episodes": 300,
+      "eligible_starts": 18074
+    },
+    "all_steps/rollout10_nmse": {
+      "cubes": 30,
+      "episodes": 300,
+      "eligible_starts": 18074
+    },
+    "all_steps/rollout10_final_nmse": {
+      "cubes": 30,
+      "episodes": 300,
+      "eligible_starts": 18074
+    },
+    "all_steps/stopping_position_error_m": {
+      "cubes": 30,
+      "episodes": 300,
+      "eligible_starts": 18074
+    }
+  },
+  "independently_recomputed_comparisons": {
+    "push": {
+      "one_step_nmse": {
+        "plain_mean": 0.06362901569173933,
+        "plain_sample_sd": 0.0034698847701279513,
+        "oracle_mean": 0.05814029398306731,
+        "oracle_sample_sd": 0.004019535970769051,
+        "gap": 0.005488721708672017,
+        "relative_improvement": 0.08626130153046817,
+        "beyond_seed_spread": false
+      },
+      "rollout10_nmse": {
+        "plain_mean": 0.12518536391397272,
+        "plain_sample_sd": 0.012914439783614323,
+        "oracle_mean": 0.11053114459325258,
+        "oracle_sample_sd": 0.015366635774717799,
+        "gap": 0.014654219320720151,
+        "relative_improvement": 0.11706016472333394,
+        "beyond_seed_spread": false
+      },
+      "rollout10_final_nmse": {
+        "plain_mean": 0.16797894333420005,
+        "plain_sample_sd": 0.018553025940435317,
+        "oracle_mean": 0.14339442046478795,
+        "oracle_sample_sd": 0.01874583401904782,
+        "gap": 0.02458452286941209,
+        "relative_improvement": 0.14635478936488075,
+        "beyond_seed_spread": false
+      },
+      "stopping_position_error_m": {
+        "plain_mean": 1.1082751223753669,
+        "plain_sample_sd": 0.08683394770079399,
+        "oracle_mean": 0.7950249893414216,
+        "oracle_sample_sd": 0.49073783923766223,
+        "gap": 0.3132501330339451,
+        "relative_improvement": 0.28264654390378796,
+        "beyond_seed_spread": false
+      }
+    },
+    "moving_coast": {
+      "one_step_nmse": {
+        "plain_mean": 0.06560831201890122,
+        "plain_sample_sd": 0.002724131543958249,
+        "oracle_mean": 0.0609588800834633,
+        "oracle_sample_sd": 0.003738661357102812,
+        "gap": 0.004649431935437913,
+        "relative_improvement": 0.07086650749524617,
+        "beyond_seed_spread": false
+      },
+      "rollout10_nmse": {
+        "plain_mean": 0.09144472487306912,
+        "plain_sample_sd": 0.006909714090339709,
+        "oracle_mean": 0.10288091511679552,
+        "oracle_sample_sd": 0.01083710283978526,
+        "gap": -0.011436190243726402,
+        "relative_improvement": -0.1250612351844301,
+        "beyond_seed_spread": false
+      },
+      "rollout10_final_nmse": {
+        "plain_mean": 0.10760577637463781,
+        "plain_sample_sd": 0.008793907864822186,
+        "oracle_mean": 0.13387724108386637,
+        "oracle_sample_sd": 0.01889195013170884,
+        "gap": -0.026271464709228563,
+        "relative_improvement": -0.2441454872995148,
+        "beyond_seed_spread": false
+      },
+      "stopping_position_error_m": {
+        "plain_mean": 0.8971848704172625,
+        "plain_sample_sd": 0.15134590545779125,
+        "oracle_mean": 0.5980181318963992,
+        "oracle_sample_sd": 0.21758240761877531,
+        "gap": 0.29916673852086334,
+        "relative_improvement": 0.3334504943019458,
+        "beyond_seed_spread": false
+      }
+    },
+    "all_steps": {
+      "one_step_nmse": {
+        "plain_mean": 0.05737418328830261,
+        "plain_sample_sd": 0.002524439723549849,
+        "oracle_mean": 0.0534468231357812,
+        "oracle_sample_sd": 0.002857323346158921,
+        "gap": 0.00392736015252141,
+        "relative_improvement": 0.06845169599690172,
+        "beyond_seed_spread": false
+      },
+      "rollout10_nmse": {
+        "plain_mean": 0.08570878919501373,
+        "plain_sample_sd": 0.007122808947243093,
+        "oracle_mean": 0.09220396211359837,
+        "oracle_sample_sd": 0.009390089990533066,
+        "gap": -0.006495172918584641,
+        "relative_improvement": -0.07578187697653894,
+        "beyond_seed_spread": false
+      },
+      "rollout10_final_nmse": {
+        "plain_mean": 0.108783252501032,
+        "plain_sample_sd": 0.008641955277571075,
+        "oracle_mean": 0.12492686807007629,
+        "oracle_sample_sd": 0.01480876241899899,
+        "gap": -0.016143615569044287,
+        "relative_improvement": -0.14840166292041265,
+        "beyond_seed_spread": false
+      },
+      "stopping_position_error_m": {
+        "plain_mean": 0.9392191310845767,
+        "plain_sample_sd": 0.1343532679378096,
+        "oracle_mean": 0.6311813278898842,
+        "oracle_sample_sd": 0.2629632375313234,
+        "gap": 0.3080378031946925,
+        "relative_improvement": 0.32797224098169875,
+        "beyond_seed_spread": false
+      }
+    }
+  },
+  "training_checkpoint_selection": {
+    "plain_seed_101": {
+      "completed_updates": 10000,
+      "selected_update": 500,
+      "selected_validation_nmse": 0.08957961583615401,
+      "minibatch_sha256": "194c9ecb9b830947b2fdcc49a05fbff4e1159d9672c6d13a63e2b6d70bbd4732"
+    },
+    "plain_seed_211": {
+      "completed_updates": 10000,
+      "selected_update": 1000,
+      "selected_validation_nmse": 0.0937076609461002,
+      "minibatch_sha256": "ce3961ce3124e0a895be32c6e4af2073bb985018b04e38d86a92fe051c27a0a6"
+    },
+    "plain_seed_307": {
+      "completed_updates": 10000,
+      "selected_update": 500,
+      "selected_validation_nmse": 0.09273218026455896,
+      "minibatch_sha256": "5962211b9840f6a9e2d91e35538bf7633c95c21cee19b6a3bbe04d009ed565c2"
+    },
+    "plain_seed_401": {
+      "completed_updates": 10000,
+      "selected_update": 1000,
+      "selected_validation_nmse": 0.09288374313645685,
+      "minibatch_sha256": "a79fe5af0a4603f26b12d0ca8d22268590a29b7e74de74cb8949420b0db1361b"
+    },
+    "plain_seed_503": {
+      "completed_updates": 10000,
+      "selected_update": 2000,
+      "selected_validation_nmse": 0.08875240754170974,
+      "minibatch_sha256": "504f0eb2e2ffb38e7a176f99edcd20792c75f3805a2be9b57d2307dbbf6a1a80"
+    },
+    "oracle_seed_101": {
+      "completed_updates": 10000,
+      "selected_update": 500,
+      "selected_validation_nmse": 0.09233839276500676,
+      "minibatch_sha256": "194c9ecb9b830947b2fdcc49a05fbff4e1159d9672c6d13a63e2b6d70bbd4732"
+    },
+    "oracle_seed_211": {
+      "completed_updates": 10000,
+      "selected_update": 4000,
+      "selected_validation_nmse": 0.0970138655500826,
+      "minibatch_sha256": "ce3961ce3124e0a895be32c6e4af2073bb985018b04e38d86a92fe051c27a0a6"
+    },
+    "oracle_seed_307": {
+      "completed_updates": 10000,
+      "selected_update": 3500,
+      "selected_validation_nmse": 0.0864770165255878,
+      "minibatch_sha256": "5962211b9840f6a9e2d91e35538bf7633c95c21cee19b6a3bbe04d009ed565c2"
+    },
+    "oracle_seed_401": {
+      "completed_updates": 10000,
+      "selected_update": 1000,
+      "selected_validation_nmse": 0.0928684353171602,
+      "minibatch_sha256": "a79fe5af0a4603f26b12d0ca8d22268590a29b7e74de74cb8949420b0db1361b"
+    },
+    "oracle_seed_503": {
+      "completed_updates": 10000,
+      "selected_update": 2000,
+      "selected_validation_nmse": 0.08763959268731096,
+      "minibatch_sha256": "504f0eb2e2ffb38e7a176f99edcd20792c75f3805a2be9b57d2307dbbf6a1a80"
+    }
+  },
+  "input_sha256": {
+    "results/gate_summary.json": "d9d3b081b3eb772cbf87cebec991706746f7be2dbc58a28b43f5a604145883b8",
+    "results/final_evaluation.json": "34a7a7c6fe7a55398361a8d5c555719255712b7856b6c50b356ab4811c059641",
+    "results/checkpoint_seal.json": "a596f003dd9c2d75708b3ee5e19938294a2a3297230b770e05d79c3791321ee1",
+    "results/test_data_seal.json": "f7882b9a3a5a67ef7d88b07163fac1c53992aab9d7f80fd27fa5b40518091112",
+    "results/model_protocol.json": "d534fcff81111ec723187588aec5e8a2e36e732918d7d9ff4303fd2fabe1a629",
+    "results/full_audit.json": "3787f77865329109e15a4605ee1717422b2e69a47fd6abde9bdb4b1168523fef"
+  },
+  "checks": [
+    "complete one-use final ledger and matching summary",
+    "all checkpoint and training-input/source hashes",
+    "all held-out raw/episode hashes",
+    "per-cube means and full30-cube/300-episode coverage",
+    "all five-seed mean/sampleSD/gap arithmetic in three groups",
+    "paired minibatch identity",
+    "full10000updates and validation-only selected checkpoint",
+    "primary20percent+seed-spread decision independently recomputed"
+  ]
+}

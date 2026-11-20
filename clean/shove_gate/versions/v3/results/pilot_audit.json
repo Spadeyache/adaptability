@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "cubes": 10,
+  "episodes": 100,
+  "transitions": 21600,
+  "push_transitions": 1600,
+  "coast_transitions": 20000,
+  "moving_coast_transitions": 853,
+  "all_stopped": true,
+  "maximum_actual_contact_force_over_cap": 0.9525516976336609,
+  "maximum_coast_contact_force_n": 0.0,
+  "maximum_normal_projection_impulse_error_Ns": 3.517885789096342e-09,
+  "maximum_normal_only_force_underestimate_n": 0.377059064244591,
+  "unique_randomized_values": {
+    "cap": 100,
+    "direction": 100,
+    "contact_offset": 100,
+    "start_x": 100,
+    "start_y": 100,
+    "yaw": 100
+  },
+  "checks": [
+    "original and probe source/data seals",
+    "only authorized ten cubes collected",
+    "separate property and per-shove RNG streams",
+    "physical properties used only by setup setter",
+    "state/action whitelist and raw-to-model transition alignment",
+    "fixed identical phase lengths",
+    "actions exactly reconstructible from property-blind plans",
+    "full 3D transmitted force from pusher momentum",
+    "zero impulse from non-cube pusher proximity contacts",
+    "normal-only API projection agrees with momentum sensor",
+    "cap compliance and zero force after release",
+    "independent stop-window and endpoint metrics"
+  ],
+  "limitation": "This is a data/physics audit, not the Oracle-vs-Plain prediction gate. No model training or added simulation."
+}

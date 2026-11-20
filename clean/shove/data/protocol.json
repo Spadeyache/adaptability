@@ -1,0 +1,37 @@
+{
+  "settings": {
+    "cap_n": 3.0,
+    "dt": 0.001,
+    "approach_s": 0.8,
+    "preload_s": 0.1,
+    "push_s": 0.08,
+    "approach_speed_m_s": 0.005,
+    "preload_force_n": 0.03,
+    "drive_fraction": 0.95,
+    "stop_speed_m_s": 0.001,
+    "stop_angular_speed_rad_s": 0.05,
+    "stop_confirmation_s": 0.1,
+    "maximum_slide_s": 5.0
+  },
+  "caps_n": [
+    2.0,
+    3.0,
+    4.0
+  ],
+  "repeats": 3,
+  "cube_side_m": 0.04,
+  "pusher_radius_m": 0.008,
+  "pusher_mass_kg": 0.005,
+  "floor_friction": 0.3,
+  "pusher_friction": 0.0,
+  "scene": "SAPIEN CPU PhysX, free six-DOF cube on infinite plane; no Panda arm",
+  "force": "Conservative sum of norms of all cube-pusher contact impulses / physics dt, every physics step. Reject > cap*(1+1e-5).",
+  "launch": "Horizontal speed at release, before first free-slide step.",
+  "distance": "Horizontal displacement from release to onset of confirmed rest; excluding distance while pushing.",
+  "stop": "First post-release 100 ms continuously below 1 mm/s full linear speed and .05 rad/s angular speed; time at window onset excludes confirmation tail. Zero if already stationary at release.",
+  "spread": "Maximum minus minimum across three fresh identical deterministic scene resets; no injected noise.",
+  "signal_gate": "After each strength: range of seven mean stopping distances must not be smaller than max within-setting repeat range, for both parameter sweeps. Equality at zero is also unresolved. Stop and report if unresolved.",
+  "labels": "True mass/friction only in cubes.json, read by collector property setter and offline reporting. Script gets Settings only.",
+  "source_provenance": "clean.native.set_cube_properties reused; material coefficients and cube size match clean. Infinite surface, rail pusher, 1 kHz physics are explicit probe changes.",
+  "no_training": true
+}

@@ -1,0 +1,192 @@
+{
+  "generator": {
+    "scope": "180/30cube planned commands only; reserved20validationcubes excluded.",
+    "feature_names": [
+      "applied_force_x_N",
+      "applied_force_y_N",
+      "applied_force_z_N",
+      "force_magnitude_N",
+      "commanded_duration_s"
+    ],
+    "constant_train_mean_r2": {
+      "mass_kg": -0.12058719813177832,
+      "friction": -0.023491267622385736,
+      "combined_friction": -0.023491267622392176
+    },
+    "selection": "Internal162/18 split within180weight-trainingcubes, thenrefit180; no test tuning.",
+    "records": [
+      {
+        "family": "polynomial_ridge",
+        "seed": 101,
+        "selected_parameter": 1.0,
+        "validation_standardized_mse": 1.2884128157457513,
+        "r2": {
+          "mass_kg": -0.11523590301671871,
+          "friction": -0.02910149070767587,
+          "combined_friction": -0.029101490707676092
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 101,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 1.3002879001995278,
+        "r2": {
+          "mass_kg": -0.11300503646767912,
+          "friction": -0.0220861837332178,
+          "combined_friction": -0.022086183733218245
+        }
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 211,
+        "selected_parameter": 1.0,
+        "validation_standardized_mse": 0.8765930016255896,
+        "r2": {
+          "mass_kg": -0.11523590301671871,
+          "friction": -0.02910149070767587,
+          "combined_friction": -0.029101490707676092
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 211,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.8794934400705746,
+        "r2": {
+          "mass_kg": -0.112591095692393,
+          "friction": -0.02123373066159351,
+          "combined_friction": -0.021233730661594397
+        }
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 307,
+        "selected_parameter": 10000.0,
+        "validation_standardized_mse": 0.9787709296903583,
+        "r2": {
+          "mass_kg": -0.11740907823776459,
+          "friction": -0.02163616441430727,
+          "combined_friction": -0.021636164414307935
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 307,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.9798472768234923,
+        "r2": {
+          "mass_kg": -0.11309065516035077,
+          "friction": -0.02293356161869453,
+          "combined_friction": -0.022933561618694975
+        }
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 401,
+        "selected_parameter": 10000.0,
+        "validation_standardized_mse": 0.8518761372091389,
+        "r2": {
+          "mass_kg": -0.11740907823776459,
+          "friction": -0.02163616441430727,
+          "combined_friction": -0.021636164414307935
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 401,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.8521408589550341,
+        "r2": {
+          "mass_kg": -0.11273816600664754,
+          "friction": -0.02122370809296381,
+          "combined_friction": -0.021223708092964255
+        }
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 503,
+        "selected_parameter": 10000.0,
+        "validation_standardized_mse": 0.8764582220548657,
+        "r2": {
+          "mass_kg": -0.11740907823776459,
+          "friction": -0.02163616441430727,
+          "combined_friction": -0.021636164414307935
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 503,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.8783028029616181,
+        "r2": {
+          "mass_kg": -0.11317366201228163,
+          "friction": -0.021360199148849457,
+          "combined_friction": -0.021360199148850123
+        }
+      }
+    ],
+    "aggregate": {
+      "extra_trees": {
+        "mass_kg": {
+          "mean_r2": -0.11291972306787042,
+          "seed_std_r2": 0.0002459370154675633,
+          "min_r2": -0.11317366201228163,
+          "max_r2": -0.112591095692393,
+          "mean_r2_minus_baseline": 0.0076674750639079
+        },
+        "friction": {
+          "mean_r2": -0.021767476651063822,
+          "seed_std_r2": 0.0007429287223235478,
+          "min_r2": -0.02293356161869453,
+          "max_r2": -0.02122370809296381,
+          "mean_r2_minus_baseline": 0.0017237909713219146
+        },
+        "combined_friction": {
+          "mean_r2": -0.021767476651064398,
+          "seed_std_r2": 0.0007429287223234376,
+          "min_r2": -0.022933561618694975,
+          "max_r2": -0.021223708092964255,
+          "mean_r2_minus_baseline": 0.001723790971327778
+        }
+      },
+      "polynomial_ridge": {
+        "mass_kg": {
+          "mean_r2": -0.11653980814934624,
+          "seed_std_r2": 0.0011902970899781015,
+          "min_r2": -0.11740907823776459,
+          "max_r2": -0.11523590301671871,
+          "mean_r2_minus_baseline": 0.004047389982432079
+        },
+        "friction": {
+          "mean_r2": -0.024622294931654708,
+          "seed_std_r2": 0.004088927610014412,
+          "min_r2": -0.02910149070767587,
+          "max_r2": -0.02163616441430727,
+          "mean_r2_minus_baseline": -0.0011310273092689713
+        },
+        "combined_friction": {
+          "mean_r2": -0.024622294931655197,
+          "seed_std_r2": 0.004088927610014169,
+          "min_r2": -0.029101490707676092,
+          "max_r2": -0.021636164414307935,
+          "mean_r2_minus_baseline": -0.0011310273092630212
+        }
+      }
+    },
+    "all_r2_below_0_1": true
+  },
+  "source_sha256": "21e4f305d22cbcf5520249be2c141623f6f60da504ca78988de0aa71c40cb7db",
+  "helper_source_sha256": "1602839c94ac5f4907f4c94e98927fc8572c279a4688e34d4c3b2af97821a44c",
+  "inputs_sha256": {
+    "cubes.json": "e067142561575a67ec70690e856bc235dabedf5c36186c681c963cc7d8363b56",
+    "plans.json": "339d3cd54b1e17ce183dd83ff5934202ddb73dac0342a8f2d10ecbef0badd40f",
+    "split.json": "f72cfe336c472c7710d48993f9ac0869f65181c07104023b695438fa2b21f888"
+  },
+  "evaluation_ledger_status": "begun",
+  "elapsed_seconds": 3.0360076380020473,
+  "new_test_motion_used": false,
+  "forbidden_length_features_excluded": true,
+  "reserved_validation_cubes_used": false,
+  "interpretation": "Fixed planned-command features only. Hyperparameters selected only within180weight-trainingcubes; no test-based tuning or resampling."
+}

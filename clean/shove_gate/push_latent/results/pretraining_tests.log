@@ -1,0 +1,62 @@
+.................{"stage": "stage_a", "model": "plain", "seed": 101, "primary": 1.0}
+{"stage": "stage_a", "model": "oracle", "seed": 101, "primary": 0.9}
+{"stage": "stage_a", "model": "history", "seed": 101, "primary": 0.85}
+{"stage": "stage_a", "model": "plain", "seed": 211, "primary": 1.0}
+{"stage": "stage_a", "model": "oracle", "seed": 211, "primary": 0.9}
+{"stage": "stage_a", "model": "history", "seed": 211, "primary": 0.85}
+{"stage": "stage_a", "model": "plain", "seed": 307, "primary": 1.0}
+{"stage": "stage_a", "model": "oracle", "seed": 307, "primary": 0.9}
+{"stage": "stage_a", "model": "history", "seed": 307, "primary": 0.85}
+{"stage": "stage_a", "model": "plain", "seed": 401, "primary": 1.0}
+{"stage": "stage_a", "model": "oracle", "seed": 401, "primary": 0.9}
+{"stage": "stage_a", "model": "history", "seed": 401, "primary": 0.85}
+{"stage": "stage_a", "model": "plain", "seed": 503, "primary": 1.0}
+{"stage": "stage_a", "model": "oracle", "seed": 503, "primary": 0.9}
+{"stage": "stage_a", "model": "history", "seed": 503, "primary": 0.85}
+{"stage": "final_complete", "c1": false, "c2": null, "c3": null}
+.{"stage": "stage_a", "model": "plain", "seed": 101, "primary": 1.0}
+{"stage": "stage_a", "model": "oracle", "seed": 101, "primary": 0.4}
+{"stage": "stage_a", "model": "history", "seed": 101, "primary": 0.6}
+{"stage": "stage_a", "model": "plain", "seed": 211, "primary": 1.0}
+{"stage": "stage_a", "model": "oracle", "seed": 211, "primary": 0.4}
+{"stage": "stage_a", "model": "history", "seed": 211, "primary": 0.6}
+{"stage": "stage_a", "model": "plain", "seed": 307, "primary": 1.0}
+{"stage": "stage_a", "model": "oracle", "seed": 307, "primary": 0.4}
+{"stage": "stage_a", "model": "history", "seed": 307, "primary": 0.6}
+{"stage": "stage_a", "model": "plain", "seed": 401, "primary": 1.0}
+{"stage": "stage_a", "model": "oracle", "seed": 401, "primary": 0.4}
+{"stage": "stage_a", "model": "history", "seed": 401, "primary": 0.6}
+{"stage": "stage_a", "model": "plain", "seed": 503, "primary": 1.0}
+{"stage": "stage_a", "model": "oracle", "seed": 503, "primary": 0.4}
+{"stage": "stage_a", "model": "history", "seed": 503, "primary": 0.6}
+{"stage": "adaptation_prefix", "seed": 101, "support_shoves": 1, "primary": 0.9}
+{"stage": "adaptation_prefix", "seed": 101, "support_shoves": 2, "primary": 0.8}
+{"stage": "adaptation_prefix", "seed": 101, "support_shoves": 3, "primary": 0.7}
+{"stage": "adaptation_prefix", "seed": 101, "support_shoves": 4, "primary": 0.6}
+{"stage": "adaptation_prefix", "seed": 101, "support_shoves": 5, "primary": 0.5}
+{"stage": "adaptation_prefix", "seed": 211, "support_shoves": 1, "primary": 0.9}
+{"stage": "adaptation_prefix", "seed": 211, "support_shoves": 2, "primary": 0.8}
+{"stage": "adaptation_prefix", "seed": 211, "support_shoves": 3, "primary": 0.7}
+{"stage": "adaptation_prefix", "seed": 211, "support_shoves": 4, "primary": 0.6}
+{"stage": "adaptation_prefix", "seed": 211, "support_shoves": 5, "primary": 0.5}
+{"stage": "adaptation_prefix", "seed": 307, "support_shoves": 1, "primary": 0.9}
+{"stage": "adaptation_prefix", "seed": 307, "support_shoves": 2, "primary": 0.8}
+{"stage": "adaptation_prefix", "seed": 307, "support_shoves": 3, "primary": 0.7}
+{"stage": "adaptation_prefix", "seed": 307, "support_shoves": 4, "primary": 0.6}
+{"stage": "adaptation_prefix", "seed": 307, "support_shoves": 5, "primary": 0.5}
+{"stage": "adaptation_prefix", "seed": 401, "support_shoves": 1, "primary": 0.9}
+{"stage": "adaptation_prefix", "seed": 401, "support_shoves": 2, "primary": 0.8}
+{"stage": "adaptation_prefix", "seed": 401, "support_shoves": 3, "primary": 0.7}
+{"stage": "adaptation_prefix", "seed": 401, "support_shoves": 4, "primary": 0.6}
+{"stage": "adaptation_prefix", "seed": 401, "support_shoves": 5, "primary": 0.5}
+{"stage": "adaptation_prefix", "seed": 503, "support_shoves": 1, "primary": 0.9}
+{"stage": "adaptation_prefix", "seed": 503, "support_shoves": 2, "primary": 0.8}
+{"stage": "adaptation_prefix", "seed": 503, "support_shoves": 3, "primary": 0.7}
+{"stage": "adaptation_prefix", "seed": 503, "support_shoves": 4, "primary": 0.6}
+{"stage": "adaptation_prefix", "seed": 503, "support_shoves": 5, "primary": 0.5}
+{"stage": "final_complete", "c1": true, "c2": true, "c3": true}
+.........
+----------------------------------------------------------------------
+Ran 27 tests in 0.863s
+
+OK

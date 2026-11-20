@@ -1,0 +1,27 @@
+{
+  "option_id": "prediction_horizon=5",
+  "option_index": 14,
+  "config": {
+    "width": 128,
+    "depth": 2,
+    "z_dim": 16,
+    "lr": 0.001,
+    "z_l2": 0.0001,
+    "fit_steps": 200,
+    "fit_lr": 0.02,
+    "moving_weight": 1.0,
+    "prediction_horizon": 5,
+    "grip_force_max": 8.0
+  },
+  "base_iteration": 6,
+  "hypothesis": "Oracle has not established a positive Plain-to-Oracle error gap. The longest allowed recursive training loss may reduce unstable shared dynamics while preserving the locked evaluation metric.",
+  "change": "Change only prediction_horizon from 1 to 5; every other configuration setting is retained.",
+  "changed_key": "prediction_horizon",
+  "previous_value": 1,
+  "new_value": 5,
+  "skipped_options": [],
+  "fallback_option": false,
+  "iteration": 18,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "command": "PYTHONPATH=clean/vendor:. OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m clean.run candidate --iteration 18 --config /home/ubuntu/faliure/clean/configs/search_iteration_18.json --base-iteration 6 --hypothesis 'Oracle has not established a positive Plain-to-Oracle error gap. The longest allowed recursive training loss may reduce unstable shared dynamics while preserving the locked evaluation metric.' --change 'Change only prediction_horizon from 1 to 5; every other configuration setting is retained.' --device cuda"
+}

@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "completed_unix_seconds": 1794838804.8028924,
+  "source_sha256": {
+    "PROTOCOL.md": "b7c290b7e65cad349cb22cacd278e8f0c4b81d7316b65195f0237d1cb3053675",
+    "adaptation.py": "e7d9ab34da50bb067388642578baecbbf1e9022c335a06ad4cd0b91b2ac8fde3",
+    "evaluation.py": "c064263d6507723715724675c9a1cd629131ccc92842b8f640b0b1d35d142784",
+    "collection.py": "5534861195d9b0da6dfda3809038ac4a8b46171c0146cad08bc5d5188b7e9a1d",
+    "adaptation_tests.py": "571ab6ed9cb36046abe9af6824a3f27ec53d2850a37eb3417f84c63c99cc0b47",
+    "evaluation_tests.py": "0eb11a8efadfdf1e8520f3e6c774aa1da1e96cfeccfe5dfa6c4f2a507d6cd0af",
+    "collection_tests.py": "dbbb3c4344c2bedd830323a6b6d7cbcaa31164817ae937b1eb2b4e0a5a43a45b"
+  },
+  "synthetic_contract_tests_passed": 25,
+  "gpu_preflight_sha256": "886129e1f31f666d4e78523aa6581191b20c46071eadfca5a514fbfee378312c",
+  "independent_source_reviews": [
+    "step3_adaptation",
+    "step3_protocol_review",
+    "root"
+  ],
+  "test_properties_commands_or_traces_generated": false,
+  "scientific_sources_frozen": true
+}

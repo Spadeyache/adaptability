@@ -1,0 +1,5 @@
+{
+  "after_iteration": 10,
+  "reason": "Prefer a validation reference passing required F4 when one exists, before minimizing the same locked NMSE. No metric or threshold changes.",
+  "pid": 807001
+}

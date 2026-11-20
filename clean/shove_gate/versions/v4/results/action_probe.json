@@ -1,0 +1,1299 @@
+{
+  "scope": "Two distinct audits: 200/30 preplanned-command generator check and actual ten-cube pilot leave-one-cube-out command/length checks.",
+  "input_sha256": {
+    "data/cubes.json": "fecb7e660781b149cf932fbdf56fa6e49f54e408f3a63dea5828efbf3da5b9a0",
+    "data/plans.json": "7c4952f9f2f5d996452632da34b9dae7c78c0d6a77fa4c7e89ea34f6955fc66c"
+  },
+  "source_sha256": "c5ec5ca89caaffb5a5fd197d4cba1a1f01599bf2a60bd5d8168c53b44a1e70f9",
+  "generator": {
+    "scope": "Generator-only action probe using all preplanned commands; no additional physical cubes collected and no dynamics inputs.",
+    "input_sha256": {
+      "data/cubes.json": "fecb7e660781b149cf932fbdf56fa6e49f54e408f3a63dea5828efbf3da5b9a0",
+      "data/plans.json": "7c4952f9f2f5d996452632da34b9dae7c78c0d6a77fa4c7e89ea34f6955fc66c"
+    },
+    "source_sha256": "c5ec5ca89caaffb5a5fd197d4cba1a1f01599bf2a60bd5d8168c53b44a1e70f9",
+    "feature_names": [
+      "force_cap_n",
+      "cos_push_direction",
+      "sin_push_direction",
+      "contact_offset_m",
+      "cube_start_x_m",
+      "cube_start_y_m",
+      "cos_start_yaw",
+      "sin_start_yaw",
+      "commanded_push_force_x_n",
+      "commanded_push_force_y_n"
+    ],
+    "targets": [
+      "mass_kg",
+      "friction",
+      "combined_friction"
+    ],
+    "no_numeric_identifier_features": true,
+    "no_episode_duration_or_termination_features": true,
+    "no_measured_contact_force_features": true,
+    "train_cubes": 200,
+    "test_cubes": 30,
+    "train_episodes": 2000,
+    "test_episodes": 300,
+    "selection": "Per seed,180 training cubes for fit and20 training cubes for validation; choose hyperparameter by validation standardized MSE; refit all200 training cubes. No test-label tuning.",
+    "confidence_interval": "Percentile95% over1000 held-out-cube cluster bootstrap resamples; ten episodes retained together. Diagnostic, not proof of independence.",
+    "constant_train_mean_test_r2": {
+      "mass_kg": -0.05661678694417738,
+      "friction": -0.0155928470805613,
+      "combined_friction": -0.015592847080559746
+    },
+    "seeds": [
+      101,
+      211,
+      307,
+      401,
+      503
+    ],
+    "models": [
+      {
+        "family": "polynomial_ridge",
+        "seed": 101,
+        "validation_fit_cubes": 180,
+        "validation_cubes": 20,
+        "selected_parameter": 10000.0,
+        "validation_standardized_mse": 1.137912661668532,
+        "validation_candidates": [
+          {
+            "parameter": 1.0,
+            "mse": 1.1809084845618483
+          },
+          {
+            "parameter": 10.0,
+            "mse": 1.1758806526475043
+          },
+          {
+            "parameter": 100.0,
+            "mse": 1.1690521830917286
+          },
+          {
+            "parameter": 1000.0,
+            "mse": 1.1561425018865383
+          },
+          {
+            "parameter": 10000.0,
+            "mse": 1.137912661668532
+          }
+        ],
+        "test_r2": {
+          "mass_kg": -0.05066527155926104,
+          "friction": -0.017714552077885193,
+          "combined_friction": -0.01771455207788719
+        },
+        "test_cube_bootstrap_95_percent_interval": {
+          "mass_kg": [
+            -0.4585753451576188,
+            0.01028098020831853
+          ],
+          "friction": [
+            -0.34095457713798116,
+            0.0026775863086466313
+          ],
+          "combined_friction": [
+            -0.34095457713798444,
+            0.002677586308646143
+          ]
+        },
+        "all_test_r2_below_0_1": true
+      },
+      {
+        "family": "extra_trees",
+        "seed": 101,
+        "validation_fit_cubes": 180,
+        "validation_cubes": 20,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 1.1404587220889884,
+        "validation_candidates": [
+          {
+            "parameter": 8,
+            "mse": 1.1564339573425313
+          },
+          {
+            "parameter": 32,
+            "mse": 1.1463595725184441
+          },
+          {
+            "parameter": 128,
+            "mse": 1.1404587220889884
+          }
+        ],
+        "test_r2": {
+          "mass_kg": -0.055015795114637944,
+          "friction": -0.02392930207781241,
+          "combined_friction": -0.023929302077816184
+        },
+        "test_cube_bootstrap_95_percent_interval": {
+          "mass_kg": [
+            -0.4625481457808189,
+            0.0047118398703607225
+          ],
+          "friction": [
+            -0.3511403317322273,
+            -0.0004636036491942834
+          ],
+          "combined_friction": [
+            -0.3511403317322311,
+            -0.00046360364919401694
+          ]
+        },
+        "all_test_r2_below_0_1": true
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 211,
+        "validation_fit_cubes": 180,
+        "validation_cubes": 20,
+        "selected_parameter": 10000.0,
+        "validation_standardized_mse": 0.8863335389201259,
+        "validation_candidates": [
+          {
+            "parameter": 1.0,
+            "mse": 0.9211117336995969
+          },
+          {
+            "parameter": 10.0,
+            "mse": 0.9153513880357883
+          },
+          {
+            "parameter": 100.0,
+            "mse": 0.9063216171662555
+          },
+          {
+            "parameter": 1000.0,
+            "mse": 0.89785088782254
+          },
+          {
+            "parameter": 10000.0,
+            "mse": 0.8863335389201259
+          }
+        ],
+        "test_r2": {
+          "mass_kg": -0.05066527155926104,
+          "friction": -0.017714552077885193,
+          "combined_friction": -0.01771455207788719
+        },
+        "test_cube_bootstrap_95_percent_interval": {
+          "mass_kg": [
+            -0.4535388143916875,
+            0.00902545349648828
+          ],
+          "friction": [
+            -0.26809690327100455,
+            0.0023708605519023786
+          ],
+          "combined_friction": [
+            -0.2680969032710102,
+            0.0023708605518996894
+          ]
+        },
+        "all_test_r2_below_0_1": true
+      },
+      {
+        "family": "extra_trees",
+        "seed": 211,
+        "validation_fit_cubes": 180,
+        "validation_cubes": 20,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.8876388457567101,
+        "validation_candidates": [
+          {
+            "parameter": 8,
+            "mse": 0.9009427415253194
+          },
+          {
+            "parameter": 32,
+            "mse": 0.8888865458833878
+          },
+          {
+            "parameter": 128,
+            "mse": 0.8876388457567101
+          }
+        ],
+        "test_r2": {
+          "mass_kg": -0.05631517979639944,
+          "friction": -0.025824552920000743,
+          "combined_friction": -0.02582455292000363
+        },
+        "test_cube_bootstrap_95_percent_interval": {
+          "mass_kg": [
+            -0.45789694178154267,
+            0.0033205459942114036
+          ],
+          "friction": [
+            -0.2784432389124673,
+            -0.0030446195390921266
+          ],
+          "combined_friction": [
+            -0.27844323891247236,
+            -0.0030446195390921374
+          ]
+        },
+        "all_test_r2_below_0_1": true
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 307,
+        "validation_fit_cubes": 180,
+        "validation_cubes": 20,
+        "selected_parameter": 10000.0,
+        "validation_standardized_mse": 0.8755757305498051,
+        "validation_candidates": [
+          {
+            "parameter": 1.0,
+            "mse": 0.901628010007054
+          },
+          {
+            "parameter": 10.0,
+            "mse": 0.894941070050537
+          },
+          {
+            "parameter": 100.0,
+            "mse": 0.8873304190637262
+          },
+          {
+            "parameter": 1000.0,
+            "mse": 0.882425399971286
+          },
+          {
+            "parameter": 10000.0,
+            "mse": 0.8755757305498051
+          }
+        ],
+        "test_r2": {
+          "mass_kg": -0.05066527155926104,
+          "friction": -0.017714552077885193,
+          "combined_friction": -0.01771455207788719
+        },
+        "test_cube_bootstrap_95_percent_interval": {
+          "mass_kg": [
+            -0.4108215931152038,
+            0.010780229075505148
+          ],
+          "friction": [
+            -0.3279739049107526,
+            0.0017068676505704616
+          ],
+          "combined_friction": [
+            -0.3279739049107578,
+            0.001706867650568502
+          ]
+        },
+        "all_test_r2_below_0_1": true
+      },
+      {
+        "family": "extra_trees",
+        "seed": 307,
+        "validation_fit_cubes": 180,
+        "validation_cubes": 20,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.8777506132450363,
+        "validation_candidates": [
+          {
+            "parameter": 8,
+            "mse": 0.8905985203044878
+          },
+          {
+            "parameter": 32,
+            "mse": 0.8783575330417378
+          },
+          {
+            "parameter": 128,
+            "mse": 0.8777506132450363
+          }
+        ],
+        "test_r2": {
+          "mass_kg": -0.055175973802484624,
+          "friction": -0.025886478725358764,
+          "combined_friction": -0.025886478725361428
+        },
+        "test_cube_bootstrap_95_percent_interval": {
+          "mass_kg": [
+            -0.4181358472252049,
+            0.004997246788390486
+          ],
+          "friction": [
+            -0.34231618012628084,
+            -0.004131605302670252
+          ],
+          "combined_friction": [
+            -0.34231618012628595,
+            -0.00413160530266816
+          ]
+        },
+        "all_test_r2_below_0_1": true
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 401,
+        "validation_fit_cubes": 180,
+        "validation_cubes": 20,
+        "selected_parameter": 10000.0,
+        "validation_standardized_mse": 0.8827465592343633,
+        "validation_candidates": [
+          {
+            "parameter": 1.0,
+            "mse": 0.9174205853289034
+          },
+          {
+            "parameter": 10.0,
+            "mse": 0.9098733812801976
+          },
+          {
+            "parameter": 100.0,
+            "mse": 0.8962570013588426
+          },
+          {
+            "parameter": 1000.0,
+            "mse": 0.8881895899674254
+          },
+          {
+            "parameter": 10000.0,
+            "mse": 0.8827465592343633
+          }
+        ],
+        "test_r2": {
+          "mass_kg": -0.05066527155926104,
+          "friction": -0.017714552077885193,
+          "combined_friction": -0.01771455207788719
+        },
+        "test_cube_bootstrap_95_percent_interval": {
+          "mass_kg": [
+            -0.46122089309248326,
+            0.009645584424290594
+          ],
+          "friction": [
+            -0.3401101088808143,
+            0.002485615067033023
+          ],
+          "combined_friction": [
+            -0.3401101088808241,
+            0.0024856150670318987
+          ]
+        },
+        "all_test_r2_below_0_1": true
+      },
+      {
+        "family": "extra_trees",
+        "seed": 401,
+        "validation_fit_cubes": 180,
+        "validation_cubes": 20,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.8847596554494177,
+        "validation_candidates": [
+          {
+            "parameter": 8,
+            "mse": 0.917883560657561
+          },
+          {
+            "parameter": 32,
+            "mse": 0.8968715699814612
+          },
+          {
+            "parameter": 128,
+            "mse": 0.8847596554494177
+          }
+        ],
+        "test_r2": {
+          "mass_kg": -0.054172239504835185,
+          "friction": -0.025855339636415176,
+          "combined_friction": -0.025855339636419616
+        },
+        "test_cube_bootstrap_95_percent_interval": {
+          "mass_kg": [
+            -0.46060347453370115,
+            0.004158191905067245
+          ],
+          "friction": [
+            -0.34664281678198355,
+            -0.0012978977182390025
+          ],
+          "combined_friction": [
+            -0.3466428167819886,
+            -0.0012978977182379254
+          ]
+        },
+        "all_test_r2_below_0_1": true
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 503,
+        "validation_fit_cubes": 180,
+        "validation_cubes": 20,
+        "selected_parameter": 10000.0,
+        "validation_standardized_mse": 0.8964232008789872,
+        "validation_candidates": [
+          {
+            "parameter": 1.0,
+            "mse": 0.9243565253332386
+          },
+          {
+            "parameter": 10.0,
+            "mse": 0.9161456064306313
+          },
+          {
+            "parameter": 100.0,
+            "mse": 0.9050816517558985
+          },
+          {
+            "parameter": 1000.0,
+            "mse": 0.8981069996384303
+          },
+          {
+            "parameter": 10000.0,
+            "mse": 0.8964232008789872
+          }
+        ],
+        "test_r2": {
+          "mass_kg": -0.05066527155926104,
+          "friction": -0.017714552077885193,
+          "combined_friction": -0.01771455207788719
+        },
+        "test_cube_bootstrap_95_percent_interval": {
+          "mass_kg": [
+            -0.45063750417489146,
+            0.01023360207429621
+          ],
+          "friction": [
+            -0.2773383972926911,
+            0.0028860292495561314
+          ],
+          "combined_friction": [
+            -0.27733839729269716,
+            0.002886029249556581
+          ]
+        },
+        "all_test_r2_below_0_1": true
+      },
+      {
+        "family": "extra_trees",
+        "seed": 503,
+        "validation_fit_cubes": 180,
+        "validation_cubes": 20,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.897086876977487,
+        "validation_candidates": [
+          {
+            "parameter": 8,
+            "mse": 0.9202539617400185
+          },
+          {
+            "parameter": 32,
+            "mse": 0.9008119129219432
+          },
+          {
+            "parameter": 128,
+            "mse": 0.897086876977487
+          }
+        ],
+        "test_r2": {
+          "mass_kg": -0.05557609096266791,
+          "friction": -0.025328786763486377,
+          "combined_friction": -0.025328786763490374
+        },
+        "test_cube_bootstrap_95_percent_interval": {
+          "mass_kg": [
+            -0.4572524286172133,
+            0.0046638189059136775
+          ],
+          "friction": [
+            -0.2878806175978161,
+            -0.0009956446012693023
+          ],
+          "combined_friction": [
+            -0.28788061759782163,
+            -0.0009956446012684198
+          ]
+        },
+        "all_test_r2_below_0_1": true
+      }
+    ],
+    "aggregate": {
+      "polynomial_ridge": {
+        "mass_kg": {
+          "mean_r2": -0.05066527155926104,
+          "seed_std_r2": 0.0,
+          "min_r2": -0.05066527155926104,
+          "max_r2": -0.05066527155926104,
+          "mean_r2_minus_constant_baseline": 0.005951515384916339
+        },
+        "friction": {
+          "mean_r2": -0.017714552077885193,
+          "seed_std_r2": 0.0,
+          "min_r2": -0.017714552077885193,
+          "max_r2": -0.017714552077885193,
+          "mean_r2_minus_constant_baseline": -0.002121704997323892
+        },
+        "combined_friction": {
+          "mean_r2": -0.01771455207788719,
+          "seed_std_r2": 0.0,
+          "min_r2": -0.01771455207788719,
+          "max_r2": -0.01771455207788719,
+          "mean_r2_minus_constant_baseline": -0.002121704997327445
+        }
+      },
+      "extra_trees": {
+        "mass_kg": {
+          "mean_r2": -0.05525105583620502,
+          "seed_std_r2": 0.0007846714649814796,
+          "min_r2": -0.05631517979639944,
+          "max_r2": -0.054172239504835185,
+          "mean_r2_minus_constant_baseline": 0.0013657311079723553
+        },
+        "friction": {
+          "mean_r2": -0.025364892024614692,
+          "seed_std_r2": 0.0008345809982113653,
+          "min_r2": -0.025886478725358764,
+          "max_r2": -0.02392930207781241,
+          "mean_r2_minus_constant_baseline": -0.009772044944053392
+        },
+        "combined_friction": {
+          "mean_r2": -0.025364892024618245,
+          "seed_std_r2": 0.000834580998211165,
+          "min_r2": -0.025886478725361428,
+          "max_r2": -0.023929302077816184,
+          "mean_r2_minus_constant_baseline": -0.009772044944058499
+        }
+      }
+    },
+    "all_fitted_probe_r2_below_0_1": true,
+    "interpretation": "R2<=0 means no advantage over the held-out target mean. Negative scores are reported literally, not described as mathematically equal to zero. The empirical criterion flags positive predictability at R2>=0.1; it does not prove generator independence.",
+    "elapsed_seconds": 5.428842585009988
+  },
+  "pilot": {
+    "scope": "Actual newly collected 100-episode pilot, ten held-out-cube folds; no additional simulation.",
+    "episode_sha256": {
+      "cube_000_episode_00.npz": "318a71ef51d4859db2f9eb26badce511b590d7426998173fdea9d37c1035b4cc",
+      "cube_000_episode_01.npz": "5c81b222f67982b274d1031dc1f5c764e3feba60fa88a950d94915b0a1596cc1",
+      "cube_000_episode_02.npz": "46f517a7cc03b29ee0589fd6e5e92bed32567db871803b770851f1a7936dc8c5",
+      "cube_000_episode_03.npz": "184f675eb28bc324b639180b9d0f8ed303b3e53b5688d75c97d9c52493e36f2b",
+      "cube_000_episode_04.npz": "e35aa2ed0f40a26ccc62c217077dacc5b2ac6479b9810360e3d279a1cfdd6c1d",
+      "cube_000_episode_05.npz": "5010d209e3c50c4f2efc96b5480c4925be03f4adb3b30b8bd86e227580f3e85a",
+      "cube_000_episode_06.npz": "e51654aade3cbfc294a633eeb6f60b936ec39c4f2800b0f3a2c065caa5347b30",
+      "cube_000_episode_07.npz": "2eedab92834147376aa07528c462205c5cff651da37c3fd0052a9cffcc8642bf",
+      "cube_000_episode_08.npz": "49036bcf6bb40aa9a9c605041a658ff241d37a7391e9d067020108e387e88420",
+      "cube_000_episode_09.npz": "66b94341aa425d7a2653f0e4b445bc09d2141e0e6a0ddb0497e0d40043a1e9ab",
+      "cube_001_episode_00.npz": "c7eb11729e434262cafaa902c62ab4ef4d89f5133edb38afaa016526b405be08",
+      "cube_001_episode_01.npz": "2117351d54a3e6b13c753dba6b3f3c939184a1e0aba8ef98791b1edd2d6f13ee",
+      "cube_001_episode_02.npz": "a2e142dfd4e8470f250ac6cb0f29435d64a2b4c149ebe06e0e5500002c0a3140",
+      "cube_001_episode_03.npz": "188bdef672d4a1290ca01d13a28a87a7b7e1a125188a6ddf8e2758f2f96ee433",
+      "cube_001_episode_04.npz": "539336162502574e7e353379562e54666fdfe4c93289106a1570760454ca6c09",
+      "cube_001_episode_05.npz": "d88d1cdb1fc2b4d22a5bd903c8139433f145a83f832952c7e1a3fdab73cc5327",
+      "cube_001_episode_06.npz": "4e76317ed1d3ca089b907757fc012cf936518adb8a033ade4863968e534ec630",
+      "cube_001_episode_07.npz": "78c08d2e1c270f37ecfc128b3774db51c06ae035f936d18969b8a168505bbacd",
+      "cube_001_episode_08.npz": "13d44da1e3dc6b4c8f615e8bd511215b87f85cfdda5cf21ab2e6246d198f7ae9",
+      "cube_001_episode_09.npz": "754878b97b06c4dd6b93d2959343d6a7955a3f8483dcc368955c3ef6aa84ea96",
+      "cube_002_episode_00.npz": "d19e46a36359ad8e88e4a3eddbcf3c73f5114815bdd598818b0cd4f2d3b8a277",
+      "cube_002_episode_01.npz": "f579222ebf9589457f8458c253007604776bdb62b39857515b1c61e5dca311b4",
+      "cube_002_episode_02.npz": "660ed4263b55ff6bdece51a2de2c4175a7e38845eec3f9c60cb77394d9011864",
+      "cube_002_episode_03.npz": "0afe59504fb4ae0b5e0dbd71ab52b819ef88ff018a70f57060b064567146bce6",
+      "cube_002_episode_04.npz": "f5bf88448633fa245ab10edbf28ff6065bdc9d046d20392928f90868e9848d31",
+      "cube_002_episode_05.npz": "cc9c2a72d54a04a42f970094c238ff681723fd3dd5a2fefa789be2cbc513dd51",
+      "cube_002_episode_06.npz": "4ccf44eabdc67236251f8acf16315315eb222cefbf07ed2d20cce1e7ff9b328e",
+      "cube_002_episode_07.npz": "cda820d151383d916d5303f9dd234d162a4fe86372288d16334ac5a609fe861d",
+      "cube_002_episode_08.npz": "de958ab0fefa2c9910ba2dd1433f792ac48aafaa87667a42f2468cb21ba93c20",
+      "cube_002_episode_09.npz": "4fea97a8e4c937c412f00f3572050d388f27e19e3fd05f34edc02eff5fb0a09a",
+      "cube_003_episode_00.npz": "c64bdab69427c67e3db77e176f5fc2d60ad1be3ef4a1711dd0ffa6f74d612858",
+      "cube_003_episode_01.npz": "a443557cbcc3abf7085bea77fa1358465bdcad7c8f80dbec91e785a615b76ea8",
+      "cube_003_episode_02.npz": "e3fd4b181eff836fa041343d6cbcd118c863f208f0fac0684d92b3173ebf2c81",
+      "cube_003_episode_03.npz": "30097857abe738d2caab1dff1cd32266d9117a2a73e3aa225ec3f7af047179d7",
+      "cube_003_episode_04.npz": "fb15d5f47bcfaedade9506ad4f1c134261e144014e46224ef6a2b13c5a83ca1d",
+      "cube_003_episode_05.npz": "c3ce71790d0d49f4c410511ccf4bb6dacbb90be8a495a4ecb74f056c56756ea4",
+      "cube_003_episode_06.npz": "e62eaee7f4e67f7cb72277ff8183932183a8ebdf69e0a5fe2d90ccae87844a58",
+      "cube_003_episode_07.npz": "17ab2ffff87fedbc399c12502e5a66d6a254ca6142a5814c45a10bb128c0d6b2",
+      "cube_003_episode_08.npz": "f6453965549526a64d6f03c1dd5a5ef56a360ad6d5d02c214fed682c4e8077f8",
+      "cube_003_episode_09.npz": "4c9883a6a846a188c25aaff21c00ba5d76618fb1c6243a1468c3089c34a8d786",
+      "cube_004_episode_00.npz": "e3dbc2929a7ae8e6343516ef851f1bf9a3cf28805b3fa61525edb0147af1e5fd",
+      "cube_004_episode_01.npz": "f170cdf06738728b688f880256184c3090a336da6f1ea3c44f0e0f35ef7a32f2",
+      "cube_004_episode_02.npz": "9137d75f1e9a29ac5cc75a90d3a41ff458d53b02d57765bc84592f4ae5356a44",
+      "cube_004_episode_03.npz": "1da95c506d68f4ab3cdb6d37a564b46a825ad5165877cf3c7d700728595ba601",
+      "cube_004_episode_04.npz": "8d7894d9d80dd46e463783685bb9be6380011978a0f3959c7d23baf32454225f",
+      "cube_004_episode_05.npz": "5c7877ccb47390705a9567f6ef72557135261294174a8cad0a2bfa74789208eb",
+      "cube_004_episode_06.npz": "5fe475ef2a4d70f319e5c05e600c9d6d53a3e80cd1bf389ab96bba159224b8de",
+      "cube_004_episode_07.npz": "13f6762db4c8fc77b8aec7767ea7cd9e8d16fa3196b4b352ca6ef96c0ab73efa",
+      "cube_004_episode_08.npz": "4238db5bb24eecb96ba4c9fd9de9d65f7ec2689219ac11edc70e9d4a24cf2731",
+      "cube_004_episode_09.npz": "f747b27753c84cbcd01dad072e9f4a441108b0110eef818da47ddd5597ccdad4",
+      "cube_005_episode_00.npz": "3e41c13834a2de5da000a147db4b72eabf9fa0a480db732a58ea622a9adfe272",
+      "cube_005_episode_01.npz": "420a09f14b3f477d4bbabaabdbf18a24656d5472340038db219ff0f74e9543d8",
+      "cube_005_episode_02.npz": "82b7b3be4331631f8b871fcb3665878afa3de96992e66291199c31c87b4eeb72",
+      "cube_005_episode_03.npz": "b25823bbc9bde6bb5d6fb3a8cf985c9d51ab3d8a467f5f08a86a1749fb2926d2",
+      "cube_005_episode_04.npz": "6f849704dd05015bd704989909686c88831ec52c0e53a2ed3d1317f59f7d761f",
+      "cube_005_episode_05.npz": "2dd877e6d16d750efc6bbbac5788430632951ec42c804d01f00a07c28db1ec41",
+      "cube_005_episode_06.npz": "e9235410596617a62689599c078c4b5169b430d3c57a22b4127a2e8d0be2cb83",
+      "cube_005_episode_07.npz": "006ef3125be855b8121f0cb7f72168c734c57fb3257ecaacde69bb21d26584ce",
+      "cube_005_episode_08.npz": "85a21479787b07b1f6b235fdbef9a4861035f6ff2ca68a83b6f5a5e82ed817bf",
+      "cube_005_episode_09.npz": "0f7c7089ba85dfb09917817fe91ecf1f411bf47ed058e2de72d1373516101d1c",
+      "cube_006_episode_00.npz": "712044141319a2c5744c2ca3243d8c8cc8f564131f2600f45b0a7ab89f958a3c",
+      "cube_006_episode_01.npz": "df44621c8af6c4b745f0f0e4a8d0d6e07307b5aac51f2e1d68bd562043b8deea",
+      "cube_006_episode_02.npz": "32f9ea8f5a726d458b1ec986541c1bd95adf8069d23e858c30d5ea8d907455ba",
+      "cube_006_episode_03.npz": "1cd35900224b1739124dee61bd13a6c733d9a0058431cf22e97803a085e5a3ae",
+      "cube_006_episode_04.npz": "ad29b8b0e38db56c23576703db4c3a34c4dd5a6b0365233746f5ec47a2bc3144",
+      "cube_006_episode_05.npz": "e8de7ac99a48c0eb0bc5fd65d747d8cefa002015ab1180512a7f349857523612",
+      "cube_006_episode_06.npz": "659dada3c00269fd516b6f671db9e97291e20e81dd104f55cba944657899336b",
+      "cube_006_episode_07.npz": "8ecc681c3e2d9974fe1ebad1319fceb17a47f7b85119a868cf28e853a4f9ea76",
+      "cube_006_episode_08.npz": "4a9429dae0c36b3fec40dcf600ead8987ea709aa8cbcfe54f97aa231b2ff8dde",
+      "cube_006_episode_09.npz": "c1719dbe58cea69d7885b73bd5e4efc8f8ad2ad0c29f423e543744cc93b221ec",
+      "cube_007_episode_00.npz": "bc9b2a2dabd41086b3d8a2a4240f0c9020dd0f3400f564f4458335148ab701a1",
+      "cube_007_episode_01.npz": "aab1b868ebeeb6295df704c97bb46b9794f4f2d87a36bab66f62042a6c6bd922",
+      "cube_007_episode_02.npz": "7888376dc3cba462a332c6bf5577026c0f9e9ae1a5621c6ffe5e2f92c50111e6",
+      "cube_007_episode_03.npz": "7944f162fe88f0d94f1c2a1eb5cfcb250037ea80e7fb7971670ae4ac2f8fd128",
+      "cube_007_episode_04.npz": "56e61ff9f127d88de1376fb7eeead3f14e6c35c9c69f39ef5907254a0ed18a73",
+      "cube_007_episode_05.npz": "9aa857b80e0d893cbf1696e57c5846a286e6899e375ae16032ef09aced8bdcea",
+      "cube_007_episode_06.npz": "6333413f7dc9173d93000e32e6a458ffefcac78df8fa068441c4d4420b40dab9",
+      "cube_007_episode_07.npz": "bfd35dd60347b9f3b5e25dd87bb0b070bc9910a1aee0fdc49bd73bc3f0521bc2",
+      "cube_007_episode_08.npz": "2177149d5261341b613b1a43fd6a2770f1abe4152ba5ce3e622296b4cd9dc835",
+      "cube_007_episode_09.npz": "782972ce05a29cdbccefd02e130bcf3e05fe0a505f93069abe56388a0321e351",
+      "cube_008_episode_00.npz": "732c6b9021a68d01bc36269c2c0cd3da45288cc8fb3bc237ac102a7eb122f14c",
+      "cube_008_episode_01.npz": "8737261224aa5c9f3936515d34e1d4468432c10c1553b3a82724a0a608ef110d",
+      "cube_008_episode_02.npz": "95db99625be495102eefc89d4a55c09e6201ae2ffe0ad582a7da1079f53a100c",
+      "cube_008_episode_03.npz": "0e71e730568d7868b9a0ce2ffbd4f9169f339c340d35d23414315070363f83e8",
+      "cube_008_episode_04.npz": "cdb2df1505ef044e8cd52d6201cb380add51ef6aee8d34196b6c771f9c87ec21",
+      "cube_008_episode_05.npz": "60934e084d319a94b5119281d410e17c5e088565fb4d0e7dc50ac2dacb7cdbb5",
+      "cube_008_episode_06.npz": "2f059c4cc8aac57550853792b8de88227ba1dbb574469611e5b50826eb6f3d35",
+      "cube_008_episode_07.npz": "9a20101b649f5635800cbab2771c1aa1692d5ca5428fa42a2a8f9890c0c661e9",
+      "cube_008_episode_08.npz": "29f933f284afca121066f5482275acd11066f3b44a0de45ddb6de1df63abec2b",
+      "cube_008_episode_09.npz": "902405e54bcdf3c1c323e66f73af8b68552fbce16d80670b716c1f528565186e",
+      "cube_009_episode_00.npz": "bb57f60ef270de0a5e000b8a829890a8277c7dcb7be731d8f32eb6535b1c7c0a",
+      "cube_009_episode_01.npz": "4ca266064837c589deb83e87bef5967c49a363de2a3f974b194e03453022f145",
+      "cube_009_episode_02.npz": "aab45ab9c9c8e89e309106e1bee41362388306d1e4804f7d8e69f92bf1974f99",
+      "cube_009_episode_03.npz": "730ad6458f2406ea872385a5ead871a29f2efed244d06f90f7929a10203bb571",
+      "cube_009_episode_04.npz": "747f54b92d2a6191be841757f0df7d27ee3242aa99b9fecb39028583ec3d3add",
+      "cube_009_episode_05.npz": "1aaf56d18830377640850d43c6b7c69cea8ede89778ee2e7a30186f8440c30d2",
+      "cube_009_episode_06.npz": "557b87e06e67116598b932b16c553ada8bde380f15eeee7289d9ec1ccf60dd2c",
+      "cube_009_episode_07.npz": "cd98a5dfa3975ac7d56cb328094b2791121256cc7184aea7e3651dfd8ff3d190",
+      "cube_009_episode_08.npz": "82a95c2307173e77623ebab22fcd7c477648fb076b82bf0a7602975306342e20",
+      "cube_009_episode_09.npz": "bd4481ab6c3da9c547c9c69d4ce02ca15c11278839088ae7843b8f68e5f4c440"
+    },
+    "folds": 10,
+    "cubes": 10,
+    "episodes": 100,
+    "seeds": [
+      101,
+      211,
+      307,
+      401,
+      503
+    ],
+    "fitting": "Leave one whole cube out; fit on nine cubes and predict all ten shoves of the held-out cube. Pool all100 out-of-fold predictions before computing R2. No per-constant-cube R2.",
+    "fixed_hyperparameters": {
+      "polynomial_ridge": 100.0,
+      "extra_trees": 5
+    },
+    "feature_sets": {
+      "commands_only": "Eight actual action channels from the verified identical16-step push prefix. No numeric IDs, motion, stop time, length, mask or outcome.",
+      "retained_length_only": "One deliberately exposed outcome feature: number of retained transitions after stop-based trimming. Leakage diagnostic only, not permitted model input.",
+      "commands_plus_retained_length": "Eight commanded-action channels plus retained length, a deliberate length-leakage diagnostic."
+    },
+    "constant_fold_training_mean_r2": {
+      "mass_kg": -0.23456790123456672,
+      "friction": -0.23456790123456717,
+      "combined_friction": -0.23456790123457072
+    },
+    "baseline_note": "With ten equal-size cube groups, the leave-one-cube-out mean baseline has pooled R2=1-(10/9)^2=-0.234568. Baseline-relative skill is separately named and is not raw R2.",
+    "models": [
+      {
+        "feature_set": "commands_only",
+        "family": "polynomial_ridge",
+        "seed": 101,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.2919835831056512,
+          "friction": -0.32394803589926213,
+          "combined_friction": -0.3239480358992637
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.04650670231557852,
+          "friction": -0.07239790907840304,
+          "combined_friction": -0.07239790907840105
+        }
+      },
+      {
+        "feature_set": "commands_only",
+        "family": "polynomial_ridge",
+        "seed": 211,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.2919835831056512,
+          "friction": -0.32394803589926213,
+          "combined_friction": -0.3239480358992637
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.04650670231557852,
+          "friction": -0.07239790907840304,
+          "combined_friction": -0.07239790907840105
+        }
+      },
+      {
+        "feature_set": "commands_only",
+        "family": "polynomial_ridge",
+        "seed": 307,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.2919835831056512,
+          "friction": -0.32394803589926213,
+          "combined_friction": -0.3239480358992637
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.04650670231557852,
+          "friction": -0.07239790907840304,
+          "combined_friction": -0.07239790907840105
+        }
+      },
+      {
+        "feature_set": "commands_only",
+        "family": "polynomial_ridge",
+        "seed": 401,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.2919835831056512,
+          "friction": -0.32394803589926213,
+          "combined_friction": -0.3239480358992637
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.04650670231557852,
+          "friction": -0.07239790907840304,
+          "combined_friction": -0.07239790907840105
+        }
+      },
+      {
+        "feature_set": "commands_only",
+        "family": "polynomial_ridge",
+        "seed": 503,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.2919835831056512,
+          "friction": -0.32394803589926213,
+          "combined_friction": -0.3239480358992637
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.04650670231557852,
+          "friction": -0.07239790907840304,
+          "combined_friction": -0.07239790907840105
+        }
+      },
+      {
+        "feature_set": "commands_only",
+        "family": "extra_trees",
+        "seed": 101,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.3385902817140558,
+          "friction": -0.34891904773414373,
+          "combined_friction": -0.3489190477341444
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.0842581281883863,
+          "friction": -0.09262442866465714,
+          "combined_friction": -0.09262442866465448
+        }
+      },
+      {
+        "feature_set": "commands_only",
+        "family": "extra_trees",
+        "seed": 211,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.3385890270125669,
+          "friction": -0.35030490089885613,
+          "combined_friction": -0.3503049008988568
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.08425711188018026,
+          "friction": -0.09374696972807417,
+          "combined_friction": -0.0937469697280715
+        }
+      },
+      {
+        "feature_set": "commands_only",
+        "family": "extra_trees",
+        "seed": 307,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.33023409629441947,
+          "friction": -0.3457858521040249,
+          "combined_friction": -0.3457858521040271
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.07748961799848075,
+          "friction": -0.09008654020426099,
+          "combined_friction": -0.09008654020425966
+        }
+      },
+      {
+        "feature_set": "commands_only",
+        "family": "extra_trees",
+        "seed": 401,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.33590565392168026,
+          "friction": -0.3544982522805431,
+          "combined_friction": -0.35449825228054377
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.08208357967656221,
+          "friction": -0.09714358434724057,
+          "combined_friction": -0.09714358434723791
+        }
+      },
+      {
+        "feature_set": "commands_only",
+        "family": "extra_trees",
+        "seed": 503,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.33362473844315876,
+          "friction": -0.3514817713384255,
+          "combined_friction": -0.35148177133842573
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.08023603813895974,
+          "friction": -0.09470023478412526,
+          "combined_friction": -0.09470023478412237
+        }
+      },
+      {
+        "feature_set": "retained_length_only",
+        "family": "polynomial_ridge",
+        "seed": 101,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.2285734723364632,
+          "friction": -0.19563032062884878,
+          "combined_friction": -0.19563032062884966
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": 0.004855487407463777,
+          "friction": 0.031539440290631826,
+          "combined_friction": 0.031539440290634047
+        }
+      },
+      {
+        "feature_set": "retained_length_only",
+        "family": "polynomial_ridge",
+        "seed": 211,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.2285734723364632,
+          "friction": -0.19563032062884878,
+          "combined_friction": -0.19563032062884966
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": 0.004855487407463777,
+          "friction": 0.031539440290631826,
+          "combined_friction": 0.031539440290634047
+        }
+      },
+      {
+        "feature_set": "retained_length_only",
+        "family": "polynomial_ridge",
+        "seed": 307,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.2285734723364632,
+          "friction": -0.19563032062884878,
+          "combined_friction": -0.19563032062884966
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": 0.004855487407463777,
+          "friction": 0.031539440290631826,
+          "combined_friction": 0.031539440290634047
+        }
+      },
+      {
+        "feature_set": "retained_length_only",
+        "family": "polynomial_ridge",
+        "seed": 401,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.2285734723364632,
+          "friction": -0.19563032062884878,
+          "combined_friction": -0.19563032062884966
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": 0.004855487407463777,
+          "friction": 0.031539440290631826,
+          "combined_friction": 0.031539440290634047
+        }
+      },
+      {
+        "feature_set": "retained_length_only",
+        "family": "polynomial_ridge",
+        "seed": 503,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.2285734723364632,
+          "friction": -0.19563032062884878,
+          "combined_friction": -0.19563032062884966
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": 0.004855487407463777,
+          "friction": 0.031539440290631826,
+          "combined_friction": 0.031539440290634047
+        }
+      },
+      {
+        "feature_set": "retained_length_only",
+        "family": "extra_trees",
+        "seed": 101,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.21638570378420763,
+          "friction": -0.22943479848461323,
+          "combined_friction": -0.22943479848461368
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": 0.014727579934790791,
+          "friction": 0.004157813227462781,
+          "combined_friction": 0.0041578132274652235
+        }
+      },
+      {
+        "feature_set": "retained_length_only",
+        "family": "extra_trees",
+        "seed": 211,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.21294259722573283,
+          "friction": -0.226879167834505,
+          "combined_friction": -0.2268791678345048
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": 0.017516496247155455,
+          "friction": 0.006227874054050231,
+          "combined_friction": 0.0062278740540533395
+        }
+      },
+      {
+        "feature_set": "retained_length_only",
+        "family": "extra_trees",
+        "seed": 307,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.21229665649975238,
+          "friction": -0.22885354023602544,
+          "combined_friction": -0.22885354023602633
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": 0.018039708235199514,
+          "friction": 0.0046286324088187225,
+          "combined_friction": 0.004628632408820943
+        }
+      },
+      {
+        "feature_set": "retained_length_only",
+        "family": "extra_trees",
+        "seed": 401,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.21123141382040478,
+          "friction": -0.23148959571813088,
+          "combined_friction": -0.23148959571813177
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": 0.018902554805471206,
+          "friction": 0.0024934274683133806,
+          "combined_friction": 0.00249342746831549
+        }
+      },
+      {
+        "feature_set": "retained_length_only",
+        "family": "extra_trees",
+        "seed": 503,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.20888285358501824,
+          "friction": -0.23401630247525684,
+          "combined_friction": -0.2340163024752575
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": 0.020804888596134163,
+          "friction": 0.0004467949950412997,
+          "combined_friction": 0.0004467949950437422
+        }
+      },
+      {
+        "feature_set": "commands_plus_retained_length",
+        "family": "polynomial_ridge",
+        "seed": 101,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.30693127144458954,
+          "friction": -0.29771695868323134,
+          "combined_friction": -0.2977169586832322
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.05861432987011872,
+          "friction": -0.05115073653341806,
+          "combined_friction": -0.05115073653341562
+        }
+      },
+      {
+        "feature_set": "commands_plus_retained_length",
+        "family": "polynomial_ridge",
+        "seed": 211,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.30693127144458954,
+          "friction": -0.29771695868323134,
+          "combined_friction": -0.2977169586832322
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.05861432987011872,
+          "friction": -0.05115073653341806,
+          "combined_friction": -0.05115073653341562
+        }
+      },
+      {
+        "feature_set": "commands_plus_retained_length",
+        "family": "polynomial_ridge",
+        "seed": 307,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.30693127144458954,
+          "friction": -0.29771695868323134,
+          "combined_friction": -0.2977169586832322
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.05861432987011872,
+          "friction": -0.05115073653341806,
+          "combined_friction": -0.05115073653341562
+        }
+      },
+      {
+        "feature_set": "commands_plus_retained_length",
+        "family": "polynomial_ridge",
+        "seed": 401,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.30693127144458954,
+          "friction": -0.29771695868323134,
+          "combined_friction": -0.2977169586832322
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.05861432987011872,
+          "friction": -0.05115073653341806,
+          "combined_friction": -0.05115073653341562
+        }
+      },
+      {
+        "feature_set": "commands_plus_retained_length",
+        "family": "polynomial_ridge",
+        "seed": 503,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.30693127144458954,
+          "friction": -0.29771695868323134,
+          "combined_friction": -0.2977169586832322
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.05861432987011872,
+          "friction": -0.05115073653341806,
+          "combined_friction": -0.05115073653341562
+        }
+      },
+      {
+        "feature_set": "commands_plus_retained_length",
+        "family": "extra_trees",
+        "seed": 101,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.36741157344331965,
+          "friction": -0.37006988146392494,
+          "combined_friction": -0.37006988146392583
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.10760337448909008,
+          "friction": -0.10975660398578002,
+          "combined_friction": -0.10975660398577758
+        }
+      },
+      {
+        "feature_set": "commands_plus_retained_length",
+        "family": "extra_trees",
+        "seed": 211,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.36491955491991734,
+          "friction": -0.3783303351886176,
+          "combined_friction": -0.3783303351886187
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.1055848394851342,
+          "friction": -0.11644757150278084,
+          "combined_friction": -0.11644757150277862
+        }
+      },
+      {
+        "feature_set": "commands_plus_retained_length",
+        "family": "extra_trees",
+        "seed": 307,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.3627257248600426,
+          "friction": -0.3493668556202849,
+          "combined_friction": -0.34936685562028647
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.10380783713663577,
+          "friction": -0.09298715305243155,
+          "combined_friction": -0.09298715305242955
+        }
+      },
+      {
+        "feature_set": "commands_plus_retained_length",
+        "family": "extra_trees",
+        "seed": 401,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.3622109470222179,
+          "friction": -0.35315328116574785,
+          "combined_friction": -0.35315328116574896
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.1033908670879975,
+          "friction": -0.09605415774425641,
+          "combined_friction": -0.09605415774425419
+        }
+      },
+      {
+        "feature_set": "commands_plus_retained_length",
+        "family": "extra_trees",
+        "seed": 503,
+        "pooled_out_of_fold_r2": {
+          "mass_kg": -0.37327163915462713,
+          "friction": -0.356518613309321,
+          "combined_friction": -0.35651861330932233
+        },
+        "skill_vs_fold_training_mean": {
+          "mass_kg": -0.11235002771524916,
+          "friction": -0.09878007678055067,
+          "combined_friction": -0.09878007678054868
+        }
+      }
+    ],
+    "aggregate": {
+      "commands_only": {
+        "polynomial_ridge": {
+          "mass_kg": {
+            "mean_r2": -0.2919835831056512,
+            "seed_std_r2": 0.0,
+            "min_r2": -0.2919835831056512,
+            "max_r2": -0.2919835831056512,
+            "mean_skill_vs_fold_training_mean": -0.04650670231557852
+          },
+          "friction": {
+            "mean_r2": -0.32394803589926213,
+            "seed_std_r2": 0.0,
+            "min_r2": -0.32394803589926213,
+            "max_r2": -0.32394803589926213,
+            "mean_skill_vs_fold_training_mean": -0.07239790907840304
+          },
+          "combined_friction": {
+            "mean_r2": -0.3239480358992637,
+            "seed_std_r2": 0.0,
+            "min_r2": -0.3239480358992637,
+            "max_r2": -0.3239480358992637,
+            "mean_skill_vs_fold_training_mean": -0.07239790907840105
+          }
+        },
+        "extra_trees": {
+          "mass_kg": {
+            "mean_r2": -0.3353887594771762,
+            "seed_std_r2": 0.0035510899571185544,
+            "min_r2": -0.3385902817140558,
+            "max_r2": -0.33023409629441947,
+            "mean_skill_vs_fold_training_mean": -0.08166489517651385
+          },
+          "friction": {
+            "mean_r2": -0.3501979648711987,
+            "seed_std_r2": 0.003211480743986386,
+            "min_r2": -0.3544982522805431,
+            "max_r2": -0.3457858521040249,
+            "mean_skill_vs_fold_training_mean": -0.09366035154567162
+          },
+          "combined_friction": {
+            "mean_r2": -0.3501979648711996,
+            "seed_std_r2": 0.003211480743985808,
+            "min_r2": -0.35449825228054377,
+            "max_r2": -0.3457858521040271,
+            "mean_skill_vs_fold_training_mean": -0.09366035154566918
+          }
+        }
+      },
+      "retained_length_only": {
+        "polynomial_ridge": {
+          "mass_kg": {
+            "mean_r2": -0.2285734723364632,
+            "seed_std_r2": 0.0,
+            "min_r2": -0.2285734723364632,
+            "max_r2": -0.2285734723364632,
+            "mean_skill_vs_fold_training_mean": 0.004855487407463777
+          },
+          "friction": {
+            "mean_r2": -0.19563032062884878,
+            "seed_std_r2": 0.0,
+            "min_r2": -0.19563032062884878,
+            "max_r2": -0.19563032062884878,
+            "mean_skill_vs_fold_training_mean": 0.031539440290631826
+          },
+          "combined_friction": {
+            "mean_r2": -0.19563032062884966,
+            "seed_std_r2": 0.0,
+            "min_r2": -0.19563032062884966,
+            "max_r2": -0.19563032062884966,
+            "mean_skill_vs_fold_training_mean": 0.031539440290634047
+          }
+        },
+        "extra_trees": {
+          "mass_kg": {
+            "mean_r2": -0.21234784498302317,
+            "seed_std_r2": 0.0027346498001775367,
+            "min_r2": -0.21638570378420763,
+            "max_r2": -0.20888285358501824,
+            "mean_skill_vs_fold_training_mean": 0.017998245563750227
+          },
+          "friction": {
+            "mean_r2": -0.2301346809497063,
+            "seed_std_r2": 0.0027217780187661976,
+            "min_r2": -0.23401630247525684,
+            "max_r2": -0.226879167834505,
+            "mean_skill_vs_fold_training_mean": 0.003590908430737283
+          },
+          "combined_friction": {
+            "mean_r2": -0.23013468094970682,
+            "seed_std_r2": 0.0027217780187664786,
+            "min_r2": -0.2340163024752575,
+            "max_r2": -0.2268791678345048,
+            "mean_skill_vs_fold_training_mean": 0.0035909084307397475
+          }
+        }
+      },
+      "commands_plus_retained_length": {
+        "polynomial_ridge": {
+          "mass_kg": {
+            "mean_r2": -0.30693127144458954,
+            "seed_std_r2": 0.0,
+            "min_r2": -0.30693127144458954,
+            "max_r2": -0.30693127144458954,
+            "mean_skill_vs_fold_training_mean": -0.05861432987011872
+          },
+          "friction": {
+            "mean_r2": -0.29771695868323134,
+            "seed_std_r2": 0.0,
+            "min_r2": -0.29771695868323134,
+            "max_r2": -0.29771695868323134,
+            "mean_skill_vs_fold_training_mean": -0.05115073653341806
+          },
+          "combined_friction": {
+            "mean_r2": -0.2977169586832322,
+            "seed_std_r2": 0.0,
+            "min_r2": -0.2977169586832322,
+            "max_r2": -0.2977169586832322,
+            "mean_skill_vs_fold_training_mean": -0.05115073653341562
+          }
+        },
+        "extra_trees": {
+          "mass_kg": {
+            "mean_r2": -0.3661078878800249,
+            "seed_std_r2": 0.004501561905032726,
+            "min_r2": -0.37327163915462713,
+            "max_r2": -0.3622109470222179,
+            "mean_skill_vs_fold_training_mean": -0.10654738918282133
+          },
+          "friction": {
+            "mean_r2": -0.36148779334957926,
+            "seed_std_r2": 0.012231081586009846,
+            "min_r2": -0.3783303351886176,
+            "max_r2": -0.3493668556202849,
+            "mean_skill_vs_fold_training_mean": -0.1028051126131599
+          },
+          "combined_friction": {
+            "mean_r2": -0.3614877933495805,
+            "seed_std_r2": 0.012231081586009674,
+            "min_r2": -0.3783303351886187,
+            "max_r2": -0.34936685562028647,
+            "mean_skill_vs_fold_training_mean": -0.10280511261315772
+          }
+        }
+      }
+    },
+    "limitation": "Only ten independent cube identities. Seed SD describes fitting randomness, not dataset uncertainty. Negative R2 is reported literally and is not relabeled near zero.",
+    "length_policy": "Stop-based trimming makes length an observed outcome. Do not feed length, termination mask, final step index, padding pattern or future episode endpoint into Plain or Oracle. Use cube/episode-balanced losses so longer episodes do not silently get more weight."
+  },
+  "elapsed_seconds": 26.91060934800771
+}

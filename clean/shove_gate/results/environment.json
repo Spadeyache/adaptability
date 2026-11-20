@@ -1,0 +1,12 @@
+{
+  "python": "3.10.18",
+  "sapien": "3.0.3",
+  "numpy": "1.26.4",
+  "torch": "2.14.0",
+  "sklearn": "1.7.2",
+  "simulation_device": "CPU",
+  "training_device": "NVIDIA GeForce RTX3050 Laptop GPU",
+  "physics_dt_s": 0.001,
+  "model_dt_s": 0.005,
+  "raw_coast_s": 1.5
+}

@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "launch_fraction": 1.0,
+  "launch_threshold_m_s": 0.02,
+  "maximum_coast_distance_m": 0.6923893998565575,
+  "conditions": "launch>=.9 and maxdistance<1m",
+  "user_authorization": "Explicit conditional direct-force follow-up"
+}

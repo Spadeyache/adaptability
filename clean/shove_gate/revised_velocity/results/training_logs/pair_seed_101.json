@@ -1,0 +1,81 @@
+{
+  "seed": 101,
+  "completed_updates": 40000,
+  "extension_decisions": [
+    {
+      "endpoint": 10000,
+      "extend": true,
+      "families": {
+        "plain": {
+          "previous_best": 0.22447487012015224,
+          "final2500_best": 0.21366504240142625,
+          "relative_improvement": 0.04815607071268124,
+          "still_improving": true
+        },
+        "oracle": {
+          "previous_best": 0.2628654198846213,
+          "final2500_best": 0.2513691380088419,
+          "relative_improvement": 0.04373447782072445,
+          "still_improving": true
+        }
+      }
+    },
+    {
+      "endpoint": 20000,
+      "extend": true,
+      "families": {
+        "plain": {
+          "previous_best": 0.21278581327474838,
+          "final2500_best": 0.21761238103226582,
+          "relative_improvement": -0.02268275165170618,
+          "still_improving": false
+        },
+        "oracle": {
+          "previous_best": 0.24571791967354148,
+          "final2500_best": 0.24257097340593145,
+          "relative_improvement": 0.012807150051534835,
+          "still_improving": true
+        }
+      }
+    },
+    {
+      "endpoint": 30000,
+      "extend": true,
+      "families": {
+        "plain": {
+          "previous_best": 0.21278581327474838,
+          "final2500_best": 0.22891581873765318,
+          "relative_improvement": -0.07580395146963011,
+          "still_improving": false
+        },
+        "oracle": {
+          "previous_best": 0.241651882112128,
+          "final2500_best": 0.24112987210355757,
+          "relative_improvement": 0.0021601735687215686,
+          "still_improving": true
+        }
+      }
+    },
+    {
+      "endpoint": 40000,
+      "extend": false,
+      "families": {
+        "plain": {
+          "previous_best": 0.21278581327474838,
+          "final2500_best": 0.23128672512213108,
+          "relative_improvement": -0.08694617165804368,
+          "still_improving": false
+        },
+        "oracle": {
+          "previous_best": 0.239700697134779,
+          "final2500_best": 0.2405413947495271,
+          "relative_improvement": -0.0035072806412214117,
+          "still_improving": false
+        }
+      }
+    }
+  ],
+  "convergence_not_established_at_cap": false,
+  "minibatch_sha256": "c75c69744714afe77a180f5d2f830d1e478f5233332b9f4b62a3d2c0258a81bd",
+  "elapsed_seconds": 144.5153841569845
+}

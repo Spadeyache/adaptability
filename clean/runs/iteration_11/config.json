@@ -1,0 +1,18 @@
+{
+  "iteration": 11,
+  "config": {
+    "width": 32,
+    "depth": 2,
+    "z_dim": 16,
+    "lr": 0.001,
+    "z_l2": 0.0001,
+    "fit_steps": 200,
+    "fit_lr": 0.02,
+    "moving_weight": 1.0,
+    "prediction_horizon": 1,
+    "grip_force_max": 8.0
+  },
+  "hypothesis": "Oracle has not established a positive Plain-to-Oracle error gap. Further reducing shared-network width may test whether shared trajectory fitting suppresses object-specific latent use.",
+  "change": "Change only width from 128 to 32; every other configuration setting is retained.",
+  "base_iteration": 6
+}

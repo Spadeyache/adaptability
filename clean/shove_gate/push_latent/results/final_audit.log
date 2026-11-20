@@ -1,0 +1,107 @@
+{
+  "status": "passed",
+  "audited_unix_seconds": 1794807555.8988836,
+  "source_sha256": "5e894da1d6c1fc5394add3150b71500ad3e591bf42760b7002a9cd42b497c580",
+  "hash_counts": {
+    "data": 5,
+    "collection_source": 10,
+    "retired": 1368,
+    "pretraining_review": 12,
+    "checkpoints": 35,
+    "model_manifest": 2015,
+    "test_data": 602,
+    "adaptation": 73
+  },
+  "metric_cells_checked": 450,
+  "validation_grid_records": 240,
+  "candidate_configs": 48,
+  "training_budgets": {
+    "101": 70000,
+    "211": 30000,
+    "307": 30000,
+    "401": 60000,
+    "503": 50000
+  },
+  "selected_updates": {
+    "101": {
+      "plain": 15500,
+      "oracle": 43000,
+      "history": 69500,
+      "z2": 33000,
+      "z4": 33500,
+      "z8": 66000,
+      "z16": 51500
+    },
+    "211": {
+      "plain": 17000,
+      "oracle": 10500,
+      "history": 22500,
+      "z2": 14500,
+      "z4": 26000,
+      "z8": 22500,
+      "z16": 29500
+    },
+    "307": {
+      "plain": 10500,
+      "oracle": 26500,
+      "history": 26500,
+      "z2": 18500,
+      "z4": 27500,
+      "z8": 17000,
+      "z16": 14000
+    },
+    "401": {
+      "plain": 16500,
+      "oracle": 19000,
+      "history": 50000,
+      "z2": 47000,
+      "z4": 18000,
+      "z8": 12000,
+      "z16": 11500
+    },
+    "503": {
+      "plain": 28500,
+      "oracle": 41000,
+      "history": 50000,
+      "z2": 26500,
+      "z4": 22500,
+      "z8": 28500,
+      "z16": 40000
+    }
+  },
+  "extension_decisions_checked": 24,
+  "selected_config": {
+    "z_dim": 16,
+    "variant": "z16",
+    "learning_rate": 0.01,
+    "updates": 50,
+    "validation_mean_nmse": 0.11400513490504556,
+    "validation_seed_sample_sd": 0.013126289751642787,
+    "seed_values": [
+      0.10926185565620654,
+      0.12283389494333383,
+      0.10654838835664046,
+      0.1319306329815361,
+      0.09945090258751091
+    ]
+  },
+  "c1_passed": true,
+  "c2_passed": false,
+  "c3_passed": true,
+  "all_applicable_criteria_passed": false,
+  "chronology": {
+    "protocol_mtime": 1794802980.5450542,
+    "collection_seal_mtime": 1794803156.3169148,
+    "scale_audit_time": 1794803463.2142813,
+    "normalizer_mtime": 1794803727.9467754,
+    "checkpoint_seal_mtime": 1794807281.96362,
+    "adaptation_seal_time": 1794807339.8576345,
+    "test_started": 1794807403.8694375,
+    "test_completed": 1794807528.0707674
+  },
+  "all30fresh_cubes_and150_query_shoves_covered": true,
+  "no_predictions_training_or_adaptation_run": true,
+  "old_results_preserved": true,
+  "scalar_push_delta_energy": 0.0024753792121381536,
+  "summary_sha256": "b673b84fa2eeb7de96b9fc693e80ea967dda5ef2f2a52fc65d30970280c02094"
+}

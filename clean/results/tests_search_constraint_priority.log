@@ -1,0 +1,26 @@
+test_exactly_one_setting_changes_and_schedule_does_not_repeat_config (clean.test_search.SearchTests) ... ok
+test_explicit_fallbacks_are_used_after_primary_options (clean.test_search.SearchTests) ... ok
+test_failed_f4_reference_is_provisional_only_when_no_feasible_one_exists (clean.test_search.SearchTests) ... ok
+test_failed_f5_fallback_is_explicit_and_never_allows_leakage (clean.test_search.SearchTests) ... ok
+test_required_f4_feasibility_precedes_nmse_reference_comparison (clean.test_search.SearchTests) ... ok
+test_selection_uses_locked_nmse_after_validity_checks (clean.test_search.SearchTests) ... ok
+test_success_stops_even_when_another_nmse_is_lower (clean.test_search.SearchTests) ... ok
+test_superseded_untrained_plan_gets_a_distinct_command_log_marker (clean.test_search.SearchTests) ... ok
+test_cache_key_tracks_scaling_and_keeps_unaffected_baselines (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_candidate_from_old_data_version_cannot_open_final_data (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_changed_pilot_data_cannot_authorize_full_collection (clean.test_protocol_guards.ProtocolGuardTests) ... /home/ubuntu/.config/matplotlib is not a writable directory
+Matplotlib created a temporary cache directory at /tmp/matplotlib-d8gjg3q1 because there was an issue with the default path (/home/ubuntu/.config/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+ok
+test_existing_final_ledger_blocks_retry_and_further_tuning (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_failing_early_candidate_cannot_spend_final_access (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_final_begin_is_saved_before_any_heldout_loader_call (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_final_fit_and_score_episodes_cannot_overlap (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_heldout_data_requires_an_active_matching_final (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_resume_seal_mismatch_stops_before_loading_or_training (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_stale_pilot_generator_cannot_authorize_full_collection (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_valid_final_roles_pass_only_the_guard_without_opening_data (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 2.541s
+
+OK

@@ -1,0 +1,10 @@
+{
+  "pass": true,
+  "verified_episode_receipts": 100,
+  "critical_source_sha256": {
+    "schema.py": "91876c7ef3e2c4bebcf5e3d6db9c9712c26e00a8da99eae9b8b0b6da8211e1c6",
+    "script.py": "bc5a9da9a4710f32d6a84963497ebf3b736f269b7fce9fd621742b4d6c9dc73a",
+    "native.py": "86da7c0340aa80edf05230adb0cfa744415977b880151f28c00dd3e83d6ca730"
+  },
+  "scope": "Training cube episode receipts and data only; current critical source must match collection source."
+}

@@ -1,0 +1,41 @@
+{
+  "iteration": 6,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "result_sha256": "0febfdbde21937b34b8dadac6313ca3fdb5bf0343565dbe6d336a20ead89127c",
+  "base_iteration": 4,
+  "retained_iteration": 4,
+  "decision": "reverted",
+  "reason": "Fitted-z validation NMSE did not decrease; retained the lower-error eligible reference.",
+  "option_id": "z_dim=16",
+  "one_step_nmse": {
+    "mean": 0.3456669743368003,
+    "std": 0.011162592299080983,
+    "values": [
+      0.3343890852438473,
+      0.3606737220655711,
+      0.3350445972645989,
+      0.3469428564656938,
+      0.3512846106442906
+    ]
+  },
+  "failure_checks": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": true,
+    "F5": true,
+    "F6": true,
+    "F7": true,
+    "F8": true,
+    "F9": true
+  },
+  "success": {
+    "S1": false,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "plain_oracle_gap": -0.0061639775829089305,
+    "gap_recovery": null
+  },
+  "command": "PYTHONPATH=clean/vendor:. OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m clean.run candidate --iteration 6 --config /home/ubuntu/faliure/clean/configs/search_iteration_06.json --base-iteration 4 --hypothesis 'The retained reference fails validation F4. Oracle has not established a positive Plain-to-Oracle error gap. The largest allowed latent may expose a capacity limitation; F5 must still pass on fresh-z validation.' --change 'Change only z_dim from 4 to 16; every other configuration setting is retained.' --device cuda"
+}

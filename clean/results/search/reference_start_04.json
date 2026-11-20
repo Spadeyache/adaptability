@@ -1,0 +1,20 @@
+{
+  "start": 4,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "iteration": 3,
+  "result_sha256": "69ac04ca77806a50c03223e59d34b567104fc3328b80b94c12f034971ec5574d",
+  "reason": "Lowest fitted-z validation NMSE among finite candidates passing F1, F2, F3, F5, F6, F7, F8, and F9. F4 remains a required success check; a failing model may only serve as a reference for further corrections.",
+  "F4": false,
+  "F5": true,
+  "one_step_nmse": {
+    "mean": 0.34897522150014126,
+    "std": 0.019329719033827936,
+    "values": [
+      0.38033285776771364,
+      0.3450299942443816,
+      0.3488325256166669,
+      0.32747121656553624,
+      0.34320951330640803
+    ]
+  }
+}

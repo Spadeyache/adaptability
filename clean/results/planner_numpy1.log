@@ -1,0 +1,23 @@
+numpy 1.26.4
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/scipy/__init__.py", line 143, in <module>
+    from scipy._lib._ccallback import LowLevelCallable
+  File "/usr/lib/python3/dist-packages/scipy/_lib/_ccallback.py", line 1, in <module>
+    from . import _ccallback_c
+ImportError: cannot import name '_ccallback_c' from 'scipy._lib' (/usr/lib/python3/dist-packages/scipy/_lib/__init__.py)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/mplib/__init__.py", line 3, in <module>
+    from mplib.planner import Planner
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/mplib/planner.py", line 7, in <module>
+    import toppra as ta
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/toppra/__init__.py", line 12, in <module>
+    from .interpolator import RaveTrajectoryWrapper, SplineInterpolator,\
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/toppra/interpolator.py", line 39, in <module>
+    from scipy.interpolate import UnivariateSpline, CubicSpline, PPoly
+  File "/usr/lib/python3/dist-packages/scipy/__init__.py", line 148, in <module>
+    raise ImportError(msg) from e
+ImportError: The `scipy` install you are using seems to be broken, (extension modules cannot be imported), please try reinstalling.

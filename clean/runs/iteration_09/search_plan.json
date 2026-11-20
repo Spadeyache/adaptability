@@ -1,0 +1,27 @@
+{
+  "option_id": "fit_lr=0.005",
+  "option_index": 5,
+  "config": {
+    "width": 128,
+    "depth": 2,
+    "z_dim": 4,
+    "lr": 0.001,
+    "z_l2": 0.0,
+    "fit_steps": 1000,
+    "fit_lr": 0.005,
+    "moving_weight": 1.0,
+    "prediction_horizon": 1,
+    "grip_force_max": 8.0
+  },
+  "base_iteration": 8,
+  "hypothesis": "The retained reference fails validation F4. Oracle has not established a positive Plain-to-Oracle error gap. A smaller fitting learning rate may reduce overshoot and noisy object-latent estimates.",
+  "change": "Change only fit_lr from 0.02 to 0.005; every other configuration setting is retained.",
+  "changed_key": "fit_lr",
+  "previous_value": 0.02,
+  "new_value": 0.005,
+  "skipped_options": [],
+  "fallback_option": false,
+  "iteration": 9,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "command": "PYTHONPATH=clean/vendor:. OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m clean.run candidate --iteration 9 --config /home/ubuntu/faliure/clean/configs/search_iteration_09.json --base-iteration 8 --hypothesis 'The retained reference fails validation F4. Oracle has not established a positive Plain-to-Oracle error gap. A smaller fitting learning rate may reduce overshoot and noisy object-latent estimates.' --change 'Change only fit_lr from 0.02 to 0.005; every other configuration setting is retained.' --device cuda"
+}

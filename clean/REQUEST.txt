@@ -1,0 +1,97 @@
+ROLE: You are running an autonomous research loop. Work until the success
+criteria pass or the budget runs out. Then stop and report honestly.
+
+THE CLAIM
+A world model can be split into LAWS (network weights shared by all cubes) and
+CONSTANTS (a small learned vector z per cube). At test, with weights frozen, z is
+fitted from a new cube's own motion and makes predictions nearly as good as
+knowing the cube's true properties.
+
+WORKSPACE
+New folder clean/. Old code is read-only reference: copy into clean/ and note the
+source. Never import from or modify old folders.
+
+LOCKED (never change these, under any circumstance)
+1. Data split: 200 train cubes, 30 test cubes, plus 30 "out-of-range" cubes heavier
+   than every train cube. Generate once, save clean/data/split.json, never regenerate.
+2. Test and out-of-range cubes are evaluated ONLY in the final evaluation, at most
+   once per candidate model, and every evaluation is logged. All tuning uses the
+   validation split (2 of 10 episodes per train cube).
+3. Metric: one-step normalized MSE and R^2 on steps where the cube moves, plus
+   10-step rollout error. Mean and std over 5 seeds.
+4. Baselines, same data and training budget:
+   Plain (state+action), History (last K=20 steps via GRU, resets each episode),
+   Oracle (state+action+true mass+friction, ceiling only).
+5. Success criteria:
+   S1. Fitted z on test cubes recovers >= 50% of the Plain->Oracle error gap.
+   S2. Own z beats shuffled-between-cubes z by a clear margin (non-overlapping std).
+   S3. Two-part error within 10% of History, or better.
+   S4. All failure checks below pass.
+   Out-of-range results are REPORTED, not required to pass.
+
+DATA COLLECTION (do first)
+- Pick-and-lift only, 10 episodes per cube, mass and friction sampled independently.
+- SCRIPTED lift adapted from ManiSkill's PickCube motion-planning solution
+  (check installed version). Randomize: approach speed, lift speed, lift height,
+  grip force, grasp offset. Never use the old RL policy.
+- The script reads only cube pose and its random settings, never mass or friction.
+- Mass/friction set only in set_cube_properties(), saved only in cubes.json.
+- State = explicit whitelist of measured simulator quantities: joint positions,
+  velocities, effort, gripper opening, finger position error, cube pose and
+  velocity, cube pose relative to gripper. Document in STATE_COLUMNS.md.
+- Collect 10 cubes first and run the data checks before collecting everything.
+
+THE METHOD
+- Two-part model: MLP(state, action, z) -> normalized change in state.
+  z = nn.Embedding(200, d), init zeros, trained jointly with the weights,
+  small L2 penalty on z. The model never receives mass or friction.
+- Test-time fitting: freeze all weights, start z at the mean of train z's,
+  fit only z on the cube's first 5 lifts, score on its last 5 lifts.
+
+FAILURE CHECKS (run every iteration, log pass/fail)
+F1 Leakage: per state/action column, show by code path it is not computed from
+   mass/friction. Columns with |r| > 0.9 vs mass or friction must be classified
+   as physical sensor (allowed) or leak (stop).
+F2 Generator leak: actions-only probe (one episode's actions -> true mass/friction)
+   must give R^2 < 0.1 on held-out cubes.
+F3 Test contamination: confirm no test/out-of-range data was used in any
+   training, tuning, or early-stopping decision.
+F4 z ignored: own z vs shuffled z vs mean z on validation. Own z must win.
+F5 z memorizing physics: as d grows, if validation improves but test-time fitted
+   error gets worse, z is storing physics. Report.
+F6 Weak baseline: every gain is reported against mean z and as a fraction of
+   the Plain->Oracle gap, never against zero z alone.
+F7 Noise: 5 seeds, mean and std, for every reported number.
+F8 Signal ceiling: a GRU probe from one episode -> true mass/friction gives the
+   most any belief could recover. Report it next to z's recovery.
+F9 Metric gaming: the locked metric is the only one used for decisions.
+
+ALLOWED TO CHANGE (one thing per iteration)
+State features (from the physical whitelist), script randomization ranges,
+z size d (2,4,8,16), model width/depth, learning rates, z penalty, loss weight on
+cube-moving steps, multi-step prediction loss (predict 1-5 steps ahead),
+number and learning rate of test-time fitting steps.
+NOT allowed: anything in LOCKED, true values as input to the method, the old RL
+policy, any feature not on the physical whitelist.
+
+LOOP
+For each iteration:
+1. Write a one-line hypothesis ("validation fails F4 because ...; changing X should ...").
+2. Change ONE thing.
+3. Train, evaluate on validation only, run F1-F9.
+4. Log to clean/LOOP_LOG.md: hypothesis, change, results, kept or reverted, why.
+Budget: 20 iterations. Stop early if the validation run meets S1-S4 on the
+validation split; then run the final evaluation once on test and out-of-range.
+
+FINAL REPORT (clean/RESULTS.md)
+- One table: Plain, History, Oracle, Two-part (fitted z, mean z, shuffled z,
+  another cube's z), for test and out-of-range cubes.
+- Which success criteria passed or failed, plainly.
+- The 3 changes that mattered most, and WHY each helped, in plain language.
+- Anything suspicious you noticed, even if no check flagged it.
+- Exact commands to rerun everything.
+
+RULES
+- Never invent, estimate, or illustrate a number. Every figure comes from a saved run.
+- If a failure check fails, fix the cause; never loosen the check.
+- If the budget ends without success, say so and report the best honest result.

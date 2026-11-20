@@ -1,0 +1,11 @@
+{
+  "scope": "Training cubes0..199 all10episodes; counts only, no learned or analytic predictions",
+  "counts": {
+    "moving_coast": 87870,
+    "linear_only": 77936,
+    "angular_only": 1,
+    "both_linear_and_angular": 9933,
+    "horizontal_le_1mm_s_angular_only": 1,
+    "horizontal_le_1mm_s_vertical_or_combined": 0
+  }
+}

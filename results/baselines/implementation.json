@@ -1,0 +1,8 @@
+{
+  "purpose": "Core implementation fingerprints; protocol and split were frozen before training.",
+  "sha256": {
+    "experiments/world_model_baselines/model.py": "dbef07f8116ae7dc56b63155a7e0e38fea220d9844926dc98b453f2ee5495fda",
+    "experiments/world_model_baselines/data.py": "1b999262e32e32996e37729fda674163770ba2d0fda47485ada9d35fa2a42978",
+    "experiments/world_model_baselines/evaluate.py": "201a6857eb2def6f708a83cbb8c59b8dc9e83871189de8291d8f1060474fc2a5"
+  }
+}

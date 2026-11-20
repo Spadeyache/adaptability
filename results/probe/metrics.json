@@ -1,0 +1,3294 @@
+{
+  "schema_version": 1,
+  "status": "STOPPED_BEFORE_TRAINING",
+  "stage": "step0_inventory",
+  "reason": "Direct true mass/friction or invertible label-derived values found in saved observation vectors.",
+  "requested_seeds": 5,
+  "completed_probe_runs": 0,
+  "first_dataset_first_seed_runtime_seconds": null,
+  "controls_status": "not_run",
+  "ablation_results": null,
+  "moving_still_results": null,
+  "episode_pooling_results": null,
+  "plot_status": "not_created_no_measured_scores",
+  "gate": {
+    "status": "STOPPED_BEFORE_TRAINING",
+    "direct_leak_found": true,
+    "evidence": [
+      {
+        "path": "runs/interaction_adaptation/initial_policy_probe/episodes/condition2_sequence0_true_attempt0.npz",
+        "kind": "true_mass_times_gravity_in_observation",
+        "true_mass_kg": 0.5,
+        "reported_mass_kg": 0.5,
+        "observation_field": "sim__policy_observation",
+        "observation_shape": [
+          51,
+          45
+        ],
+        "zero_based_column": 42,
+        "observed_values_n": [
+          4.90500020980835
+        ],
+        "equals_true_mass_times_gravity": true,
+        "sources": [
+          "robot_adaptation/simulation/collection_lift.py:50-54",
+          "experiments/interaction_adaptation/evaluate.py:175-182"
+        ]
+      },
+      {
+        "path": "runs/physics_conditioning/baseline_freshscene_diagnostic/traces.jsonl",
+        "kind": "mass_and_friction_in_observation",
+        "label_path": "runs/physics_conditioning/baseline_freshscene_diagnostic/episodes.json",
+        "seed": 81000,
+        "mode": "true",
+        "batch_size": 15,
+        "observation_width": 46,
+        "weight_column": 42,
+        "friction_column": 45,
+        "weight_equals_true_mass_times_gravity": true,
+        "friction_equals_true_friction": true,
+        "first_cube": {
+          "true_mass_kg": 0.04,
+          "true_friction": 0.2,
+          "input_weight_n": 0.39239999651908875,
+          "input_friction": 0.20000000298023224
+        },
+        "sources": [
+          "experiments/physics_conditioning/evaluate.py:25-35",
+          "experiments/physics_conditioning/evaluate.py:113-130"
+        ]
+      }
+    ],
+    "script_sha256": "f0354012f252a399b708239f64286ecfd87c4ebaa6ca5616a80fb2568bbee68e",
+    "probe_runs": 0,
+    "scope": "These are exact examples, not an exhaustive all-file safety certification."
+  },
+  "inventory_artifacts": [
+    "results/probe/file_inventory.json",
+    "results/probe/inventory_lift_slide.json",
+    "results/probe/inventory_historical.json",
+    "results/probe/inventory_other.json",
+    "results/probe/inventory_legacy.json",
+    "results/probe/leak_gate.json"
+  ],
+  "metric_rows": [
+    {
+      "dataset": "nov13_main",
+      "paths": [
+        "runs/lift_slide_belief/nov13/data/test",
+        "runs/lift_slide_belief/nov13/data/train"
+      ],
+      "task": "lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "nov13_main",
+      "paths": [
+        "runs/lift_slide_belief/nov13/data/test",
+        "runs/lift_slide_belief/nov13/data/train"
+      ],
+      "task": "slide",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "paired_fixed",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/paired/fixed/data/test",
+        "runs/lift_slide_belief/slip_probe/paired/fixed/data/train"
+      ],
+      "task": "lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "paired_fixed",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/paired/fixed/data/test",
+        "runs/lift_slide_belief/slip_probe/paired/fixed/data/train"
+      ],
+      "task": "slow_slide",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "paired_fixed",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/paired/fixed/data/test",
+        "runs/lift_slide_belief/slip_probe/paired/fixed/data/train"
+      ],
+      "task": "shove",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "paired_random",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/paired/random/data/test",
+        "runs/lift_slide_belief/slip_probe/paired/random/data/train"
+      ],
+      "task": "lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "paired_random",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/paired/random/data/test",
+        "runs/lift_slide_belief/slip_probe/paired/random/data/train"
+      ],
+      "task": "slow_slide",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "paired_random",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/paired/random/data/test",
+        "runs/lift_slide_belief/slip_probe/paired/random/data/train"
+      ],
+      "task": "shove",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "pilot_constant_cap",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/pilot"
+      ],
+      "task": "lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "pilot_constant_cap",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/pilot"
+      ],
+      "task": "slow_slide",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "pilot_staged_cap",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/pilot_step45"
+      ],
+      "task": "lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "pilot_staged_cap",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/pilot_step45"
+      ],
+      "task": "slow_slide",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "smoke_fixed",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/smoke_pair/fixed/data/test",
+        "runs/lift_slide_belief/slip_probe/smoke_pair/fixed/data/train"
+      ],
+      "task": "lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "smoke_fixed",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/smoke_pair/fixed/data/test",
+        "runs/lift_slide_belief/slip_probe/smoke_pair/fixed/data/train"
+      ],
+      "task": "slow_slide",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "smoke_fixed",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/smoke_pair/fixed/data/test",
+        "runs/lift_slide_belief/slip_probe/smoke_pair/fixed/data/train"
+      ],
+      "task": "shove",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "smoke_random",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/smoke_pair/random/data/test",
+        "runs/lift_slide_belief/slip_probe/smoke_pair/random/data/train"
+      ],
+      "task": "lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "smoke_random",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/smoke_pair/random/data/test",
+        "runs/lift_slide_belief/slip_probe/smoke_pair/random/data/train"
+      ],
+      "task": "slow_slide",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "smoke_random",
+      "paths": [
+        "runs/lift_slide_belief/slip_probe/smoke_pair/random/data/test",
+        "runs/lift_slide_belief/slip_probe/smoke_pair/random/data/train"
+      ],
+      "task": "shove",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "three_task_main",
+      "paths": [
+        "runs/lift_slide_belief/three_task/data/test",
+        "runs/lift_slide_belief/three_task/data/train"
+      ],
+      "task": "lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "three_task_main",
+      "paths": [
+        "runs/lift_slide_belief/three_task/data/test",
+        "runs/lift_slide_belief/three_task/data/train"
+      ],
+      "task": "slow_slide",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "three_task_main",
+      "paths": [
+        "runs/lift_slide_belief/three_task/data/test",
+        "runs/lift_slide_belief/three_task/data/train"
+      ],
+      "task": "shove",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "oracle_complement_cache",
+      "paths": [
+        "runs/lift_slide_belief/three_task/diagnostics/oracle/trajectories"
+      ],
+      "task": "shove",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "target_candidate_cache",
+      "paths": [
+        "runs/lift_slide_belief/three_task/study/target_control/trajectories"
+      ],
+      "task": "shove",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/confirmation",
+      "paths": [
+        "runs/context_dynamics/nov13/confirmation"
+      ],
+      "task": "PickCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/confirmation",
+      "paths": [
+        "runs/context_dynamics/nov13/confirmation"
+      ],
+      "task": "PushCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/confirmation",
+      "paths": [
+        "runs/context_dynamics/nov13/confirmation"
+      ],
+      "task": "PullCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/confirmation",
+      "paths": [
+        "runs/context_dynamics/nov13/confirmation"
+      ],
+      "task": "poke",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/data",
+      "paths": [
+        "runs/context_dynamics/nov13/data"
+      ],
+      "task": "PickCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/data",
+      "paths": [
+        "runs/context_dynamics/nov13/data"
+      ],
+      "task": "PushCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/data",
+      "paths": [
+        "runs/context_dynamics/nov13/data"
+      ],
+      "task": "PullCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/data",
+      "paths": [
+        "runs/context_dynamics/nov13/data"
+      ],
+      "task": "poke",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/grip_data",
+      "paths": [
+        "runs/context_dynamics/nov13/grip_data"
+      ],
+      "task": "PickCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/grip_data",
+      "paths": [
+        "runs/context_dynamics/nov13/grip_data"
+      ],
+      "task": "PushCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/grip_data",
+      "paths": [
+        "runs/context_dynamics/nov13/grip_data"
+      ],
+      "task": "PullCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/grip_data",
+      "paths": [
+        "runs/context_dynamics/nov13/grip_data"
+      ],
+      "task": "poke",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/grip_pulses",
+      "paths": [
+        "runs/context_dynamics/nov13/grip_pulses"
+      ],
+      "task": "PickCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/grip_pulses",
+      "paths": [
+        "runs/context_dynamics/nov13/grip_pulses"
+      ],
+      "task": "PushCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/grip_pulses",
+      "paths": [
+        "runs/context_dynamics/nov13/grip_pulses"
+      ],
+      "task": "PullCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/grip_pulses",
+      "paths": [
+        "runs/context_dynamics/nov13/grip_pulses"
+      ],
+      "task": "poke",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/matched_train",
+      "paths": [
+        "runs/context_dynamics/nov13/matched_train"
+      ],
+      "task": "PickCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/matched_train",
+      "paths": [
+        "runs/context_dynamics/nov13/matched_train"
+      ],
+      "task": "PushCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/matched_train",
+      "paths": [
+        "runs/context_dynamics/nov13/matched_train"
+      ],
+      "task": "PullCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/nov13/matched_train",
+      "paths": [
+        "runs/context_dynamics/nov13/matched_train"
+      ],
+      "task": "poke",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/pick_gpu_2m/data",
+      "paths": [
+        "runs/context_dynamics/pick_gpu_2m/data"
+      ],
+      "task": "PickCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/pick_gpu_2m/pilot",
+      "paths": [
+        "runs/context_dynamics/pick_gpu_2m/pilot"
+      ],
+      "task": "PickCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/pick_gpu_5m_excluded/data",
+      "paths": [
+        "runs/context_dynamics/pick_gpu_5m_excluded/data"
+      ],
+      "task": "PickCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/context_dynamics/pick_gpu_5m_excluded/pilot",
+      "paths": [
+        "runs/context_dynamics/pick_gpu_5m_excluded/pilot"
+      ],
+      "task": "PickCube-v1",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/mass_belief/nov17_v1/calibration",
+      "paths": [
+        "runs/mass_belief/nov17_v1/calibration"
+      ],
+      "task": "Pick, lift, hold",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/mass_belief/nov17_v1/closed_loop",
+      "paths": [
+        "runs/mass_belief/nov17_v1/closed_loop"
+      ],
+      "task": "Pick, lift, hold",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/mass_belief/nov17_v1/test",
+      "paths": [
+        "runs/mass_belief/nov17_v1/test"
+      ],
+      "task": "Pick, lift, hold",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/mass_belief/nov17_v1/train",
+      "paths": [
+        "runs/mass_belief/nov17_v1/train"
+      ],
+      "task": "Pick, lift, hold",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/mass_belief/nov17_v1/validation",
+      "paths": [
+        "runs/mass_belief/nov17_v1/validation"
+      ],
+      "task": "Pick, lift, hold",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/mass_belief/switch_80g_mu1/episodes",
+      "paths": [
+        "runs/mass_belief/switch_80g_mu1/episodes"
+      ],
+      "task": "Pick, lift, hold",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/rma/adapter_validation_20261107",
+      "paths": [
+        "runs/rma/adapter_validation_20261107"
+      ],
+      "task": "Randomized lift task; in-range validation or integration smoke",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/rma/baseline_20261106_persistent/base_validation_01",
+      "paths": [
+        "runs/rma/baseline_20261106_persistent/base_validation_01"
+      ],
+      "task": "Randomized lift task; in-range validation or integration smoke",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/rma/baseline_20261106_persistent/base_validation_02",
+      "paths": [
+        "runs/rma/baseline_20261106_persistent/base_validation_02"
+      ],
+      "task": "Randomized lift task; in-range validation or integration smoke",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/rma/baseline_20261106_persistent/base_validation_03",
+      "paths": [
+        "runs/rma/baseline_20261106_persistent/base_validation_03"
+      ],
+      "task": "Randomized lift task; in-range validation or integration smoke",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/rma/integration_evaluation",
+      "paths": [
+        "runs/rma/integration_evaluation"
+      ],
+      "task": "Randomized lift task; in-range validation or integration smoke",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/interaction_estimator/contact_dataset_v1",
+      "paths": [
+        "runs/interaction_estimator/contact_dataset_v1"
+      ],
+      "task": "Contact snippets from independent fixed-policy lift attempts",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/visual_mass/initial_rgb_mass/dataset",
+      "paths": [
+        "runs/visual_mass/initial_rgb_mass/dataset"
+      ],
+      "task": "Initial RGB before any interaction",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/interaction_adaptation/poststop_cli_smoke_20261027T024742/transfer/episodes",
+      "paths": [
+        "runs/interaction_adaptation/poststop_cli_smoke_20261027T024742/transfer/episodes"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/interaction_adaptation/poststop_factory_smoke_20261027T024613",
+      "paths": [
+        "runs/interaction_adaptation/poststop_factory_smoke_20261027T024613"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/interaction_adaptation/poststop_cli_smoke_20261027T024742/retry/episodes",
+      "paths": [
+        "runs/interaction_adaptation/poststop_cli_smoke_20261027T024742/retry/episodes"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/failure_collection/stock_short",
+      "paths": [
+        "runs/failure_collection/stock_short"
+      ],
+      "task": "Stock random-XYZ pick/carry goal",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/checkpoint_probe_smoke/six_mode_native_carry/episodes",
+      "paths": [
+        "runs/physics_conditioning/checkpoint_probe_smoke/six_mode_native_carry/episodes"
+      ],
+      "task": "Native training carry geometry, randomized XY and floating goal Z; CPU fresh scenes",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/interaction_adaptation/initial_policy_probe/episodes",
+      "paths": [
+        "runs/interaction_adaptation/initial_policy_probe/episodes"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/long_50000_guarded_20261026/diagnostics/checkpoint2001_cpu_retries/episodes",
+      "paths": [
+        "runs/physics_conditioning/long_50000_guarded_20261026/diagnostics/checkpoint2001_cpu_retries/episodes"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/long_50000_guarded_20261026/diagnostics/checkpoint501_cpu_retries/episodes",
+      "paths": [
+        "runs/physics_conditioning/long_50000_guarded_20261026/diagnostics/checkpoint501_cpu_retries/episodes"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/long_50000_guarded_20261026/post_stop_evaluation/transfer_vertical/episodes",
+      "paths": [
+        "runs/physics_conditioning/long_50000_guarded_20261026/post_stop_evaluation/transfer_vertical/episodes"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/long_50000_guarded_20261026/post_stop_evaluation/transfer_native_carry/episodes",
+      "paths": [
+        "runs/physics_conditioning/long_50000_guarded_20261026/post_stop_evaluation/transfer_native_carry/episodes"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/interaction_adaptation/transfer_pilot200_crossed/episodes",
+      "paths": [
+        "runs/interaction_adaptation/transfer_pilot200_crossed/episodes"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/corrective_training_20261026/guarded100_cpu_retries/episodes",
+      "paths": [
+        "runs/physics_conditioning/corrective_training_20261026/guarded100_cpu_retries/episodes"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/interaction_adaptation/pilot200_retry_diagnostic/episodes",
+      "paths": [
+        "runs/interaction_adaptation/pilot200_retry_diagnostic/episodes"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/interaction_adaptation/diagnostic_iteration2001_retries/episodes",
+      "paths": [
+        "runs/interaction_adaptation/diagnostic_iteration2001_retries/episodes"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/long_50000_guarded_20261026/post_stop_evaluation/retries_vertical/episodes",
+      "paths": [
+        "runs/physics_conditioning/long_50000_guarded_20261026/post_stop_evaluation/retries_vertical/episodes"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/long_50000_guarded_20261026/post_stop_evaluation/retries_native_carry/episodes",
+      "paths": [
+        "runs/physics_conditioning/long_50000_guarded_20261026/post_stop_evaluation/retries_native_carry/episodes"
+      ],
+      "task": "Native carry or vertical pick-and-hold as environment field specifies; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/failure_collection/varied_fixed40g",
+      "paths": [
+        "runs/failure_collection/varied_fixed40g"
+      ],
+      "task": "Vertical pick, lift and hold directly above spawn; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/checkpoint_comparison_20261026/ckpt_2001/episodes",
+      "paths": [
+        "runs/physics_conditioning/checkpoint_comparison_20261026/ckpt_2001/episodes"
+      ],
+      "task": "Native training carry geometry, randomized XY and floating goal Z; CPU fresh scenes",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/checkpoint_comparison_20261026/ckpt_5001/episodes",
+      "paths": [
+        "runs/physics_conditioning/checkpoint_comparison_20261026/ckpt_5001/episodes"
+      ],
+      "task": "Native training carry geometry, randomized XY and floating goal Z; CPU fresh scenes",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/checkpoint_comparison_20261026/ckpt_8501/episodes",
+      "paths": [
+        "runs/physics_conditioning/checkpoint_comparison_20261026/ckpt_8501/episodes"
+      ],
+      "task": "Native training carry geometry, randomized XY and floating goal Z; CPU fresh scenes",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/failure_collection/dense_single_pair_fixed40g",
+      "paths": [
+        "runs/failure_collection/dense_single_pair_fixed40g"
+      ],
+      "task": "Vertical pick, lift and hold directly above spawn; no slide task",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/maniskill_pretrained/pick_cube/20261007T160411-c3dd5f0f/custom_lift",
+      "paths": [
+        "runs/maniskill_pretrained/pick_cube/20261007T160411-c3dd5f0f/custom_lift"
+      ],
+      "task": "custom_lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/maniskill_pretrained/pick_cube/20261007T160411-c3dd5f0f/official_pick_cube",
+      "paths": [
+        "runs/maniskill_pretrained/pick_cube/20261007T160411-c3dd5f0f/official_pick_cube"
+      ],
+      "task": "official_pick_cube",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/maniskill_pretrained/pick_cube/20261007T161108-28f3d274/custom_lift",
+      "paths": [
+        "runs/maniskill_pretrained/pick_cube/20261007T161108-28f3d274/custom_lift"
+      ],
+      "task": "custom_lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/maniskill_pretrained/pick_cube/20261007T161108-28f3d274/official_pick_cube",
+      "paths": [
+        "runs/maniskill_pretrained/pick_cube/20261007T161108-28f3d274/official_pick_cube"
+      ],
+      "task": "official_pick_cube",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/maniskill_pretrained/pick_cube/20261007T221109-3298edee/custom_lift",
+      "paths": [
+        "runs/maniskill_pretrained/pick_cube/20261007T221109-3298edee/custom_lift"
+      ],
+      "task": "custom_lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/maniskill_pretrained/pick_cube/20261008T032243-6e4c9370/custom_lift",
+      "paths": [
+        "runs/maniskill_pretrained/pick_cube/20261008T032243-6e4c9370/custom_lift"
+      ],
+      "task": "custom_lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/baseline_diagnostic_retry/traces.jsonl",
+      "paths": [
+        "runs/physics_conditioning/baseline_diagnostic_retry/traces.jsonl"
+      ],
+      "task": "physics-conditioned lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/baseline_freshscene_diagnostic/traces.jsonl",
+      "paths": [
+        "runs/physics_conditioning/baseline_freshscene_diagnostic/traces.jsonl"
+      ],
+      "task": "physics-conditioned lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/corrective_gpu_baselines_20261026/old2001_grid/traces.jsonl",
+      "paths": [
+        "runs/physics_conditioning/corrective_gpu_baselines_20261026/old2001_grid/traces.jsonl"
+      ],
+      "task": "physics-conditioned lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/corrective_gpu_baselines_20261026/old2001_offgrid/traces.jsonl",
+      "paths": [
+        "runs/physics_conditioning/corrective_gpu_baselines_20261026/old2001_offgrid/traces.jsonl"
+      ],
+      "task": "physics-conditioned lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/corrective_gpu_baselines_20261026/pilot200_grid/traces.jsonl",
+      "paths": [
+        "runs/physics_conditioning/corrective_gpu_baselines_20261026/pilot200_grid/traces.jsonl"
+      ],
+      "task": "physics-conditioned lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/corrective_gpu_baselines_20261026/pilot200_offgrid/traces.jsonl",
+      "paths": [
+        "runs/physics_conditioning/corrective_gpu_baselines_20261026/pilot200_offgrid/traces.jsonl"
+      ],
+      "task": "physics-conditioned lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/corrective_training_20261026/guarded100_grid/traces.jsonl",
+      "paths": [
+        "runs/physics_conditioning/corrective_training_20261026/guarded100_grid/traces.jsonl"
+      ],
+      "task": "physics-conditioned lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/corrective_training_20261026/guarded100_offgrid/traces.jsonl",
+      "paths": [
+        "runs/physics_conditioning/corrective_training_20261026/guarded100_offgrid/traces.jsonl"
+      ],
+      "task": "physics-conditioned lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/long_50000_guarded_20261026/post_stop_evaluation/policy/traces.jsonl",
+      "paths": [
+        "runs/physics_conditioning/long_50000_guarded_20261026/post_stop_evaluation/policy/traces.jsonl"
+      ],
+      "task": "physics-conditioned lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/physics_conditioning/pilot200_freshscene_diagnostic/traces.jsonl",
+      "paths": [
+        "runs/physics_conditioning/pilot200_freshscene_diagnostic/traces.jsonl"
+      ],
+      "task": "physics-conditioned lift",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/article_inspired/cube_lift",
+      "paths": [
+        "runs/article_inspired/cube_lift"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/checks/alignment",
+      "paths": [
+        "runs/checks/alignment"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/checks/grip_extension",
+      "paths": [
+        "runs/checks/grip_extension"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/deployment/20261021_234802_550312",
+      "paths": [
+        "runs/deployment/20261021_234802_550312"
+      ],
+      "task": "image-estimate lift deployment",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/deployment/20261021_234906_513736",
+      "paths": [
+        "runs/deployment/20261021_234906_513736"
+      ],
+      "task": "image-estimate lift deployment",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/deployment/20261021_235109_413496",
+      "paths": [
+        "runs/deployment/20261021_235109_413496"
+      ],
+      "task": "image-estimate lift deployment",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/deployment/20261022_014201_067220",
+      "paths": [
+        "runs/deployment/20261022_014201_067220"
+      ],
+      "task": "image-estimate lift deployment",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/diagnosis/weight-adaptation-20261008",
+      "paths": [
+        "runs/diagnosis/weight-adaptation-20261008"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261004T183600-9f9f3c53",
+      "paths": [
+        "runs/inspect/20261004T183600-9f9f3c53"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261004T183739-111848f0",
+      "paths": [
+        "runs/inspect/20261004T183739-111848f0"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261004T184018-30321200",
+      "paths": [
+        "runs/inspect/20261004T184018-30321200"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261004T184658-45fedb37",
+      "paths": [
+        "runs/inspect/20261004T184658-45fedb37"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261004T184727-c1fb4e69",
+      "paths": [
+        "runs/inspect/20261004T184727-c1fb4e69"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261004T190445-2812f7f4",
+      "paths": [
+        "runs/inspect/20261004T190445-2812f7f4"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261004T190612-b6c9e132",
+      "paths": [
+        "runs/inspect/20261004T190612-b6c9e132"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261004T190859-601f2196",
+      "paths": [
+        "runs/inspect/20261004T190859-601f2196"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261005T152308-817384cb",
+      "paths": [
+        "runs/inspect/20261005T152308-817384cb"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261005T165416-7e88f055",
+      "paths": [
+        "runs/inspect/20261005T165416-7e88f055"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261008T021816-05bc01b7",
+      "paths": [
+        "runs/inspect/20261008T021816-05bc01b7"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261008T024643-86f70895",
+      "paths": [
+        "runs/inspect/20261008T024643-86f70895"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261008T024914-21df5d38",
+      "paths": [
+        "runs/inspect/20261008T024914-21df5d38"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261008T025442-5d43bcd3",
+      "paths": [
+        "runs/inspect/20261008T025442-5d43bcd3"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261008T122327-6746d22d",
+      "paths": [
+        "runs/inspect/20261008T122327-6746d22d"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261008T130546-a6f1ea05",
+      "paths": [
+        "runs/inspect/20261008T130546-a6f1ea05"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261008T190610-40c9c0c7",
+      "paths": [
+        "runs/inspect/20261008T190610-40c9c0c7"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261008T192509-bc35f615",
+      "paths": [
+        "runs/inspect/20261008T192509-bc35f615"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261008T211232-d3e19b0b",
+      "paths": [
+        "runs/inspect/20261008T211232-d3e19b0b"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261009T040017-2aab8e95",
+      "paths": [
+        "runs/inspect/20261009T040017-2aab8e95"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261009T105845-63d5e45c",
+      "paths": [
+        "runs/inspect/20261009T105845-63d5e45c"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/inspect/20261009T122414-11e4a49e",
+      "paths": [
+        "runs/inspect/20261009T122414-11e4a49e"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    },
+    {
+      "dataset": "runs/maniskill_example/pick_cube",
+      "paths": [
+        "runs/maniskill_example/pick_cube"
+      ],
+      "task": "lift/hold/carry inspection",
+      "status": "not_run_global_step0_leak_gate",
+      "seeds_completed": [],
+      "simple": {
+        "mass": null,
+        "friction": null
+      },
+      "gru": {
+        "mass": null,
+        "friction": null
+      },
+      "shuffled": {
+        "mass": null,
+        "friction": null
+      },
+      "actions_only": {
+        "mass": null,
+        "friction": null
+      }
+    }
+  ],
+  "interpretation": "Inventory findings only. No conclusion yet about recovery of mass/friction from physical responses."
+}

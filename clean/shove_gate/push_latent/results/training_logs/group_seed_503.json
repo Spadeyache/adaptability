@@ -1,0 +1,249 @@
+{
+  "seed": 503,
+  "completed_updates": 50000,
+  "extension_decisions": [
+    {
+      "endpoint": 10000,
+      "extend": true,
+      "variants": {
+        "plain": {
+          "previous_best": 0.15094752774525028,
+          "final2500_best": 0.15165127867003364,
+          "relative_improvement": -0.004662222265548223,
+          "still_improving": false
+        },
+        "oracle": {
+          "previous_best": 0.06369585819885312,
+          "final2500_best": 0.0610329081280852,
+          "relative_improvement": 0.041807272027867444,
+          "still_improving": true
+        },
+        "history": {
+          "previous_best": 0.14009895097472366,
+          "final2500_best": 0.14596944907390574,
+          "relative_improvement": -0.04190251289062987,
+          "still_improving": false
+        },
+        "z2": {
+          "previous_best": 0.15778746084232737,
+          "final2500_best": 0.15696514265496608,
+          "relative_improvement": 0.0052115559941927295,
+          "still_improving": true
+        },
+        "z4": {
+          "previous_best": 0.17661199404070238,
+          "final2500_best": 0.16987588218443336,
+          "relative_improvement": 0.03814073836183854,
+          "still_improving": true
+        },
+        "z8": {
+          "previous_best": 0.16355969378471638,
+          "final2500_best": 0.16076310683285075,
+          "relative_improvement": 0.017098264781215646,
+          "still_improving": true
+        },
+        "z16": {
+          "previous_best": 0.16446409016172925,
+          "final2500_best": 0.15857232456501857,
+          "relative_improvement": 0.03582402450843149,
+          "still_improving": true
+        }
+      }
+    },
+    {
+      "endpoint": 20000,
+      "extend": true,
+      "variants": {
+        "plain": {
+          "previous_best": 0.1495048845567489,
+          "final2500_best": 0.14959657446160865,
+          "relative_improvement": -0.0006132903625964477,
+          "still_improving": false
+        },
+        "oracle": {
+          "previous_best": 0.05721843501575005,
+          "final2500_best": 0.05566981241252908,
+          "relative_improvement": 0.027065098910774053,
+          "still_improving": true
+        },
+        "history": {
+          "previous_best": 0.14009895097472366,
+          "final2500_best": 0.14536562375499773,
+          "relative_improvement": -0.03759252116901481,
+          "still_improving": false
+        },
+        "z2": {
+          "previous_best": 0.15614548558300306,
+          "final2500_best": 0.15505444943072094,
+          "relative_improvement": 0.006987305128985963,
+          "still_improving": true
+        },
+        "z4": {
+          "previous_best": 0.16827439747180337,
+          "final2500_best": 0.1696629329045551,
+          "relative_improvement": -0.008251614349024279,
+          "still_improving": false
+        },
+        "z8": {
+          "previous_best": 0.15816288548965385,
+          "final2500_best": 0.15535369790327422,
+          "relative_improvement": 0.017761357714755347,
+          "still_improving": true
+        },
+        "z16": {
+          "previous_best": 0.15476576299944259,
+          "final2500_best": 0.15333017327534837,
+          "relative_improvement": 0.009275886967968404,
+          "still_improving": true
+        }
+      }
+    },
+    {
+      "endpoint": 30000,
+      "extend": true,
+      "variants": {
+        "plain": {
+          "previous_best": 0.1468208695603545,
+          "final2500_best": 0.14635023427392702,
+          "relative_improvement": 0.0032055067364522255,
+          "still_improving": true
+        },
+        "oracle": {
+          "previous_best": 0.05242418785679413,
+          "final2500_best": 0.05337016572620289,
+          "relative_improvement": -0.018044683343361626,
+          "still_improving": false
+        },
+        "history": {
+          "previous_best": 0.14009895097472366,
+          "final2500_best": 0.1432146676566903,
+          "relative_improvement": -0.02223940051149113,
+          "still_improving": false
+        },
+        "z2": {
+          "previous_best": 0.15462164845606174,
+          "final2500_best": 0.1572321918845791,
+          "relative_improvement": -0.016883427738510898,
+          "still_improving": false
+        },
+        "z4": {
+          "previous_best": 0.16721322215275375,
+          "final2500_best": 0.1697049596014987,
+          "relative_improvement": -0.014901557524372581,
+          "still_improving": false
+        },
+        "z8": {
+          "previous_best": 0.15507305573664149,
+          "final2500_best": 0.15429855166868756,
+          "relative_improvement": 0.004994446419300974,
+          "still_improving": true
+        },
+        "z16": {
+          "previous_best": 0.15151154923125273,
+          "final2500_best": 0.1510716508030191,
+          "relative_improvement": 0.0029033986548590977,
+          "still_improving": true
+        }
+      }
+    },
+    {
+      "endpoint": 40000,
+      "extend": true,
+      "variants": {
+        "plain": {
+          "previous_best": 0.14635023427392702,
+          "final2500_best": 0.14872883884163896,
+          "relative_improvement": -0.016252823779289972,
+          "still_improving": false
+        },
+        "oracle": {
+          "previous_best": 0.050474220293552516,
+          "final2500_best": 0.04980791696400849,
+          "relative_improvement": 0.013200864236611822,
+          "still_improving": true
+        },
+        "history": {
+          "previous_best": 0.14009895097472366,
+          "final2500_best": 0.14075042356601764,
+          "relative_improvement": -0.00465008900324678,
+          "still_improving": false
+        },
+        "z2": {
+          "previous_best": 0.15462164845606174,
+          "final2500_best": 0.15715106727240055,
+          "relative_improvement": -0.01635876244753388,
+          "still_improving": false
+        },
+        "z4": {
+          "previous_best": 0.16721322215275375,
+          "final2500_best": 0.16847938448839153,
+          "relative_improvement": -0.007572142437881554,
+          "still_improving": false
+        },
+        "z8": {
+          "previous_best": 0.15429855166868756,
+          "final2500_best": 0.1550964695012586,
+          "relative_improvement": -0.005171259379571829,
+          "still_improving": false
+        },
+        "z16": {
+          "previous_best": 0.14966451560297744,
+          "final2500_best": 0.1485887441420713,
+          "relative_improvement": 0.007187885896479982,
+          "still_improving": true
+        }
+      }
+    },
+    {
+      "endpoint": 50000,
+      "extend": false,
+      "variants": {
+        "plain": {
+          "previous_best": 0.14635023427392702,
+          "final2500_best": 0.14846118241977604,
+          "relative_improvement": -0.014423947842119061,
+          "still_improving": false
+        },
+        "oracle": {
+          "previous_best": 0.0492566390706226,
+          "final2500_best": 0.05066291281294237,
+          "relative_improvement": -0.02854993294007529,
+          "still_improving": false
+        },
+        "history": {
+          "previous_best": 0.13945707712404376,
+          "final2500_best": 0.1394207224511268,
+          "relative_improvement": 0.00026068718538123365,
+          "still_improving": false
+        },
+        "z2": {
+          "previous_best": 0.15462164845606174,
+          "final2500_best": 0.15675777969937907,
+          "relative_improvement": -0.013815214522980205,
+          "still_improving": false
+        },
+        "z4": {
+          "previous_best": 0.16721322215275375,
+          "final2500_best": 0.1694691505169252,
+          "relative_improvement": -0.01349132763024332,
+          "still_improving": false
+        },
+        "z8": {
+          "previous_best": 0.15429855166868756,
+          "final2500_best": 0.1559577174698122,
+          "relative_improvement": -0.010752957712054522,
+          "still_improving": false
+        },
+        "z16": {
+          "previous_best": 0.1485887441420713,
+          "final2500_best": 0.15161987731032428,
+          "relative_improvement": -0.02039948036275753,
+          "still_improving": false
+        }
+      }
+    }
+  ],
+  "convergence_not_established_at_cap": false,
+  "minibatch_sha256": "18620cd5133a732af5d5aa3384b7cff72ca0e2be7b7d3e330605a4258febab42",
+  "elapsed_seconds": 779.9450577659882
+}

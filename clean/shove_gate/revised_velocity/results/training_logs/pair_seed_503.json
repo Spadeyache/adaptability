@@ -1,0 +1,45 @@
+{
+  "seed": 503,
+  "completed_updates": 20000,
+  "extension_decisions": [
+    {
+      "endpoint": 10000,
+      "extend": true,
+      "families": {
+        "plain": {
+          "previous_best": 0.2288500216774623,
+          "final2500_best": 0.21400660046039924,
+          "relative_improvement": 0.06486091243628173,
+          "still_improving": true
+        },
+        "oracle": {
+          "previous_best": 0.2836688886413882,
+          "final2500_best": 0.2688708407355895,
+          "relative_improvement": 0.052166622771615476,
+          "still_improving": true
+        }
+      }
+    },
+    {
+      "endpoint": 20000,
+      "extend": false,
+      "families": {
+        "plain": {
+          "previous_best": 0.20935784256961093,
+          "final2500_best": 0.21428765939660196,
+          "relative_improvement": -0.023547323408015554,
+          "still_improving": false
+        },
+        "oracle": {
+          "previous_best": 0.2688708407355895,
+          "final2500_best": 0.2807049019087592,
+          "relative_improvement": -0.04401392557405454,
+          "still_improving": false
+        }
+      }
+    }
+  ],
+  "convergence_not_established_at_cap": false,
+  "minibatch_sha256": "16c4881d290e60c296cf0a8f19ea821ff023a4f904fe9e09277ee80d8c91c8d5",
+  "elapsed_seconds": 75.57461935500032
+}

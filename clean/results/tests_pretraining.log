@@ -1,0 +1,37 @@
+test_append_history_preserves_last_twenty_and_short_lengths (clean.test_models.ModelTests) ... ok
+test_context_interfaces_and_property_exclusion (clean.test_models.ModelTests) ... ok
+test_history_never_crosses_episode_or_reads_future (clean.test_models.ModelTests) ... ok
+test_only_fitted_z_changes_when_weights_are_frozen (clean.test_models.ModelTests) ... ok
+test_padding_does_not_advance_hidden_state (clean.test_models.ModelTests) ... ok
+test_fresh_latents_fit_without_changing_any_model_weight (clean.test_train.TrainTests) ... ok
+test_multistep_loss_does_not_teacher_force (clean.test_train.TrainTests) ... ok
+test_training_cannot_accept_held_out_id_or_validation_episode (clean.test_train.TrainTests) ... ok
+test_derangement_has_no_self_assignment_and_is_reproducible (clean.test_evaluate.EvaluationTests) ... ok
+test_equal_cube_weight_pooled_r2_and_recursive_error (clean.test_evaluate.EvaluationTests) ... ok
+test_five_seeds_sample_std_and_locked_success_rules (clean.test_evaluate.EvaluationTests) ... ok
+test_history_rollout_uses_predicted_states_and_known_actions (clean.test_evaluate.EvaluationTests) ... ok
+test_invalid_remaining_cannot_cross_episode_boundary (clean.test_evaluate.EvaluationTests) ... ok
+test_missing_cube_motion_is_explicit_and_not_silently_dropped (clean.test_evaluate.EvaluationTests) ... ok
+test_nonfinite_scores_remain_invalid_and_json_null_is_explained (clean.test_evaluate.EvaluationTests) ... ok
+test_only_moving_rows_start_rollouts (clean.test_evaluate.EvaluationTests) ... ok
+test_collection_receipt_detects_data_and_source_changes (clean.test_audit.AuditTests) ... ok
+test_constant_prediction_and_undefined_r2 (clean.test_audit.AuditTests) ... ok
+test_import_or_property_leak_rejected (clean.test_audit.AuditTests) ... ok
+test_label_field_rejected_in_episode (clean.test_audit.AuditTests) ... ok
+test_motion_threshold_catches_rotation_and_translation (clean.test_audit.AuditTests) ... ok
+test_nontraining_cube_rejected_before_file_read (clean.test_audit.AuditTests) ... ok
+test_sample_standard_deviation (clean.test_audit.AuditTests) ... ok
+test_suspicious_command_correlation_fails_but_sensor_allowed (clean.test_audit.AuditTests) ... ok
+test_cache_key_tracks_scaling_and_keeps_unaffected_baselines (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_existing_final_ledger_blocks_retry_and_further_tuning (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_failing_early_candidate_cannot_spend_final_access (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_final_begin_is_saved_before_any_heldout_loader_call (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_final_fit_and_score_episodes_cannot_overlap (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_heldout_data_requires_an_active_matching_final (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_resume_seal_mismatch_stops_before_loading_or_training (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+test_valid_final_roles_pass_only_the_guard_without_opening_data (clean.test_protocol_guards.ProtocolGuardTests) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.829s
+
+OK

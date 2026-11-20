@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "trials": 126,
+  "stopped_trials": 126,
+  "max_measured_contact_force_over_cap": 0.9535033605630165,
+  "max_pusher_momentum_balance_residual_Ns": 6.74165785306477e-09,
+  "max_contact_points": 1,
+  "checks": [
+    "original and probe seals",
+    "raw trajectory hashes",
+    "property-blind fixed script",
+    "same approach/preload/push commands across properties and repeats",
+    "contact impulse aggregation and actual force cap",
+    "pusher momentum balance including its inertia",
+    "zero contact force after release",
+    "independent stop-window detection",
+    "saved launch speed, stopping distance, and stopping time recomputed"
+  ]
+}

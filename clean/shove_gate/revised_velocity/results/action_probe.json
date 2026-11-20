@@ -1,0 +1,188 @@
+{
+  "generator": {
+    "scope": "200/30 independent cube split using planned force commands only; no test motion.",
+    "feature_names": [
+      "applied_force_x_N",
+      "applied_force_y_N",
+      "applied_force_z_N",
+      "force_magnitude_N",
+      "commanded_duration_s"
+    ],
+    "constant_train_mean_r2": {
+      "mass_kg": -0.02833577718556901,
+      "friction": -0.0016086983533565302,
+      "combined_friction": -0.00160869835335542
+    },
+    "selection": "180/20 training-cube validation only, then refit 200; no test tuning.",
+    "records": [
+      {
+        "family": "polynomial_ridge",
+        "seed": 101,
+        "selected_parameter": 10.0,
+        "validation_standardized_mse": 1.1290877224775264,
+        "r2": {
+          "mass_kg": -0.04540817594700486,
+          "friction": -0.013320636006765918,
+          "combined_friction": -0.013320636006764586
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 101,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 1.1381482060017354,
+        "r2": {
+          "mass_kg": -0.036525564259202836,
+          "friction": -0.0044398598815391654,
+          "combined_friction": -0.004439859881537833
+        }
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 211,
+        "selected_parameter": 1.0,
+        "validation_standardized_mse": 0.8689592665292273,
+        "r2": {
+          "mass_kg": -0.04657272149301139,
+          "friction": -0.016614671113711177,
+          "combined_friction": -0.016614671113710067
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 211,
+        "selected_parameter": 32,
+        "validation_standardized_mse": 0.8770061816714528,
+        "r2": {
+          "mass_kg": -0.040666633289932363,
+          "friction": 0.004955960192792763,
+          "combined_friction": 0.004955960192793429
+        }
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 307,
+        "selected_parameter": 10000.0,
+        "validation_standardized_mse": 0.8753112171376287,
+        "r2": {
+          "mass_kg": -0.03160288853941973,
+          "friction": -0.003617787579020648,
+          "combined_friction": -0.003617787579019538
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 307,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.87824021029916,
+        "r2": {
+          "mass_kg": -0.036904349878102094,
+          "friction": -0.004045180853827324,
+          "combined_friction": -0.0040451808538259915
+        }
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 401,
+        "selected_parameter": 1000.0,
+        "validation_standardized_mse": 0.8819776349537699,
+        "r2": {
+          "mass_kg": -0.038721762271036964,
+          "friction": -0.008149879495505274,
+          "combined_friction": -0.008149879495503276
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 401,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.8837389675166264,
+        "r2": {
+          "mass_kg": -0.03723079803584173,
+          "friction": -0.0034672238840183223,
+          "combined_friction": -0.003467223884016768
+        }
+      },
+      {
+        "family": "polynomial_ridge",
+        "seed": 503,
+        "selected_parameter": 10000.0,
+        "validation_standardized_mse": 0.8992031104700621,
+        "r2": {
+          "mass_kg": -0.03160288853941973,
+          "friction": -0.003617787579020648,
+          "combined_friction": -0.003617787579019538
+        }
+      },
+      {
+        "family": "extra_trees",
+        "seed": 503,
+        "selected_parameter": 128,
+        "validation_standardized_mse": 0.9032862110086706,
+        "r2": {
+          "mass_kg": -0.03683426648884991,
+          "friction": -0.0038802341983825706,
+          "combined_friction": -0.0038802341983812383
+        }
+      }
+    ],
+    "aggregate": {
+      "extra_trees": {
+        "mass_kg": {
+          "mean_r2": -0.03763232239038579,
+          "seed_std_r2": 0.0017146439283387404,
+          "min_r2": -0.040666633289932363,
+          "max_r2": -0.036525564259202836,
+          "mean_r2_minus_baseline": -0.009296545204816778
+        },
+        "friction": {
+          "mean_r2": -0.002175307724994924,
+          "seed_std_r2": 0.004001731679676637,
+          "min_r2": -0.0044398598815391654,
+          "max_r2": 0.004955960192792763,
+          "mean_r2_minus_baseline": -0.0005666093716383937
+        },
+        "combined_friction": {
+          "mean_r2": -0.00217530772499368,
+          "seed_std_r2": 0.004001731679676322,
+          "min_r2": -0.004439859881537833,
+          "max_r2": 0.004955960192793429,
+          "mean_r2_minus_baseline": -0.0005666093716382601
+        }
+      },
+      "polynomial_ridge": {
+        "mass_kg": {
+          "mean_r2": -0.03878168735797853,
+          "seed_std_r2": 0.007205630782320014,
+          "min_r2": -0.04657272149301139,
+          "max_r2": -0.03160288853941973,
+          "mean_r2_minus_baseline": -0.01044591017240952
+        },
+        "friction": {
+          "mean_r2": -0.009064152354804733,
+          "seed_std_r2": 0.005815704170843496,
+          "min_r2": -0.016614671113711177,
+          "max_r2": -0.003617787579020648,
+          "mean_r2_minus_baseline": -0.007455454001448203
+        },
+        "combined_friction": {
+          "mean_r2": -0.009064152354803401,
+          "seed_std_r2": 0.005815704170843491,
+          "min_r2": -0.016614671113710067,
+          "max_r2": -0.003617787579019538,
+          "mean_r2_minus_baseline": -0.007455454001447981
+        }
+      }
+    },
+    "all_r2_below_0_1": true
+  },
+  "source_sha256": "1602839c94ac5f4907f4c94e98927fc8572c279a4688e34d4c3b2af97821a44c",
+  "inputs_sha256": {
+    "cubes.json": "a34c1f728b2e73d4a2240692f6694af1491553f8ca0b4fe14dcb80d986494d6d",
+    "plans.json": "9aa5c3fe29411ba66675100d00d3218b45d24c8464f787212c978e15142fc782"
+  },
+  "elapsed_seconds": 3.114753166999435,
+  "new_test_motion_used": false,
+  "forbidden_length_features_excluded": true,
+  "interpretation": "Fixed planned-command features only. Hyperparameters selected on training cubes; no test-based tuning or resampling."
+}

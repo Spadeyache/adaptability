@@ -1,0 +1,18 @@
+{
+  "iteration": 3,
+  "config": {
+    "width": 128,
+    "depth": 2,
+    "z_dim": 2,
+    "lr": 0.001,
+    "z_l2": 0.0001,
+    "fit_steps": 200,
+    "fit_lr": 0.02,
+    "moving_weight": 1.0,
+    "prediction_horizon": 1,
+    "grip_force_max": 8.0
+  },
+  "hypothesis": "Validation F4 fails while high-force contact oscillations dominate the locked error; lowering only the grip-force upper bound should remove that unstable contact regime and reveal object-dependent dynamics.",
+  "change": "Change only the grip-force randomization upper bound from 30 N to 8 N; restore the retained iteration-1 model settings and preserve the immutable cube split and properties.",
+  "base_iteration": 1
+}

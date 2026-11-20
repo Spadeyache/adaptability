@@ -1,0 +1,12 @@
+{"cube_id": 0, "episodes_complete": 10, "last_coast_distance_m": 0.43352229285282623}
+{"cube_id": 1, "episodes_complete": 20, "last_coast_distance_m": 0.3666707303832103}
+{"cube_id": 2, "episodes_complete": 30, "last_coast_distance_m": 0.01956221168672649}
+{"cube_id": 3, "episodes_complete": 40, "last_coast_distance_m": 0.07684998065941742}
+{"cube_id": 4, "episodes_complete": 50, "last_coast_distance_m": 0.04348681776340508}
+{"cube_id": 5, "episodes_complete": 60, "last_coast_distance_m": 0.19362203995240315}
+{"cube_id": 6, "episodes_complete": 70, "last_coast_distance_m": 0.048672080053099094}
+{"cube_id": 7, "episodes_complete": 80, "last_coast_distance_m": 0.054790159368051435}
+{"cube_id": 8, "episodes_complete": 90, "last_coast_distance_m": 0.27136834702325197}
+{"cube_id": 9, "episodes_complete": 100, "last_coast_distance_m": 0.3976077264235878}
+{"passed": true, "launch_fraction": 1.0, "launch_threshold_m_s": 0.02, "maximum_coast_distance_m": 0.6923893998565575, "conditions": "launch>=.9 and maxdistance<1m", "user_authorization": "Explicit conditional direct-force follow-up"}
+{"stage": "pilot", "collected_cubes": 10, "collected_episodes": 100, "transitions": 7345, "untrimmed_transitions": 31570, "trimmed_transitions": 24225, "this_invocation_wall_seconds": 7.160880181007087, "episode_wall_seconds_sum": 3.911608006019378, "mean_episode_wall_seconds": 0.03911608006019378, "plain_oracle_training_started": false, "belief_model_started": false}

@@ -1,0 +1,14 @@
+{
+  "status": "pass",
+  "completed_iterations": 20,
+  "selected_iteration": 19,
+  "single_final_evaluation": true,
+  "heldout_access_records": 4,
+  "metrics_recomputed_from_saved_scores": true,
+  "five_seed_sample_std_verified": true,
+  "equal_training_budget": true,
+  "frozen_weight_hashes_verified": true,
+  "one_change_per_iteration": true,
+  "immutable_split_verified": true,
+  "final_result_sha256": "df60b9c451da7ae2a5ee6e7a4761bf717dcf8c6892a17da3c4af1da9ef76c916"
+}

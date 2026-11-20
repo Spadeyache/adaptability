@@ -1,0 +1,63 @@
+{
+  "status": "STOP_INPUT_CORRELATION_GUARD",
+  "reports": [
+    {
+      "dataset": "runs/lift_slide_belief/slip_probe/paired/fixed/data",
+      "split": "train",
+      "task": 0,
+      "cubes": 200,
+      "threshold": 0.9,
+      "method": "Absolute Pearson over per-cube mean/std/min/max; tasks and splits checked separately",
+      "max_absolute_correlation": 0.9975994514492,
+      "violations": [
+        {
+          "feature": "mean:state[35]",
+          "target": "mass",
+          "pearson": -0.9927817041768169
+        },
+        {
+          "feature": "mean:state[37]",
+          "target": "mass",
+          "pearson": 0.9975248644871502
+        },
+        {
+          "feature": "mean:state[39]",
+          "target": "mass",
+          "pearson": 0.9837268087452308
+        },
+        {
+          "feature": "mean:action[2]",
+          "target": "mass",
+          "pearson": 0.9402066733374791
+        },
+        {
+          "feature": "mean:next_state[35]",
+          "target": "mass",
+          "pearson": -0.9928660877451998
+        },
+        {
+          "feature": "mean:next_state[37]",
+          "target": "mass",
+          "pearson": 0.9975994514492
+        },
+        {
+          "feature": "mean:next_state[39]",
+          "target": "mass",
+          "pearson": 0.9836412910226889
+        },
+        {
+          "feature": "std:state[27]",
+          "target": "mass",
+          "pearson": 0.9160817437591062
+        },
+        {
+          "feature": "std:next_state[27]",
+          "target": "mass",
+          "pearson": 0.9166384736762455
+        }
+      ],
+      "passed": false
+    }
+  ],
+  "probe_runs": 0
+}

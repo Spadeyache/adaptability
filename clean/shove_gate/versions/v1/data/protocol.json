@@ -1,0 +1,63 @@
+{
+  "stage": "Ten training cubes only; await user go before remaining collection and Plain/Oracle training.",
+  "mass_range_kg": [
+    0.18,
+    0.5
+  ],
+  "cube_friction_range": [
+    0.4,
+    1.0
+  ],
+  "floor_material_friction": 0.3,
+  "combined_friction": "(cube material friction + floor material friction)/2: verified PhysX default eAVERAGE; per-cube values only cubes.json",
+  "randomization": "Separate independent RNG streams for property sampling and every (cube,episode) plan. No rejection based on physics labels.",
+  "physics_dt_s": 0.001,
+  "model_dt_s": 0.005,
+  "push_s": 0.08,
+  "coast_s": 1.0,
+  "fixed_lengths": "16 push + 200 coast transitions; full coast recorded even after rest. No stop-time, IDs, or sequence length as model features.",
+  "scene": "Six-DOF 4 cm cube; infinite plane; 5 g spherical pusher free in XY, locked Z and rotation. No Panda controller.",
+  "force": "Actual conservative contact force = sum of all point impulse magnitudes / .001s, monitored every physics step, reject above cap*(1+1e-5).",
+  "state": "Cube position3, rotation6 (first two matrix columns), linear velocity3, angular velocity3, pusher position3, pusher velocity3. All physical observations.",
+  "action": "Commanded XYZ force, cap, engaged flag, preplanned XYZ release target. No measured force or motion-dependent target.",
+  "phases": [
+    "push",
+    "coast"
+  ],
+  "stop": "First 100ms continuously below full linear speed .001m/s and angular speed .05rad/s; confirmation excluded. Rest metadata for evaluation only.",
+  "planned_models": {
+    "families": [
+      "Plain",
+      "Oracle"
+    ],
+    "seeds": [
+      101,
+      211,
+      307,
+      401,
+      503
+    ],
+    "hidden_layers": [
+      256,
+      256,
+      256
+    ],
+    "target": "(next_state-state)/training-state std; floor .001 native units; same train-only normalization for both families",
+    "inputs": {
+      "Plain": "state+action",
+      "Oracle": "state+action+true mass+combined friction"
+    },
+    "normalization": "fit exclusively on training-cube training episodes; no test normalization"
+  },
+  "planned_evaluation": {
+    "aggregation": "Equal weight cubes; within cube equal episodes; within episode equal eligible starts.",
+    "one_step": "MSE of normalized predicted change over state columns. Also report cube-only state columns and physical position errors.",
+    "ten_step": "Recursive 10-step predicted states under recorded commanded actions, never observed intermediate state. Windows entirely within the named phase.",
+    "stopping_position": "Euclidean XY error at fixed terminal time relative to recorded confirmed stopping XY; recursively predict from first push state or first coast state, respectively.",
+    "coast_masks": "Report all 200 coast steps and moving coast (observed current linear speed>.001m/s OR angular speed>.05rad/s).",
+    "primary_gate": "Coast one-step NMSE, all coast steps, mean Oracle <= .8*mean Plain AND Oracle mean+sampleSD < Plain mean-sampleSD across five paired seeds. Moving-coast NMSE and 10-step/stopping errors also reported, never substituted for primary.",
+    "seed_spread": "Sample SD over five seeds; also paired seedwise improvements. No test-driven tuning.",
+    "no_belief_model": true
+  },
+  "action_probe": "Generator-only held-out-cube check may use all230 preplanned command schedules without collecting their motion; ten-cube motion pilot cannot establish generalization by itself."
+}

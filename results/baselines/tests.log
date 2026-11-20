@@ -1,0 +1,30 @@
+test_advance_normalizes_oracle_and_recovers_physical_delta (tests.test_world_model_baselines_model.BaselineTrainingTest) ... ok
+test_history_is_completed_episode_local_and_padding_is_ignored (tests.test_world_model_baselines_model.BaselineTrainingTest) ... ok
+test_rejects_split_inside_episode (tests.test_world_model_baselines_model.BaselineTrainingTest) ... ok
+test_training_scaling_checkpoint_and_no_privileged_reads (tests.test_world_model_baselines_model.BaselineTrainingTest) ... ok
+test_empty_literal_early_slice_and_nonfinite_rollout_are_explicit (tests.test_world_model_baseline_evaluation.BaselineEvaluationTest) ... ok
+test_history_resets_on_cube_task_episode_and_selection_does_not_cut_past (tests.test_world_model_baseline_evaluation.BaselineEvaluationTest) ... ok
+test_nonfinite_one_step_is_counted_and_never_averaged_away (tests.test_world_model_baseline_evaluation.BaselineEvaluationTest) ... ok
+test_oracle_is_normalized_for_forward_and_raw_for_advance (tests.test_world_model_baseline_evaluation.BaselineEvaluationTest) ... ok
+test_pooled_rows_and_feature_centered_r2_differ_from_cube_average (tests.test_world_model_baseline_evaluation.BaselineEvaluationTest) ... ok
+test_rollout_consumes_recorded_actions_and_only_predicted_future_history (tests.test_world_model_baseline_evaluation.BaselineEvaluationTest) ... ok
+test_rollout_fills_an_empty_history_then_caps_its_window (tests.test_world_model_baseline_evaluation.BaselineEvaluationTest) ... ok
+test_rejects_changed_core_source (tests.test_world_model_baselines_reporting.ProvenanceRegressionTest) ... ok
+test_rejects_checkpoint_digest_and_internal_seed_mismatch (tests.test_world_model_baselines_reporting.ProvenanceRegressionTest) ... ok
+test_empty_early_window_stays_missing_in_table_and_plot (tests.test_world_model_baselines_reporting.ReportingRegressionTest) ... Saved /tmp/tmp49lkd1d3/results/baselines/metrics.json and /tmp/tmp49lkd1d3/BASELINE.md
+ok
+test_failed_seed_is_not_removed_from_average (tests.test_world_model_baselines_reporting.ReportingRegressionTest) ... ok
+test_context_eval_cube_blocks_and_property_labels_rejected (tests.test_baseline_adaptation.AdaptationTests) ... ok
+test_current_cube_pooling_uses_rows_and_global_target_sst (tests.test_baseline_adaptation.AdaptationTests) ... ok
+test_fresh_optimizer_all_weights_fixed_buffers_and_only_context_rows (tests.test_baseline_adaptation.AdaptationTests) ... ok
+test_hierarchical_summary_and_report_use_seed_not_trajectory_sd (tests.test_baseline_adaptation.AdaptationTests) ... ok
+test_missing_metric_is_preserved_and_prevents_a_complete_mean (tests.test_baseline_adaptation.AdaptationTests) ... ok
+test_nonfinite_counters_stop_but_empty_subsets_are_allowed (tests.test_baseline_adaptation.AdaptationTests) ... ok
+test_weight_carry_and_first_cube_retention_count_further_cubes (tests.test_baseline_adaptation.AdaptationTests) ... ok
+test_all_50_crossed_trajectories_and_seed_level_spread (tests.test_baseline_adaptation_independent_audit.IndependentAdaptationAudit) ... ok
+test_retention_uses_the_same_first_cube_after_zero_one_five_twenty_further_fits (tests.test_baseline_adaptation_independent_audit.IndependentAdaptationAudit) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 2.695s
+
+OK

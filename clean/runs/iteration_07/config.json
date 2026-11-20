@@ -1,0 +1,18 @@
+{
+  "iteration": 7,
+  "config": {
+    "width": 128,
+    "depth": 2,
+    "z_dim": 4,
+    "lr": 0.001,
+    "z_l2": 0.0,
+    "fit_steps": 200,
+    "fit_lr": 0.02,
+    "moving_weight": 1.0,
+    "prediction_horizon": 1,
+    "grip_force_max": 8.0
+  },
+  "hypothesis": "The retained reference fails validation F4. Oracle has not established a positive Plain-to-Oracle error gap. Removing latent shrinkage may let prediction gradients distinguish cubes more strongly.",
+  "change": "Change only z_l2 from 0.0001 to 0.0; every other configuration setting is retained.",
+  "base_iteration": 4
+}

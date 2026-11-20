@@ -1,0 +1,22 @@
+{
+  "status": "budget_exhausted_without_validation_success",
+  "selected_iteration": 19,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "validation_success": false,
+  "final_requested": true,
+  "selection_metric": "fitted_z one_step_nmse mean",
+  "reference_constraint": "F4 feasibility is required once any current-data candidate passes F4 and all other required checks; failed references are provisional only when none do.",
+  "failure_checks": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": true,
+    "F5": true,
+    "F6": true,
+    "F7": true,
+    "F8": true,
+    "F9": true
+  },
+  "report": "/home/ubuntu/faliure/clean/RESULTS.md",
+  "final_completed": true
+}

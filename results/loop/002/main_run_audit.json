@@ -1,0 +1,660 @@
+{
+  "status": "INCOMPLETE_HISTORICAL_SOURCE_VERIFICATION",
+  "runs": [
+    {
+      "run": "runs/lift_slide_belief/nov13/study/seed_0",
+      "checkpoint_sha256": "a874173a460eec7b9a93c4426bc96440c9904b7fda8ed16a5d0b84814d6d089b",
+      "family": "nov13",
+      "seed": 0,
+      "state_dim": 43,
+      "action_dim": 5,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": false,
+      "state_column45": "absent",
+      "concatenated_input_column45": "action dz",
+      "explicit_physics_derived_state_or_action": null,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/nov13/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/nov13/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/collect.py:measure",
+      "protocol": "runs/lift_slide_belief/nov13/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/nov13/study/seed_1",
+      "checkpoint_sha256": "0404c56d0eb02f44e52d37ddf6d61a9405931c8c83fe5899a7cb175052f537a1",
+      "family": "nov13",
+      "seed": 1,
+      "state_dim": 43,
+      "action_dim": 5,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": false,
+      "state_column45": "absent",
+      "concatenated_input_column45": "action dz",
+      "explicit_physics_derived_state_or_action": null,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/nov13/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/nov13/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/collect.py:measure",
+      "protocol": "runs/lift_slide_belief/nov13/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/nov13/study/seed_2",
+      "checkpoint_sha256": "47b7848267535bb0ea0f61e7034a15c241b01b14628e167384307118d3642480",
+      "family": "nov13",
+      "seed": 2,
+      "state_dim": 43,
+      "action_dim": 5,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": false,
+      "state_column45": "absent",
+      "concatenated_input_column45": "action dz",
+      "explicit_physics_derived_state_or_action": null,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/nov13/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/nov13/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/collect.py:measure",
+      "protocol": "runs/lift_slide_belief/nov13/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/nov13/study/seed_3",
+      "checkpoint_sha256": "02af9e6342baa4f43c54d1ca72d16c4729d92b7a6091cdc3ac62517b2dc6c2eb",
+      "family": "nov13",
+      "seed": 3,
+      "state_dim": 43,
+      "action_dim": 5,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": false,
+      "state_column45": "absent",
+      "concatenated_input_column45": "action dz",
+      "explicit_physics_derived_state_or_action": null,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/nov13/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/nov13/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/collect.py:measure",
+      "protocol": "runs/lift_slide_belief/nov13/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/nov13/study/seed_4",
+      "checkpoint_sha256": "ab05730e029a6ffe22aa8964d84c88fad9f682cd5e93180294371e9339de4bda",
+      "family": "nov13",
+      "seed": 4,
+      "state_dim": 43,
+      "action_dim": 5,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": false,
+      "state_column45": "absent",
+      "concatenated_input_column45": "action dz",
+      "explicit_physics_derived_state_or_action": null,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/nov13/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/nov13/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/collect.py:measure",
+      "protocol": "runs/lift_slide_belief/nov13/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/three_task/study/seed_0",
+      "checkpoint_sha256": "aa5ab1ea5c98cf8adb4ef3c290bbc39107af7274b08abd063627ba3ad5f8f473",
+      "family": "three_task",
+      "seed": 0,
+      "state_dim": 43,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": false,
+      "state_column45": "absent",
+      "concatenated_input_column45": "action dz",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/three_task/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/three_task/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/collect.py:measure",
+      "protocol": "runs/lift_slide_belief/three_task/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/three_task/study/seed_1",
+      "checkpoint_sha256": "1ff0e2985d84c396813ebccc0a9ea5511ca03f3fd7e4c6fbc293ca3da5af3487",
+      "family": "three_task",
+      "seed": 1,
+      "state_dim": 43,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": false,
+      "state_column45": "absent",
+      "concatenated_input_column45": "action dz",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/three_task/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/three_task/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/collect.py:measure",
+      "protocol": "runs/lift_slide_belief/three_task/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/three_task/study/seed_2",
+      "checkpoint_sha256": "0574e46b9725b89ec9d124e5b8945c72e29cc69f8d7578a6f74f02aaeaed35d7",
+      "family": "three_task",
+      "seed": 2,
+      "state_dim": 43,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": false,
+      "state_column45": "absent",
+      "concatenated_input_column45": "action dz",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/three_task/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/three_task/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/collect.py:measure",
+      "protocol": "runs/lift_slide_belief/three_task/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/three_task/study/seed_3",
+      "checkpoint_sha256": "eb78d524f74df5765a41995b26ad487bc779609100118e47ec684992e9bb0ac8",
+      "family": "three_task",
+      "seed": 3,
+      "state_dim": 43,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": false,
+      "state_column45": "absent",
+      "concatenated_input_column45": "action dz",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/three_task/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/three_task/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/collect.py:measure",
+      "protocol": "runs/lift_slide_belief/three_task/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/three_task/study/seed_4",
+      "checkpoint_sha256": "ffe76b6f7a8fec1a7fa38dc32f4713397acea71cce041baefcb9e6bb121faafa",
+      "family": "three_task",
+      "seed": 4,
+      "state_dim": 43,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": false,
+      "state_column45": "absent",
+      "concatenated_input_column45": "action dz",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/three_task/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/three_task/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/collect.py:measure",
+      "protocol": "runs/lift_slide_belief/three_task/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/slip_probe/paired/study/fixed_grip/seed_0",
+      "checkpoint_sha256": "550767e2d37bd79e1716a2c694a03b874b8815de640c6e8da9e9e42bb3972a41",
+      "family": "fixed_grip",
+      "seed": 0,
+      "state_dim": 51,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": true,
+      "state_column45": "TCP-frame cube relative Z position",
+      "concatenated_input_column45": "TCP-frame cube relative Z position",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/slip_probe/paired/fixed/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/slip_probe/paired/fixed/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/slip_data.py:project_rows",
+      "protocol": "runs/lift_slide_belief/slip_probe/paired/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/slip_probe/paired/study/fixed_grip/seed_1",
+      "checkpoint_sha256": "cbec8bfd8dcc75b6cfe46fcd5e67c21dc1ccd0f0f13aa0ab6b5d692b26ade91a",
+      "family": "fixed_grip",
+      "seed": 1,
+      "state_dim": 51,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": true,
+      "state_column45": "TCP-frame cube relative Z position",
+      "concatenated_input_column45": "TCP-frame cube relative Z position",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/slip_probe/paired/fixed/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/slip_probe/paired/fixed/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/slip_data.py:project_rows",
+      "protocol": "runs/lift_slide_belief/slip_probe/paired/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/slip_probe/paired/study/fixed_grip/seed_2",
+      "checkpoint_sha256": "d0805705a162e0b55471026008d93607bd765d20a8c3fe4045d94ad5473cfc25",
+      "family": "fixed_grip",
+      "seed": 2,
+      "state_dim": 51,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": true,
+      "state_column45": "TCP-frame cube relative Z position",
+      "concatenated_input_column45": "TCP-frame cube relative Z position",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/slip_probe/paired/fixed/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/slip_probe/paired/fixed/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/slip_data.py:project_rows",
+      "protocol": "runs/lift_slide_belief/slip_probe/paired/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/slip_probe/paired/study/fixed_grip/seed_3",
+      "checkpoint_sha256": "6a7f49e2289405000d158e492b5dce588e3922e53fff20c1fa8702e4cc4aadeb",
+      "family": "fixed_grip",
+      "seed": 3,
+      "state_dim": 51,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": true,
+      "state_column45": "TCP-frame cube relative Z position",
+      "concatenated_input_column45": "TCP-frame cube relative Z position",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/slip_probe/paired/fixed/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/slip_probe/paired/fixed/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/slip_data.py:project_rows",
+      "protocol": "runs/lift_slide_belief/slip_probe/paired/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/slip_probe/paired/study/fixed_grip/seed_4",
+      "checkpoint_sha256": "bcdbb30d8a1431b5f53051a4d2423a467fd62bb8481e373aa7580bfe2ebb8b0e",
+      "family": "fixed_grip",
+      "seed": 4,
+      "state_dim": 51,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": true,
+      "state_column45": "TCP-frame cube relative Z position",
+      "concatenated_input_column45": "TCP-frame cube relative Z position",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/slip_probe/paired/fixed/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/slip_probe/paired/fixed/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/slip_data.py:project_rows",
+      "protocol": "runs/lift_slide_belief/slip_probe/paired/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/slip_probe/paired/study/random_grip/seed_0",
+      "checkpoint_sha256": "3d1fb45e1e79e970516a5888589eb9ee126c95da66fdd7a15eac7630a8f7d543",
+      "family": "random_grip",
+      "seed": 0,
+      "state_dim": 51,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": true,
+      "state_column45": "TCP-frame cube relative Z position",
+      "concatenated_input_column45": "TCP-frame cube relative Z position",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/slip_probe/paired/random/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/slip_probe/paired/random/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/slip_data.py:project_rows",
+      "protocol": "runs/lift_slide_belief/slip_probe/paired/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/slip_probe/paired/study/random_grip/seed_1",
+      "checkpoint_sha256": "5223154f581378fbb9a5b75520511f8eed138d6587bea57ade4d80befff8d3a1",
+      "family": "random_grip",
+      "seed": 1,
+      "state_dim": 51,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": true,
+      "state_column45": "TCP-frame cube relative Z position",
+      "concatenated_input_column45": "TCP-frame cube relative Z position",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/slip_probe/paired/random/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/slip_probe/paired/random/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/slip_data.py:project_rows",
+      "protocol": "runs/lift_slide_belief/slip_probe/paired/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/slip_probe/paired/study/random_grip/seed_2",
+      "checkpoint_sha256": "ab83dd0b22d7aedbb82a97caa028a3435b03d4caf95f90108702a886cb52234c",
+      "family": "random_grip",
+      "seed": 2,
+      "state_dim": 51,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": true,
+      "state_column45": "TCP-frame cube relative Z position",
+      "concatenated_input_column45": "TCP-frame cube relative Z position",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/slip_probe/paired/random/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/slip_probe/paired/random/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/slip_data.py:project_rows",
+      "protocol": "runs/lift_slide_belief/slip_probe/paired/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/slip_probe/paired/study/random_grip/seed_3",
+      "checkpoint_sha256": "167503ce7292554cbb15733614bc00cdab77b475900312c2b85ef263410b3bb6",
+      "family": "random_grip",
+      "seed": 3,
+      "state_dim": 51,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": true,
+      "state_column45": "TCP-frame cube relative Z position",
+      "concatenated_input_column45": "TCP-frame cube relative Z position",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/slip_probe/paired/random/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/slip_probe/paired/random/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/slip_data.py:project_rows",
+      "protocol": "runs/lift_slide_belief/slip_probe/paired/study/protocol.json"
+    },
+    {
+      "run": "runs/lift_slide_belief/slip_probe/paired/study/random_grip/seed_4",
+      "checkpoint_sha256": "e5222e21b4ba823bedb428248027b7abc2149b093bd6b2ed45daa5bb7ad4e32c",
+      "family": "random_grip",
+      "seed": 4,
+      "state_dim": 51,
+      "action_dim": 8,
+      "z_shape": [
+        200,
+        4
+      ],
+      "state_column42_present": true,
+      "state_column42": "right finger measured joint force",
+      "state_column45_present": true,
+      "state_column45": "TCP-frame cube relative Z position",
+      "concatenated_input_column45": "TCP-frame cube relative Z position",
+      "explicit_physics_derived_state_or_action": false,
+      "z_fitted_from_true_physics": false,
+      "readout_uses_labels_as_targets_only": true,
+      "model_input_code": "experiments/lift_slide_belief/model.py:_transitions,fit_world_model,TrainedModel.fit_z",
+      "dataset_file": "runs/lift_slide_belief/slip_probe/paired/random/data/train/cube_0000.npz",
+      "test_dataset_file": "runs/lift_slide_belief/slip_probe/paired/random/data/test/cube_0200.npz",
+      "source_projection": "experiments/lift_slide_belief/slip_data.py:project_rows",
+      "protocol": "runs/lift_slide_belief/slip_probe/paired/study/protocol.json"
+    }
+  ],
+  "source_verification": [
+    {
+      "family": "nov13",
+      "path": "experiments/lift_slide_belief/model.py",
+      "sha256": "f6bb4ac53a11660538e245eafd730874ca935ffa3f0cb2e8df0ac1a47914528d",
+      "revision": null,
+      "status": "MISSING_HISTORICAL_SOURCE"
+    },
+    {
+      "family": "three_task",
+      "path": "experiments/lift_slide_belief/model.py",
+      "sha256": "21af47f543a48c81936daa68c4b5df253e5c5cd616bff7380b87c6444ac4135f",
+      "revision": "working_tree"
+    },
+    {
+      "family": "three_task",
+      "path": "experiments/lift_slide_belief/evaluation.py",
+      "sha256": "da857d2646f3ee8354be761212bae678469aa6a5a90cbe91fca650460e8ed32c",
+      "revision": "working_tree"
+    },
+    {
+      "family": "three_task",
+      "path": "experiments/lift_slide_belief/plotting.py",
+      "sha256": "bf5b2957e1a009fe9c67ba07b112780a6b4bb8ae0b3876d25291f689176f4c01",
+      "revision": "working_tree"
+    },
+    {
+      "family": "three_task",
+      "path": "experiments/lift_slide_belief/planner.py",
+      "sha256": "deee33eee62e000e3d3542e75086cb6427af8fc41b45b454c50d36b6c3cda387",
+      "revision": "working_tree"
+    },
+    {
+      "family": "three_task",
+      "path": "experiments/lift_slide_belief/scripted.py",
+      "sha256": "5d3ccbaf2004f026c00383874c54bb2d2397e593f708c992129da5811fa48f9d",
+      "revision": "working_tree"
+    },
+    {
+      "family": "three_task",
+      "path": "experiments/lift_slide_belief/target_control.py",
+      "sha256": "90e00d0eb75f209f20d77f189ba0e58d99b2a4ddb6d5f8900a673b8486e3b0f0",
+      "revision": "working_tree"
+    },
+    {
+      "family": "three_task",
+      "path": "experiments/lift_slide_belief/__main__.py",
+      "sha256": "a80cae6a20421a3d607c2d68484abda559fb640c31f3105788f840ef0bd834ee",
+      "revision": "working_tree"
+    },
+    {
+      "family": "fixed_grip",
+      "path": "experiments/lift_slide_belief/slip_study.py",
+      "sha256": "01a9ad52c8c7c48dea08f245ca914b7102b753672311901af86940818e08f55e",
+      "revision": "working_tree"
+    },
+    {
+      "family": "fixed_grip",
+      "path": "experiments/lift_slide_belief/model.py",
+      "sha256": "21af47f543a48c81936daa68c4b5df253e5c5cd616bff7380b87c6444ac4135f",
+      "revision": "working_tree"
+    },
+    {
+      "family": "fixed_grip",
+      "path": "experiments/lift_slide_belief/evaluation.py",
+      "sha256": "da857d2646f3ee8354be761212bae678469aa6a5a90cbe91fca650460e8ed32c",
+      "revision": "working_tree"
+    },
+    {
+      "family": "fixed_grip",
+      "path": "experiments/lift_slide_belief/slip_data.py",
+      "sha256": "4d85fa71111f335321eec761c6d3ba65224b6c4da2c61e04e9f07d680b853f17",
+      "revision": "working_tree"
+    },
+    {
+      "family": "fixed_grip",
+      "path": "experiments/lift_slide_belief/scripted.py",
+      "sha256": "5d3ccbaf2004f026c00383874c54bb2d2397e593f708c992129da5811fa48f9d",
+      "revision": "working_tree"
+    },
+    {
+      "family": "fixed_grip",
+      "path": "experiments/lift_slide_belief/collect.py",
+      "sha256": "ef09d87fce5c96a27bc35e840acf22ef23331353a0baf10544635255da0009dc",
+      "revision": "working_tree"
+    },
+    {
+      "family": "fixed_grip",
+      "path": "experiments/lift_slide_belief/__main__.py",
+      "sha256": "a80cae6a20421a3d607c2d68484abda559fb640c31f3105788f840ef0bd834ee",
+      "revision": "working_tree"
+    },
+    {
+      "family": "fixed_grip",
+      "path": "experiments/lift_slide_belief/oracle_diagnostics.py",
+      "sha256": "e5252d279873a1bf3397c7ee1961f465be2680da1aae267a490a66658bc89742",
+      "revision": "working_tree"
+    },
+    {
+      "family": "random_grip",
+      "path": "experiments/lift_slide_belief/slip_study.py",
+      "sha256": "01a9ad52c8c7c48dea08f245ca914b7102b753672311901af86940818e08f55e",
+      "revision": "working_tree"
+    },
+    {
+      "family": "random_grip",
+      "path": "experiments/lift_slide_belief/model.py",
+      "sha256": "21af47f543a48c81936daa68c4b5df253e5c5cd616bff7380b87c6444ac4135f",
+      "revision": "working_tree"
+    },
+    {
+      "family": "random_grip",
+      "path": "experiments/lift_slide_belief/evaluation.py",
+      "sha256": "da857d2646f3ee8354be761212bae678469aa6a5a90cbe91fca650460e8ed32c",
+      "revision": "working_tree"
+    },
+    {
+      "family": "random_grip",
+      "path": "experiments/lift_slide_belief/slip_data.py",
+      "sha256": "4d85fa71111f335321eec761c6d3ba65224b6c4da2c61e04e9f07d680b853f17",
+      "revision": "working_tree"
+    },
+    {
+      "family": "random_grip",
+      "path": "experiments/lift_slide_belief/scripted.py",
+      "sha256": "5d3ccbaf2004f026c00383874c54bb2d2397e593f708c992129da5811fa48f9d",
+      "revision": "working_tree"
+    },
+    {
+      "family": "random_grip",
+      "path": "experiments/lift_slide_belief/collect.py",
+      "sha256": "ef09d87fce5c96a27bc35e840acf22ef23331353a0baf10544635255da0009dc",
+      "revision": "working_tree"
+    },
+    {
+      "family": "random_grip",
+      "path": "experiments/lift_slide_belief/__main__.py",
+      "sha256": "a80cae6a20421a3d607c2d68484abda559fb640c31f3105788f840ef0bd834ee",
+      "revision": "working_tree"
+    },
+    {
+      "family": "random_grip",
+      "path": "experiments/lift_slide_belief/oracle_diagnostics.py",
+      "sha256": "e5252d279873a1bf3397c7ee1961f465be2680da1aae267a490a66658bc89742",
+      "revision": "working_tree"
+    }
+  ],
+  "input_boundary": "Observed state + issued action + prediction-fitted z; physics labels used only as readout targets. Physical responses are not direct label injection.",
+  "claims": {
+    "mass_r2_0.755": "paired fixed_grip seeds0-4, five-lift z, supervised readout trained on train z only",
+    "same_task_gain_11.6_percent": "same fixed_grip models, fit z on episodes0-4; evaluate episodes5-9"
+  },
+  "diagnostic_reuse": "Target control, rollout, force-cap and oracle diagnostics do not introduce additional trained main world-model checkpoints.",
+  "limitation": "This audits direct label provenance, not all statistical confounds or control results.",
+  "training_runs": 0
+}

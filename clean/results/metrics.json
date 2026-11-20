@@ -1,0 +1,19 @@
+{
+  "status": "complete",
+  "completed_iterations": 20,
+  "selected_iteration": 19,
+  "validation_success": false,
+  "final_test_success": true,
+  "final_result": "results/final/result.json",
+  "final_result_sha256": "df60b9c451da7ae2a5ee6e7a4761bf717dcf8c6892a17da3c4af1da9ef76c916",
+  "report_sha256": "aa2be81ca26f6dc76532d45dc183518a4212675e5a4142838406a96f92587c88",
+  "report_source_sha256": "98ede5684cba13618c88565216616bbba5c7774a2b7f426eb3cdc224b32bc608",
+  "post_evaluation_source_changes": [
+    "report.py"
+  ],
+  "reason": "Report interpretation and caveats refined after evaluation; no model, metric, data, or saved score changed.",
+  "post_evaluation_added_tools": {
+    "replay.py": "2fd36ff8fe6b122c4f7e2bc352390347c6a6a642cac46f03df5c9fb89e2d5db0"
+  },
+  "replay_validation": "Plan-only inspection and Python compilation passed; no extra training or evaluation run."
+}

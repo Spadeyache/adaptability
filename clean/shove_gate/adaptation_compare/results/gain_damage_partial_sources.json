@@ -1,0 +1,42 @@
+{
+  "saved_results_only": true,
+  "no_collection_training_adaptation_or_evaluation": true,
+  "source_files": {
+    "results/current_cube_sequence_scores.csv": "a65e08696007e876287c79239ac4b9b7f6f8a56b13bb220e6ab219dd766a2f02",
+    "results/selected_config.json": "00c7ea7c1762925a9cd301c980138f059031c933bdaee165a3b069d920579b90",
+    "results/validation_grid.json": "3d3f4eba9be0b734afcccb21ca3c305fb069b51a222c304c5fdcc1055a42c0be",
+    "results/baselines/plain_seed101.json": "afe85f5dc5b4d1db246824180805148c69672d89ef7bb330c9f65e85fb9abca9",
+    "results/baselines/plain_seed211.json": "b908399123279d55c3a63ccd8f799a0399aa1b0f3c107f7b13d878579637263d",
+    "results/baselines/plain_seed307.json": "cadfe991283c83366430554af3075b5d7718a5d5248f3cf6df5db675dea8a35f",
+    "results/baselines/plain_seed401.json": "e33eaedb1b72941c17360e1b351818dcd170829b1dd6de8db2fd1e92631cf438",
+    "results/baselines/plain_seed503.json": "0dd86b1e5dc891c8f0eee003bb1384f7eb65137019f08ed3731dcc1f07b73fab",
+    "results/sequence/B_lr1e-05_seed101.json": "627f2bad0c0c47792bb670c6bd76afa28a1cd802b67589e9dcda78be16b4d3ce",
+    "results/sequence/B_lr1e-05_seed211.json": "22327187cab8e4841ee67b96b6596b2ee0d78d21467301fe969f4a9966790982",
+    "results/sequence/B_lr1e-05_seed307.json": "bc59fbcba0506c656f9d0eff25b2439d5aa13670f1a879bcdd5e9134f954beb8",
+    "results/sequence/B_lr1e-05_seed401.json": "42fc7b1e5bb6294f5ebc67a43136778e6310dde582ad344ab37ee1746c3501f7",
+    "results/sequence/B_lr1e-05_seed503.json": "c8b431f498d0e0d465a697ab09a23a94b2d4b69a74db6729b36e91d277d0c846",
+    "results/sequence/B_lr1e-04_seed101.json": "82573869d13ea946ce4ec88012eb06c40de2c76802e04161040b972469cfafb0",
+    "results/sequence/B_lr1e-04_seed211.json": "f8f16ff6211555ac3808e13a2eabe456c774376be9953a42c57daa36d55b12f7",
+    "results/sequence/B_lr1e-04_seed307.json": "63416fab659549dcf03f851c22dccfc5d1afa8cf09cebc4b88ea180c7b63aad1",
+    "results/sequence/B_lr1e-04_seed401.json": "baef184b3f7573b68bd9b5711df82ea83e76ca13b0597938c64da8a980c7842d",
+    "results/sequence/B_lr1e-04_seed503.json": "cf9b53d777af728787fa699bfc78f48b54dcd247be80a77d22de5c236202a98b",
+    "results/sequence/A_seed101.json": "128d60f35c696eb48a6c6b11be95381c661897ae562daea43c55927c767f8258",
+    "results/sequence/A_seed211.json": "2e933ab8aafba8d193fdfd4b47e2cefaf99e93d1dac909db22b27f5c89c0670a",
+    "results/sequence/A_seed307.json": "36865dc26d4082106faed7a91068a977d0eb0e1a8959e468e1c4341cc1366529",
+    "results/sequence/A_seed401.json": "f39a402b26465f0c72356f7923c41a242382b03f51ea9c124e0600dfe0d7ab99",
+    "results/sequence/A_seed503.json": "50d7f99bebea344cbb037288f2c3646ad229b61ce5a7f7fb45db8d12048adfd6"
+  },
+  "script_sha256": "e888ecd25be4915966df04a932aab055ab9e9ba8c0398025a3dd34d0a9daf7ca",
+  "plotted_points": 3,
+  "csv_rows": 18,
+  "omitted_validation_settings": 15,
+  "error_bars": "sample SD (ddof=1) of paired per-seed differences; seeds101,211,307,401,503",
+  "gain_units": "absolute NMSE reduction, not percent",
+  "damage_units": "absolute composite NMSE increase",
+  "caption": "Partial figure: three points; seed SD error bars; one fixed visiting order (290 \u2192 319).\nHorizontal errors are SDs of paired per-seed gains, averaged over all 30 current-cube scores;\nvertical errors are SDs of paired differences from Plain on training-cube validation after visit 30.\nA\u2019s damage is constant across visits: its offset from Plain comes from the two-part base network,\nnot from adaptation. All 15 z-grid settings are omitted here and listed as unavailable in the CSV.\nSaved results only. Gain uses successive model states; it is not a final-model rescore of all 30 cubes.",
+  "output_sha256": {
+    "results/figures/gain_damage_partial.png": "01375ce12db0c6363d7b2563e55b3166a5c0ae31b7feab27809d2b9cf8523d8e",
+    "results/figures/gain_damage_partial.svg": "0e4207c5a1e8461f59b3d65cc4c593680dd41702f12fccfaf594d9178e1f9b12",
+    "results/gain_damage_partial.csv": "856ecf8b0338bdc3bc8531640614ea562b9563db9c6e61b6fa89b9e42fee62c0"
+  }
+}

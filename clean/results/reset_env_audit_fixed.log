@@ -1,0 +1,5 @@
+/home/ubuntu/faliure/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:1174: UserWarning: Can't initialize NVML
+  raw_cnt = _raw_device_count_nvml()
+Traceback (most recent call last):
+  File "<stdin>", line 19, in <module>
+AssertionError: reset state mismatch

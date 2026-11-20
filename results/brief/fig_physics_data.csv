@@ -1,0 +1,11 @@
+model,seed,push_velocity_change_nmse,source_file,source_key
+plain,101,0.20307294421149588,/home/ubuntu/faliure/clean/shove_gate/push_latent/results/summary.json,by_model.plain.push.horizontal_velocity_delta_nmse.seed_values
+plain,211,0.21584709113612247,/home/ubuntu/faliure/clean/shove_gate/push_latent/results/summary.json,by_model.plain.push.horizontal_velocity_delta_nmse.seed_values
+plain,307,0.21361275223222284,/home/ubuntu/faliure/clean/shove_gate/push_latent/results/summary.json,by_model.plain.push.horizontal_velocity_delta_nmse.seed_values
+plain,401,0.2082551015689874,/home/ubuntu/faliure/clean/shove_gate/push_latent/results/summary.json,by_model.plain.push.horizontal_velocity_delta_nmse.seed_values
+plain,503,0.20702821898040197,/home/ubuntu/faliure/clean/shove_gate/push_latent/results/summary.json,by_model.plain.push.horizontal_velocity_delta_nmse.seed_values
+oracle,101,0.08296468574102941,/home/ubuntu/faliure/clean/shove_gate/push_latent/results/summary.json,by_model.oracle.push.horizontal_velocity_delta_nmse.seed_values
+oracle,211,0.08468934062269219,/home/ubuntu/faliure/clean/shove_gate/push_latent/results/summary.json,by_model.oracle.push.horizontal_velocity_delta_nmse.seed_values
+oracle,307,0.0929122220773703,/home/ubuntu/faliure/clean/shove_gate/push_latent/results/summary.json,by_model.oracle.push.horizontal_velocity_delta_nmse.seed_values
+oracle,401,0.07393347888974458,/home/ubuntu/faliure/clean/shove_gate/push_latent/results/summary.json,by_model.oracle.push.horizontal_velocity_delta_nmse.seed_values
+oracle,503,0.06906112700593715,/home/ubuntu/faliure/clean/shove_gate/push_latent/results/summary.json,by_model.oracle.push.horizontal_velocity_delta_nmse.seed_values

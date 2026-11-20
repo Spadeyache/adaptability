@@ -1,0 +1,11 @@
+{"audit_probe": "actions_only", "seed": 101, "r2": {"mass_kg": -0.003220093333976887, "friction": -0.00774906691415849}}
+{"audit_probe": "state_action", "seed": 101, "r2": {"mass_kg": 0.9467908347812197, "friction": 0.7996372707530909}}
+{"audit_probe": "actions_only", "seed": 211, "r2": {"mass_kg": -0.034253766977371904, "friction": -0.02207447309913365}}
+{"audit_probe": "state_action", "seed": 211, "r2": {"mass_kg": 0.9446932513961553, "friction": 0.865618104295495}}
+{"audit_probe": "actions_only", "seed": 307, "r2": {"mass_kg": -0.000814785096419018, "friction": -0.005037911558152461}}
+{"audit_probe": "state_action", "seed": 307, "r2": {"mass_kg": 0.967513268309054, "friction": 0.5689562809079167}}
+{"audit_probe": "actions_only", "seed": 401, "r2": {"mass_kg": -0.00999726997190059, "friction": -0.07341418460334935}}
+{"audit_probe": "state_action", "seed": 401, "r2": {"mass_kg": 0.9543031468074515, "friction": 0.8276539339104954}}
+{"audit_probe": "actions_only", "seed": 503, "r2": {"mass_kg": -0.007541624733085761, "friction": -0.004497314958674965}}
+{"audit_probe": "state_action", "seed": 503, "r2": {"mass_kg": 0.9827467982992855, "friction": 0.9265366603276055}}
+{"stage": "full", "status": "pass", "error": null, "saved_run": "results/audits/full_20261115T211125.956080Z.json"}

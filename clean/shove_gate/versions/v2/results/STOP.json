@@ -1,0 +1,7 @@
+{
+  "cube_id": 0,
+  "episode_id": 0,
+  "reasons": [
+    "pusher touched something other than cube; force attribution invalid"
+  ]
+}

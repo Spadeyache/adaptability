@@ -1,0 +1,13 @@
+{
+  "stage": "full",
+  "collected_cubes": 230,
+  "collected_episodes": 2300,
+  "transitions": 148076,
+  "untrimmed_transitions": 726892,
+  "trimmed_transitions": 578816,
+  "this_invocation_wall_seconds": 88.61308082498726,
+  "episode_wall_seconds_sum": 90.30496927310014,
+  "mean_episode_wall_seconds": 0.03926303011873919,
+  "plain_oracle_training_started": false,
+  "belief_model_started": false
+}

@@ -1,0 +1,28 @@
+{
+  "state": [
+    "cube_x",
+    "cube_y",
+    "cube_z",
+    "cube_rotation_0",
+    "cube_rotation_1",
+    "cube_rotation_2",
+    "cube_rotation_3",
+    "cube_rotation_4",
+    "cube_rotation_5",
+    "cube_vx",
+    "cube_vy",
+    "cube_vz",
+    "cube_wx",
+    "cube_wy",
+    "cube_wz"
+  ],
+  "action": [
+    "applied_force_x_N",
+    "applied_force_y_N",
+    "applied_force_z_N"
+  ],
+  "phase": [
+    "push",
+    "coast"
+  ]
+}

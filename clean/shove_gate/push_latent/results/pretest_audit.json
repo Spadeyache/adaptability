@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "checked_unix_seconds": 1794807385.9350274,
+  "hash_counts": {
+    "checkpoints": 35,
+    "training_manifest": 2015,
+    "adaptation": 73,
+    "fresh_bytes": 602,
+    "retired": 1368,
+    "pretraining": 12
+  },
+  "push_scale_exact_match": true,
+  "validation_grid_records": 240,
+  "validation_configs": 48,
+  "selected_config": {
+    "z_dim": 16,
+    "variant": "z16",
+    "learning_rate": 0.01,
+    "updates": 50,
+    "validation_mean_nmse": 0.11400513490504556,
+    "validation_seed_sample_sd": 0.013126289751642787,
+    "seed_values": [
+      0.10926185565620654,
+      0.12283389494333383,
+      0.10654838835664046,
+      0.1319306329815361,
+      0.09945090258751091
+    ]
+  },
+  "training_affine_readouts_recomputed": true,
+  "fresh_predictive_test_opened": false
+}

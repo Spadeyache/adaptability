@@ -1,0 +1,20 @@
+{
+  "start": 11,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "iteration": 6,
+  "result_sha256": "0febfdbde21937b34b8dadac6313ca3fdb5bf0343565dbe6d336a20ead89127c",
+  "reason": "F4 is a fixed required constraint, not an alternate metric. A reference passing F4 and the other required checks exists, so select the lowest fitted-z validation NMSE within that feasible set; F4-failing candidates cannot displace it.",
+  "F4": true,
+  "F5": true,
+  "one_step_nmse": {
+    "mean": 0.3456669743368003,
+    "std": 0.011162592299080983,
+    "values": [
+      0.3343890852438473,
+      0.3606737220655711,
+      0.3350445972645989,
+      0.3469428564656938,
+      0.3512846106442906
+    ]
+  }
+}

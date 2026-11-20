@@ -1,0 +1,5 @@
+{
+  "status": "pretraining_plan_only",
+  "reason": "Coordinator interrupted inside require_audit, before candidate11 seal/config creation, data loading, training, or evaluation. Superseded by required-F4-feasibility selection.",
+  "completed_scientific_iterations": 10
+}

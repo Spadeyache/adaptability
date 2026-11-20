@@ -1,0 +1,117 @@
+{"cube_id": 0, "episode_id": 0, "wall_seconds": 0.09698230199865066, "stopping_distance_m": 0.0, "cap_ratio": 0.8402301386378875}
+{"cube_id": 0, "episode_id": 1, "wall_seconds": 0.09398433298338205, "stopping_distance_m": 0.009360782724931963, "cap_ratio": 0.9019825830601246}
+{"cube_id": 0, "episode_id": 2, "wall_seconds": 0.0925690529984422, "stopping_distance_m": 0.0, "cap_ratio": 0.7221015272463501}
+{"cube_id": 0, "episode_id": 3, "wall_seconds": 0.09411810201709159, "stopping_distance_m": 0.002178408681123901, "cap_ratio": 0.8848410138592121}
+{"cube_id": 0, "episode_id": 4, "wall_seconds": 0.16578611201839522, "stopping_distance_m": 0.404131465640164, "cap_ratio": 0.9319444850863117}
+{"cube_id": 0, "episode_id": 5, "wall_seconds": 0.09561967101763003, "stopping_distance_m": 0.0, "cap_ratio": 0.781578245241418}
+{"cube_id": 0, "episode_id": 6, "wall_seconds": 0.0974520549934823, "stopping_distance_m": 0.0985942171652321, "cap_ratio": 0.930354840894684}
+{"cube_id": 0, "episode_id": 7, "wall_seconds": 0.0948794879950583, "stopping_distance_m": 0.0, "cap_ratio": 0.7320386841959936}
+{"cube_id": 0, "episode_id": 8, "wall_seconds": 0.09635732098831795, "stopping_distance_m": 0.03522638954582728, "cap_ratio": 0.9259285745665488}
+{"cube_id": 0, "episode_id": 9, "wall_seconds": 0.09521367598790675, "stopping_distance_m": 0.10620729498043967, "cap_ratio": 0.9327563034259361}
+{"cube_id": 1, "episode_id": 0, "wall_seconds": 0.09507624199613929, "stopping_distance_m": 0.38357802723179507, "cap_ratio": 0.9337881940898662}
+{"cube_id": 1, "episode_id": 1, "wall_seconds": 0.09092886699363589, "stopping_distance_m": 0.0, "cap_ratio": 0.750514108024044}
+{"cube_id": 1, "episode_id": 2, "wall_seconds": 0.09309445600956678, "stopping_distance_m": 0.0, "cap_ratio": 0.7232835787349512}
+{"cube_id": 1, "episode_id": 3, "wall_seconds": 0.10534889399423264, "stopping_distance_m": 0.1809127703013102, "cap_ratio": 0.9330902127914463}
+{"cube_id": 1, "episode_id": 4, "wall_seconds": 0.10503397800493985, "stopping_distance_m": 0.14034027818021133, "cap_ratio": 0.9347127175532166}
+{"cube_id": 1, "episode_id": 5, "wall_seconds": 0.10130386601667851, "stopping_distance_m": 0.00017014156458812875, "cap_ratio": 0.8900947824991393}
+{"cube_id": 1, "episode_id": 6, "wall_seconds": 0.09626885497709736, "stopping_distance_m": 0.0, "cap_ratio": 0.8221750341522258}
+{"cube_id": 1, "episode_id": 7, "wall_seconds": 0.09776312799658626, "stopping_distance_m": 0.0, "cap_ratio": 0.753631588868258}
+{"cube_id": 1, "episode_id": 8, "wall_seconds": 0.09404890399309807, "stopping_distance_m": 0.0, "cap_ratio": 0.7253837155962808}
+{"cube_id": 1, "episode_id": 9, "wall_seconds": 0.09401068100123666, "stopping_distance_m": 0.023063356307235754, "cap_ratio": 0.925587889262636}
+{"cube_id": 2, "episode_id": 0, "wall_seconds": 0.10843914101133123, "stopping_distance_m": 0.021503255379020172, "cap_ratio": 0.9413175281580889}
+{"cube_id": 2, "episode_id": 1, "wall_seconds": 0.09240091001265682, "stopping_distance_m": 0.02315115912753198, "cap_ratio": 0.9465559801803072}
+{"cube_id": 2, "episode_id": 2, "wall_seconds": 0.09297032200265676, "stopping_distance_m": 0.0, "cap_ratio": 0.8498392277207087}
+{"cube_id": 2, "episode_id": 3, "wall_seconds": 0.09488150797551498, "stopping_distance_m": 0.0, "cap_ratio": 0.7916406151673294}
+{"cube_id": 2, "episode_id": 4, "wall_seconds": 0.0913148719992023, "stopping_distance_m": 0.0, "cap_ratio": 0.7937809222539877}
+{"cube_id": 2, "episode_id": 5, "wall_seconds": 0.0924824730027467, "stopping_distance_m": 0.0011013075453286739, "cap_ratio": 0.9397052921711966}
+{"cube_id": 2, "episode_id": 6, "wall_seconds": 0.09739872798672877, "stopping_distance_m": 0.0, "cap_ratio": 0.8004346641241925}
+{"cube_id": 2, "episode_id": 7, "wall_seconds": 0.09244425198994577, "stopping_distance_m": 0.055018700778248615, "cap_ratio": 0.9488071429996763}
+{"cube_id": 2, "episode_id": 8, "wall_seconds": 0.09442331100581214, "stopping_distance_m": 0.020448196829331196, "cap_ratio": 0.9420080853965697}
+{"cube_id": 2, "episode_id": 9, "wall_seconds": 0.11996396299218759, "stopping_distance_m": 0.017308905388735647, "cap_ratio": 0.9563964451674302}
+{"cube_id": 3, "episode_id": 0, "wall_seconds": 0.09803498900146224, "stopping_distance_m": 0.02122179128300398, "cap_ratio": 0.9436555858548275}
+{"cube_id": 3, "episode_id": 1, "wall_seconds": 0.10507105599390343, "stopping_distance_m": 0.0, "cap_ratio": 0.7931289568479455}
+{"cube_id": 3, "episode_id": 2, "wall_seconds": 0.09454354800982401, "stopping_distance_m": 0.0, "cap_ratio": 0.8572002747676969}
+{"cube_id": 3, "episode_id": 3, "wall_seconds": 0.09388635799405165, "stopping_distance_m": 0.0, "cap_ratio": 0.7977927049012606}
+{"cube_id": 3, "episode_id": 4, "wall_seconds": 0.09404070099117234, "stopping_distance_m": 0.05006175626908752, "cap_ratio": 0.9467434952226819}
+{"cube_id": 3, "episode_id": 5, "wall_seconds": 0.09623148999526165, "stopping_distance_m": 0.0, "cap_ratio": 0.9062876531260841}
+{"cube_id": 3, "episode_id": 6, "wall_seconds": 0.09587866699439473, "stopping_distance_m": 0.014397066560086685, "cap_ratio": 0.9493181524342715}
+{"cube_id": 3, "episode_id": 7, "wall_seconds": 0.09517252200748771, "stopping_distance_m": 0.0, "cap_ratio": 0.7467341114782099}
+{"cube_id": 3, "episode_id": 8, "wall_seconds": 0.09432199998991564, "stopping_distance_m": 3.98747846492866e-06, "cap_ratio": 0.9319794185387245}
+{"cube_id": 3, "episode_id": 9, "wall_seconds": 0.09321208999608643, "stopping_distance_m": 0.0, "cap_ratio": 0.9130823789901327}
+{"cube_id": 4, "episode_id": 0, "wall_seconds": 0.09613936499226838, "stopping_distance_m": 0.12705463949408105, "cap_ratio": 0.9445272776609068}
+{"cube_id": 4, "episode_id": 1, "wall_seconds": 0.09253021900076419, "stopping_distance_m": 0.14884260435881627, "cap_ratio": 0.9423249915480703}
+{"cube_id": 4, "episode_id": 2, "wall_seconds": 0.09578705599415116, "stopping_distance_m": 0.018635687899280138, "cap_ratio": 0.9384333520501431}
+{"cube_id": 4, "episode_id": 3, "wall_seconds": 0.09607606299687177, "stopping_distance_m": 0.10566011128308354, "cap_ratio": 0.9404449047988799}
+{"cube_id": 4, "episode_id": 4, "wall_seconds": 0.09097882400965318, "stopping_distance_m": 0.0, "cap_ratio": 0.7596557323533356}
+{"cube_id": 4, "episode_id": 5, "wall_seconds": 0.09093221701914445, "stopping_distance_m": 0.0, "cap_ratio": 0.6886482791632851}
+{"cube_id": 4, "episode_id": 6, "wall_seconds": 0.09271593001903966, "stopping_distance_m": 0.029998659207449912, "cap_ratio": 0.9434045425606017}
+{"cube_id": 4, "episode_id": 7, "wall_seconds": 0.09239835501648486, "stopping_distance_m": 0.0002508623127713219, "cap_ratio": 0.926933361950371}
+{"cube_id": 4, "episode_id": 8, "wall_seconds": 0.09385624498827383, "stopping_distance_m": 0.0, "cap_ratio": 0.8063101950433422}
+{"cube_id": 4, "episode_id": 9, "wall_seconds": 0.09403521698550321, "stopping_distance_m": 0.0, "cap_ratio": 0.7768175325321923}
+{"cube_id": 5, "episode_id": 0, "wall_seconds": 0.09557682400918566, "stopping_distance_m": 0.006301260135443932, "cap_ratio": 0.9198259268955008}
+{"cube_id": 5, "episode_id": 1, "wall_seconds": 0.09548799099866301, "stopping_distance_m": 0.018102495742176154, "cap_ratio": 0.9313494853619747}
+{"cube_id": 5, "episode_id": 2, "wall_seconds": 0.09528986000805162, "stopping_distance_m": 0.0, "cap_ratio": 0.7625611276478055}
+{"cube_id": 5, "episode_id": 3, "wall_seconds": 0.09749823700985871, "stopping_distance_m": 0.011852799824152839, "cap_ratio": 0.9321443901554967}
+{"cube_id": 5, "episode_id": 4, "wall_seconds": 0.09586957297869958, "stopping_distance_m": 0.0, "cap_ratio": 0.8560360464522543}
+{"cube_id": 5, "episode_id": 5, "wall_seconds": 0.09318751300452277, "stopping_distance_m": 2.2764695181892125e-05, "cap_ratio": 0.8766337804751563}
+{"cube_id": 5, "episode_id": 6, "wall_seconds": 0.0912210940150544, "stopping_distance_m": 0.10330081210878553, "cap_ratio": 0.935551951232524}
+{"cube_id": 5, "episode_id": 7, "wall_seconds": 0.09536759500042535, "stopping_distance_m": 0.020939773467029885, "cap_ratio": 0.9345289602793079}
+{"cube_id": 5, "episode_id": 8, "wall_seconds": 0.09506610900280066, "stopping_distance_m": 0.0, "cap_ratio": 0.8734590635311038}
+{"cube_id": 5, "episode_id": 9, "wall_seconds": 0.09422039301716723, "stopping_distance_m": 0.005478690509651285, "cap_ratio": 0.9225928968146687}
+{"cube_id": 6, "episode_id": 0, "wall_seconds": 0.09994791899225675, "stopping_distance_m": 0.21534975899946923, "cap_ratio": 0.9368797581254791}
+{"cube_id": 6, "episode_id": 1, "wall_seconds": 0.09271974599687383, "stopping_distance_m": 0.0, "cap_ratio": 0.718547276080306}
+{"cube_id": 6, "episode_id": 2, "wall_seconds": 0.09356546399067156, "stopping_distance_m": 0.026035995926523756, "cap_ratio": 0.9391287859835179}
+{"cube_id": 6, "episode_id": 3, "wall_seconds": 0.09522543699131347, "stopping_distance_m": 0.0001539695885422041, "cap_ratio": 0.8926198329515737}
+{"cube_id": 6, "episode_id": 4, "wall_seconds": 0.09390894600073807, "stopping_distance_m": 0.11910306907106703, "cap_ratio": 0.9372167477520937}
+{"cube_id": 6, "episode_id": 5, "wall_seconds": 0.09110969500034116, "stopping_distance_m": 0.04246961014603139, "cap_ratio": 0.9323429470389297}
+{"cube_id": 6, "episode_id": 6, "wall_seconds": 0.08962859099847265, "stopping_distance_m": 0.0, "cap_ratio": 0.8452725000937097}
+{"cube_id": 6, "episode_id": 7, "wall_seconds": 0.09693993799737655, "stopping_distance_m": 0.028548268319018674, "cap_ratio": 0.9338849046208595}
+{"cube_id": 6, "episode_id": 8, "wall_seconds": 0.09237256299820729, "stopping_distance_m": 0.06929591431978811, "cap_ratio": 0.935398436666917}
+{"cube_id": 6, "episode_id": 9, "wall_seconds": 0.09568964599748142, "stopping_distance_m": 0.022705474075871313, "cap_ratio": 0.9417238371174785}
+{"cube_id": 7, "episode_id": 0, "wall_seconds": 0.09548757199081592, "stopping_distance_m": 0.06622583055298575, "cap_ratio": 0.9454582438850208}
+{"cube_id": 7, "episode_id": 1, "wall_seconds": 0.09554086098796688, "stopping_distance_m": 0.0, "cap_ratio": 0.9070996331005678}
+{"cube_id": 7, "episode_id": 2, "wall_seconds": 0.09573530399939045, "stopping_distance_m": 0.0, "cap_ratio": 0.9074867588018684}
+{"cube_id": 7, "episode_id": 3, "wall_seconds": 0.0927996130194515, "stopping_distance_m": 0.07546087903662431, "cap_ratio": 0.945455686471751}
+{"cube_id": 7, "episode_id": 4, "wall_seconds": 0.09340165299363434, "stopping_distance_m": 0.007026564907440512, "cap_ratio": 0.9343206730432575}
+{"cube_id": 7, "episode_id": 5, "wall_seconds": 0.09526428100070916, "stopping_distance_m": 0.0, "cap_ratio": 0.6936982361450528}
+{"cube_id": 7, "episode_id": 6, "wall_seconds": 0.09680944599676877, "stopping_distance_m": 0.03717907306031138, "cap_ratio": 0.9413848052200989}
+{"cube_id": 7, "episode_id": 7, "wall_seconds": 0.09374978698906489, "stopping_distance_m": 0.0, "cap_ratio": 0.6308412356273657}
+{"cube_id": 7, "episode_id": 8, "wall_seconds": 0.0967484729771968, "stopping_distance_m": 0.0636784278697285, "cap_ratio": 0.941400572801954}
+{"cube_id": 7, "episode_id": 9, "wall_seconds": 0.09541585299302824, "stopping_distance_m": 0.03988798001032, "cap_ratio": 0.9417056828906456}
+{"cube_id": 8, "episode_id": 0, "wall_seconds": 0.09382590698078275, "stopping_distance_m": 0.0012702026460973499, "cap_ratio": 0.8975393388330801}
+{"cube_id": 8, "episode_id": 1, "wall_seconds": 0.09849187100189738, "stopping_distance_m": 0.26763645904619143, "cap_ratio": 0.9419678560981262}
+{"cube_id": 8, "episode_id": 2, "wall_seconds": 0.09361374797299504, "stopping_distance_m": 0.0, "cap_ratio": 0.7300993957290066}
+{"cube_id": 8, "episode_id": 3, "wall_seconds": 0.09772863402031362, "stopping_distance_m": 0.0, "cap_ratio": 0.7714950445137507}
+{"cube_id": 8, "episode_id": 4, "wall_seconds": 0.09650293498998508, "stopping_distance_m": 0.0, "cap_ratio": 0.8742975621376456}
+{"cube_id": 8, "episode_id": 5, "wall_seconds": 0.09532273799413815, "stopping_distance_m": 0.019257056799191673, "cap_ratio": 0.94230054226822}
+{"cube_id": 8, "episode_id": 6, "wall_seconds": 0.0937879300036002, "stopping_distance_m": 0.0, "cap_ratio": 0.7431867720513122}
+{"cube_id": 8, "episode_id": 7, "wall_seconds": 0.0927571740176063, "stopping_distance_m": 0.0, "cap_ratio": 0.7836640283378918}
+{"cube_id": 8, "episode_id": 8, "wall_seconds": 0.09587110602296889, "stopping_distance_m": 0.008546220563422744, "cap_ratio": 0.9175667110997922}
+{"cube_id": 8, "episode_id": 9, "wall_seconds": 0.09314142100629397, "stopping_distance_m": 0.0, "cap_ratio": 0.7349797088045633}
+{"cube_id": 9, "episode_id": 0, "wall_seconds": 0.0955533380038105, "stopping_distance_m": 0.0021066655018674068, "cap_ratio": 0.9011417465216863}
+{"cube_id": 9, "episode_id": 1, "wall_seconds": 0.09674099797848612, "stopping_distance_m": 0.2432497886828178, "cap_ratio": 0.9307778303928331}
+{"cube_id": 9, "episode_id": 2, "wall_seconds": 0.09650027501629665, "stopping_distance_m": 0.0, "cap_ratio": 0.8358237543168204}
+{"cube_id": 9, "episode_id": 3, "wall_seconds": 0.09672121700714342, "stopping_distance_m": 0.0, "cap_ratio": 0.8308663183295041}
+{"cube_id": 9, "episode_id": 4, "wall_seconds": 0.09333900597994216, "stopping_distance_m": 0.0, "cap_ratio": 0.7419372998909156}
+{"cube_id": 9, "episode_id": 5, "wall_seconds": 0.09334423500695266, "stopping_distance_m": 0.0030332020103016745, "cap_ratio": 0.9033185545849653}
+{"cube_id": 9, "episode_id": 6, "wall_seconds": 0.0969336899870541, "stopping_distance_m": 0.19088632892442017, "cap_ratio": 0.9289877682762}
+{"cube_id": 9, "episode_id": 7, "wall_seconds": 0.09867720099282451, "stopping_distance_m": 0.0, "cap_ratio": 0.7349722078806213}
+{"cube_id": 9, "episode_id": 8, "wall_seconds": 0.09568343500723131, "stopping_distance_m": 0.1989004089106935, "cap_ratio": 0.9310127452161655}
+{"cube_id": 9, "episode_id": 9, "wall_seconds": 0.09807426101178862, "stopping_distance_m": 0.0, "cap_ratio": 0.704408791550059}
+{
+  "collected_cubes": 10,
+  "collected_episodes": 100,
+  "transitions": 3741,
+  "untrimmed_transitions": 21600,
+  "trimmed_transitions": 17859,
+  "this_invocation_wall_seconds": 13.727712096006144,
+  "episode_wall_seconds_sum": 9.621859472914366,
+  "mean_episode_wall_seconds": 0.09621859472914367,
+  "median_episode_wall_seconds": 0.09521955648961011,
+  "total_2300_episode_projection_seconds": 221.30276787703042,
+  "remaining_2200_episode_projection_seconds": 211.68090840411605,
+  "projection": "Linear extrapolation from measured serial episode collection+compression times; excludes training, audits, action probe and startup.",
+  "approval_status": "AWAITING_USER_GO",
+  "plain_oracle_training_started": false,
+  "belief_model_started": false
+}

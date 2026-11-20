@@ -1,0 +1,13 @@
+{
+  "cube_id": 243,
+  "episode_id": 9,
+  "steps": 146,
+  "path": "data/out_of_range/cube_0243_episode_09.npz",
+  "sha256": "c1ccc4072e0edbe51418488900398f9139aff1f52e56b419e7e3c6a8d0141adf",
+  "source_sha256": {
+    "collect.py": "6d807b68a92bf8a49ddd1a04132107a700a8931a75dc86a8a57a0562271138a9",
+    "native.py": "86da7c0340aa80edf05230adb0cfa744415977b880151f28c00dd3e83d6ca730",
+    "script.py": "bc5a9da9a4710f32d6a84963497ebf3b736f269b7fce9fd621742b4d6c9dc73a",
+    "schema.py": "91876c7ef3e2c4bebcf5e3d6db9c9712c26e00a8da99eae9b8b0b6da8211e1c6"
+  }
+}

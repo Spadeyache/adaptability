@@ -1,0 +1,80 @@
+{
+  "status": "STOP_REQUIRES_USER_DECISION",
+  "reason": "User STOP: earlier reported results depend on privileged inputs and their evidential use must be settled.",
+  "correction": "The initial historical lookup used the old directory name at commit482a4d4; this addendum preserves the failed lookup and resolves the correct learning-withoutCLI path.",
+  "commands": [
+    {
+      "command": [
+        "git",
+        "show",
+        "482a4d4:learning-withoutCLI/lift_task.py"
+      ],
+      "returncode": 0,
+      "stdout": "\"\"\"THE ENVIRONMENT: original PickCube, plus true weight and floating goals.\n\nCarry the cube to the green target. Keep ManiSkill's robot, native four-action\ncontroller, reward and success condition. Add real mass variation and one input.\n\"\"\"\nimport numpy as np\nimport torch\nfrom mani_skill.envs.tasks.tabletop.pick_cube import PickCubeEnv\nfrom mani_skill.utils.common import flatten_state_dict\nfrom mani_skill.utils.geometry.rotation_conversions import quaternion_to_matrix\nfrom mani_skill.utils.registration import register_env\nfrom mani_skill.utils.structs.pose import Pose\n\nENV_ID = \"WeightedPickCube-v1\"\nHORIZON = 50\nORIGIN = \"maniskill_weighted_pick_cube\"\nENV_SETTINGS = {\"masses_kg\": [0.040, 0.064, 0.100], \"goal_clearance_m\": [0.10, 0.30]}\nINPUT_FIELDS = [\"joint_positions\", \"joint_velocities\", \"is_grasped\", \"tcp_pose_world_m_wxyz\",\n                \"goal_position_world_m\", \"cube_pose_world_m_wxyz\", \"tcp_to_cube_world_m\",\n                \"cube_to_goal_world_m\", \"object_weight_n\"]\nINPUT_SIZES = [9, 9, 1, 7, 3, 7, 3, 3, 1]\nACTION_DESCRIPTION = \"4 native pd_ee_delta_pos actions: root-frame XYZ increments and finger opening (-1 closed, +1 open)\"\n\n\ndef reward_components(distance, goal_distance, grasped, joint_speed, at_goal, static):\n    \"\"\"Expose the ORIGINAL normalized PickCube score for inspection.\"\"\"\n    reach = (1 - torch.tanh(5 * distance)) / 5\n    grasp = grasped.float() / 5\n    move = (1 - torch.tanh(5 * goal_distance)) * grasped / 5\n    still = (1 - torch.tanh(5 * joint_speed)) * at_goal / 5\n    bonus = torch.where(at_goal & static, 1 - reach - grasp - move - still, 0)\n    return dict(reach_score=reach, grasp_score=grasp, goal_score=move, static_score=still,\n                success_bonus=bonus, task_score=reach + grasp + move + still + bonus)\n\n\n@register_env(ENV_ID, max_episode_steps=HORIZON)\nclass LiftTask(PickCubeEnv):\n    def __init__(self, *args, masses_kg=None, goal_clearance_m=None, **kwargs):\n        self.masses_kg = tuple(masses_kg if masses_kg is not None else ENV_SETTINGS[\"masses_kg\"])\n        self.goal_clearance_m = tuple(goal_clearance_m if goal_clearance_m is not None else ENV_SETTINGS[\"goal_clearance_m\"])\n        if not self.masses_kg or any(not np.isfinite(m) or m <= 0 for m in self.masses_kg):\n            raise ValueError(\"masses_kg must contain positive finite masses\")\n        if (len(self.goal_clearance_m) != 2 or not np.isfinite(self.goal_clearance_m).all()\n                or self.goal_clearance_m[0] <= .025 or self.goal_clearance_m[1] < self.goal_clearance_m[0]):\n            raise ValueError(\"Choose an ordered floating-goal clearance range above the 2.5 cm goal tolerance\")\n        kwargs.setdefault(\"num_envs\", 1)\n        kwargs.setdefault(\"obs_mode\", \"state\")\n        kwargs.setdefault(\"control_mode\", \"pd_ee_delta_pos\")\n        kwargs.setdefault(\"sim_backend\", \"physx_cpu\")\n        kwargs.setdefault(\"render_backend\", \"cpu\")\n        kwargs.setdefault(\"reward_mode\", \"normalized_dense\")\n        kwargs.setdefault(\"sensor_configs\", {\"shader_pack\": \"minimal\"})\n        kwargs.setdefault(\"human_render_camera_configs\", {\"shader_pack\": \"minimal\"})\n        if kwargs[\"control_mode\"] != \"pd_ee_delta_pos\" or kwargs[\"reward_mode\"] != \"normalized_dense\":\n            raise ValueError(\"Use the native four-action controller and normalized dense reward\")\n        self._cpu_episode = 0\n        super().__init__(*args, **kwargs)\n\n    @staticmethod\n    def _set_mass(body, mass):\n        inertia = np.array(body.inertia, copy=True) * float(mass) / body.mass\n        body.set_mass(float(mass))\n        body.set_inertia(inertia)\n        if not np.isclose(body.mass, mass) or not np.allclose(body.inertia, inertia):\n            raise RuntimeError(\"Physical mass/inertia assignment failed\")\n\n    def _load_scene(self, options):\n        super()._load_scene(options)\n        # GPU PhysX requires mass assignment BEFORE initialization. Each parallel\n        # robot has one mass, retained across resets. Shape/friction stay fixed.\n        for index, body in enumerate(self.cube._bodies):\n            self._set_mass(body, self.masses_kg[index % len(self.masses_kg)])\n\n    def _initialize_episode(self, env_idx, options):\n        # CPU inspection can select a different physical mass each attempt.\n        if not self.gpu_sim_enabled and \"mass_kg\" not in options:\n            options = {**options, \"mass_kg\": self.masses_kg[self._cpu_episode % len(self.masses_kg)]}\n            self._cpu_episode += 1\n        if \"mass_kg\" in options:\n            mass = float(options[\"mass_kg\"])\n            if not np.isfinite(mass) or mass <= 0:\n                raise ValueError(\"mass_kg must be positive and finite\")\n            if self.gpu_sim_enabled:\n                raise ValueError(\"For GPU simulation assign masses_kg when constructing the scene\")\n            for body in self.cube._bodies:\n                self._set_mass(body, mass)\n        super()._initialize_episode(env_idx, options)\n        goal = self.goal_site.pose.p[env_idx].clone()\n        low, high = self.goal_clearance_m\n        # Random XY from PickCube; Z is a floating target for the CUBE centre.\n        # This range expresses bottom clearance for an upright cube.\n        goal[:, 2] = self.cube_half_size + low + (high - low) * torch.rand(len(env_idx), device=self.device)\n        self.goal_site.set_pose(Pose.create_from_pq(goal))\n\n    def _get_obs_extra(self, info):\n        measurements = super()._get_obs_extra(info)\n        gravity = torch.as_tensor(self.scene.px.get_config().gravity, device=self.device).norm()\n        # Append LAST so the existing 42 entries retain exactly their order.\n        measurements[\"object_weight_n\"] = self.cube.mass.to(self.device).reshape(-1, 1) * gravity\n        return measurements\n\n    def evaluate(self):\n        info = super().evaluate()  # Original cube-at-goal + stationary-arm success.\n        distance = (self.cube.pose.p - self.agent.tcp_pose.p).norm(dim=-1)\n        goal_distance = (self.cube.pose.p - self.goal_site.pose.p).norm(dim=-1)\n        speed = self.agent.robot.get_qvel()[..., :-2].norm(dim=-1)\n        rotation = quaternion_to_matrix(self.cube.pose.q)\n        clearance = self.cube.pose.p[:, 2] - self.cube_half_size * rotation[:, 2].abs().sum(-1)\n        return dict(info, distance_m=distance, goal_distance_m=goal_distance, clearance_m=clearance,\n                    held_goal_success=info[\"success\"] & info[\"is_grasped\"],\n                    **reward_components(distance, goal_distance, info[\"is_grasped\"], speed,\n                                        info[\"is_obj_placed\"], info[\"is_robot_static\"]))\n\n\ndef read_inputs(task, observation):\n    \"\"\"One row of 43 state measurements per robot: original 42 plus true weight.\"\"\"\n    vector = flatten_state_dict(observation, use_torch=True, device=task.device) if isinstance(observation, dict) else observation\n    vector = vector.detach().clone().float()\n    if vector.shape != (task.num_envs, 43) or not torch.isfinite(vector).all():\n        raise ValueError(\"Expected 43 finite measurements per robot\")\n    inputs, start = {}, 0\n    for name, size in zip(INPUT_FIELDS, INPUT_SIZES):\n        inputs[name] = vector[:, start:start + size]\n        start += size\n    return inputs, vector\n\n\ndef normal_forces(task):\n    \"\"\"Log contact for us; raw forces are not additional policy inputs.\"\"\"\n    left = task.scene.get_pairwise_contact_forces(task.agent.finger1_link, task.cube)\n    right = task.scene.get_pairwise_contact_forces(task.agent.finger2_link, task.cube)\n    la = task.agent.finger1_link.pose.to_transformation_matrix()[:, :3, 1]\n    ra = -task.agent.finger2_link.pose.to_transformation_matrix()[:, :3, 1]\n    return torch.stack([(left * la).sum(-1).clamp_min(0), (right * ra).sum(-1).clamp_min(0)], dim=-1)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "blame",
+        "-L",
+        "244,259",
+        "--",
+        "robot_adaptation/simulation/training_lift.py"
+      ],
+      "returncode": 0,
+      "stdout": "6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 244)     def _get_obs_extra(self, info):\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 245)         measurements = super()._get_obs_extra(info)\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 246)         gravity = torch.as_tensor(self.scene.px.get_config().gravity, device=self.device).norm()\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 247)         # Preserve the original 43 entries; append ONLY the two new force measurements.\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 248)         measurements[\"object_weight_n\"] = self.cube.mass.to(self.device).reshape(-1, 1) * gravity\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 249)         forces = normal_forces(self)\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 250)         measurements[\"left_finger_force_n\"] = forces[:, :1]\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 251)         measurements[\"right_finger_force_n\"] = forces[:, 1:2]\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 252)         if self.condition_on_friction:\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 253)             if self.gpu_sim_enabled:\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 254)                 grid = torch.as_tensor(self.friction_config[\"cube_friction_coefficients\"], device=self.device)\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 255)                 indices = (torch.arange(self.num_envs, device=self.device) // len(self.masses_kg)) % len(grid)\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 256)                 mu = grid[indices]\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 257)             else:\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 258)                 mu = torch.full((self.num_envs,), self._cpu_friction, device=self.device)\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 259)             measurements[\"object_friction_coefficient\"] = mu.reshape(-1, 1)\n",
+      "stderr": ""
+    }
+  ],
+  "lenses": {
+    "Leakage": {
+      "verdict": "FAIL for unrestricted archived inputs",
+      "evidence": "Saved observation42 equals true mg; observation45 equals true friction. Privileged context encodes true constants.",
+      "shuffled_control": "not run"
+    },
+    "Confounds": {
+      "verdict": "NOT PASSED",
+      "evidence": "Historical mass_correlated_linear collection ties the targets. Main collections have finite sample correlation; no tolerance has been approved for the literal not-correlated requirement.",
+      "actions_only": "not run"
+    },
+    "Splits": {
+      "verdict": "NOT PASSED globally",
+      "evidence": "Main train/test cube IDs are disjoint within collection; smoke test cube1 overlaps full train cube1. Some legacy archives lack persistent cube splits.",
+      "normalization": "not fitted"
+    },
+    "Robustness": {
+      "verdict": "NOT TESTED",
+      "evidence": "No new simple/GRU runs or seed comparisons before STOP."
+    },
+    "Skeptical PI": {
+      "verdict": "FAIL if earlier privileged readouts are used as identification evidence",
+      "weakest_point": "Confusing a representation of supplied constants with recovery from motion.",
+      "test": "Inspected train.py encode(data.constants) and model.py constants_for_encoder; inspected saved probe.csv and comparison.json. The true-label pathway is confirmed."
+    },
+    "Physics sanity": {
+      "verdict": "NOT TESTED",
+      "evidence": "There are no new episode-to-property predictions to compare with physical expectations. Direct answer channels cannot establish physical observability."
+    }
+  },
+  "affected_results": [
+    {
+      "path": "docs/experiments/physics_conditioned_policy.md:90",
+      "effect": "True-input success and input-intervention contrasts assume supplied physics. Valid conditioning results; not mass/friction inference evidence."
+    },
+    {
+      "path": "docs/experiments/interaction_estimate_updates.md",
+      "effect": "True-input retry reference is privileged. This finding alone does not invalidate fixed/adaptive arms or estimator recovery scores."
+    },
+    {
+      "path": "runs/context_dynamics/pick_gpu_2m/world_model_z8/RESULTS.md",
+      "effect": "Readout R2 and world-model advantage use E(true constants). Valid privileged-context results; not recovery from episode observations."
+    },
+    {
+      "path": "BASELINE.md",
+      "effect": "B2 was explicitly Oracle. Main fixed-grip state/action source audit finds no direct label contamination of B0/B1; present finding does not establish that their scores are invalid."
+    }
+  ],
+  "training_runs": 0,
+  "changes": "Added audit artifacts and stop report only. Earlier results, data, and models preserved."
+}

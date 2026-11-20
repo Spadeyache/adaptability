@@ -1,0 +1,41 @@
+{
+  "iteration": 7,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "result_sha256": "fbf1aa82ce65017d08a02e1ef7a2d40ad4b6a86b6c3a35d12f26b72f7032337a",
+  "base_iteration": 4,
+  "retained_iteration": 7,
+  "decision": "kept",
+  "reason": "Fitted-z validation NMSE decreased relative to the retained eligible reference. F4 still fails; kept only as a failed reference, not a successful model.",
+  "option_id": "z_l2=0.0",
+  "one_step_nmse": {
+    "mean": 0.3318162029324086,
+    "std": 0.014846506713144676,
+    "values": [
+      0.31563925174196883,
+      0.3521672232166471,
+      0.3223355505909033,
+      0.3273331583743149,
+      0.3416058307382089
+    ]
+  },
+  "failure_checks": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": false,
+    "F5": true,
+    "F6": true,
+    "F7": true,
+    "F8": true,
+    "F9": true
+  },
+  "success": {
+    "S1": false,
+    "S2": false,
+    "S3": true,
+    "S4": false,
+    "plain_oracle_gap": -0.0061639775829089305,
+    "gap_recovery": null
+  },
+  "command": "PYTHONPATH=clean/vendor:. OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m clean.run candidate --iteration 7 --config /home/ubuntu/faliure/clean/configs/search_iteration_07.json --base-iteration 4 --hypothesis 'The retained reference fails validation F4. Oracle has not established a positive Plain-to-Oracle error gap. Removing latent shrinkage may let prediction gradients distinguish cubes more strongly.' --change 'Change only z_l2 from 0.0001 to 0.0; every other configuration setting is retained.' --device cuda"
+}

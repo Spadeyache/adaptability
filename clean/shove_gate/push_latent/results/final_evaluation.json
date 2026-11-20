@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "context": {
+    "checkpoint_seal_sha256": "347631b2c5c44649c49a11d3887c9092f1e2d03dec6634a784b511dde3fe2b50",
+    "adaptation_seal_sha256": "b66c7315076d12dc8083416138e4827e96d4d6a3bdfbb24afe0e4598abf8ac78",
+    "test_data_seal_sha256": "bb7c16c638806bd774cd79e5090ed7746481e46aae69252067126d3da111b7d9",
+    "data_seal_sha256": "88c85911e2658c833e91f1676a309d5389453b7574ba8babda143b21750029e0",
+    "source_sha256": "64889cf0a90e6027211eed3cbb5e984a99fa451cd883d71c4cdc1902eb46c973",
+    "protocol_sha256": "20fe5c2527ecbd061917d5f16fbf341397f1182b9cd2ec2369f2812794014ef1"
+  },
+  "started_unix_seconds": 1794807403.8694375,
+  "note": "All35 checkpoints, z settings and mass readouts frozen before test",
+  "completed_unix_seconds": 1794807528.0707674,
+  "summary_sha256": "b673b84fa2eeb7de96b9fc693e80ea967dda5ef2f2a52fc65d30970280c02094",
+  "c1_passed": true,
+  "stopped_after_c1": false,
+  "all_applicable_criteria_passed": false
+}

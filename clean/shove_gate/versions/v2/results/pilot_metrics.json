@@ -1,0 +1,29 @@
+[
+  {
+    "cube_id": 0,
+    "episode_id": 0,
+    "stopped": true,
+    "stop_raw_index": 980,
+    "release_raw_index": 980,
+    "time_to_stop_s": 0.0,
+    "launch_speed_m_s": 5.612945558196459e-05,
+    "stopping_distance_m": 0.0,
+    "stopping_xy_m": [
+      -0.051794156432151794,
+      0.08514340966939926
+    ],
+    "max_contact_force_n": 1.6922692377354076,
+    "cap_ratio": 0.8456085719595813,
+    "max_coast_contact_force_n": 0.0,
+    "other_pusher_contact_count": 980,
+    "push_contact_fraction": 0.2125,
+    "max_tilt_deg": 0.0200125895745215,
+    "min_z_m": 0.01999998837709427,
+    "max_z_m": 0.020000020042061806,
+    "terminal_speed_m_s": 7.087224890618552e-05,
+    "terminal_angular_speed_rad_s": 0.0019624376247774755,
+    "episodes_sha256": "add1963f227cbbe792eacb97160b4860ebc7c61a661badb3358e9ea6d70428e4",
+    "raw_sha256": "164088c72125f6ff8d7a9a28726605ab29fc91183fefad81e69ce236b0181a8c",
+    "wall_seconds": 0.1152551129925996
+  }
+]

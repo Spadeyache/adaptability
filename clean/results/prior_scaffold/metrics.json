@@ -1,0 +1,80 @@
+{
+  "status": "STOP_NATIVE_PLANNER_CRASH",
+  "collected_cubes": 0,
+  "collected_episodes": 0,
+  "probe_runs": 0,
+  "world_model_runs": 0,
+  "actions_only_r2": null,
+  "signal_probe_r2": null,
+  "checks_A_to_E": null,
+  "data_checks": {
+    "1": "not_completed",
+    "2": "not_completed",
+    "3": "not_completed",
+    "4": "not_completed",
+    "5": "not_completed"
+  },
+  "preflight": {
+    "sandbox_exit_code": 139,
+    "host_exit_code": 139,
+    "diagnostic_exit_code": 139,
+    "last_completed_stages": [
+      "CPU environment creation",
+      "whitelisted state read"
+    ],
+    "failure": "mplib.planner.Planner.__init__:65, ArticulatedModel native constructor",
+    "trace": "clean/results/preflight_diagnostic.log"
+  },
+  "source_sha256": {
+    "preflight.py": "b7f3f4899fed7ec82c6927d4fa3c8173e3f34d9b064e91e3b438155f9faccd7f",
+    "native.py": "11c4d2a9ddd484c64601ace57462a13767027602a04057beae50ffdeb062e9ac",
+    "collect.py": "c4310b49e509324a49d9ae016710f540417584a8dbf3ddcfd29d4da2b860932e",
+    "schema.py": "91876c7ef3e2c4bebcf5e3d6db9c9712c26e00a8da99eae9b8b0b6da8211e1c6",
+    "script.py": "2e63c0e608bc13a5d40d2aa3731f6c44d10f9509726c77dbc70bfa4a2f28983f",
+    "__init__.py": "bbe022780895b098216d32adf79477ef1b70afd799f8a0a2e989b48fa090fc12"
+  },
+  "static_import_audit": {
+    "preflight.py": [
+      "json",
+      "time",
+      "sys",
+      "pathlib",
+      "clean.native",
+      "clean.script",
+      "clean.schema"
+    ],
+    "native.py": [
+      "os",
+      "pathlib",
+      "numpy",
+      "sapien",
+      "sapien.physx",
+      "torch",
+      "mani_skill.envs.tasks.tabletop.pick_cube",
+      "clean.script"
+    ],
+    "collect.py": [
+      "json",
+      "time",
+      "hashlib",
+      "importlib.metadata",
+      "pathlib",
+      "numpy",
+      "clean.native",
+      "clean.script",
+      "clean.schema"
+    ],
+    "schema.py": [
+      "numpy"
+    ],
+    "script.py": [
+      "numpy",
+      "sapien",
+      "mplib",
+      "mani_skill"
+    ],
+    "__init__.py": []
+  },
+  "old_project_imports_detected": false,
+  "next_action": "User review before planner/dependency repair; ten-cube pilot and approval still pending"
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "sweep": "mass",
+    "effect_m": 2.2682166907304215,
+    "max_repeat_range_m": 0.0,
+    "passed": true
+  },
+  {
+    "sweep": "friction",
+    "effect_m": 0.037293680047984126,
+    "max_repeat_range_m": 0.0,
+    "passed": true
+  }
+]

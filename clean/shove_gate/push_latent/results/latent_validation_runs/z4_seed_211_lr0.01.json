@@ -1,0 +1,496 @@
+{
+  "checkpoint_sha256": "78c9847adf2df9c5986b8fbefe1e47e6198368412a69c1025a54daf52b2336c9",
+  "records": [
+    {
+      "z_dim": 4,
+      "learning_rate": 0.01,
+      "updates": 50,
+      "seed": 211,
+      "query": {
+        "mean": 0.16179632713813244,
+        "eligible_starts": 1621,
+        "nonfinite_starts": 0,
+        "episodes": 100,
+        "cubes": 20,
+        "per_cube": [
+          {
+            "cube_id": 180,
+            "mean": 0.3315389723117278,
+            "episodes": 5
+          },
+          {
+            "cube_id": 181,
+            "mean": 0.15162263902685338,
+            "episodes": 5
+          },
+          {
+            "cube_id": 182,
+            "mean": 0.4279478898589228,
+            "episodes": 5
+          },
+          {
+            "cube_id": 183,
+            "mean": 0.05363385782460532,
+            "episodes": 5
+          },
+          {
+            "cube_id": 184,
+            "mean": 0.10424193951357741,
+            "episodes": 5
+          },
+          {
+            "cube_id": 185,
+            "mean": 0.14343386380024906,
+            "episodes": 5
+          },
+          {
+            "cube_id": 186,
+            "mean": 0.044431617819236005,
+            "episodes": 5
+          },
+          {
+            "cube_id": 187,
+            "mean": 0.06206497500649719,
+            "episodes": 5
+          },
+          {
+            "cube_id": 188,
+            "mean": 0.19088281613055436,
+            "episodes": 5
+          },
+          {
+            "cube_id": 189,
+            "mean": 0.2360575123604715,
+            "episodes": 5
+          },
+          {
+            "cube_id": 190,
+            "mean": 0.15938742469354442,
+            "episodes": 5
+          },
+          {
+            "cube_id": 191,
+            "mean": 0.4280410942555668,
+            "episodes": 5
+          },
+          {
+            "cube_id": 192,
+            "mean": 0.07202515681317126,
+            "episodes": 5
+          },
+          {
+            "cube_id": 193,
+            "mean": 0.083167022402131,
+            "episodes": 5
+          },
+          {
+            "cube_id": 194,
+            "mean": 0.17698849948831902,
+            "episodes": 5
+          },
+          {
+            "cube_id": 195,
+            "mean": 0.09852060336557945,
+            "episodes": 5
+          },
+          {
+            "cube_id": 196,
+            "mean": 0.3160713726483609,
+            "episodes": 5
+          },
+          {
+            "cube_id": 197,
+            "mean": 0.05406688644661005,
+            "episodes": 5
+          },
+          {
+            "cube_id": 198,
+            "mean": 0.07355599463884588,
+            "episodes": 5
+          },
+          {
+            "cube_id": 199,
+            "mean": 0.028246404357825005,
+            "episodes": 5
+          }
+        ],
+        "missing_cube_ids": []
+      }
+    },
+    {
+      "z_dim": 4,
+      "learning_rate": 0.01,
+      "updates": 100,
+      "seed": 211,
+      "query": {
+        "mean": 0.16566559207516351,
+        "eligible_starts": 1621,
+        "nonfinite_starts": 0,
+        "episodes": 100,
+        "cubes": 20,
+        "per_cube": [
+          {
+            "cube_id": 180,
+            "mean": 0.41150276748093234,
+            "episodes": 5
+          },
+          {
+            "cube_id": 181,
+            "mean": 0.16461847163456872,
+            "episodes": 5
+          },
+          {
+            "cube_id": 182,
+            "mean": 0.35392720596371785,
+            "episodes": 5
+          },
+          {
+            "cube_id": 183,
+            "mean": 0.07075568517380153,
+            "episodes": 5
+          },
+          {
+            "cube_id": 184,
+            "mean": 0.10398470238994365,
+            "episodes": 5
+          },
+          {
+            "cube_id": 185,
+            "mean": 0.14839717914374811,
+            "episodes": 5
+          },
+          {
+            "cube_id": 186,
+            "mean": 0.04229807611083903,
+            "episodes": 5
+          },
+          {
+            "cube_id": 187,
+            "mean": 0.06253214048426083,
+            "episodes": 5
+          },
+          {
+            "cube_id": 188,
+            "mean": 0.21032621004155408,
+            "episodes": 5
+          },
+          {
+            "cube_id": 189,
+            "mean": 0.23997521062415633,
+            "episodes": 5
+          },
+          {
+            "cube_id": 190,
+            "mean": 0.1781626964046678,
+            "episodes": 5
+          },
+          {
+            "cube_id": 191,
+            "mean": 0.39786594869054775,
+            "episodes": 5
+          },
+          {
+            "cube_id": 192,
+            "mean": 0.0719262772015695,
+            "episodes": 5
+          },
+          {
+            "cube_id": 193,
+            "mean": 0.08594410267989117,
+            "episodes": 5
+          },
+          {
+            "cube_id": 194,
+            "mean": 0.17677210318962386,
+            "episodes": 5
+          },
+          {
+            "cube_id": 195,
+            "mean": 0.09861122442293538,
+            "episodes": 5
+          },
+          {
+            "cube_id": 196,
+            "mean": 0.3324886180385415,
+            "episodes": 5
+          },
+          {
+            "cube_id": 197,
+            "mean": 0.06247627796770026,
+            "episodes": 5
+          },
+          {
+            "cube_id": 198,
+            "mean": 0.07326598251233221,
+            "episodes": 5
+          },
+          {
+            "cube_id": 199,
+            "mean": 0.027480961347938558,
+            "episodes": 5
+          }
+        ],
+        "missing_cube_ids": []
+      }
+    },
+    {
+      "z_dim": 4,
+      "learning_rate": 0.01,
+      "updates": 200,
+      "seed": 211,
+      "query": {
+        "mean": 0.16425991566927448,
+        "eligible_starts": 1621,
+        "nonfinite_starts": 0,
+        "episodes": 100,
+        "cubes": 20,
+        "per_cube": [
+          {
+            "cube_id": 180,
+            "mean": 0.4061684719943238,
+            "episodes": 5
+          },
+          {
+            "cube_id": 181,
+            "mean": 0.171527102961,
+            "episodes": 5
+          },
+          {
+            "cube_id": 182,
+            "mean": 0.33927365649249874,
+            "episodes": 5
+          },
+          {
+            "cube_id": 183,
+            "mean": 0.08522432439486664,
+            "episodes": 5
+          },
+          {
+            "cube_id": 184,
+            "mean": 0.1039697454078529,
+            "episodes": 5
+          },
+          {
+            "cube_id": 185,
+            "mean": 0.14818658380192942,
+            "episodes": 5
+          },
+          {
+            "cube_id": 186,
+            "mean": 0.042591262368177105,
+            "episodes": 5
+          },
+          {
+            "cube_id": 187,
+            "mean": 0.06257612928806658,
+            "episodes": 5
+          },
+          {
+            "cube_id": 188,
+            "mean": 0.22603880166570142,
+            "episodes": 5
+          },
+          {
+            "cube_id": 189,
+            "mean": 0.23981232583818754,
+            "episodes": 5
+          },
+          {
+            "cube_id": 190,
+            "mean": 0.17817159940789504,
+            "episodes": 5
+          },
+          {
+            "cube_id": 191,
+            "mean": 0.35322292281360246,
+            "episodes": 5
+          },
+          {
+            "cube_id": 192,
+            "mean": 0.07195421176994124,
+            "episodes": 5
+          },
+          {
+            "cube_id": 193,
+            "mean": 0.08619239657634573,
+            "episodes": 5
+          },
+          {
+            "cube_id": 194,
+            "mean": 0.1766797120225052,
+            "episodes": 5
+          },
+          {
+            "cube_id": 195,
+            "mean": 0.09849782020596087,
+            "episodes": 5
+          },
+          {
+            "cube_id": 196,
+            "mean": 0.33050067687527174,
+            "episodes": 5
+          },
+          {
+            "cube_id": 197,
+            "mean": 0.06438069222113633,
+            "episodes": 5
+          },
+          {
+            "cube_id": 198,
+            "mean": 0.07332756115229043,
+            "episodes": 5
+          },
+          {
+            "cube_id": 199,
+            "mean": 0.026902316127936466,
+            "episodes": 5
+          }
+        ],
+        "missing_cube_ids": []
+      }
+    },
+    {
+      "z_dim": 4,
+      "learning_rate": 0.01,
+      "updates": 400,
+      "seed": 211,
+      "query": {
+        "mean": 0.164607085265897,
+        "eligible_starts": 1621,
+        "nonfinite_starts": 0,
+        "episodes": 100,
+        "cubes": 20,
+        "per_cube": [
+          {
+            "cube_id": 180,
+            "mean": 0.40608317543664424,
+            "episodes": 5
+          },
+          {
+            "cube_id": 181,
+            "mean": 0.17805160063557185,
+            "episodes": 5
+          },
+          {
+            "cube_id": 182,
+            "mean": 0.3395128034155479,
+            "episodes": 5
+          },
+          {
+            "cube_id": 183,
+            "mean": 0.08927746442435339,
+            "episodes": 5
+          },
+          {
+            "cube_id": 184,
+            "mean": 0.10397614361799859,
+            "episodes": 5
+          },
+          {
+            "cube_id": 185,
+            "mean": 0.14818144119626953,
+            "episodes": 5
+          },
+          {
+            "cube_id": 186,
+            "mean": 0.04258510694719321,
+            "episodes": 5
+          },
+          {
+            "cube_id": 187,
+            "mean": 0.06257507060595459,
+            "episodes": 5
+          },
+          {
+            "cube_id": 188,
+            "mean": 0.22558447942136492,
+            "episodes": 5
+          },
+          {
+            "cube_id": 189,
+            "mean": 0.23981448612297734,
+            "episodes": 5
+          },
+          {
+            "cube_id": 190,
+            "mean": 0.17814419406366291,
+            "episodes": 5
+          },
+          {
+            "cube_id": 191,
+            "mean": 0.3499636011491562,
+            "episodes": 5
+          },
+          {
+            "cube_id": 192,
+            "mean": 0.07195821598192081,
+            "episodes": 5
+          },
+          {
+            "cube_id": 193,
+            "mean": 0.0861950012925086,
+            "episodes": 5
+          },
+          {
+            "cube_id": 194,
+            "mean": 0.17662970327688837,
+            "episodes": 5
+          },
+          {
+            "cube_id": 195,
+            "mean": 0.09852773770410318,
+            "episodes": 5
+          },
+          {
+            "cube_id": 196,
+            "mean": 0.330478893699556,
+            "episodes": 5
+          },
+          {
+            "cube_id": 197,
+            "mean": 0.06438823323379157,
+            "episodes": 5
+          },
+          {
+            "cube_id": 198,
+            "mean": 0.07331003476420378,
+            "episodes": 5
+          },
+          {
+            "cube_id": 199,
+            "mean": 0.02690431832827341,
+            "episodes": 5
+          }
+        ],
+        "missing_cube_ids": []
+      }
+    }
+  ],
+  "support_log": [
+    {
+      "update": 50,
+      "mean_cube_support_nmse": 0.10905367896070683,
+      "mean_cube_prior": 6.634828605456278e-06,
+      "elapsed_seconds": 0.1126384180097375
+    },
+    {
+      "update": 100,
+      "mean_cube_support_nmse": 0.10220058540101537,
+      "mean_cube_prior": 1.0607560398057103e-05,
+      "elapsed_seconds": 0.2177015590132214
+    },
+    {
+      "update": 200,
+      "mean_cube_support_nmse": 0.0985306863962275,
+      "mean_cube_prior": 1.6700115520507097e-05,
+      "elapsed_seconds": 0.4294629539945163
+    },
+    {
+      "update": 400,
+      "mean_cube_support_nmse": 0.09829833799263782,
+      "mean_cube_prior": 1.7974412185139953e-05,
+      "elapsed_seconds": 0.8657579350110609
+    }
+  ],
+  "weights_unchanged": true
+}

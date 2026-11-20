@@ -1,0 +1,238 @@
+{
+  "status": "STOP_REQUIRES_USER_DECISION",
+  "training_runs": 0,
+  "checks": [
+    {
+      "path": "runs/interaction_adaptation/initial_policy_probe/episodes/condition2_sequence0_true_attempt0.npz",
+      "mass_kg": 0.5,
+      "reported_mass_kg": 0.5,
+      "observation_shape": [
+        51,
+        45
+      ],
+      "column": 42,
+      "unique_weights_n": [
+        4.90500020980835
+      ],
+      "equals_true_mg": true
+    },
+    {
+      "path": "runs/physics_conditioning/baseline_freshscene_diagnostic/traces.jsonl",
+      "mode": "true",
+      "seed": 81000,
+      "lanes": 15,
+      "mass_column": 42,
+      "friction_column": 45,
+      "mass_matches": true,
+      "friction_matches": true,
+      "policy_supplied_equals_raw": true
+    }
+  ],
+  "source_identities": [
+    {
+      "path": "robot_adaptation/simulation/collection_lift.py",
+      "sha256": "70e8b435c014876954104e459ae791312cda9cb1cb4c1ee5205b25997b93d2b9"
+    },
+    {
+      "path": "robot_adaptation/simulation/training_lift.py",
+      "sha256": "562673950e99435702bf03fd1d60b15989d4a6b760a5da4fc4bdcc4a85ed5b68"
+    },
+    {
+      "path": "experiments/interaction_adaptation/evaluate.py",
+      "sha256": "2f9b2c13dfc20cc677001c184f38a6b2bae986ccb52456386561d2cabb22db58"
+    },
+    {
+      "path": "experiments/physics_conditioning/evaluate.py",
+      "sha256": "2d3e27624d6ace7b2e09c38beec7a8afa47241a287ce06625f34426d6007a430"
+    },
+    {
+      "path": "robot_adaptation/estimators/context_dynamics/model.py",
+      "sha256": "360e89065b5b4ae667e1b524f2afde3e15bcabd4536ce47c0a21cefeb0192840"
+    },
+    {
+      "path": "experiments/context_dynamics/train.py",
+      "sha256": "27156b81e43825c3dd6f080f0951a549d94d80f96257e8505447dae130cda301"
+    },
+    {
+      "path": "docs/experiments/physics_conditioned_policy.md",
+      "sha256": "f857da468ad066ea6a5feef08735a5c4b3078219bb3182192247386bb96c71c1"
+    },
+    {
+      "path": "docs/experiments/interaction_estimate_updates.md",
+      "sha256": "edf2a142d88add1a5075a08c0e05afd79e4a4caf145bbd0695089c0863a63a7b"
+    },
+    {
+      "path": "runs/context_dynamics/pick_gpu_2m/world_model_z8/RESULTS.md",
+      "sha256": "82021cef8d5b6b7b32c84c75d413acd2962f3d45653d9cbaee7b45880cb5df2b"
+    },
+    {
+      "path": "runs/context_dynamics/pick_gpu_2m/world_model_z8/comparison.json",
+      "sha256": "b6f2e97b0fb86e8ad448ad83ae85149ccb2da93124553f704880e60d22dfe6cd"
+    },
+    {
+      "path": "runs/context_dynamics/pick_gpu_2m/world_model_z8/probe.csv",
+      "sha256": "f0481ed5bbcb412278e58a53e0a23501a49d55f9d3b2273386584cc81e026e28"
+    },
+    {
+      "path": "BASELINE.md",
+      "sha256": "3dfc89ffc9e4a3e869a89228750113eb4ced777ab13fa36a6936d3f512093487"
+    },
+    {
+      "path": "PROBE.md",
+      "sha256": "5458278758f472b760a4bdd6e00eca6ba0fcaf933a2df0433d5281c06ad05b39"
+    },
+    {
+      "path": "results/probe/leak_gate.json",
+      "sha256": "d38fde44dadd4943cadaff380b69433e7fabcb02eafaa0bedcc3e811f7aadb2a"
+    },
+    {
+      "path": "results/probe/inventory_lift_slide.json",
+      "sha256": "fef42b34ff29ed9392ae0ee2644b5c77ecbdc8d0b479df91166202988f13b3aa"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "stdout": "76b99969cae7c222c89e3e1dffe594e446fa1252\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "returncode": 0,
+      "stdout": "?? BASELINE.md\n?? PROBE.md\n?? experiments/world_model_baselines/\n?? results/baselines/\n?? results/loop/\n?? results/probe/\n?? tests/test_baseline_adaptation.py\n?? tests/test_baseline_adaptation_independent_audit.py\n?? tests/test_world_model_baseline_evaluation.py\n?? tests/test_world_model_baselines_model.py\n?? tests/test_world_model_baselines_reporting.py\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "log",
+        "--all",
+        "--reverse",
+        "--format=%H %aI %cI %s",
+        "-S",
+        "object_weight_n",
+        "--",
+        "*.py"
+      ],
+      "returncode": 0,
+      "stdout": "3c716eca505fbd1979613472c5c3bc9e0fc52996 2026-10-02T22:46:09-04:00 2026-10-02T22:46:09-04:00 setup input parameters for the policy\n6142e487aa67acf523f87f454d86ecda3370b94e 2026-10-03T23:13:32-04:00 2026-10-03T23:13:32-04:00 ppo train integrated\n482a4d49fe91c6142e73fdc03a1a10adfc3d51c7 2026-10-07T23:03:48-04:00 2026-10-07T23:03:48-04:00 successfull pick and lift task RL\n76860e7c547a225f718efd650ffa6fc8c071fc28 2026-10-08T12:01:14-04:00 2026-10-08T12:01:14-04:00 RL reward modified so model will learn strength when grabbing object\n4e85f31f597dfe1d20156f52aa529f91044f4cae 2026-10-09T10:40:52-04:00 2026-10-09T10:40:52-04:00 polocy learn grab strength\n5d5d214a126c9d0fe7ad7429fc892927bccf4297 2026-10-10T13:12:29-04:00 2026-10-10T13:12:29-04:00 checkpoint: <what works now>\n8258041a2b5ad3c9b3749a924accc87766e2805e 2026-10-12T21:45:05-04:00 2026-10-12T21:45:05-04:00 mainly added faliure data collection code\n6c8df5518add4b40bb9430cf94722f22b6df8b67 2026-10-22T13:49:23-04:00 2026-10-22T13:49:23-04:00 restruct codebase & ran crest\n5dd4e95e41834bcd4a125cd704aa3512917ff2db 2026-10-23T09:24:26-04:00 2026-10-23T09:24:26-04:00 robot_running with estimator realtime\n730435ac9d0e42b9394fae2266c7d2d998e45bc4 2026-10-28T08:04:09-04:00 2026-10-28T08:04:09-04:00 estimarot\n89ca5dba9319074e948d2ea9cfcb906d08678d7f 2026-11-09T11:02:24-05:00 2026-11-09T11:02:24-05:00 data collection\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "3c716ec:learning/lift_task.py"
+      ],
+      "returncode": 0,
+      "stdout": "\"\"\"CPU lift reward, agreed observations, and an UNVALIDATED controller draft.\n\nThe reward check uses the existing joint-position controller, with no training.\nThe pose/force adapter and optional mass override remain drafts for later work.\nOnly project code is changed; the installed ManiSkill library is untouched.\n\"\"\"\n\nimport numpy as np\nimport torch\nfrom mani_skill.envs.tasks.tabletop.pick_cube import PickCubeEnv\nfrom mani_skill.utils.geometry.rotation_conversions import (\n    euler_angles_to_matrix, matrix_to_euler_angles, matrix_to_quaternion,\n    quaternion_multiply, quaternion_to_matrix,\n)\nfrom mani_skill.utils.structs.pose import Pose\n\n\nINPUT_FIELDS = [\n    \"gripper_tcp_pose_world_m_wxyz\", \"object_pose_world_m_wxyz\",\n    \"object_weight_n\", \"left_finger_cube_force_world_n\",\n    \"right_finger_cube_force_world_n\",\n]\nINPUT_SIZES = [7, 7, 1, 3, 3]\nACTION_DESCRIPTION = (\n    \"7 values in [-1,1]: world xyz increments, world XYZ Euler rotation \"\n    \"increments, then per-finger normal contact force mapped to [0,max_force_n]. \"\n    \"The adapter produces an absolute world TCP pose and finger position target.\"\n)\n\n# Editable starting choices, not universally optimal reward settings.\nREWARD_SETTINGS = {\n    \"reach_scale_m\": 0.10,  # At 10 cm, proximity is exp(-1), about 0.37.\n    \"lift_clearance_m\": 0.08,  # Cube's lowest point must be 8 cm above the table.\n    \"reach_weight\": 0.20,  # Some guidance before contact; most credit is for the task.\n    \"grasp_weight\": 0.30,\n    \"lift_weight\": 0.50,\n}\n\n\ndef reward_components(distance_m, clearance_m, is_grasped, settings=REWARD_SETTINGS):\n    \"\"\"One bounded score from TCP-to-object distance, cube clearance and grasp.\n\n    A confirmed grasp completes reaching, even when TCP and cube centres differ.\n    Lift credit is zero without grasp. Force/slip penalties and holding time are\n    deliberately absent. Grasp detection uses Panda's existing contact predicate.\n    \"\"\"\n    weights = [settings[name] for name in (\"reach_weight\", \"grasp_weight\", \"lift_weight\")]\n    if (not np.isfinite(weights).all() or min(weights) < 0\n            or not np.isclose(sum(weights), 1.0)):\n        raise ValueError(\"Reward weights must be nonnegative, finite and sum to 1\")\n    for name in (\"reach_scale_m\", \"lift_clearance_m\"):\n        if not np.isfinite(settings[name]) or settings[name] <= 0:\n            raise ValueError(f\"{name} must be positive and finite\")\n    if not torch.isfinite(distance_m).all() or not torch.isfinite(clearance_m).all():\n        raise ValueError(\"Distance and clearance must be finite\")\n    proximity = torch.exp(-distance_m.clamp_min(0) / settings[\"reach_scale_m\"])\n    grasp = is_grasped.float()\n    reach = torch.where(is_grasped, torch.ones_like(proximity), proximity)\n    lift = grasp * (clearance_m / settings[\"lift_clearance_m\"]).clamp(0, 1)\n    reach_score = settings[\"reach_weight\"] * reach\n    grasp_score = settings[\"grasp_weight\"] * grasp\n    lift_score = settings[\"lift_weight\"] * lift\n    return {\n        \"distance_m\": distance_m,\n        \"clearance_m\": clearance_m,\n        \"proximity\": proximity,\n        \"reach_score\": reach_score,\n        \"grasp_score\": grasp_score,\n        \"lift_score\": lift_score,\n        \"task_score\": (reach_score + grasp_score + lift_score).clamp(0, 1),\n        \"success\": is_grasped & (clearance_m >= settings[\"lift_clearance_m\"]),\n    }\n\n\ndef read_inputs(task, observation):\n    \"\"\"Read everything before another step; one row per environment, no images.\"\"\"\n    mass_kg = task.cube.mass.reshape(-1, 1)\n    gravity = torch.as_tensor(task.scene.px.get_config().gravity)\n    inputs = dict(zip(INPUT_FIELDS, [\n        observation[\"extra\"][\"tcp_pose\"],\n        observation[\"extra\"][\"obj_pose\"],\n        mass_kg * torch.linalg.vector_norm(gravity),\n        task.scene.get_pairwise_contact_forces(task.agent.finger1_link, task.cube),\n        task.scene.get_pairwise_contact_forces(task.agent.finger2_link, task.cube),\n    ]))\n    # Cloning makes a snapshot that later physics steps cannot overwrite.\n    inputs = {name: value.detach().clone().float() for name, value in inputs.items()}\n    vector = torch.cat(list(inputs.values()), dim=1)\n    if vector.shape != (1, 21) or not torch.isfinite(vector).all():\n        raise ValueError(\"Expected 21 finite numerical inputs for one CPU environment\")\n    return inputs, vector\n\n\ndef normal_forces(task, inputs):\n    \"\"\"Compressive force on each finger, projected on its outward opening axis.\n\n    These are the same axes used by installed Panda.is_grasping(). The world\n    vectors are forces ON the fingers, so compression pushes each finger outward.\n    Opposing vectors must never be added together to measure grip strength.\n    \"\"\"\n    left_axis = task.agent.finger1_link.pose.to_transformation_matrix()[:, :3, 1]\n    right_axis = -task.agent.finger2_link.pose.to_transformation_matrix()[:, :3, 1]\n    left = (inputs[INPUT_FIELDS[3]] * left_axis).sum(1).clamp_min(0)\n    right = (inputs[INPUT_FIELDS[4]] * right_axis).sum(1).clamp_min(0)\n    return torch.stack([left, right], dim=1)\n\n\nclass LiftTask(PickCubeEnv):\n    \"\"\"Grasp and lift clear of the table; success terminates without a hold timer.\"\"\"\n\n    def __init__(self, settings=None, control_mode=\"pd_joint_pos\"):\n        self.settings = {**REWARD_SETTINGS, **(settings or {})}\n        super().__init__(\n            num_envs=1, obs_mode=\"state_dict\", control_mode=control_mode,\n            sim_backend=\"physx_cpu\", render_backend=\"cpu\", reward_mode=\"dense\",\n            sensor_configs={\"shader_pack\": \"minimal\"},\n            human_render_camera_configs={\"shader_pack\": \"minimal\"},\n        )\n\n    def _initialize_episode(self, env_idx, options):\n        super()._initialize_episode(env_idx, options)\n        self.requested_force_n = 0.0\n        # PickCube resets upright on the table; its initial bottom gives table z.\n        self.table_surface_z = self.cube.pose.p[:, 2].clone() - self.cube_half_size\n        # The inherited goal is only a marker. Our reward never uses its position.\n        self.goal_site.set_pose(Pose.create_from_pq(\n            torch.tensor([[0.0, 0.0, float(self.table_surface_z.item())\n                           + self.cube_half_size + self.settings[\"lift_clearance_m\"]]])\n        ))\n        # Optional earlier mass-study draft, inactive in the reward check.\n        # No mass range is chosen and ordinary resets retain the simulator mass.\n        if \"mass_kg\" not in options:\n            return\n        mass = float(options[\"mass_kg\"])\n        if not np.isfinite(mass) or mass <= 0:\n            raise ValueError(\"Mass must be positive and finite\")\n        # Actor exposes mass publicly, but inertia requires its SAPIEN body.\n        # Scale existing inertia by the mass ratio: same shape/density distribution.\n        body = self.cube._bodies[0]\n        inertia = np.array(body.inertia, copy=True) * (mass / body.mass)\n        body.set_mass(mass)\n        body.set_inertia(inertia)\n        if not np.isclose(body.mass, mass) or not np.allclose(body.inertia, inertia):\n            raise RuntimeError(\"Physics mass/inertia update did not take effect\")\n\n    def evaluate(self):\n        position = self.cube.pose.p\n        # For a rotated cube, its vertical half-extent is h * sum(abs(R[z, :])).\n        # This measures its LOWEST point, so tilting alone cannot fake clearance.\n        rotation = quaternion_to_matrix(self.cube.pose.q)\n        bottom_z = position[:, 2] - self.cube_half_size * rotation[:, 2, :].abs().sum(1)\n        distance = torch.linalg.vector_norm(position - self.agent.tcp_pose.p, dim=1)\n        grasped = self.agent.is_grasping(self.cube)\n        components = reward_components(\n            distance, bottom_z - self.table_surface_z, grasped, self.settings\n        )\n        return {\n            \"is_grasped\": grasped,\n            **components,\n        }\n\n    def compute_dense_reward(self, obs, action, info):\n        return info[\"task_score\"]\n\n    def compute_normalized_dense_reward(self, obs, action, info):\n        # Already normalized; do not inherit PickCube's division by five.\n        return self.compute_dense_reward(obs, action, info)\n\n\ndef controller_action(task, inputs, action, settings):\n    \"\"\"UNVALIDATED DRAFT, unused by check_reward.py; requires pd_ee_pose mode.\n\n    Map a bounded policy action to an absolute pose and grip servo command.\n\n    The force servo runs once per control step. It changes a position target,\n    not the actuator force limit. It is an approximate feedback controller, not\n    a guarantee of exact contact force or a validated physical-robot controller.\n    \"\"\"\n    if action.shape != (1, 7) or not torch.isfinite(action).all() or (action.abs() > 1).any():\n        raise ValueError(\"Policy action must be finite with shape (1, 7) in [-1,1]\")\n    current = inputs[INPUT_FIELDS[0]]\n    target_position = current[:, :3] + settings[\"position_step_m\"] * action[:, :3]\n    target_position = target_position.clamp(\n        torch.tensor(settings[\"workspace_low_m\"]), torch.tensor(settings[\"workspace_high_m\"])\n    )\n    delta_q = matrix_to_quaternion(euler_angles_to_matrix(\n        settings[\"rotation_step_rad\"] * action[:, 3:6], \"XYZ\"\n    ))\n    target_q = quaternion_multiply(delta_q, current[:, 3:])\n    target_world = Pose.create_from_pq(target_position, target_q)\n\n    # pd_ee_pose expects an absolute pose in the arm ROOT frame, with XYZ Euler\n    # angles (not quaternion components). Use the actual root transform.\n    arm = task.agent.controller.controllers[\"arm\"]\n    target_root = arm.root_link.pose.inv() * target_world\n    target_euler = matrix_to_euler_angles(quaternion_to_matrix(target_root.q), \"XYZ\")\n\n    desired_force = settings[\"max_force_n\"] * (action[:, 6] + 1) / 2\n    measured = normal_forces(task, inputs)\n    # Protect the more heavily loaded finger; the mimic gripper cannot command\n    # the two fingers independently. Zero contact + positive demand closes it.\n    error = desired_force - measured.max(dim=1).values\n    change = (-settings[\"force_gain_m_per_n\"] * error).clamp(\n        -settings[\"finger_step_m\"], settings[\"finger_step_m\"]\n    )\n    gripper = task.agent.controller.controllers[\"gripper\"]\n    current_opening = gripper.qpos.mean(1)\n    # Zero requested grip releases the cube, even when both measured forces are 0.\n    change = torch.where(desired_force < 0.05, settings[\"finger_step_m\"], change)\n    finger_target = (current_opening + change).clamp(-0.002, 0.04)\n    # Installed Panda mimic controller normalizes [-0.01, 0.04] metres to [-1,1].\n    low, high = float(gripper.config.lower), float(gripper.config.upper)\n    grip_action = 2 * (finger_target - low) / (high - low) - 1\n    command = task.agent.controller.from_action_dict({\n        \"arm\": torch.cat([target_root.p, target_euler], dim=1),\n        \"gripper\": grip_action[:, None],\n    })\n    task.requested_force_n = float(desired_force.item())\n    targets = {\n        \"tcp_pose_world_m_wxyz\": target_world.raw_pose.clone(),\n        \"grip_force_per_finger_n\": desired_force.clone(),\n        \"measured_normal_forces_n\": measured.clone(),\n        \"finger_position_target_m\": finger_target.clone(),\n    }\n    return command, targets\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "show",
+        "482a4d4:learning/lift_task.py"
+      ],
+      "returncode": 128,
+      "stdout": "",
+      "stderr": "fatal: path 'learning/lift_task.py' does not exist in '482a4d4'\n"
+    },
+    {
+      "command": [
+        "git",
+        "log",
+        "--all",
+        "--reverse",
+        "--format=%H %aI %cI %s",
+        "-S",
+        "estimated_mass, estimated_friction = mass, friction",
+        "--",
+        "*.py"
+      ],
+      "returncode": 0,
+      "stdout": "730435ac9d0e42b9394fae2266c7d2d998e45bc4 2026-10-28T08:04:09-04:00 2026-10-28T08:04:09-04:00 estimarot\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "log",
+        "--all",
+        "--reverse",
+        "--format=%H %aI %cI %s",
+        "-S",
+        "def inject_parameters",
+        "--",
+        "*.py"
+      ],
+      "returncode": 0,
+      "stdout": "730435ac9d0e42b9394fae2266c7d2d998e45bc4 2026-10-28T08:04:09-04:00 2026-10-28T08:04:09-04:00 estimarot\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "blame",
+        "-L",
+        "45,57",
+        "--",
+        "robot_adaptation/simulation/collection_lift.py"
+      ],
+      "returncode": 0,
+      "stdout": "6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 45)             self.cube.set_pose(Pose.create(pose))\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 46)         goal = self.cube.pose.p.clone()\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 47)         goal[:, 2] += self.goal_clearance_m\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 48)         self.goal_site.set_pose(Pose.create_from_pq(goal))\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 49) \n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 50)     def _get_obs_extra(self, info):\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 51)         measurements = super()._get_obs_extra(info)\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 52)         gravity = float(np.linalg.norm(self.scene.px.get_config().gravity))\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 53)         measurements['object_weight_n'] = torch.full((1, 1), self.reported_mass_kg,\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 54)             device=self.device, dtype=torch.float32) * gravity\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 55)         forces = []\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 56)         for link, sign in ((self.agent.finger1_link, 1), (self.agent.finger2_link, -1)):\n6c8df551 (Spadeyache 2026-10-22 13:49:23 -0400 57)             force = self.scene.get_pairwise_contact_forces(link, self.cube)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "blame",
+        "-L",
+        "169,183",
+        "--",
+        "experiments/interaction_adaptation/evaluate.py"
+      ],
+      "returncode": 0,
+      "stdout": "730435ac (Spadeyache 2026-10-28 08:04:09 -0400 169)             for method in (\"fixed\", \"adaptive\", \"true\"):\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 170)                 predictor.reset()\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 171)                 estimated_mass, estimated_friction = args.initial_mass, args.initial_friction\n0e473fdf (Spadeyache 2026-10-28 08:04:37 -0400 172)                 env = make_task(task, properties, reported_mass_kg=estimated_mass, settings=manifest[\"settings\"])\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 173)                 try:\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 174)                     for attempt in range(args.attempts):\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 175)                         if method == \"true\":\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 176)                             estimated_mass, estimated_friction = mass, friction\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 177)                         env.reported_mass_kg = estimated_mass\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 178)                         seed = args.seed + sequence * args.attempts + attempt\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 179)                         with torch.inference_mode():\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 180)                             data, _ = rollout(env,\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 181)                                 lambda observation: policy.get_action(\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 182)                                     supplied_observation(observation, estimated_friction),\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 183)                                     deterministic=True), seed,\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "blame",
+        "-L",
+        "25,35",
+        "--",
+        "experiments/physics_conditioning/evaluate.py"
+      ],
+      "returncode": 0,
+      "stdout": "730435ac (Spadeyache 2026-10-28 08:04:09 -0400 25) def inject_parameters(vector, mass_kg=None, friction=None, gravity=9.81):\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 26)     \"\"\"Replace supplied estimates only; the physical environment stays unchanged.\"\"\"\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 27)     if vector.ndim != 2 or vector.shape[1] != 46 or not torch.isfinite(vector).all():\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 28)         raise ValueError(\"Expected finite [N,46] physics-conditioned observations\")\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 29)     result = vector.clone()\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 30)     for index, value, scale in ((42, mass_kg, gravity), (45, friction, 1.0)):\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 31)         if value is not None:\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 32)             value = torch.as_tensor(value, device=vector.device, dtype=vector.dtype)\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 33)             if not torch.isfinite(value).all() or torch.any(value <= 0):\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 34)                 raise ValueError(\"Parameter estimates must be finite and positive\")\n730435ac (Spadeyache 2026-10-28 08:04:09 -0400 35)             result[:, index] = value * scale\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "log",
+        "--all",
+        "--reverse",
+        "--format=%H %aI %cI %s",
+        "--",
+        "robot_adaptation/estimators/context_dynamics/model.py"
+      ],
+      "returncode": 0,
+      "stdout": "89ca5dba9319074e948d2ea9cfcb906d08678d7f 2026-11-09T11:02:24-05:00 2026-11-09T11:02:24-05:00 data collection\n58040529875349db8b4962a5db241152e59cc5e6 2026-11-11T10:08:25-05:00 2026-11-11T10:08:25-05:00 trained worldmodel, enc. Preformacnce plots to be verified\n",
+      "stderr": ""
+    }
+  ],
+  "chronology_limit": "Git dates establish presence in saved history, not the exact first execution date.",
+  "reason": "Earlier privileged-input results cannot establish label-free identification; user requires a stop before deciding their treatment."
+}

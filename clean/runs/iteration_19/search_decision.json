@@ -1,0 +1,41 @@
+{
+  "iteration": 19,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "result_sha256": "39534e75942a481fff9b02938322c7ae2b9316c9535d181426926df51b799f51",
+  "base_iteration": 6,
+  "retained_iteration": 19,
+  "decision": "kept",
+  "reason": "Fitted-z validation NMSE decreased relative to the retained eligible reference. At least one locked success criterion still fails.",
+  "option_id": "z_l2=0.01",
+  "one_step_nmse": {
+    "mean": 0.34553908469896644,
+    "std": 0.01136816597878108,
+    "values": [
+      0.33442440256375777,
+      0.3608050241713967,
+      0.33438964978584296,
+      0.3466341580576902,
+      0.3514421889161447
+    ]
+  },
+  "failure_checks": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": true,
+    "F5": true,
+    "F6": true,
+    "F7": true,
+    "F8": true,
+    "F9": true
+  },
+  "success": {
+    "S1": false,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "plain_oracle_gap": -0.006163977582908986,
+    "gap_recovery": null
+  },
+  "command": "PYTHONPATH=clean/vendor:. OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m clean.run candidate --iteration 19 --config /home/ubuntu/faliure/clean/configs/search_iteration_19.json --base-iteration 6 --hypothesis 'Oracle has not established a positive Plain-to-Oracle error gap. Stronger latent regularization may limit identity-specific encoding and improve fresh-z fitting.' --change 'Change only z_l2 from 0.0001 to 0.01; every other configuration setting is retained.' --device cuda"
+}

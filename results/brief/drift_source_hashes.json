@@ -1,0 +1,10 @@
+{
+  "clean/shove_gate/adaptation_compare/results/current_cube_sequence_scores.csv": "a65e08696007e876287c79239ac4b9b7f6f8a56b13bb220e6ab219dd766a2f02",
+  "clean/shove_gate/adaptation_compare/results/sequence_scores.csv": "e6b090551eb7f5d07081a04986df23b6202138687b8237e6428560a3f0ce3175",
+  "clean/shove_gate/adaptation_compare/results/prefix_scores.csv": "b9f16cb2ec1c0e451ffb2bfcc4ea1a417861b03f6a66feea1aef957b7e80c74b",
+  "clean/shove_gate/adaptation_compare/results/baselines/plain_seed101.json": "afe85f5dc5b4d1db246824180805148c69672d89ef7bb330c9f65e85fb9abca9",
+  "clean/shove_gate/adaptation_compare/results/baselines/plain_seed211.json": "b908399123279d55c3a63ccd8f799a0399aa1b0f3c107f7b13d878579637263d",
+  "clean/shove_gate/adaptation_compare/results/baselines/plain_seed307.json": "cadfe991283c83366430554af3075b5d7718a5d5248f3cf6df5db675dea8a35f",
+  "clean/shove_gate/adaptation_compare/results/baselines/plain_seed401.json": "e33eaedb1b72941c17360e1b351818dcd170829b1dd6de8db2fd1e92631cf438",
+  "clean/shove_gate/adaptation_compare/results/baselines/plain_seed503.json": "0dd86b1e5dc891c8f0eee003bb1384f7eb65137019f08ed3731dcc1f07b73fab"
+}

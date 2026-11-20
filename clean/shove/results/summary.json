@@ -1,0 +1,906 @@
+{
+  "n_trials": 126,
+  "source_sha256": {
+    "data/cubes.json": "48a772585b98adebd16c6b18e0e07b11e0501abf0430d6268f97d465b336e9a2",
+    "results/metrics.json": "e6999d3fcf0d64a417caa95a0d5dd9d7dbdd4b54b4a63c37e8249e48c10a20bb",
+    "data/protocol.json": "7ec2dbf4d3eb89820df0942d86a2e75d1e5bb5a1138b46afc15a63ed1777b4e9",
+    "data/trials.json": "9f9303316eb8ac596bd7323d654a812af377adbd988f12f3e7be3f2f0472d4cf"
+  },
+  "sweeps": [
+    {
+      "cap_n": 2.0,
+      "sweep": "mass",
+      "n_trials": 21,
+      "cube_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "repeat_counts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "complete": true,
+      "metrics": {
+        "stopping_distance_m": {
+          "mean_by_cube": [
+            0.9348005280334958,
+            0.07735496386980684,
+            0.014849883527593173,
+            0.0027841684370835066,
+            0.00019035796559201026,
+            0.0,
+            0.0
+          ],
+          "min_by_cube": [
+            0.9348005280334958,
+            0.07735496386980684,
+            0.014849883527593173,
+            0.0027841684370835066,
+            0.00019035796559201026,
+            0.0,
+            0.0
+          ],
+          "max_by_cube": [
+            0.9348005280334958,
+            0.07735496386980684,
+            0.014849883527593173,
+            0.0027841684370835066,
+            0.00019035796559201026,
+            0.0,
+            0.0
+          ],
+          "first_mean": 0.9348005280334958,
+          "last_mean": 0.0,
+          "range_of_means": 0.9348005280334958,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        },
+        "launch_speed_m_s": {
+          "mean_by_cube": [
+            3.0309638980700413,
+            0.8738464119566519,
+            0.3844062092217966,
+            0.1679927412963886,
+            0.04586900572321065,
+            0.00015419675770662823,
+            0.00012239933908992165
+          ],
+          "min_by_cube": [
+            3.0309638980700413,
+            0.8738464119566519,
+            0.3844062092217966,
+            0.1679927412963886,
+            0.04586900572321065,
+            0.00015419675770662823,
+            0.00012239933908992165
+          ],
+          "max_by_cube": [
+            3.0309638980700413,
+            0.8738464119566519,
+            0.3844062092217966,
+            0.1679927412963886,
+            0.04586900572321065,
+            0.00015419675770662823,
+            0.00012239933908992165
+          ],
+          "first_mean": 3.0309638980700413,
+          "last_mean": 0.00012239933908992165,
+          "range_of_means": 3.0308414987309513,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        },
+        "time_to_stop_s": {
+          "mean_by_cube": [
+            0.618,
+            0.17800000000000002,
+            0.079,
+            0.034,
+            0.01,
+            0.0,
+            0.0
+          ],
+          "min_by_cube": [
+            0.618,
+            0.178,
+            0.079,
+            0.034,
+            0.01,
+            0.0,
+            0.0
+          ],
+          "max_by_cube": [
+            0.618,
+            0.178,
+            0.079,
+            0.034,
+            0.01,
+            0.0,
+            0.0
+          ],
+          "first_mean": 0.618,
+          "last_mean": 0.0,
+          "range_of_means": 0.618,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        }
+      },
+      "deceleration_proxy": {
+        "definition": "launch_speed**2 / (2*stopping_distance); only speed > 0.02 m/s and distance > 0.0001 m",
+        "n_eligible": 15,
+        "min_m_s2": 4.913744631022908,
+        "max_m_s2": 5.526340018114376
+      },
+      "nonlaunch_count": 6
+    },
+    {
+      "cap_n": 2.0,
+      "sweep": "friction",
+      "n_trials": 21,
+      "cube_ids": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "repeat_counts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "complete": true,
+      "metrics": {
+        "stopping_distance_m": {
+          "mean_by_cube": [
+            0.011620518757271306,
+            0.007545627740796919,
+            0.004730032866418639,
+            0.0027841684370835066,
+            0.0014643683197927103,
+            0.0006381260328852048,
+            0.00017866409628264563
+          ],
+          "min_by_cube": [
+            0.011620518757271306,
+            0.007545627740796918,
+            0.004730032866418639,
+            0.0027841684370835066,
+            0.0014643683197927103,
+            0.0006381260328852048,
+            0.00017866409628264563
+          ],
+          "max_by_cube": [
+            0.011620518757271306,
+            0.007545627740796918,
+            0.004730032866418639,
+            0.0027841684370835066,
+            0.0014643683197927103,
+            0.0006381260328852048,
+            0.00017866409628264563
+          ],
+          "first_mean": 0.011620518757271306,
+          "last_mean": 0.00017866409628264563,
+          "range_of_means": 0.011441854660988661,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        },
+        "launch_speed_m_s": {
+          "mean_by_cube": [
+            0.28420051966244536,
+            0.24534963072850247,
+            0.20669943094321508,
+            0.1679927412963886,
+            0.12885757420922764,
+            0.0901761050662404,
+            0.05086103129567835
+          ],
+          "min_by_cube": [
+            0.28420051966244536,
+            0.24534963072850247,
+            0.20669943094321508,
+            0.1679927412963886,
+            0.12885757420922764,
+            0.0901761050662404,
+            0.05086103129567836
+          ],
+          "max_by_cube": [
+            0.28420051966244536,
+            0.24534963072850247,
+            0.20669943094321508,
+            0.1679927412963886,
+            0.12885757420922764,
+            0.0901761050662404,
+            0.05086103129567836
+          ],
+          "first_mean": 0.28420051966244536,
+          "last_mean": 0.05086103129567835,
+          "range_of_means": 0.23333948836676702,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        },
+        "time_to_stop_s": {
+          "mean_by_cube": [
+            0.083,
+            0.063,
+            0.04700000000000001,
+            0.034,
+            0.024000000000000004,
+            0.016,
+            0.008
+          ],
+          "min_by_cube": [
+            0.083,
+            0.063,
+            0.047,
+            0.034,
+            0.024,
+            0.016,
+            0.008
+          ],
+          "max_by_cube": [
+            0.083,
+            0.063,
+            0.047,
+            0.034,
+            0.024,
+            0.016,
+            0.008
+          ],
+          "first_mean": 0.083,
+          "last_mean": 0.008,
+          "range_of_means": 0.07500000000000001,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        }
+      },
+      "deceleration_proxy": {
+        "definition": "launch_speed**2 / (2*stopping_distance); only speed > 0.02 m/s and distance > 0.0001 m",
+        "n_eligible": 21,
+        "min_m_s2": 3.4753153909701244,
+        "max_m_s2": 7.239407800120063
+      },
+      "nonlaunch_count": 0
+    },
+    {
+      "cap_n": 3.0,
+      "sweep": "mass",
+      "n_trials": 21,
+      "cube_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "repeat_counts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "complete": true,
+      "metrics": {
+        "stopping_distance_m": {
+          "mean_by_cube": [
+            2.26859237271153,
+            0.22808553278458096,
+            0.05963703245218172,
+            0.01988024080095791,
+            0.006850220312595753,
+            0.0020607845885563182,
+            0.00037568198110832506
+          ],
+          "min_by_cube": [
+            2.26859237271153,
+            0.22808553278458096,
+            0.05963703245218172,
+            0.01988024080095791,
+            0.006850220312595753,
+            0.0020607845885563182,
+            0.000375681981108325
+          ],
+          "max_by_cube": [
+            2.26859237271153,
+            0.22808553278458096,
+            0.05963703245218172,
+            0.01988024080095791,
+            0.006850220312595753,
+            0.0020607845885563182,
+            0.000375681981108325
+          ],
+          "first_mean": 2.26859237271153,
+          "last_mean": 0.00037568198110832506,
+          "range_of_means": 2.2682166907304215,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        },
+        "launch_speed_m_s": {
+          "mean_by_cube": [
+            4.720210552810793,
+            1.4985604287882002,
+            0.7676180007292984,
+            0.44435820005109256,
+            0.26196563264378203,
+            0.1449142104130564,
+            0.06343546366325477
+          ],
+          "min_by_cube": [
+            4.720210552810793,
+            1.4985604287882004,
+            0.7676180007292983,
+            0.4443582000510925,
+            0.26196563264378203,
+            0.1449142104130564,
+            0.06343546366325477
+          ],
+          "max_by_cube": [
+            4.720210552810793,
+            1.4985604287882004,
+            0.7676180007292983,
+            0.4443582000510925,
+            0.26196563264378203,
+            0.1449142104130564,
+            0.06343546366325477
+          ],
+          "first_mean": 4.720210552810793,
+          "last_mean": 0.06343546366325477,
+          "range_of_means": 4.656775089147539,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        },
+        "time_to_stop_s": {
+          "mean_by_cube": [
+            0.963,
+            0.306,
+            0.157,
+            0.09100000000000001,
+            0.054,
+            0.03,
+            0.013000000000000003
+          ],
+          "min_by_cube": [
+            0.963,
+            0.306,
+            0.157,
+            0.091,
+            0.054,
+            0.03,
+            0.013000000000000001
+          ],
+          "max_by_cube": [
+            0.963,
+            0.306,
+            0.157,
+            0.091,
+            0.054,
+            0.03,
+            0.013000000000000001
+          ],
+          "first_mean": 0.963,
+          "last_mean": 0.013000000000000003,
+          "range_of_means": 0.95,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        }
+      },
+      "deceleration_proxy": {
+        "definition": "launch_speed**2 / (2*stopping_distance); only speed > 0.02 m/s and distance > 0.0001 m",
+        "n_eligible": 21,
+        "min_m_s2": 4.910619450826195,
+        "max_m_s2": 5.3556708233656405
+      },
+      "nonlaunch_count": 0
+    },
+    {
+      "cap_n": 3.0,
+      "sweep": "friction",
+      "n_trials": 21,
+      "cube_ids": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "repeat_counts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "complete": true,
+      "metrics": {
+        "stopping_distance_m": {
+          "mean_by_cube": [
+            0.045481426679291025,
+            0.03441712264832206,
+            0.02617563312394286,
+            0.01988024080095791,
+            0.014974452573826244,
+            0.011201085552370094,
+            0.008187746631306898
+          ],
+          "min_by_cube": [
+            0.04548142667929102,
+            0.03441712264832206,
+            0.02617563312394286,
+            0.01988024080095791,
+            0.014974452573826244,
+            0.011201085552370094,
+            0.008187746631306898
+          ],
+          "max_by_cube": [
+            0.04548142667929102,
+            0.03441712264832206,
+            0.02617563312394286,
+            0.01988024080095791,
+            0.014974452573826244,
+            0.011201085552370094,
+            0.008187746631306898
+          ],
+          "first_mean": 0.045481426679291025,
+          "last_mean": 0.008187746631306898,
+          "range_of_means": 0.037293680047984126,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        },
+        "launch_speed_m_s": {
+          "mean_by_cube": [
+            0.560627520328807,
+            0.5217242836956425,
+            0.48307543993596597,
+            0.44435820005109256,
+            0.40514689891928884,
+            0.36611631623681024,
+            0.3262903701390865
+          ],
+          "min_by_cube": [
+            0.560627520328807,
+            0.5217242836956425,
+            0.4830754399359659,
+            0.4443582000510925,
+            0.40514689891928884,
+            0.3661163162368103,
+            0.3262903701390865
+          ],
+          "max_by_cube": [
+            0.560627520328807,
+            0.5217242836956425,
+            0.4830754399359659,
+            0.4443582000510925,
+            0.40514689891928884,
+            0.3661163162368103,
+            0.3262903701390865
+          ],
+          "first_mean": 0.560627520328807,
+          "last_mean": 0.3262903701390865,
+          "range_of_means": 0.2343371501897205,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        },
+        "time_to_stop_s": {
+          "mean_by_cube": [
+            0.163,
+            0.133,
+            0.11,
+            0.09100000000000001,
+            0.075,
+            0.063,
+            0.05200000000000001
+          ],
+          "min_by_cube": [
+            0.163,
+            0.133,
+            0.11,
+            0.091,
+            0.075,
+            0.063,
+            0.052000000000000005
+          ],
+          "max_by_cube": [
+            0.163,
+            0.133,
+            0.11,
+            0.091,
+            0.075,
+            0.063,
+            0.052000000000000005
+          ],
+          "first_mean": 0.163,
+          "last_mean": 0.05200000000000001,
+          "range_of_means": 0.11099999999999999,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        }
+      },
+      "deceleration_proxy": {
+        "definition": "launch_speed**2 / (2*stopping_distance); only speed > 0.02 m/s and distance > 0.0001 m",
+        "n_eligible": 21,
+        "min_m_s2": 3.455291967491623,
+        "max_m_s2": 6.501508317222346
+      },
+      "nonlaunch_count": 0
+    },
+    {
+      "cap_n": 4.0,
+      "sweep": "mass",
+      "n_trials": 21,
+      "cube_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "repeat_counts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "complete": true,
+      "metrics": {
+        "stopping_distance_m": {
+          "mean_by_cube": [
+            4.1841489678015575,
+            0.458375364542783,
+            0.13436163961903347,
+            0.0525492690550276,
+            0.02303270438515369,
+            0.010410971043350726,
+            0.004544925008997804
+          ],
+          "min_by_cube": [
+            4.1841489678015575,
+            0.458375364542783,
+            0.13436163961903347,
+            0.0525492690550276,
+            0.023032704385153695,
+            0.010410971043350726,
+            0.004544925008997804
+          ],
+          "max_by_cube": [
+            4.1841489678015575,
+            0.458375364542783,
+            0.13436163961903347,
+            0.0525492690550276,
+            0.023032704385153695,
+            0.010410971043350726,
+            0.004544925008997804
+          ],
+          "first_mean": 4.1841489678015575,
+          "last_mean": 0.004544925008997804,
+          "range_of_means": 4.17960404279256,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        },
+        "launch_speed_m_s": {
+          "mean_by_cube": [
+            6.4094343196280406,
+            2.1232626439400937,
+            1.1508218051896186,
+            0.720735550137615,
+            0.478089571176332,
+            0.32232797166013255,
+            0.21388663377454623
+          ],
+          "min_by_cube": [
+            6.4094343196280406,
+            2.1232626439400937,
+            1.1508218051896186,
+            0.720735550137615,
+            0.478089571176332,
+            0.32232797166013255,
+            0.21388663377454623
+          ],
+          "max_by_cube": [
+            6.4094343196280406,
+            2.1232626439400937,
+            1.1508218051896186,
+            0.720735550137615,
+            0.478089571176332,
+            0.32232797166013255,
+            0.21388663377454623
+          ],
+          "first_mean": 6.4094343196280406,
+          "last_mean": 0.21388663377454623,
+          "range_of_means": 6.195547685853494,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        },
+        "time_to_stop_s": {
+          "mean_by_cube": [
+            1.307,
+            0.433,
+            0.23500000000000001,
+            0.147,
+            0.09800000000000002,
+            0.066,
+            0.044000000000000004
+          ],
+          "min_by_cube": [
+            1.307,
+            0.433,
+            0.23500000000000001,
+            0.147,
+            0.098,
+            0.066,
+            0.044
+          ],
+          "max_by_cube": [
+            1.307,
+            0.433,
+            0.23500000000000001,
+            0.147,
+            0.098,
+            0.066,
+            0.044
+          ],
+          "first_mean": 1.307,
+          "last_mean": 0.044000000000000004,
+          "range_of_means": 1.263,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        }
+      },
+      "deceleration_proxy": {
+        "definition": "launch_speed**2 / (2*stopping_distance); only speed > 0.02 m/s and distance > 0.0001 m",
+        "n_eligible": 21,
+        "min_m_s2": 4.9091044097326355,
+        "max_m_s2": 5.032810444268978
+      },
+      "nonlaunch_count": 0
+    },
+    {
+      "cap_n": 4.0,
+      "sweep": "friction",
+      "n_trials": 21,
+      "cube_ids": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "repeat_counts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "complete": true,
+      "metrics": {
+        "stopping_distance_m": {
+          "mean_by_cube": [
+            0.10159963747490114,
+            0.0807549692983207,
+            0.06501557308982985,
+            0.0525492690550276,
+            0.042641654672722996,
+            0.03469664794516493,
+            0.028169928132214653
+          ],
+          "min_by_cube": [
+            0.10159963747490114,
+            0.0807549692983207,
+            0.06501557308982985,
+            0.0525492690550276,
+            0.042641654672723,
+            0.03469664794516493,
+            0.028169928132214653
+          ],
+          "max_by_cube": [
+            0.10159963747490114,
+            0.0807549692983207,
+            0.06501557308982985,
+            0.0525492690550276,
+            0.042641654672723,
+            0.03469664794516493,
+            0.028169928132214653
+          ],
+          "first_mean": 0.10159963747490114,
+          "last_mean": 0.028169928132214653,
+          "range_of_means": 0.07342970934268649,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        },
+        "launch_speed_m_s": {
+          "mean_by_cube": [
+            0.837049365288371,
+            0.79810082913131,
+            0.75986629768865,
+            0.720735550137615,
+            0.6815261857636438,
+            0.642684460472834,
+            0.6032269606456636
+          ],
+          "min_by_cube": [
+            0.837049365288371,
+            0.79810082913131,
+            0.75986629768865,
+            0.720735550137615,
+            0.6815261857636437,
+            0.642684460472834,
+            0.6032269606456636
+          ],
+          "max_by_cube": [
+            0.837049365288371,
+            0.79810082913131,
+            0.75986629768865,
+            0.720735550137615,
+            0.6815261857636437,
+            0.642684460472834,
+            0.6032269606456636
+          ],
+          "first_mean": 0.837049365288371,
+          "last_mean": 0.6032269606456636,
+          "range_of_means": 0.23382240464270743,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        },
+        "time_to_stop_s": {
+          "mean_by_cube": [
+            0.244,
+            0.20400000000000004,
+            0.17200000000000001,
+            0.147,
+            0.127,
+            0.109,
+            0.09500000000000001
+          ],
+          "min_by_cube": [
+            0.244,
+            0.20400000000000001,
+            0.17200000000000001,
+            0.147,
+            0.127,
+            0.109,
+            0.095
+          ],
+          "max_by_cube": [
+            0.244,
+            0.20400000000000001,
+            0.17200000000000001,
+            0.147,
+            0.127,
+            0.109,
+            0.095
+          ],
+          "first_mean": 0.244,
+          "last_mean": 0.09500000000000001,
+          "range_of_means": 0.14899999999999997,
+          "max_repeat_range": 0.0,
+          "signal_exceeds_repeat_range": true,
+          "signal_smaller_than_repeat_range": false,
+          "nonincreasing_grid_means": true,
+          "effect_to_spread_ratio": null
+        }
+      },
+      "deceleration_proxy": {
+        "definition": "launch_speed**2 / (2*stopping_distance); only speed > 0.02 m/s and distance > 0.0001 m",
+        "n_eligible": 21,
+        "min_m_s2": 3.448101082559235,
+        "max_m_s2": 6.45870952069762
+      },
+      "nonlaunch_count": 0
+    }
+  ],
+  "contact_force": [
+    {
+      "cap_n": 2.0,
+      "n_trials": 42,
+      "min_run_peak_n": 1.7107303720210494,
+      "max_run_peak_n": 1.907006721126033,
+      "min_pulse_mean_n": 1.7105476637055304,
+      "max_pulse_mean_n": 1.9000033906914424,
+      "max_cap_ratio": 0.9535033605630165
+    },
+    {
+      "cap_n": 3.0,
+      "n_trials": 42,
+      "min_run_peak_n": 2.5551652070362283,
+      "max_run_peak_n": 2.8481781487168245,
+      "min_pulse_mean_n": 2.5549701791512245,
+      "max_pulse_mean_n": 2.845999630750236,
+      "max_cap_ratio": 0.9493927162389415
+    },
+    {
+      "cap_n": 4.0,
+      "n_trials": 42,
+      "min_run_peak_n": 3.400512758160082,
+      "max_run_peak_n": 3.7869196385170527,
+      "min_pulse_mean_n": 3.399393876575896,
+      "max_pulse_mean_n": 3.7865975931605305,
+      "max_cap_ratio": 0.9467299096292632
+    }
+  ],
+  "repeat_spread": "max-minus-min of three identical fresh resets; not physical-noise uncertainty",
+  "no_world_model_training": true
+}

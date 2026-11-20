@@ -1,0 +1,3145 @@
+{
+  "stage": "pilot",
+  "status": "pass",
+  "cube_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "heldout_test_or_oor_episodes_read": false,
+  "label_storage": "True per-cube properties are read only from data/cubes.json and never copied to this report.",
+  "warning": "Pilot probe folds have only two held-out training cubes; noisy R\u00b2 is not strong evidence of recoverability.",
+  "properties_sha256": "0333686bd22b11b089af2bd1fe6970f343f7de28afacac691426015e87a924e3",
+  "split_sha256": "db268f323a833731dc3b5f97f6493984794b1b07cc6fc5d0eee081a6b7e68e1e",
+  "static_provenance": {
+    "pass": true,
+    "violations": [],
+    "imports": {
+      "__init__.py": [],
+      "audit.py": [
+        "__future__",
+        "argparse",
+        "ast",
+        "datetime",
+        "hashlib",
+        "json",
+        "os",
+        "pathlib",
+        "time",
+        "numpy",
+        "torch",
+        "torch",
+        "torch.nn.utils.rnn",
+        "clean.protocol",
+        "clean.schema"
+      ],
+      "collect.py": [
+        "argparse",
+        "importlib.metadata",
+        "json",
+        "os",
+        "time",
+        "numpy",
+        "clean.protocol",
+        "clean.native",
+        "clean.script",
+        "clean.schema"
+      ],
+      "models.py": [
+        "__future__",
+        "torch",
+        "torch",
+        "torch.nn.utils.rnn"
+      ],
+      "native.py": [
+        "os",
+        "pathlib",
+        "numpy",
+        "sapien",
+        "sapien.physx",
+        "torch",
+        "mani_skill.envs.tasks.tabletop.pick_cube",
+        "clean.script"
+      ],
+      "preflight.py": [
+        "json",
+        "time",
+        "sys",
+        "numpy",
+        "pathlib",
+        "clean.native",
+        "clean.script",
+        "clean.schema"
+      ],
+      "protocol.py": [
+        "hashlib",
+        "json",
+        "pathlib",
+        "numpy"
+      ],
+      "schema.py": [
+        "numpy"
+      ],
+      "script.py": [
+        "numpy",
+        "sapien",
+        "mplib",
+        "mani_skill"
+      ],
+      "test_audit.py": [
+        "tempfile",
+        "unittest",
+        "pathlib",
+        "numpy",
+        "clean.audit"
+      ],
+      "test_models.py": [
+        "unittest",
+        "torch",
+        "clean.models"
+      ]
+    },
+    "source_sha256": {
+      "__init__.py": "bbe022780895b098216d32adf79477ef1b70afd799f8a0a2e989b48fa090fc12",
+      "audit.py": "46c6378c01970989c93001c1fd30b82353f0862adcdfb98245b38a1923330d89",
+      "collect.py": "cd260bab08c00c20d89aa1b657a396e79fc357ddc1c8e644a3c89e02070c17c7",
+      "models.py": "6b182bef62bd92899097d15fc93fee05f737ec65339810289fff622690bde106",
+      "native.py": "86da7c0340aa80edf05230adb0cfa744415977b880151f28c00dd3e83d6ca730",
+      "preflight.py": "7d240951cd27801ce4398a49dab921545a5f562306f404a82f44284327fc95de",
+      "protocol.py": "172eed7332e45358554617f0dab8b3a0dbd9a41e5a59fead5d4e4491bf3da4e0",
+      "schema.py": "91876c7ef3e2c4bebcf5e3d6db9c9712c26e00a8da99eae9b8b0b6da8211e1c6",
+      "script.py": "bc5a9da9a4710f32d6a84963497ebf3b736f269b7fce9fd621742b4d6c9dc73a",
+      "test_audit.py": "1d211c6d431818d545e26b64a327d05699101b9fb816667f5789b03bd7856dd8",
+      "test_models.py": "8ab0c3f373dac6e2f0451c88ef43e59676bf8b2674e52a4c0a6c7089d199e170"
+    },
+    "limitation": "AST import/property checks support, but do not replace, the explicit source-path audit."
+  },
+  "episodes": [
+    {
+      "cube_id": 0,
+      "episode_id": 0,
+      "steps": 138,
+      "moving_steps": 7,
+      "finite": true
+    },
+    {
+      "cube_id": 0,
+      "episode_id": 1,
+      "steps": 133,
+      "moving_steps": 34,
+      "finite": true
+    },
+    {
+      "cube_id": 0,
+      "episode_id": 2,
+      "steps": 172,
+      "moving_steps": 54,
+      "finite": true
+    },
+    {
+      "cube_id": 0,
+      "episode_id": 3,
+      "steps": 154,
+      "moving_steps": 4,
+      "finite": true
+    },
+    {
+      "cube_id": 0,
+      "episode_id": 4,
+      "steps": 170,
+      "moving_steps": 48,
+      "finite": true
+    },
+    {
+      "cube_id": 0,
+      "episode_id": 5,
+      "steps": 147,
+      "moving_steps": 30,
+      "finite": true
+    },
+    {
+      "cube_id": 0,
+      "episode_id": 6,
+      "steps": 144,
+      "moving_steps": 2,
+      "finite": true
+    },
+    {
+      "cube_id": 0,
+      "episode_id": 7,
+      "steps": 137,
+      "moving_steps": 63,
+      "finite": true
+    },
+    {
+      "cube_id": 0,
+      "episode_id": 8,
+      "steps": 141,
+      "moving_steps": 2,
+      "finite": true
+    },
+    {
+      "cube_id": 0,
+      "episode_id": 9,
+      "steps": 146,
+      "moving_steps": 73,
+      "finite": true
+    },
+    {
+      "cube_id": 1,
+      "episode_id": 0,
+      "steps": 138,
+      "moving_steps": 2,
+      "finite": true
+    },
+    {
+      "cube_id": 1,
+      "episode_id": 1,
+      "steps": 133,
+      "moving_steps": 13,
+      "finite": true
+    },
+    {
+      "cube_id": 1,
+      "episode_id": 2,
+      "steps": 172,
+      "moving_steps": 57,
+      "finite": true
+    },
+    {
+      "cube_id": 1,
+      "episode_id": 3,
+      "steps": 154,
+      "moving_steps": 3,
+      "finite": true
+    },
+    {
+      "cube_id": 1,
+      "episode_id": 4,
+      "steps": 170,
+      "moving_steps": 4,
+      "finite": true
+    },
+    {
+      "cube_id": 1,
+      "episode_id": 5,
+      "steps": 147,
+      "moving_steps": 29,
+      "finite": true
+    },
+    {
+      "cube_id": 1,
+      "episode_id": 6,
+      "steps": 144,
+      "moving_steps": 1,
+      "finite": true
+    },
+    {
+      "cube_id": 1,
+      "episode_id": 7,
+      "steps": 137,
+      "moving_steps": 3,
+      "finite": true
+    },
+    {
+      "cube_id": 1,
+      "episode_id": 8,
+      "steps": 141,
+      "moving_steps": 2,
+      "finite": true
+    },
+    {
+      "cube_id": 1,
+      "episode_id": 9,
+      "steps": 146,
+      "moving_steps": 68,
+      "finite": true
+    },
+    {
+      "cube_id": 2,
+      "episode_id": 0,
+      "steps": 138,
+      "moving_steps": 1,
+      "finite": true
+    },
+    {
+      "cube_id": 2,
+      "episode_id": 1,
+      "steps": 133,
+      "moving_steps": 70,
+      "finite": true
+    },
+    {
+      "cube_id": 2,
+      "episode_id": 2,
+      "steps": 172,
+      "moving_steps": 65,
+      "finite": true
+    },
+    {
+      "cube_id": 2,
+      "episode_id": 3,
+      "steps": 154,
+      "moving_steps": 3,
+      "finite": true
+    },
+    {
+      "cube_id": 2,
+      "episode_id": 4,
+      "steps": 170,
+      "moving_steps": 11,
+      "finite": true
+    },
+    {
+      "cube_id": 2,
+      "episode_id": 5,
+      "steps": 147,
+      "moving_steps": 29,
+      "finite": true
+    },
+    {
+      "cube_id": 2,
+      "episode_id": 6,
+      "steps": 144,
+      "moving_steps": 1,
+      "finite": true
+    },
+    {
+      "cube_id": 2,
+      "episode_id": 7,
+      "steps": 137,
+      "moving_steps": 10,
+      "finite": true
+    },
+    {
+      "cube_id": 2,
+      "episode_id": 8,
+      "steps": 141,
+      "moving_steps": 2,
+      "finite": true
+    },
+    {
+      "cube_id": 2,
+      "episode_id": 9,
+      "steps": 146,
+      "moving_steps": 79,
+      "finite": true
+    },
+    {
+      "cube_id": 3,
+      "episode_id": 0,
+      "steps": 138,
+      "moving_steps": 40,
+      "finite": true
+    },
+    {
+      "cube_id": 3,
+      "episode_id": 1,
+      "steps": 133,
+      "moving_steps": 37,
+      "finite": true
+    },
+    {
+      "cube_id": 3,
+      "episode_id": 2,
+      "steps": 172,
+      "moving_steps": 104,
+      "finite": true
+    },
+    {
+      "cube_id": 3,
+      "episode_id": 3,
+      "steps": 154,
+      "moving_steps": 47,
+      "finite": true
+    },
+    {
+      "cube_id": 3,
+      "episode_id": 4,
+      "steps": 170,
+      "moving_steps": 48,
+      "finite": true
+    },
+    {
+      "cube_id": 3,
+      "episode_id": 5,
+      "steps": 147,
+      "moving_steps": 29,
+      "finite": true
+    },
+    {
+      "cube_id": 3,
+      "episode_id": 6,
+      "steps": 144,
+      "moving_steps": 36,
+      "finite": true
+    },
+    {
+      "cube_id": 3,
+      "episode_id": 7,
+      "steps": 137,
+      "moving_steps": 35,
+      "finite": true
+    },
+    {
+      "cube_id": 3,
+      "episode_id": 8,
+      "steps": 141,
+      "moving_steps": 5,
+      "finite": true
+    },
+    {
+      "cube_id": 3,
+      "episode_id": 9,
+      "steps": 146,
+      "moving_steps": 98,
+      "finite": true
+    },
+    {
+      "cube_id": 4,
+      "episode_id": 0,
+      "steps": 138,
+      "moving_steps": 1,
+      "finite": true
+    },
+    {
+      "cube_id": 4,
+      "episode_id": 1,
+      "steps": 133,
+      "moving_steps": 19,
+      "finite": true
+    },
+    {
+      "cube_id": 4,
+      "episode_id": 2,
+      "steps": 172,
+      "moving_steps": 94,
+      "finite": true
+    },
+    {
+      "cube_id": 4,
+      "episode_id": 3,
+      "steps": 154,
+      "moving_steps": 3,
+      "finite": true
+    },
+    {
+      "cube_id": 4,
+      "episode_id": 4,
+      "steps": 170,
+      "moving_steps": 9,
+      "finite": true
+    },
+    {
+      "cube_id": 4,
+      "episode_id": 5,
+      "steps": 147,
+      "moving_steps": 29,
+      "finite": true
+    },
+    {
+      "cube_id": 4,
+      "episode_id": 6,
+      "steps": 144,
+      "moving_steps": 1,
+      "finite": true
+    },
+    {
+      "cube_id": 4,
+      "episode_id": 7,
+      "steps": 137,
+      "moving_steps": 5,
+      "finite": true
+    },
+    {
+      "cube_id": 4,
+      "episode_id": 8,
+      "steps": 141,
+      "moving_steps": 2,
+      "finite": true
+    },
+    {
+      "cube_id": 4,
+      "episode_id": 9,
+      "steps": 146,
+      "moving_steps": 49,
+      "finite": true
+    },
+    {
+      "cube_id": 5,
+      "episode_id": 0,
+      "steps": 138,
+      "moving_steps": 1,
+      "finite": true
+    },
+    {
+      "cube_id": 5,
+      "episode_id": 1,
+      "steps": 133,
+      "moving_steps": 34,
+      "finite": true
+    },
+    {
+      "cube_id": 5,
+      "episode_id": 2,
+      "steps": 172,
+      "moving_steps": 55,
+      "finite": true
+    },
+    {
+      "cube_id": 5,
+      "episode_id": 3,
+      "steps": 154,
+      "moving_steps": 6,
+      "finite": true
+    },
+    {
+      "cube_id": 5,
+      "episode_id": 4,
+      "steps": 170,
+      "moving_steps": 21,
+      "finite": true
+    },
+    {
+      "cube_id": 5,
+      "episode_id": 5,
+      "steps": 147,
+      "moving_steps": 29,
+      "finite": true
+    },
+    {
+      "cube_id": 5,
+      "episode_id": 6,
+      "steps": 144,
+      "moving_steps": 1,
+      "finite": true
+    },
+    {
+      "cube_id": 5,
+      "episode_id": 7,
+      "steps": 137,
+      "moving_steps": 11,
+      "finite": true
+    },
+    {
+      "cube_id": 5,
+      "episode_id": 8,
+      "steps": 141,
+      "moving_steps": 2,
+      "finite": true
+    },
+    {
+      "cube_id": 5,
+      "episode_id": 9,
+      "steps": 146,
+      "moving_steps": 82,
+      "finite": true
+    },
+    {
+      "cube_id": 6,
+      "episode_id": 0,
+      "steps": 138,
+      "moving_steps": 39,
+      "finite": true
+    },
+    {
+      "cube_id": 6,
+      "episode_id": 1,
+      "steps": 133,
+      "moving_steps": 38,
+      "finite": true
+    },
+    {
+      "cube_id": 6,
+      "episode_id": 2,
+      "steps": 172,
+      "moving_steps": 104,
+      "finite": true
+    },
+    {
+      "cube_id": 6,
+      "episode_id": 3,
+      "steps": 154,
+      "moving_steps": 4,
+      "finite": true
+    },
+    {
+      "cube_id": 6,
+      "episode_id": 4,
+      "steps": 170,
+      "moving_steps": 49,
+      "finite": true
+    },
+    {
+      "cube_id": 6,
+      "episode_id": 5,
+      "steps": 147,
+      "moving_steps": 29,
+      "finite": true
+    },
+    {
+      "cube_id": 6,
+      "episode_id": 6,
+      "steps": 144,
+      "moving_steps": 35,
+      "finite": true
+    },
+    {
+      "cube_id": 6,
+      "episode_id": 7,
+      "steps": 137,
+      "moving_steps": 35,
+      "finite": true
+    },
+    {
+      "cube_id": 6,
+      "episode_id": 8,
+      "steps": 141,
+      "moving_steps": 3,
+      "finite": true
+    },
+    {
+      "cube_id": 6,
+      "episode_id": 9,
+      "steps": 146,
+      "moving_steps": 98,
+      "finite": true
+    },
+    {
+      "cube_id": 7,
+      "episode_id": 0,
+      "steps": 138,
+      "moving_steps": 1,
+      "finite": true
+    },
+    {
+      "cube_id": 7,
+      "episode_id": 1,
+      "steps": 133,
+      "moving_steps": 73,
+      "finite": true
+    },
+    {
+      "cube_id": 7,
+      "episode_id": 2,
+      "steps": 172,
+      "moving_steps": 93,
+      "finite": true
+    },
+    {
+      "cube_id": 7,
+      "episode_id": 3,
+      "steps": 154,
+      "moving_steps": 2,
+      "finite": true
+    },
+    {
+      "cube_id": 7,
+      "episode_id": 4,
+      "steps": 170,
+      "moving_steps": 8,
+      "finite": true
+    },
+    {
+      "cube_id": 7,
+      "episode_id": 5,
+      "steps": 147,
+      "moving_steps": 29,
+      "finite": true
+    },
+    {
+      "cube_id": 7,
+      "episode_id": 6,
+      "steps": 144,
+      "moving_steps": 1,
+      "finite": true
+    },
+    {
+      "cube_id": 7,
+      "episode_id": 7,
+      "steps": 137,
+      "moving_steps": 7,
+      "finite": true
+    },
+    {
+      "cube_id": 7,
+      "episode_id": 8,
+      "steps": 141,
+      "moving_steps": 0,
+      "finite": true
+    },
+    {
+      "cube_id": 7,
+      "episode_id": 9,
+      "steps": 146,
+      "moving_steps": 63,
+      "finite": true
+    },
+    {
+      "cube_id": 8,
+      "episode_id": 0,
+      "steps": 138,
+      "moving_steps": 1,
+      "finite": true
+    },
+    {
+      "cube_id": 8,
+      "episode_id": 1,
+      "steps": 133,
+      "moving_steps": 46,
+      "finite": true
+    },
+    {
+      "cube_id": 8,
+      "episode_id": 2,
+      "steps": 172,
+      "moving_steps": 54,
+      "finite": true
+    },
+    {
+      "cube_id": 8,
+      "episode_id": 3,
+      "steps": 154,
+      "moving_steps": 3,
+      "finite": true
+    },
+    {
+      "cube_id": 8,
+      "episode_id": 4,
+      "steps": 170,
+      "moving_steps": 20,
+      "finite": true
+    },
+    {
+      "cube_id": 8,
+      "episode_id": 5,
+      "steps": 147,
+      "moving_steps": 29,
+      "finite": true
+    },
+    {
+      "cube_id": 8,
+      "episode_id": 6,
+      "steps": 144,
+      "moving_steps": 0,
+      "finite": true
+    },
+    {
+      "cube_id": 8,
+      "episode_id": 7,
+      "steps": 137,
+      "moving_steps": 13,
+      "finite": true
+    },
+    {
+      "cube_id": 8,
+      "episode_id": 8,
+      "steps": 141,
+      "moving_steps": 0,
+      "finite": true
+    },
+    {
+      "cube_id": 8,
+      "episode_id": 9,
+      "steps": 146,
+      "moving_steps": 81,
+      "finite": true
+    },
+    {
+      "cube_id": 9,
+      "episode_id": 0,
+      "steps": 138,
+      "moving_steps": 39,
+      "finite": true
+    },
+    {
+      "cube_id": 9,
+      "episode_id": 1,
+      "steps": 133,
+      "moving_steps": 40,
+      "finite": true
+    },
+    {
+      "cube_id": 9,
+      "episode_id": 2,
+      "steps": 172,
+      "moving_steps": 100,
+      "finite": true
+    },
+    {
+      "cube_id": 9,
+      "episode_id": 3,
+      "steps": 154,
+      "moving_steps": 5,
+      "finite": true
+    },
+    {
+      "cube_id": 9,
+      "episode_id": 4,
+      "steps": 170,
+      "moving_steps": 48,
+      "finite": true
+    },
+    {
+      "cube_id": 9,
+      "episode_id": 5,
+      "steps": 147,
+      "moving_steps": 31,
+      "finite": true
+    },
+    {
+      "cube_id": 9,
+      "episode_id": 6,
+      "steps": 144,
+      "moving_steps": 37,
+      "finite": true
+    },
+    {
+      "cube_id": 9,
+      "episode_id": 7,
+      "steps": 137,
+      "moving_steps": 35,
+      "finite": true
+    },
+    {
+      "cube_id": 9,
+      "episode_id": 8,
+      "steps": 141,
+      "moving_steps": 5,
+      "finite": true
+    },
+    {
+      "cube_id": 9,
+      "episode_id": 9,
+      "steps": 146,
+      "moving_steps": 98,
+      "finite": true
+    }
+  ],
+  "episode_sha256": {
+    "train/cube_0000_episode_00.npz": "7809eadf6b5d3935310465ed10e0ea88f5f036b9e5d224676b8c6f63140f25cd",
+    "train/cube_0000_episode_01.npz": "f5982c014b86b0ffab7d08d7ba258e682fa3c7d105fb275e81fc57a87c7ad36e",
+    "train/cube_0000_episode_02.npz": "e2729846b57c370532fe80508f830e15966a766630bc63007242c551ea51c82e",
+    "train/cube_0000_episode_03.npz": "54b03113cd2ae56fd9caa058c323f77a51d8b19c2c33ace2f76d3b6c1e459691",
+    "train/cube_0000_episode_04.npz": "28ce2c3a199ea4d64e8bbb278a13e694d165e2865f11c6d1eaa722c0e2b2b3cd",
+    "train/cube_0000_episode_05.npz": "9d16a23582b090b5ad70176da129e297dd25f2a833bcee2dc1f77050f91dcb28",
+    "train/cube_0000_episode_06.npz": "2b6e3e91881ce4e8e962b30a42ddd8b83af2bd07dfe7477fd01d45637308c3f2",
+    "train/cube_0000_episode_07.npz": "330fedfedeb2b16470892b6970cee44076c8de1db970a99fe2a590dbc3e056b2",
+    "train/cube_0000_episode_08.npz": "34971e2504e53b70a7e143444b04b538b2793b8f481f78521db62f24099863b3",
+    "train/cube_0000_episode_09.npz": "7cfadc135753f832dba2c8fe3ef396b65de3f386a1448ef0e3394880c88b23f0",
+    "train/cube_0001_episode_00.npz": "636e40929313a35c7273d08357321c6e9d1a590674188be38be3fdbd6918ff35",
+    "train/cube_0001_episode_01.npz": "4cc16c02e36d79a212b411a036f27d78d7d1e7fcaba2a0f30499b826f0087b59",
+    "train/cube_0001_episode_02.npz": "9bac02c53e0a5ad5a367fca139967c5dc211d87e994737d6ab07dee70ae8f275",
+    "train/cube_0001_episode_03.npz": "4e1b813784b3e3c0c6979f7d0ead7ad528a67cad853a82a1b1b193c0090ac6a3",
+    "train/cube_0001_episode_04.npz": "ec6c13da623b43a292dee61195fe9e79e825d7b5ed221676d65c30c71a5c1d02",
+    "train/cube_0001_episode_05.npz": "82c679c19a69a6b98fb573b7f2d4a2a9886e5ca03623d8af1d180c9a2bc88df1",
+    "train/cube_0001_episode_06.npz": "45c8de1e4a70f1b6aa21bacf39ed2cb1966ce3f2dc4efe8b47b672637ef13d62",
+    "train/cube_0001_episode_07.npz": "90a04ac3c8ae431a436890e216c2559518d003be700bb70ff8666f00726b49fa",
+    "train/cube_0001_episode_08.npz": "191f2687d578b0517a702bd767691836164cc8b0548f4e7a9d86766dbc49ecd7",
+    "train/cube_0001_episode_09.npz": "bd8319ae9ea062410c886cafa9cb2c5290afc9c0d6e5678a4a207bc13ba0d653",
+    "train/cube_0002_episode_00.npz": "fa5033e2a73b2cf7ead67755ca313c4b263b56b30c7a33a0dcfed25a648de0e5",
+    "train/cube_0002_episode_01.npz": "2d6f99d334e0751eaa83e7c36ec759a260043e517b2eddcb9d32c4ef011f9e37",
+    "train/cube_0002_episode_02.npz": "bac8b506ba9970502003ffc1805fe992dc773c4d6dd628f59f6fca8fdd6b08aa",
+    "train/cube_0002_episode_03.npz": "2de18b1cd3455d8221c5f2c72126bbb750c782e0fe2f5d25bb2f478596b17a07",
+    "train/cube_0002_episode_04.npz": "c72ecb8f93112d8dafcbffec8b49dd3da0fdf0efbfbff3a35e2c976a05731ca5",
+    "train/cube_0002_episode_05.npz": "86380045b20e5530ec0a6c2cd64876588d1e4aa355c22c9b86edc2dd6a2ff0f6",
+    "train/cube_0002_episode_06.npz": "4efc487359e2e4a2f836860cf0e16f341ac9d95f9b81985597448b3caf64e071",
+    "train/cube_0002_episode_07.npz": "06f3804d672cbc2ab2704a2bf0320471ca80332eec86e578c11f78c8f57a1336",
+    "train/cube_0002_episode_08.npz": "1feed4306ad143546fc4104bcb440d973e065876edc7892d15533337c5cae203",
+    "train/cube_0002_episode_09.npz": "7e97a570847395a6075107e76c1fc2a4614e8ad734b1c3dfdf4ce716a38b2faa",
+    "train/cube_0003_episode_00.npz": "f2806d7643d077b50cea7a8a801ad2bd95fddda5e76a5cde1293c9824fc26ad0",
+    "train/cube_0003_episode_01.npz": "a1077527e2413148f4946f07f0912851a456f0a66fb9ea77caacdfdf5eecf8de",
+    "train/cube_0003_episode_02.npz": "321fe360d6553529e60a5b611fa6ddab6ef8934959f9317d77a1f4af0742956f",
+    "train/cube_0003_episode_03.npz": "e4be5a71b0dfeb4e067dbb9a6b2770c1167f76c06e6d7c12aad31ef3b0b859f3",
+    "train/cube_0003_episode_04.npz": "b7c43b89a9fe76f60f7dc67a80767049f9a087f659f58b6ebf425cc8e13aaa62",
+    "train/cube_0003_episode_05.npz": "895b73f591c12743f39a6ca95f26681b15b99ce82514c33f8ab9081b1786264d",
+    "train/cube_0003_episode_06.npz": "94d672469eb877ef8dbf8e9cdd2a3e8184204bc28267c7d38493207f6c6d0ee2",
+    "train/cube_0003_episode_07.npz": "897b6f286fc9784e38b03c08eda93bf7ffe2095f5b607a3a9e38f6ef115f5b14",
+    "train/cube_0003_episode_08.npz": "2a3615260ab8367d8d76e644f497018a2c4e8dea7c7516c432eb3b50f5fd7bb6",
+    "train/cube_0003_episode_09.npz": "0c38523f8f38e39f5f360906737d9117e2e6402ce0b8f711b3c59bf6c18dd863",
+    "train/cube_0004_episode_00.npz": "59918cd3841e49d8209af028d2b38e5a0ebe80eeb895eca54d37924a0e0665f5",
+    "train/cube_0004_episode_01.npz": "b1f91a72d69f1fa809357d99ea9426ea8fb586cdc0aad07f8c4b757a12327a5a",
+    "train/cube_0004_episode_02.npz": "65c2583aa7834703f348bc26c2814cbe28767f5c575f2243c4791a6f40225257",
+    "train/cube_0004_episode_03.npz": "241d3dbdbb7f673afa0d71d3ca49b4028e2c6147af3f6b6dc556958eb6e1f124",
+    "train/cube_0004_episode_04.npz": "46f7c4fe9a725c0f67630adc5b2362e4f5280bb59703e484e017da053f844da9",
+    "train/cube_0004_episode_05.npz": "cb83b98b83ea284d342cc76adf83e55f4345d50ff677ad827ef8696e4aa26a18",
+    "train/cube_0004_episode_06.npz": "2f8648102aa5898b2a8cace53d34e1606c68150d89cd7be0a5b8b6f01c4863b0",
+    "train/cube_0004_episode_07.npz": "2da594793fd82433521927168e70add8fb3e6aea67a5385c319ffb31b43ae0d0",
+    "train/cube_0004_episode_08.npz": "4b89ecadfc7140e3cb621a4c6a0eec5454a425065f988b652e2573a8a3b6a990",
+    "train/cube_0004_episode_09.npz": "7075e53ce38263c5d7f196f76e80d5e421d5baa65b34fb5a609b5318cb4f8783",
+    "train/cube_0005_episode_00.npz": "2e762e4f976de83703f2f4d6f05749faaa57e8e17008d49949a165d2bb664e45",
+    "train/cube_0005_episode_01.npz": "fc20e4177175529b0589fb8736fe97c2990daeeee629a7c07cd9d9af96a1debc",
+    "train/cube_0005_episode_02.npz": "20fb765aab7684f68c7905747503991d4c8d5504243d937cfd0ee7374b98e82d",
+    "train/cube_0005_episode_03.npz": "0c03be8ace797e622050a1305018ac5c01076400e6d6a0267c24b822b59f04af",
+    "train/cube_0005_episode_04.npz": "48f5b5cc9a3450fe99405c5a1a8a10076944d842808a8545d87caf1c28d9377f",
+    "train/cube_0005_episode_05.npz": "072c4c596247cc86cb192f640ce62dc49638b2bf6a5ab68d74f3dc1a4b883da2",
+    "train/cube_0005_episode_06.npz": "6c27ba425613f2b5cb34181f15fa8895338d654792cdb2a14b14f1fb5b7b946d",
+    "train/cube_0005_episode_07.npz": "3faf9db776bc618e170c740b8446128be16c074fcf7c242e3b6196b32d7de824",
+    "train/cube_0005_episode_08.npz": "4529c2ed8058f92ccc2b34de9388b38c671910cd7a8c52276a5bbcfb3c631e70",
+    "train/cube_0005_episode_09.npz": "63e1c1d2189d55a920fe5d7869aa0871ab448064bc6b744fc0ce32204c9b6f3d",
+    "train/cube_0006_episode_00.npz": "ea38c42498758e52af3c24328dbfd87a3ec67a028e29a60bed0e04e108710b7b",
+    "train/cube_0006_episode_01.npz": "2aa67452639540c90695d6d4d235d07857057406c164b6124f6b7715bc87fb3d",
+    "train/cube_0006_episode_02.npz": "034b71693e7f993dba83162d94c377b8efe532c17bc06586ef33962ccc3ca5c4",
+    "train/cube_0006_episode_03.npz": "5c5c0123b8c73b69fcad3526bd93ff71ab017317eb79256badf73df783ee6864",
+    "train/cube_0006_episode_04.npz": "975ff0d967de013f9bf487fa78a5b4eeb334d300ca59f2e9e5a5fca4c6451f0e",
+    "train/cube_0006_episode_05.npz": "c2f8c42bfdbe2174aa644ba49bbf2380121738b176665e2c571876bc585e03fb",
+    "train/cube_0006_episode_06.npz": "06dc27de9d2fd510d7f299023a4f3a6c0835feff37c23566718aa2a5dbe8281e",
+    "train/cube_0006_episode_07.npz": "5e7e2d4997df7749e6097f0056e8b02d775805360d0285503b34f95e5ba60431",
+    "train/cube_0006_episode_08.npz": "4ad72736a42536ea1032e5eb700e1b6a9403d7388a5e411fb1e8e1518be0141e",
+    "train/cube_0006_episode_09.npz": "d520dd0583e4a7e98c154357ac641e2efddb7b9b62d44be7e380c16e86eccbc6",
+    "train/cube_0007_episode_00.npz": "8f0c6b2d9bb9d9d1f4eb6577b58de2e43912c93c252c47727f67929261db2fd2",
+    "train/cube_0007_episode_01.npz": "657479aabfa32b65a2dc2146c29ea56adeb41b5333931ac75cb6a0276c6c09f4",
+    "train/cube_0007_episode_02.npz": "8ddbe132835efeb167d4e0a2bfcd33b5d7591de607bcc12e4e9466304ec2ae75",
+    "train/cube_0007_episode_03.npz": "3678e6ec6c9e938bc3460afcce124f40a8141322e75c16ed6b561f83cf4588de",
+    "train/cube_0007_episode_04.npz": "5cefbd37309339d6dcd7302748a2259b6fd212976c1ebc83788ddbff0903f7be",
+    "train/cube_0007_episode_05.npz": "41b4dcd8b69d1ee8afd83a1e631fbed24056aa950a8e592683c8f034e8969dce",
+    "train/cube_0007_episode_06.npz": "95a5d315a93345052a21fb42303e4e304d7c1b017ccd2f99723063d4fe0a5072",
+    "train/cube_0007_episode_07.npz": "b3dc40de941e72d059d3951046c6e5d80acf15d6be1a23442dbdef87d72ebad1",
+    "train/cube_0007_episode_08.npz": "5ed6c499e8c475e277cc524114f37843663f904c58910c82822f94e65d69a1c4",
+    "train/cube_0007_episode_09.npz": "22e1d2fe55641311978fe002e204df1c9ee3b4db9badd0ce991504dc431b5342",
+    "train/cube_0008_episode_00.npz": "88f9ffeffd4a507b08414bfc1dcc477060f9be2cbe519dccf4c7f6138e7d0361",
+    "train/cube_0008_episode_01.npz": "6e13f4bdf9127073e74beb1351ba384bf2dcd0c29845536388e3573b11afe8c3",
+    "train/cube_0008_episode_02.npz": "8bcc43b12225adb6f3a3907c339818635efdfff849b53e199b984b9ab51d3c23",
+    "train/cube_0008_episode_03.npz": "95020b188a5371a1263c6824d099b1fce7b28dd8106a313f3236b438ce292faf",
+    "train/cube_0008_episode_04.npz": "a71d62b7d53a041dfb9b6ab203be17ae8dd5815c85e87f21d5d69b36745f9c77",
+    "train/cube_0008_episode_05.npz": "99cd1de56074f2227a28958f6f262bbc1086cc135dfdf1ded4396765a5662f6a",
+    "train/cube_0008_episode_06.npz": "5be6592afc5ebe2d1a7be7a5ca15a91b6a11c078f9c18ad37d4572768adad6b0",
+    "train/cube_0008_episode_07.npz": "3eaa7906c160d4e70469c130b51640a7effaa70a433ae441ba58f844a31c3d8e",
+    "train/cube_0008_episode_08.npz": "887362eecb7dbb7513f4c8b21d217f5a91cc2c8b1870070204df579ee7465d82",
+    "train/cube_0008_episode_09.npz": "d041273c3bad8eaf79a66a8a0330ef51d19ed7bd4a7601b6db048f8bdffd85b2",
+    "train/cube_0009_episode_00.npz": "a126daec8b30fbd111d4796e890682003dd9fd9484788cb6503209b41f05ade4",
+    "train/cube_0009_episode_01.npz": "d27fb84f40f63460b0dc75a021ef32c9f3b89d403187ef51d46e0ab6ff5e40df",
+    "train/cube_0009_episode_02.npz": "4b66e36869bae00005f8241dce84b854b4d4210bd8fe12e442fa8b25d3dfd0b9",
+    "train/cube_0009_episode_03.npz": "ad3bcd617299aaa470b4fe96d784a3a50ce2e85d15100fd26564b861a14747f5",
+    "train/cube_0009_episode_04.npz": "bfac8f73546e39fa33ac3d086c78b3f9a6e943a1f1f20e0010af1fd814fc543d",
+    "train/cube_0009_episode_05.npz": "83d1041f47b24a08253468075655cbe6dcdb488179676138ddba276adf304fa8",
+    "train/cube_0009_episode_06.npz": "f407968f525a6b6379a9ee01b7c4b1504f8cad611dcee0bdefdecc256559ab1c",
+    "train/cube_0009_episode_07.npz": "e1686ffedb638055483a499cfeb1e0e3dd27017470b7f582853a2e86f2679031",
+    "train/cube_0009_episode_08.npz": "11bd78fa12fd95b5504e658a36cf3330a1f9851f4d468091351a2d272d24d594",
+    "train/cube_0009_episode_09.npz": "66c7b9ba2e6949a9cdecbeb44809d56312443e1d5bf63915960c8ef96e46a94e"
+  },
+  "actions_bitwise_matched_between_cubes": true,
+  "finite_data_pass": true,
+  "episode_count": 100,
+  "total_steps": 14820,
+  "total_moving_steps": 3099,
+  "all_cubes_have_moving_steps": true,
+  "f1": {
+    "pass": true,
+    "aggregation": "Per-cube mean/std/min/max across episodes 0\u20137; Pearson across training cubes.",
+    "constant_column_correlation": null,
+    "columns": [
+      {
+        "column": "joint_position_0",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qpos",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.8238532527547425,
+            "friction": -0.020746063008157983
+          },
+          "std": {
+            "mass_kg": 0.7193928765017742,
+            "friction": 0.18545547103885543
+          },
+          "min": {
+            "mass_kg": -0.6665612532257944,
+            "friction": -0.24523564569802114
+          },
+          "max": {
+            "mass_kg": -0.5252349437000062,
+            "friction": 0.628195400285681
+          }
+        }
+      },
+      {
+        "column": "joint_position_1",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qpos",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.7814860230317322,
+            "friction": 0.003102202409231177
+          },
+          "std": {
+            "mass_kg": 0.6720003075865165,
+            "friction": -0.805857451928126
+          },
+          "min": {
+            "mass_kg": -0.3241648934358228,
+            "friction": 0.5926220535522209
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "joint_position_2",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qpos",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.8053819785954952,
+            "friction": -0.018277504483860757
+          },
+          "std": {
+            "mass_kg": -0.2965643085745532,
+            "friction": 0.2031245668257544
+          },
+          "min": {
+            "mass_kg": 0.9999991267510853,
+            "friction": -0.5120675113041596
+          },
+          "max": {
+            "mass_kg": -0.9998750319319254,
+            "friction": 0.5097763565006008
+          }
+        }
+      },
+      {
+        "column": "joint_position_3",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qpos",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.7358790860211628,
+            "friction": -0.11009255400001157
+          },
+          "std": {
+            "mass_kg": -0.8046091278333533,
+            "friction": 0.7441873600267715
+          },
+          "min": {
+            "mass_kg": 0.33076469813012227,
+            "friction": -0.5938491513409295
+          },
+          "max": {
+            "mass_kg": -0.7939851665710732,
+            "friction": 0.29618914475815644
+          }
+        }
+      },
+      {
+        "column": "joint_position_4",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qpos",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.6180496922447667,
+            "friction": 0.2604134429399412
+          },
+          "std": {
+            "mass_kg": -0.7708156907171713,
+            "friction": 0.05439009492631109
+          },
+          "min": {
+            "mass_kg": 0.7209757604958588,
+            "friction": 0.19578483510821582
+          },
+          "max": {
+            "mass_kg": -0.5235695251288933,
+            "friction": 0.6358290139490943
+          }
+        }
+      },
+      {
+        "column": "joint_position_5",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qpos",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.6721218759720475,
+            "friction": -0.20592134117742417
+          },
+          "std": {
+            "mass_kg": 0.10943303875753839,
+            "friction": -0.8264208195193324
+          },
+          "min": {
+            "mass_kg": -0.9998294227031878,
+            "friction": 0.5087979617652015
+          },
+          "max": {
+            "mass_kg": -0.20231642307675254,
+            "friction": -0.5352853048812495
+          }
+        }
+      },
+      {
+        "column": "joint_position_6",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qpos",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.7981728308203674,
+            "friction": 0.0786111184328979
+          },
+          "std": {
+            "mass_kg": 0.5795148697235529,
+            "friction": 0.314811272899875
+          },
+          "min": {
+            "mass_kg": -0.94719351620006,
+            "friction": 0.40166189190308116
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "joint_position_7",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qpos",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.9651369175138073,
+            "friction": 0.6505759427711856
+          },
+          "std": {
+            "mass_kg": 0.9710221079614834,
+            "friction": -0.6110134153244668
+          },
+          "min": {
+            "mass_kg": -0.5585540427670348,
+            "friction": 0.4442394909822667
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "joint_position_8",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qpos",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.9649588389583954,
+            "friction": 0.6509497210929235
+          },
+          "std": {
+            "mass_kg": 0.9709887269688626,
+            "friction": -0.6111213121861405
+          },
+          "min": {
+            "mass_kg": -0.5585540427670349,
+            "friction": 0.44423949098226684
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "joint_velocity_0",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qvel",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.25571934078880837,
+            "friction": -0.46142933401074454
+          },
+          "std": {
+            "mass_kg": 0.5461146546525694,
+            "friction": 0.3047806603197734
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "joint_velocity_1",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qvel",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.4739925247732633,
+            "friction": -0.4299074765480619
+          },
+          "std": {
+            "mass_kg": 0.8274194097974363,
+            "friction": -0.0012246936790471312
+          },
+          "min": {
+            "mass_kg": -0.5542136802245136,
+            "friction": 0.4318511171775346
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "joint_velocity_2",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qvel",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.07402573082407671,
+            "friction": 0.5520163264656464
+          },
+          "std": {
+            "mass_kg": 0.5528572947732736,
+            "friction": 0.12617185041580573
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "joint_velocity_3",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qvel",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.32982004031550516,
+            "friction": 0.42253949244098643
+          },
+          "std": {
+            "mass_kg": -0.30513957031185956,
+            "friction": -0.24903460621995574
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "joint_velocity_4",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qvel",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.30412431369836335,
+            "friction": 0.8215966941080444
+          },
+          "std": {
+            "mass_kg": 0.3482420803584233,
+            "friction": 0.4501203558460703
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "joint_velocity_5",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qvel",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.37501462070406033,
+            "friction": -0.8287250973282841
+          },
+          "std": {
+            "mass_kg": -0.6424874845483061,
+            "friction": 0.772531343751098
+          },
+          "min": {
+            "mass_kg": -0.0004007688559976462,
+            "friction": -0.5936547048173082
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "joint_velocity_6",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qvel",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.23503708457278633,
+            "friction": -0.921556046342103
+          },
+          "std": {
+            "mass_kg": -0.7840554796038395,
+            "friction": 0.4948199050094884
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "joint_velocity_7",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qvel",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.8449369062461044,
+            "friction": 0.35813173599670417
+          },
+          "std": {
+            "mass_kg": -0.5702770604755331,
+            "friction": -0.12005122539895993
+          },
+          "min": {
+            "mass_kg": 0.8737466778259458,
+            "friction": -0.2662051402807268
+          },
+          "max": {
+            "mass_kg": -0.9826590306161143,
+            "friction": 0.5477974507054493
+          }
+        }
+      },
+      {
+        "column": "joint_velocity_8",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "robot.qvel",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.8200468413260864,
+            "friction": 0.01589001020292738
+          },
+          "std": {
+            "mass_kg": 0.7970983586571255,
+            "friction": -0.14178281318191613
+          },
+          "min": {
+            "mass_kg": 0.13277129608910596,
+            "friction": 0.35063482443472554
+          },
+          "max": {
+            "mass_kg": 0.7684065049826595,
+            "friction": -0.03755609231984452
+          }
+        }
+      },
+      {
+        "column": "joint_effort_0",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.849817563176858,
+            "friction": -0.039479480619433155
+          },
+          "std": {
+            "mass_kg": 0.790211324700534,
+            "friction": 0.0579038577810255
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": 0.46783388361286704,
+            "friction": -0.21523983040774777
+          }
+        }
+      },
+      {
+        "column": "joint_effort_1",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.7757273652613297,
+            "friction": -0.011400782291681639
+          },
+          "std": {
+            "mass_kg": 0.9699151998533336,
+            "friction": -0.5317137008481694
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": 0.7216668149395674,
+            "friction": -0.4039214237666546
+          }
+        }
+      },
+      {
+        "column": "joint_effort_2",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.13517788770148023,
+            "friction": 0.7141123643298819
+          },
+          "std": {
+            "mass_kg": 0.8305419771601522,
+            "friction": 0.030781627012535492
+          },
+          "min": {
+            "mass_kg": -0.9667905217496435,
+            "friction": 0.38216192349489064
+          },
+          "max": {
+            "mass_kg": 0.25764333977739484,
+            "friction": 0.3178774306858315
+          }
+        }
+      },
+      {
+        "column": "joint_effort_3",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.7345155878931734,
+            "friction": 0.10705173307989978
+          },
+          "std": {
+            "mass_kg": 0.9945602887436807,
+            "friction": -0.46381061889549374
+          },
+          "min": {
+            "mass_kg": -0.7639082525605456,
+            "friction": 0.3862999752812343
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "joint_effort_4",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.9609035872784184,
+            "friction": -0.2940862053397701
+          },
+          "std": {
+            "mass_kg": 0.9426873468639883,
+            "friction": -0.5246978092639561
+          },
+          "min": {
+            "mass_kg": -0.26139765384798863,
+            "friction": -0.29245248203488644
+          },
+          "max": {
+            "mass_kg": 0.9419011723558136,
+            "friction": -0.30604681540489304
+          }
+        }
+      },
+      {
+        "column": "joint_effort_5",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.7122130894713118,
+            "friction": 0.15828543957772942
+          },
+          "std": {
+            "mass_kg": 0.9578979058976733,
+            "friction": -0.25209645304778616
+          },
+          "min": {
+            "mass_kg": -0.4143014571492618,
+            "friction": -0.42395972511988483
+          },
+          "max": {
+            "mass_kg": 0.9355913796075104,
+            "friction": -0.23331196834687484
+          }
+        }
+      },
+      {
+        "column": "joint_effort_6",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.8457004415496442,
+            "friction": -0.26098220944331774
+          },
+          "std": {
+            "mass_kg": 0.7223530129079699,
+            "friction": -0.09950196662800843
+          },
+          "min": {
+            "mass_kg": -0.9599454000829534,
+            "friction": 0.26230145878694827
+          },
+          "max": {
+            "mass_kg": 0.2201426155244917,
+            "friction": 0.5412194342477397
+          }
+        }
+      },
+      {
+        "column": "joint_effort_7",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.9095883066427608,
+            "friction": -0.7437589670768006
+          },
+          "std": {
+            "mass_kg": 0.9347159924893395,
+            "friction": -0.6966912967180631
+          },
+          "min": {
+            "mass_kg": -0.6220190248839076,
+            "friction": 0.16118678301121392
+          },
+          "max": {
+            "mass_kg": 0.9591087648180631,
+            "friction": -0.45496300295165404
+          }
+        }
+      },
+      {
+        "column": "joint_effort_8",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.9152302109668122,
+            "friction": -0.7469096859205835
+          },
+          "std": {
+            "mass_kg": 0.9711730915779869,
+            "friction": -0.5594364065968785
+          },
+          "min": {
+            "mass_kg": -0.9658553043202979,
+            "friction": 0.3268316052176366
+          },
+          "max": {
+            "mass_kg": 0.9700794554802391,
+            "friction": -0.3190708616413573
+          }
+        }
+      },
+      {
+        "column": "gripper_opening_0",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "sum of measured finger joint positions",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.9650491217607791,
+            "friction": 0.650760700873893
+          },
+          "std": {
+            "mass_kg": 0.9710044623845023,
+            "friction": -0.6110663056294312
+          },
+          "min": {
+            "mass_kg": -0.5585540622563092,
+            "friction": 0.4442394949289536
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "finger_position_error_0",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "issued finger drive target minus measured finger position",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.9651375953464771,
+            "friction": -0.6505781019989615
+          },
+          "std": {
+            "mass_kg": -0.9221725409460916,
+            "friction": 0.7272575804314406
+          },
+          "min": {
+            "mass_kg": -0.9581231821541676,
+            "friction": 0.40248726959555825
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "finger_position_error_1",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "issued finger drive target minus measured finger position",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.9649600395714008,
+            "friction": -0.6509489610983734
+          },
+          "std": {
+            "mass_kg": -0.9213268666613844,
+            "friction": 0.7283837837383449
+          },
+          "min": {
+            "mass_kg": -0.9581293150762177,
+            "friction": 0.40688018276550464
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "cube_position_0",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "cube entity world pose position",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.45129467091471437,
+            "friction": 0.11925849754087045
+          },
+          "std": {
+            "mass_kg": -0.06296319269957304,
+            "friction": 0.026968827058800583
+          },
+          "min": {
+            "mass_kg": -0.0711151922072764,
+            "friction": -0.5175467727240228
+          },
+          "max": {
+            "mass_kg": -0.5585540427670348,
+            "friction": 0.4442394909822668
+          }
+        }
+      },
+      {
+        "column": "cube_position_1",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "cube entity world pose position",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.0720423282965849,
+            "friction": -0.013405168947746245
+          },
+          "std": {
+            "mass_kg": 0.4069520297079584,
+            "friction": -0.2352251046180125
+          },
+          "min": {
+            "mass_kg": -0.0962120221041857,
+            "friction": -0.4639283400718929
+          },
+          "max": {
+            "mass_kg": -0.9702119421298843,
+            "friction": 0.39295152715118115
+          }
+        }
+      },
+      {
+        "column": "cube_position_2",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "cube entity world pose position",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.9668416205406519,
+            "friction": 0.6496419169832872
+          },
+          "std": {
+            "mass_kg": -0.9213655343082159,
+            "friction": 0.7433538588284265
+          },
+          "min": {
+            "mass_kg": 0.8805548333745755,
+            "friction": -0.8300439062911098
+          },
+          "max": {
+            "mass_kg": -0.8783658375153467,
+            "friction": 0.6742291437657344
+          }
+        }
+      },
+      {
+        "column": "cube_rotation_0",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "first two columns of cube pose rotation matrix",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.2171400744569136,
+            "friction": -0.473464105806033
+          },
+          "std": {
+            "mass_kg": 0.44297980970096495,
+            "friction": -0.06854766133352015
+          },
+          "min": {
+            "mass_kg": 0.35626526450764046,
+            "friction": 0.5373617474991578
+          },
+          "max": {
+            "mass_kg": 0.2827822421420862,
+            "friction": -0.45719967592351324
+          }
+        }
+      },
+      {
+        "column": "cube_rotation_1",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "first two columns of cube pose rotation matrix",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.4921632946251738,
+            "friction": 0.2508357811133912
+          },
+          "std": {
+            "mass_kg": -0.4592155322031287,
+            "friction": -0.14551840163774177
+          },
+          "min": {
+            "mass_kg": -0.9247944742698577,
+            "friction": 0.20025965458316788
+          },
+          "max": {
+            "mass_kg": 0.586414624308473,
+            "friction": -0.7634977376226666
+          }
+        }
+      },
+      {
+        "column": "cube_rotation_2",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "first two columns of cube pose rotation matrix",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.3674251108250456,
+            "friction": 0.34610241022137306
+          },
+          "std": {
+            "mass_kg": 0.608802647239696,
+            "friction": -0.32185460052212705
+          },
+          "min": {
+            "mass_kg": -0.4735243706153877,
+            "friction": 0.47702803994395626
+          },
+          "max": {
+            "mass_kg": 0.24258096293217019,
+            "friction": 0.2043628032487901
+          }
+        }
+      },
+      {
+        "column": "cube_rotation_3",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "first two columns of cube pose rotation matrix",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.47932272931026015,
+            "friction": -0.2402020283395517
+          },
+          "std": {
+            "mass_kg": -0.4495740035995131,
+            "friction": -0.1566530547347362
+          },
+          "min": {
+            "mass_kg": -0.586414624308473,
+            "friction": 0.7634977376226666
+          },
+          "max": {
+            "mass_kg": 0.9248441438541645,
+            "friction": -0.2003675607157147
+          }
+        }
+      },
+      {
+        "column": "cube_rotation_4",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "first two columns of cube pose rotation matrix",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.2695802548175727,
+            "friction": -0.5307847578906751
+          },
+          "std": {
+            "mass_kg": 0.5317871821421879,
+            "friction": -0.144627808786768
+          },
+          "min": {
+            "mass_kg": 0.35616383994650447,
+            "friction": 0.5374589973543997
+          },
+          "max": {
+            "mass_kg": 0.2856583833785428,
+            "friction": -0.45308464226623824
+          }
+        }
+      },
+      {
+        "column": "cube_rotation_5",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "first two columns of cube pose rotation matrix",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.7863269410805663,
+            "friction": -0.5070751701157288
+          },
+          "std": {
+            "mass_kg": 0.35127540400709034,
+            "friction": 0.2576476605802022
+          },
+          "min": {
+            "mass_kg": -0.5318651063556189,
+            "friction": 0.21273775803182668
+          },
+          "max": {
+            "mass_kg": 0.5127012819541575,
+            "friction": 0.15493378940445093
+          }
+        }
+      },
+      {
+        "column": "cube_linear_velocity_0",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "cube rigid-body linear velocity",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.9352892340514638,
+            "friction": 0.6516038349213061
+          },
+          "std": {
+            "mass_kg": -0.9259960422367327,
+            "friction": 0.49461180802305865
+          },
+          "min": {
+            "mass_kg": 0.7101737646029596,
+            "friction": -0.1661244856422831
+          },
+          "max": {
+            "mass_kg": -0.727426053645524,
+            "friction": 0.6258365016913939
+          }
+        }
+      },
+      {
+        "column": "cube_linear_velocity_1",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "cube rigid-body linear velocity",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.7518439660548847,
+            "friction": 0.21854079842766538
+          },
+          "std": {
+            "mass_kg": -0.9607573263485464,
+            "friction": 0.4550678052250752
+          },
+          "min": {
+            "mass_kg": -0.33574715335411065,
+            "friction": -0.015483584181071002
+          },
+          "max": {
+            "mass_kg": -0.9201476445224173,
+            "friction": 0.20353486433936133
+          }
+        }
+      },
+      {
+        "column": "cube_linear_velocity_2",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "cube rigid-body linear velocity",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.9044516231788913,
+            "friction": 0.571284228153939
+          },
+          "std": {
+            "mass_kg": -0.9496389477058149,
+            "friction": 0.647654445120204
+          },
+          "min": {
+            "mass_kg": -0.2355938767684902,
+            "friction": 0.11630211611985104
+          },
+          "max": {
+            "mass_kg": -0.21321519637734368,
+            "friction": 0.32843308730416515
+          }
+        }
+      },
+      {
+        "column": "cube_angular_velocity_0",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "cube rigid-body angular velocity",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.400876621053429,
+            "friction": 0.12337835671072558
+          },
+          "std": {
+            "mass_kg": -0.28354357142851744,
+            "friction": -0.16952896403220405
+          },
+          "min": {
+            "mass_kg": -0.5213304890503596,
+            "friction": 0.4486082891845734
+          },
+          "max": {
+            "mass_kg": 0.5973122571445686,
+            "friction": -0.10193424598160397
+          }
+        }
+      },
+      {
+        "column": "cube_angular_velocity_1",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "cube rigid-body angular velocity",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.8438483145504533,
+            "friction": 0.2175574124923642
+          },
+          "std": {
+            "mass_kg": 0.050699376377812216,
+            "friction": -0.04036739195712864
+          },
+          "min": {
+            "mass_kg": -0.4828538355378048,
+            "friction": 0.314091903378102
+          },
+          "max": {
+            "mass_kg": -0.19843015405929323,
+            "friction": -0.05566249195527436
+          }
+        }
+      },
+      {
+        "column": "cube_angular_velocity_2",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "cube rigid-body angular velocity",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.9923233373537194,
+            "friction": 0.504725594239075
+          },
+          "std": {
+            "mass_kg": -0.9494572802565217,
+            "friction": 0.4536841896284074
+          },
+          "min": {
+            "mass_kg": 0.1938383696935118,
+            "friction": -0.02930562931343436
+          },
+          "max": {
+            "mass_kg": -0.7361977116337531,
+            "friction": 0.44834505795084484
+          }
+        }
+      },
+      {
+        "column": "cube_relative_position_0",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "TCP rotation transpose times (cube position minus TCP position)",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.20391570358808558,
+            "friction": 0.08272710645840929
+          },
+          "std": {
+            "mass_kg": 0.3256503538284409,
+            "friction": -0.3377517444795556
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "cube_relative_position_1",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "TCP rotation transpose times (cube position minus TCP position)",
+        "correlations": {
+          "mean": {
+            "mass_kg": -0.13513408460681373,
+            "friction": 0.47571374237342384
+          },
+          "std": {
+            "mass_kg": 0.5754952585589356,
+            "friction": -0.671449389131964
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "cube_relative_position_2",
+        "kind": "physical_sensor",
+        "code_path": "clean/schema.py:observe",
+        "provenance": "TCP rotation transpose times (cube position minus TCP position)",
+        "correlations": {
+          "mean": {
+            "mass_kg": 0.9649227035336801,
+            "friction": -0.6546041575071215
+          },
+          "std": {
+            "mass_kg": 0.9503942390396344,
+            "friction": -0.5804004182808384
+          },
+          "min": {
+            "mass_kg": -0.10371718617502283,
+            "friction": -0.025003851209909705
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "arm_joint_target_0_rad",
+        "kind": "independent_command",
+        "code_path": "clean/script.py:plan_episode",
+        "provenance": "clean/script.py:plan_episode(cube_pose, settings), preplanned command; no dynamics feedback",
+        "correlations": {
+          "mean": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "std": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "arm_joint_target_1_rad",
+        "kind": "independent_command",
+        "code_path": "clean/script.py:plan_episode",
+        "provenance": "clean/script.py:plan_episode(cube_pose, settings), preplanned command; no dynamics feedback",
+        "correlations": {
+          "mean": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "std": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "arm_joint_target_2_rad",
+        "kind": "independent_command",
+        "code_path": "clean/script.py:plan_episode",
+        "provenance": "clean/script.py:plan_episode(cube_pose, settings), preplanned command; no dynamics feedback",
+        "correlations": {
+          "mean": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "std": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "arm_joint_target_3_rad",
+        "kind": "independent_command",
+        "code_path": "clean/script.py:plan_episode",
+        "provenance": "clean/script.py:plan_episode(cube_pose, settings), preplanned command; no dynamics feedback",
+        "correlations": {
+          "mean": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "std": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "arm_joint_target_4_rad",
+        "kind": "independent_command",
+        "code_path": "clean/script.py:plan_episode",
+        "provenance": "clean/script.py:plan_episode(cube_pose, settings), preplanned command; no dynamics feedback",
+        "correlations": {
+          "mean": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "std": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "arm_joint_target_5_rad",
+        "kind": "independent_command",
+        "code_path": "clean/script.py:plan_episode",
+        "provenance": "clean/script.py:plan_episode(cube_pose, settings), preplanned command; no dynamics feedback",
+        "correlations": {
+          "mean": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "std": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "arm_joint_target_6_rad",
+        "kind": "independent_command",
+        "code_path": "clean/script.py:plan_episode",
+        "provenance": "clean/script.py:plan_episode(cube_pose, settings), preplanned command; no dynamics feedback",
+        "correlations": {
+          "mean": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "std": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "gripper_command_normalized",
+        "kind": "independent_command",
+        "code_path": "clean/script.py:plan_episode",
+        "provenance": "clean/script.py:plan_episode(cube_pose, settings), preplanned command; no dynamics feedback",
+        "correlations": {
+          "mean": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "std": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      },
+      {
+        "column": "grip_force_cap_per_finger_N",
+        "kind": "independent_command",
+        "code_path": "clean/script.py:plan_episode",
+        "provenance": "clean/script.py:plan_episode(cube_pose, settings), preplanned command; no dynamics feedback",
+        "correlations": {
+          "mean": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "std": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "min": {
+            "mass_kg": null,
+            "friction": null
+          },
+          "max": {
+            "mass_kg": null,
+            "friction": null
+          }
+        }
+      }
+    ],
+    "flags_abs_r_gt_0_9": [
+      {
+        "column": "joint_position_2",
+        "summary": "min",
+        "property": "mass_kg",
+        "r": 0.9999991267510853,
+        "classification": "physical_sensor",
+        "provenance": "robot.qpos",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_position_2",
+        "summary": "max",
+        "property": "mass_kg",
+        "r": -0.9998750319319254,
+        "classification": "physical_sensor",
+        "provenance": "robot.qpos",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_position_5",
+        "summary": "min",
+        "property": "mass_kg",
+        "r": -0.9998294227031878,
+        "classification": "physical_sensor",
+        "provenance": "robot.qpos",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_position_6",
+        "summary": "min",
+        "property": "mass_kg",
+        "r": -0.94719351620006,
+        "classification": "physical_sensor",
+        "provenance": "robot.qpos",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_position_7",
+        "summary": "mean",
+        "property": "mass_kg",
+        "r": -0.9651369175138073,
+        "classification": "physical_sensor",
+        "provenance": "robot.qpos",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_position_7",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": 0.9710221079614834,
+        "classification": "physical_sensor",
+        "provenance": "robot.qpos",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_position_8",
+        "summary": "mean",
+        "property": "mass_kg",
+        "r": -0.9649588389583954,
+        "classification": "physical_sensor",
+        "provenance": "robot.qpos",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_position_8",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": 0.9709887269688626,
+        "classification": "physical_sensor",
+        "provenance": "robot.qpos",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_velocity_6",
+        "summary": "mean",
+        "property": "friction",
+        "r": -0.921556046342103,
+        "classification": "physical_sensor",
+        "provenance": "robot.qvel",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_velocity_7",
+        "summary": "max",
+        "property": "mass_kg",
+        "r": -0.9826590306161143,
+        "classification": "physical_sensor",
+        "provenance": "robot.qvel",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_1",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": 0.9699151998533336,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_2",
+        "summary": "min",
+        "property": "mass_kg",
+        "r": -0.9667905217496435,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_3",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": 0.9945602887436807,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_4",
+        "summary": "mean",
+        "property": "mass_kg",
+        "r": 0.9609035872784184,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_4",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": 0.9426873468639883,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_4",
+        "summary": "max",
+        "property": "mass_kg",
+        "r": 0.9419011723558136,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_5",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": 0.9578979058976733,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_5",
+        "summary": "max",
+        "property": "mass_kg",
+        "r": 0.9355913796075104,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_6",
+        "summary": "min",
+        "property": "mass_kg",
+        "r": -0.9599454000829534,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_7",
+        "summary": "mean",
+        "property": "mass_kg",
+        "r": 0.9095883066427608,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_7",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": 0.9347159924893395,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_7",
+        "summary": "max",
+        "property": "mass_kg",
+        "r": 0.9591087648180631,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_8",
+        "summary": "mean",
+        "property": "mass_kg",
+        "r": 0.9152302109668122,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_8",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": 0.9711730915779869,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_8",
+        "summary": "min",
+        "property": "mass_kg",
+        "r": -0.9658553043202979,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "joint_effort_8",
+        "summary": "max",
+        "property": "mass_kg",
+        "r": 0.9700794554802391,
+        "classification": "physical_sensor",
+        "provenance": "incoming child-link joint wrench: torque X for revolute, force X for prismatic",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "gripper_opening_0",
+        "summary": "mean",
+        "property": "mass_kg",
+        "r": -0.9650491217607791,
+        "classification": "physical_sensor",
+        "provenance": "sum of measured finger joint positions",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "gripper_opening_0",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": 0.9710044623845023,
+        "classification": "physical_sensor",
+        "provenance": "sum of measured finger joint positions",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "finger_position_error_0",
+        "summary": "mean",
+        "property": "mass_kg",
+        "r": 0.9651375953464771,
+        "classification": "physical_sensor",
+        "provenance": "issued finger drive target minus measured finger position",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "finger_position_error_0",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": -0.9221725409460916,
+        "classification": "physical_sensor",
+        "provenance": "issued finger drive target minus measured finger position",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "finger_position_error_0",
+        "summary": "min",
+        "property": "mass_kg",
+        "r": -0.9581231821541676,
+        "classification": "physical_sensor",
+        "provenance": "issued finger drive target minus measured finger position",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "finger_position_error_1",
+        "summary": "mean",
+        "property": "mass_kg",
+        "r": 0.9649600395714008,
+        "classification": "physical_sensor",
+        "provenance": "issued finger drive target minus measured finger position",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "finger_position_error_1",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": -0.9213268666613844,
+        "classification": "physical_sensor",
+        "provenance": "issued finger drive target minus measured finger position",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "finger_position_error_1",
+        "summary": "min",
+        "property": "mass_kg",
+        "r": -0.9581293150762177,
+        "classification": "physical_sensor",
+        "provenance": "issued finger drive target minus measured finger position",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_position_1",
+        "summary": "max",
+        "property": "mass_kg",
+        "r": -0.9702119421298843,
+        "classification": "physical_sensor",
+        "provenance": "cube entity world pose position",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_position_2",
+        "summary": "mean",
+        "property": "mass_kg",
+        "r": -0.9668416205406519,
+        "classification": "physical_sensor",
+        "provenance": "cube entity world pose position",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_position_2",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": -0.9213655343082159,
+        "classification": "physical_sensor",
+        "provenance": "cube entity world pose position",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_rotation_1",
+        "summary": "min",
+        "property": "mass_kg",
+        "r": -0.9247944742698577,
+        "classification": "physical_sensor",
+        "provenance": "first two columns of cube pose rotation matrix",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_rotation_3",
+        "summary": "max",
+        "property": "mass_kg",
+        "r": 0.9248441438541645,
+        "classification": "physical_sensor",
+        "provenance": "first two columns of cube pose rotation matrix",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_linear_velocity_0",
+        "summary": "mean",
+        "property": "mass_kg",
+        "r": -0.9352892340514638,
+        "classification": "physical_sensor",
+        "provenance": "cube rigid-body linear velocity",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_linear_velocity_0",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": -0.9259960422367327,
+        "classification": "physical_sensor",
+        "provenance": "cube rigid-body linear velocity",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_linear_velocity_1",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": -0.9607573263485464,
+        "classification": "physical_sensor",
+        "provenance": "cube rigid-body linear velocity",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_linear_velocity_1",
+        "summary": "max",
+        "property": "mass_kg",
+        "r": -0.9201476445224173,
+        "classification": "physical_sensor",
+        "provenance": "cube rigid-body linear velocity",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_linear_velocity_2",
+        "summary": "mean",
+        "property": "mass_kg",
+        "r": -0.9044516231788913,
+        "classification": "physical_sensor",
+        "provenance": "cube rigid-body linear velocity",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_linear_velocity_2",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": -0.9496389477058149,
+        "classification": "physical_sensor",
+        "provenance": "cube rigid-body linear velocity",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_angular_velocity_2",
+        "summary": "mean",
+        "property": "mass_kg",
+        "r": -0.9923233373537194,
+        "classification": "physical_sensor",
+        "provenance": "cube rigid-body angular velocity",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_angular_velocity_2",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": -0.9494572802565217,
+        "classification": "physical_sensor",
+        "provenance": "cube rigid-body angular velocity",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_relative_position_2",
+        "summary": "mean",
+        "property": "mass_kg",
+        "r": 0.9649227035336801,
+        "classification": "physical_sensor",
+        "provenance": "TCP rotation transpose times (cube position minus TCP position)",
+        "reason": "Measured physical response; no property lookup in observe()."
+      },
+      {
+        "column": "cube_relative_position_2",
+        "summary": "std",
+        "property": "mass_kg",
+        "r": 0.9503942390396344,
+        "classification": "physical_sensor",
+        "provenance": "TCP rotation transpose times (cube position minus TCP position)",
+        "reason": "Measured physical response; no property lookup in observe()."
+      }
+    ]
+  },
+  "probes": {
+    "configuration": {
+      "episode_id": 0,
+      "seeds": [
+        101,
+        211,
+        307,
+        401,
+        503
+      ],
+      "heldout_fraction": 0.2,
+      "hidden_size": 32,
+      "gru_layers": 1,
+      "optimizer": "Adam",
+      "learning_rate": 0.003,
+      "optimizer_updates": 400,
+      "maximum_batch_cubes": 32,
+      "normalization": "Training-cube fold only; whole episode sequence, no downsampling.",
+      "target_labels": "Read from cubes.json for supervised diagnostic probes only."
+    },
+    "f8_interpretation": "Empirical one-episode recoverability benchmark, not a mathematical signal ceiling or upper bound; five-lift z uses more evidence.",
+    "actions_only": {
+      "seeds": [
+        {
+          "seed": 101,
+          "train_cube_ids": [
+            0,
+            1,
+            4,
+            9,
+            8,
+            3,
+            6,
+            2
+          ],
+          "heldout_cube_ids": [
+            5,
+            7
+          ],
+          "r2": {
+            "mass_kg": -8.151943077625278,
+            "friction": -1.749090701786341
+          }
+        },
+        {
+          "seed": 211,
+          "train_cube_ids": [
+            0,
+            5,
+            6,
+            2,
+            9,
+            4,
+            8,
+            1
+          ],
+          "heldout_cube_ids": [
+            3,
+            7
+          ],
+          "r2": {
+            "mass_kg": -0.23031377922110938,
+            "friction": -0.16546448254817644
+          }
+        },
+        {
+          "seed": 307,
+          "train_cube_ids": [
+            1,
+            3,
+            2,
+            8,
+            6,
+            7,
+            5,
+            4
+          ],
+          "heldout_cube_ids": [
+            9,
+            0
+          ],
+          "r2": {
+            "mass_kg": -0.6258701260198523,
+            "friction": -3.0524858215433572
+          }
+        },
+        {
+          "seed": 401,
+          "train_cube_ids": [
+            1,
+            5,
+            4,
+            3,
+            8,
+            6,
+            9,
+            2
+          ],
+          "heldout_cube_ids": [
+            0,
+            7
+          ],
+          "r2": {
+            "mass_kg": -7.997135208353101,
+            "friction": -0.18561742494527872
+          }
+        },
+        {
+          "seed": 503,
+          "train_cube_ids": [
+            2,
+            3,
+            6,
+            0,
+            1,
+            5,
+            9,
+            8
+          ],
+          "heldout_cube_ids": [
+            4,
+            7
+          ],
+          "r2": {
+            "mass_kg": -1859.4888796541743,
+            "friction": -15.465801273602851
+          }
+        }
+      ],
+      "r2": {
+        "mass_kg": {
+          "mean": -375.2988283690787,
+          "std": 829.6962838573603,
+          "n": 5
+        },
+        "friction": {
+          "mean": -4.123691940885201,
+          "std": 6.453790615119047,
+          "n": 5
+        }
+      }
+    },
+    "state_action": {
+      "seeds": [
+        {
+          "seed": 101,
+          "train_cube_ids": [
+            0,
+            1,
+            4,
+            9,
+            8,
+            3,
+            6,
+            2
+          ],
+          "heldout_cube_ids": [
+            5,
+            7
+          ],
+          "r2": {
+            "mass_kg": -0.4858183013372706,
+            "friction": -4.179474285781642
+          }
+        },
+        {
+          "seed": 211,
+          "train_cube_ids": [
+            0,
+            5,
+            6,
+            2,
+            9,
+            4,
+            8,
+            1
+          ],
+          "heldout_cube_ids": [
+            3,
+            7
+          ],
+          "r2": {
+            "mass_kg": 0.9651464597951098,
+            "friction": 0.0007034444630246472
+          }
+        },
+        {
+          "seed": 307,
+          "train_cube_ids": [
+            1,
+            3,
+            2,
+            8,
+            6,
+            7,
+            5,
+            4
+          ],
+          "heldout_cube_ids": [
+            9,
+            0
+          ],
+          "r2": {
+            "mass_kg": 0.7578192784196596,
+            "friction": -12.442392277766194
+          }
+        },
+        {
+          "seed": 401,
+          "train_cube_ids": [
+            1,
+            5,
+            4,
+            3,
+            8,
+            6,
+            9,
+            2
+          ],
+          "heldout_cube_ids": [
+            0,
+            7
+          ],
+          "r2": {
+            "mass_kg": -2.0238814363264135,
+            "friction": -2.973283755343272
+          }
+        },
+        {
+          "seed": 503,
+          "train_cube_ids": [
+            2,
+            3,
+            6,
+            0,
+            1,
+            5,
+            9,
+            8
+          ],
+          "heldout_cube_ids": [
+            4,
+            7
+          ],
+          "r2": {
+            "mass_kg": -378.7222819893522,
+            "friction": -13.471786747520053
+          }
+        }
+      ],
+      "r2": {
+        "mass_kg": {
+          "mean": -75.90180319776023,
+          "std": 169.28599037213817,
+          "n": 5
+        },
+        "friction": {
+          "mean": -6.613246724389628,
+          "std": 5.998654529691519,
+          "n": 5
+        }
+      }
+    },
+    "actions_constant_reference": {
+      "seeds": [
+        {
+          "seed": 101,
+          "train_cube_ids": [
+            0,
+            1,
+            4,
+            9,
+            8,
+            3,
+            6,
+            2
+          ],
+          "heldout_cube_ids": [
+            5,
+            7
+          ],
+          "r2": {
+            "mass_kg": -8.151942408888585,
+            "friction": -1.7490920400186571
+          }
+        },
+        {
+          "seed": 211,
+          "train_cube_ids": [
+            0,
+            5,
+            6,
+            2,
+            9,
+            4,
+            8,
+            1
+          ],
+          "heldout_cube_ids": [
+            3,
+            7
+          ],
+          "r2": {
+            "mass_kg": -0.23031382190182131,
+            "friction": -0.16546443088871823
+          }
+        },
+        {
+          "seed": 307,
+          "train_cube_ids": [
+            1,
+            3,
+            2,
+            8,
+            6,
+            7,
+            5,
+            4
+          ],
+          "heldout_cube_ids": [
+            9,
+            0
+          ],
+          "r2": {
+            "mass_kg": -0.6258701562764581,
+            "friction": -3.0524859282287515
+          }
+        },
+        {
+          "seed": 401,
+          "train_cube_ids": [
+            1,
+            5,
+            4,
+            3,
+            8,
+            6,
+            9,
+            2
+          ],
+          "heldout_cube_ids": [
+            0,
+            7
+          ],
+          "r2": {
+            "mass_kg": -7.9971338868948045,
+            "friction": -0.18561737693127037
+          }
+        },
+        {
+          "seed": 503,
+          "train_cube_ids": [
+            2,
+            3,
+            6,
+            0,
+            1,
+            5,
+            9,
+            8
+          ],
+          "heldout_cube_ids": [
+            4,
+            7
+          ],
+          "r2": {
+            "mass_kg": -1859.4888498695682,
+            "friction": -15.465801672888029
+          }
+        }
+      ],
+      "r2": {
+        "mass_kg": {
+          "mean": -375.298822028706,
+          "std": 829.6962707494124,
+          "n": 5
+        },
+        "friction": {
+          "mean": -4.1236922897910855,
+          "std": 6.45379067826989,
+          "n": 5
+        }
+      }
+    },
+    "f2_pass": true,
+    "f2_rule": "Both properties must have held-out-cube R\u00b2 < 0.1 in each of five seeds; threshold not relaxed for pilot."
+  },
+  "f2_pass": true,
+  "f3_pass": true,
+  "f7_pass": true,
+  "f8_pass": true,
+  "elapsed_seconds": 64.99439920598525,
+  "saved_run": "results/audits/pilot_20261115T204654.402217Z.json"
+}

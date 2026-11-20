@@ -1,0 +1,15 @@
+{
+  "/home/ubuntu/faliure/clean/shove_gate/adaptation_compare/collection.py": "5534861195d9b0da6dfda3809038ac4a8b46171c0146cad08bc5d5188b7e9a1d",
+  "/home/ubuntu/faliure/clean/shove_gate/adaptation_compare/PROTOCOL.md": "b7c290b7e65cad349cb22cacd278e8f0c4b81d7316b65195f0237d1cb3053675",
+  "/home/ubuntu/faliure/clean/shove_gate/script.py": "34017b6ec9aaf499b3127ef47a8d02244ea83c352596f12059445a1d0c35e5b2",
+  "/home/ubuntu/faliure/clean/shove_gate/simulation.py": "9095444c2d13afa16a2217a7f17c4fbe64f053b3c6c7e2c8ad0cfc5a91652ecf",
+  "/home/ubuntu/faliure/clean/native.py": "86da7c0340aa80edf05230adb0cfa744415977b880151f28c00dd3e83d6ca730",
+  "/home/ubuntu/faliure/clean/shove_gate/push_latent/collection.py": "21e4f305d22cbcf5520249be2c141623f6f60da504ca78988de0aa71c40cb7db",
+  "/home/ubuntu/faliure/clean/shove_gate/push_latent/data/cubes.json": "e067142561575a67ec70690e856bc235dabedf5c36186c681c963cc7d8363b56",
+  "/home/ubuntu/faliure/clean/shove_gate/push_latent/data/plans.json": "339d3cd54b1e17ce183dd83ff5934202ddb73dac0342a8f2d10ecbef0badd40f",
+  "/home/ubuntu/faliure/clean/shove_gate/push_latent/data/schema.json": "d8f2ad82d6d84bc8e58ab065f99104c743945da5c705275d8401be61eea166e0",
+  "/home/ubuntu/faliure/clean/shove_gate/push_latent/results/metrics.json": "53c4c3ceecf6571f3602e8a46b7f38e4972f0426b361119bae5725e75d151664",
+  "/home/ubuntu/faliure/clean/shove_gate/push_latent/results/final_audit.json": "e02da75387bf95b126a7d7dd9fd1a673ba7f671583bd9d73e6c8f07b29e579c3",
+  "/home/ubuntu/faliure/clean/shove_gate/push_latent/results/checkpoint_seal.json": "347631b2c5c44649c49a11d3887c9092f1e2d03dec6634a784b511dde3fe2b50",
+  "/home/ubuntu/faliure/clean/shove_gate/push_latent/results/normalizer.json": "94a160d63af3f0287e7ccadcc243331e1728ff1ab471fecef4d3dbf75fdd75cd"
+}

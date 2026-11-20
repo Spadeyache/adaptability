@@ -1,0 +1,45 @@
+{
+  "seed": 401,
+  "completed_updates": 20000,
+  "extension_decisions": [
+    {
+      "endpoint": 10000,
+      "extend": true,
+      "families": {
+        "plain": {
+          "previous_best": 0.2304711499587599,
+          "final2500_best": 0.2323507523215241,
+          "relative_improvement": -0.008155477868273527,
+          "still_improving": false
+        },
+        "oracle": {
+          "previous_best": 0.3097586944744725,
+          "final2500_best": 0.30134552027971284,
+          "relative_improvement": 0.027160413395443894,
+          "still_improving": true
+        }
+      }
+    },
+    {
+      "endpoint": 20000,
+      "extend": false,
+      "families": {
+        "plain": {
+          "previous_best": 0.2282464506542405,
+          "final2500_best": 0.2310314990142513,
+          "relative_improvement": -0.012201935022550332,
+          "still_improving": false
+        },
+        "oracle": {
+          "previous_best": 0.28825772228148283,
+          "final2500_best": 0.29151330698134453,
+          "relative_improvement": -0.011294006884168165,
+          "still_improving": false
+        }
+      }
+    }
+  ],
+  "convergence_not_established_at_cap": false,
+  "minibatch_sha256": "3a44b582e6681004afea76ad1337af5392a9b1d448c638cde16e28bb4634052e",
+  "elapsed_seconds": 74.50366142799612
+}

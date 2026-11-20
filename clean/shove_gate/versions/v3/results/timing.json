@@ -1,0 +1,15 @@
+{
+  "collected_cubes": 10,
+  "collected_episodes": 100,
+  "transitions": 21600,
+  "this_invocation_wall_seconds": 16.065366847993573,
+  "episode_wall_seconds_sum": 13.455570409045322,
+  "mean_episode_wall_seconds": 0.13455570409045323,
+  "median_episode_wall_seconds": 0.12163151150161866,
+  "total_2300_episode_projection_seconds": 309.4781194080424,
+  "remaining_2200_episode_projection_seconds": 296.0225489989971,
+  "projection": "Linear extrapolation from measured serial episode collection+compression times; excludes training, audits, action probe and startup.",
+  "approval_status": "AWAITING_USER_GO",
+  "plain_oracle_training_started": false,
+  "belief_model_started": false
+}

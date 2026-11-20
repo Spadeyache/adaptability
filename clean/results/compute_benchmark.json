@@ -1,0 +1,70 @@
+{
+  "purpose": "Hardware timing on synthetic tensors only; not research metrics",
+  "torch_version": "2.14.0+cu130",
+  "platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "cpu_count": 16,
+  "cuda_available": true,
+  "runs": [
+    {
+      "kind": "plain",
+      "device": "cpu",
+      "updates": 50,
+      "warmup_updates": 10,
+      "elapsed_seconds": 0.05059808699297719,
+      "seconds_per_update": 0.0010119617398595437,
+      "updates_per_second": 988.1796520674744,
+      "num_parameters": 30128,
+      "batch_size": 256,
+      "history_K": 20,
+      "width": 128,
+      "depth": 2,
+      "cpu_threads": 2
+    },
+    {
+      "kind": "history",
+      "device": "cpu",
+      "updates": 50,
+      "warmup_updates": 10,
+      "elapsed_seconds": 2.0214324159896933,
+      "seconds_per_update": 0.04042864831979386,
+      "updates_per_second": 24.734935288707142,
+      "num_parameters": 118320,
+      "batch_size": 256,
+      "history_K": 20,
+      "width": 128,
+      "depth": 2,
+      "cpu_threads": 2
+    },
+    {
+      "kind": "plain",
+      "device": "cuda",
+      "updates": 50,
+      "warmup_updates": 10,
+      "elapsed_seconds": 0.10610129599808715,
+      "seconds_per_update": 0.002122025919961743,
+      "updates_per_second": 471.2477781694714,
+      "num_parameters": 30128,
+      "batch_size": 256,
+      "history_K": 20,
+      "width": 128,
+      "depth": 2,
+      "cpu_threads": 2
+    },
+    {
+      "kind": "history",
+      "device": "cuda",
+      "updates": 50,
+      "warmup_updates": 10,
+      "elapsed_seconds": 0.2936147549771704,
+      "seconds_per_update": 0.005872295099543408,
+      "updates_per_second": 170.29116947439402,
+      "num_parameters": 118320,
+      "batch_size": 256,
+      "history_K": 20,
+      "width": 128,
+      "depth": 2,
+      "cpu_threads": 2
+    }
+  ],
+  "cuda_device": "NVIDIA GeForce RTX 3050 Laptop GPU"
+}

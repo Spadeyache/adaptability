@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "synthetic_only": true,
+  "experiment_traces_read": false,
+  "operation": "Deterministic CUDA nn.Embedding backward with repeated indices",
+  "model_source_sha256": "6f2936b4afd59e40cab9a72ee91fd5f9298e37d1ae191e7277895d7a7cd7b81e",
+  "checked_unix_seconds": 1794803696.9247892
+}

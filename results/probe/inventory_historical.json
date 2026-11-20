@@ -1,0 +1,5262 @@
+{
+  "schema_version": 1,
+  "scope": "Historical families outside lift_slide; inventory only, no collection/training/model evaluation.",
+  "groups": [
+    {
+      "family": "context_dynamics",
+      "path": "runs/context_dynamics/nov13/confirmation",
+      "npz_files": 10,
+      "task_names": [
+        "PickCube-v1",
+        "PushCube-v1",
+        "PullCube-v1",
+        "poke"
+      ],
+      "task_id_counts": {
+        "0": 250,
+        "1": 250,
+        "2": 250,
+        "3": 250
+      },
+      "episodes": 1000,
+      "action_steps": 50000,
+      "observed_state_samples": 51000,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "episode_id identifies a reset, not a persistent cube. Physics configurations below are not claimed to be cube IDs.",
+      "unique_full_physics_configurations": 1000,
+      "unique_mass_friction_pairs": 1000,
+      "episodes_per_full_configuration": {
+        "min": 1,
+        "max": 1,
+        "histogram": {
+          "1": 1000
+        }
+      },
+      "mass_kg_range": [
+        0.02009547382599832,
+        0.9967697885097702
+      ],
+      "friction_range": [
+        0.1003758613566011,
+        1.4984990694059062
+      ],
+      "mass_friction_pearson_unique_full_configurations": -0.06832762959454133,
+      "mass_friction_pearson_unique_mass_friction_pairs": -0.06832762959454133,
+      "mass_friction_pearson_episode_weighted": -0.06832762959454128,
+      "null_correlation_reason": null,
+      "fields_example_file": "runs/context_dynamics/nov13/confirmation/shard_0000.npz",
+      "all_saved_fields": {
+        "episode_id": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "seed": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "task_id": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "constants": {
+          "shape": [
+            100,
+            10
+          ],
+          "dtype": "float64"
+        },
+        "state": {
+          "shape": [
+            100,
+            51,
+            39
+          ],
+          "dtype": "float32"
+        },
+        "command": {
+          "shape": [
+            100,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "applied": {
+          "shape": [
+            100,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "policy_guess_kg": {
+          "shape": [
+            100
+          ],
+          "dtype": "float64"
+        },
+        "random_start": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "random_end": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        }
+      },
+      "state_columns": {
+        "qpos": [
+          0,
+          9
+        ],
+        "qvel": [
+          9,
+          18
+        ],
+        "tcp_pose_wxyz": [
+          18,
+          25
+        ],
+        "gripper_width": [
+          25,
+          26
+        ],
+        "cube_pose_wxyz": [
+          26,
+          33
+        ],
+        "cube_linear_velocity": [
+          33,
+          36
+        ],
+        "cube_angular_velocity": [
+          36,
+          39
+        ]
+      },
+      "action_columns": [
+        "dx",
+        "dy",
+        "dz",
+        "opening",
+        "strength"
+      ],
+      "constant_columns": [
+        "mass_kg",
+        "cube_friction",
+        "table_friction",
+        "grip_scale",
+        "damping_scale",
+        "stiffness_scale",
+        "delay_steps",
+        "com_x_m",
+        "com_y_m",
+        "com_z_m"
+      ],
+      "labels": {
+        "storage": "constants[episode,0]=mass_kg; constants[episode,1]=cube friction; other columns describe nuisance physics. GPU also saves requested_constants.",
+        "constancy": "Stored once per episode. Collector sets physics before rollout and does not change mass or friction during it; no repeated per-step mass/friction readback is saved."
+      },
+      "split": {
+        "rule": "validation if (episode_id // 4) % 10 == 9; whole episodes",
+        "train_episodes": 900,
+        "validation_episodes": 100,
+        "shared_full_physics_configurations": 0,
+        "shared_mass_friction_pairs": 0,
+        "cube_disjoint": "No persistent cube IDs. Whole-episode split; exact sampled-configuration overlap checked above."
+      },
+      "collection_config": {
+        "policy_manifest": "runs/failure_collection/varied_fixed40g/manifest.json",
+        "seed": 930761,
+        "episodes": 1000,
+        "steps": 50,
+        "shard_episodes": 100,
+        "mass_kg": [
+          0.02,
+          1.0
+        ],
+        "cube_friction": [
+          0.1,
+          1.5
+        ],
+        "table_friction": [
+          0.2,
+          1.2
+        ],
+        "grip_scale": [
+          0.3,
+          1.5
+        ],
+        "damping_scale": [
+          0.5,
+          2.0
+        ],
+        "stiffness_scale": [
+          0.5,
+          1.5
+        ],
+        "delay_steps": [
+          0,
+          3
+        ],
+        "com_m": [
+          -0.01,
+          0.01
+        ],
+        "goal_clearance_m": 0.2,
+        "finger_friction": 0.2,
+        "action_noise_sd": 0.075
+      },
+      "manifest_sha256": "c69426ea59c246cc5ecbc79e98e88b2474e233b0635c1122324b3b48ea32abdc",
+      "completion": {
+        "episodes": 1000,
+        "transition_count": 50000,
+        "shards": 10
+      },
+      "direct_mass_friction_in_saved_state_action": false,
+      "generator": "CPU Pick policy+noise, Push/Pull scripts, poke/grip scripts, occasional random command segments",
+      "grip": "Opening/strength commands; effective motor force is scaled by independently randomized grip_scale. Finger material friction is fixed in config.",
+      "physics_conditioned_commands": "Policy mass guess sampled independently from true mass; motion RNG separated from physics. Applied delay and effective grip caps do depend on randomized delay/grip-scale nuisance constants. Feedback actions respond to observed physical motion.",
+      "source_evidence": [
+        "experiments/context_dynamics/collect.py:100-154",
+        "experiments/context_dynamics/collect_gpu.py:22-40,74-116",
+        "robot_adaptation/simulation/context_dynamics.py:11-14,64-99,118-124"
+      ],
+      "limitations": [
+        "Raw state omits joint effort and force sensing.",
+        "Historical z encoders explicitly consume constants; their z is privileged, not an inferred belief."
+      ],
+      "true_mass_vs_independent_policy_guess_pearson": 0.011750005984710887
+    },
+    {
+      "family": "context_dynamics",
+      "path": "runs/context_dynamics/nov13/data",
+      "npz_files": 400,
+      "task_names": [
+        "PickCube-v1",
+        "PushCube-v1",
+        "PullCube-v1",
+        "poke"
+      ],
+      "task_id_counts": {
+        "0": 10000,
+        "1": 10000,
+        "2": 10000,
+        "3": 10000
+      },
+      "episodes": 40000,
+      "action_steps": 2000000,
+      "observed_state_samples": 2040000,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "episode_id identifies a reset, not a persistent cube. Physics configurations below are not claimed to be cube IDs.",
+      "unique_full_physics_configurations": 40000,
+      "unique_mass_friction_pairs": 40000,
+      "episodes_per_full_configuration": {
+        "min": 1,
+        "max": 1,
+        "histogram": {
+          "1": 40000
+        }
+      },
+      "mass_kg_range": [
+        0.020000568438687277,
+        0.999994614185518
+      ],
+      "friction_range": [
+        0.1001946090072907,
+        1.4999398336901348
+      ],
+      "mass_friction_pearson_unique_full_configurations": -0.004999089886392814,
+      "mass_friction_pearson_unique_mass_friction_pairs": -0.004999089886392814,
+      "mass_friction_pearson_episode_weighted": -0.004999089886392816,
+      "null_correlation_reason": null,
+      "fields_example_file": "runs/context_dynamics/nov13/data/shard_0000.npz",
+      "all_saved_fields": {
+        "episode_id": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "seed": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "task_id": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "constants": {
+          "shape": [
+            100,
+            10
+          ],
+          "dtype": "float64"
+        },
+        "state": {
+          "shape": [
+            100,
+            51,
+            39
+          ],
+          "dtype": "float32"
+        },
+        "command": {
+          "shape": [
+            100,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "applied": {
+          "shape": [
+            100,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "policy_guess_kg": {
+          "shape": [
+            100
+          ],
+          "dtype": "float64"
+        },
+        "random_start": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "random_end": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        }
+      },
+      "state_columns": {
+        "qpos": [
+          0,
+          9
+        ],
+        "qvel": [
+          9,
+          18
+        ],
+        "tcp_pose_wxyz": [
+          18,
+          25
+        ],
+        "gripper_width": [
+          25,
+          26
+        ],
+        "cube_pose_wxyz": [
+          26,
+          33
+        ],
+        "cube_linear_velocity": [
+          33,
+          36
+        ],
+        "cube_angular_velocity": [
+          36,
+          39
+        ]
+      },
+      "action_columns": [
+        "dx",
+        "dy",
+        "dz",
+        "opening",
+        "strength"
+      ],
+      "constant_columns": [
+        "mass_kg",
+        "cube_friction",
+        "table_friction",
+        "grip_scale",
+        "damping_scale",
+        "stiffness_scale",
+        "delay_steps",
+        "com_x_m",
+        "com_y_m",
+        "com_z_m"
+      ],
+      "labels": {
+        "storage": "constants[episode,0]=mass_kg; constants[episode,1]=cube friction; other columns describe nuisance physics. GPU also saves requested_constants.",
+        "constancy": "Stored once per episode. Collector sets physics before rollout and does not change mass or friction during it; no repeated per-step mass/friction readback is saved."
+      },
+      "split": {
+        "rule": "validation if (episode_id // 4) % 10 == 9; whole episodes",
+        "train_episodes": 36000,
+        "validation_episodes": 4000,
+        "shared_full_physics_configurations": 0,
+        "shared_mass_friction_pairs": 0,
+        "cube_disjoint": "No persistent cube IDs. Whole-episode split; exact sampled-configuration overlap checked above."
+      },
+      "collection_config": {
+        "policy_manifest": "runs/failure_collection/varied_fixed40g/manifest.json",
+        "seed": 131119,
+        "episodes": 40000,
+        "steps": 50,
+        "shard_episodes": 100,
+        "mass_kg": [
+          0.02,
+          1.0
+        ],
+        "cube_friction": [
+          0.1,
+          1.5
+        ],
+        "table_friction": [
+          0.2,
+          1.2
+        ],
+        "grip_scale": [
+          0.3,
+          1.5
+        ],
+        "damping_scale": [
+          0.5,
+          2.0
+        ],
+        "stiffness_scale": [
+          0.5,
+          1.5
+        ],
+        "delay_steps": [
+          0,
+          3
+        ],
+        "com_m": [
+          -0.01,
+          0.01
+        ],
+        "goal_clearance_m": 0.2,
+        "finger_friction": 0.2,
+        "action_noise_sd": 0.075
+      },
+      "manifest_sha256": "eec7859d818977b0c49b52cb06b404288dfe64b53da04ae35cff21421ea3f670",
+      "completion": {
+        "episodes": 40000,
+        "transition_count": 2000000,
+        "shards": 400
+      },
+      "direct_mass_friction_in_saved_state_action": false,
+      "generator": "CPU Pick policy+noise, Push/Pull scripts, poke/grip scripts, occasional random command segments",
+      "grip": "Opening/strength commands; effective motor force is scaled by independently randomized grip_scale. Finger material friction is fixed in config.",
+      "physics_conditioned_commands": "Policy mass guess sampled independently from true mass; motion RNG separated from physics. Applied delay and effective grip caps do depend on randomized delay/grip-scale nuisance constants. Feedback actions respond to observed physical motion.",
+      "source_evidence": [
+        "experiments/context_dynamics/collect.py:100-154",
+        "experiments/context_dynamics/collect_gpu.py:22-40,74-116",
+        "robot_adaptation/simulation/context_dynamics.py:11-14,64-99,118-124"
+      ],
+      "limitations": [
+        "Raw state omits joint effort and force sensing.",
+        "Historical z encoders explicitly consume constants; their z is privileged, not an inferred belief."
+      ],
+      "true_mass_vs_independent_policy_guess_pearson": -0.0009158177079362968
+    },
+    {
+      "family": "context_dynamics",
+      "path": "runs/context_dynamics/nov13/grip_data",
+      "npz_files": 60,
+      "task_names": [
+        "PickCube-v1",
+        "PushCube-v1",
+        "PullCube-v1",
+        "poke"
+      ],
+      "task_id_counts": {
+        "3": 6000
+      },
+      "episodes": 6000,
+      "action_steps": 300000,
+      "observed_state_samples": 306000,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "episode_id identifies a reset, not a persistent cube. Physics configurations below are not claimed to be cube IDs.",
+      "unique_full_physics_configurations": 6000,
+      "unique_mass_friction_pairs": 6000,
+      "episodes_per_full_configuration": {
+        "min": 1,
+        "max": 1,
+        "histogram": {
+          "1": 6000
+        }
+      },
+      "mass_kg_range": [
+        0.020016546873478723,
+        0.9996506041426729
+      ],
+      "friction_range": [
+        0.10002497923637299,
+        1.4999761064824608
+      ],
+      "mass_friction_pearson_unique_full_configurations": 0.010147660377960423,
+      "mass_friction_pearson_unique_mass_friction_pairs": 0.010147660377960423,
+      "mass_friction_pearson_episode_weighted": 0.010147660377960416,
+      "null_correlation_reason": null,
+      "fields_example_file": "runs/context_dynamics/nov13/grip_data/shard_0000.npz",
+      "all_saved_fields": {
+        "episode_id": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "seed": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "task_id": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "constants": {
+          "shape": [
+            100,
+            10
+          ],
+          "dtype": "float64"
+        },
+        "state": {
+          "shape": [
+            100,
+            51,
+            39
+          ],
+          "dtype": "float32"
+        },
+        "command": {
+          "shape": [
+            100,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "applied": {
+          "shape": [
+            100,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "policy_guess_kg": {
+          "shape": [
+            100
+          ],
+          "dtype": "float64"
+        },
+        "random_start": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "random_end": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        }
+      },
+      "state_columns": {
+        "qpos": [
+          0,
+          9
+        ],
+        "qvel": [
+          9,
+          18
+        ],
+        "tcp_pose_wxyz": [
+          18,
+          25
+        ],
+        "gripper_width": [
+          25,
+          26
+        ],
+        "cube_pose_wxyz": [
+          26,
+          33
+        ],
+        "cube_linear_velocity": [
+          33,
+          36
+        ],
+        "cube_angular_velocity": [
+          36,
+          39
+        ]
+      },
+      "action_columns": [
+        "dx",
+        "dy",
+        "dz",
+        "opening",
+        "strength"
+      ],
+      "constant_columns": [
+        "mass_kg",
+        "cube_friction",
+        "table_friction",
+        "grip_scale",
+        "damping_scale",
+        "stiffness_scale",
+        "delay_steps",
+        "com_x_m",
+        "com_y_m",
+        "com_z_m"
+      ],
+      "labels": {
+        "storage": "constants[episode,0]=mass_kg; constants[episode,1]=cube friction; other columns describe nuisance physics. GPU also saves requested_constants.",
+        "constancy": "Stored once per episode. Collector sets physics before rollout and does not change mass or friction during it; no repeated per-step mass/friction readback is saved."
+      },
+      "split": {
+        "rule": "validation if (episode_id // 4) % 10 == 9; whole episodes",
+        "train_episodes": 5400,
+        "validation_episodes": 600,
+        "shared_full_physics_configurations": 0,
+        "shared_mass_friction_pairs": 0,
+        "cube_disjoint": "No persistent cube IDs. Whole-episode split; exact sampled-configuration overlap checked above."
+      },
+      "collection_config": {
+        "policy_manifest": "runs/failure_collection/varied_fixed40g/manifest.json",
+        "seed": 812037,
+        "episodes": 6000,
+        "steps": 50,
+        "shard_episodes": 100,
+        "mass_kg": [
+          0.02,
+          1.0
+        ],
+        "cube_friction": [
+          0.1,
+          1.5
+        ],
+        "table_friction": [
+          0.2,
+          1.2
+        ],
+        "grip_scale": [
+          0.3,
+          1.5
+        ],
+        "damping_scale": [
+          0.5,
+          2.0
+        ],
+        "stiffness_scale": [
+          0.5,
+          1.5
+        ],
+        "delay_steps": [
+          0,
+          3
+        ],
+        "com_m": [
+          -0.01,
+          0.01
+        ],
+        "goal_clearance_m": 0.2,
+        "finger_friction": 0.2,
+        "action_noise_sd": 0.075,
+        "motion_variant": "grip_probe"
+      },
+      "manifest_sha256": "c8f280204c55bbb4b274e8be7c731bc13700f2704cf23fdf9b141058a584e409",
+      "completion": {
+        "episodes": 6000,
+        "transition_count": 300000,
+        "shards": 60
+      },
+      "direct_mass_friction_in_saved_state_action": false,
+      "generator": "CPU Pick policy+noise, Push/Pull scripts, poke/grip scripts, occasional random command segments",
+      "grip": "Opening/strength commands; effective motor force is scaled by independently randomized grip_scale. Finger material friction is fixed in config.",
+      "physics_conditioned_commands": "Policy mass guess sampled independently from true mass; motion RNG separated from physics. Applied delay and effective grip caps do depend on randomized delay/grip-scale nuisance constants. Feedback actions respond to observed physical motion.",
+      "source_evidence": [
+        "experiments/context_dynamics/collect.py:100-154",
+        "experiments/context_dynamics/collect_gpu.py:22-40,74-116",
+        "robot_adaptation/simulation/context_dynamics.py:11-14,64-99,118-124"
+      ],
+      "limitations": [
+        "Raw state omits joint effort and force sensing.",
+        "Historical z encoders explicitly consume constants; their z is privileged, not an inferred belief."
+      ],
+      "true_mass_vs_independent_policy_guess_pearson": -0.0020946554750378185
+    },
+    {
+      "family": "context_dynamics",
+      "path": "runs/context_dynamics/nov13/grip_pulses",
+      "npz_files": 60,
+      "task_names": [
+        "PickCube-v1",
+        "PushCube-v1",
+        "PullCube-v1",
+        "poke"
+      ],
+      "task_id_counts": {
+        "3": 6000
+      },
+      "episodes": 6000,
+      "action_steps": 300000,
+      "observed_state_samples": 306000,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "episode_id identifies a reset, not a persistent cube. Physics configurations below are not claimed to be cube IDs.",
+      "unique_full_physics_configurations": 6000,
+      "unique_mass_friction_pairs": 6000,
+      "episodes_per_full_configuration": {
+        "min": 1,
+        "max": 1,
+        "histogram": {
+          "1": 6000
+        }
+      },
+      "mass_kg_range": [
+        0.020016546873478723,
+        0.9996506041426729
+      ],
+      "friction_range": [
+        0.10002497923637299,
+        1.4999761064824608
+      ],
+      "mass_friction_pearson_unique_full_configurations": 0.010147660377960423,
+      "mass_friction_pearson_unique_mass_friction_pairs": 0.010147660377960423,
+      "mass_friction_pearson_episode_weighted": 0.010147660377960416,
+      "null_correlation_reason": null,
+      "fields_example_file": "runs/context_dynamics/nov13/grip_pulses/shard_0000.npz",
+      "all_saved_fields": {
+        "episode_id": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "seed": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "task_id": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "constants": {
+          "shape": [
+            100,
+            10
+          ],
+          "dtype": "float64"
+        },
+        "state": {
+          "shape": [
+            100,
+            51,
+            39
+          ],
+          "dtype": "float32"
+        },
+        "command": {
+          "shape": [
+            100,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "applied": {
+          "shape": [
+            100,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "policy_guess_kg": {
+          "shape": [
+            100
+          ],
+          "dtype": "float64"
+        },
+        "random_start": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "random_end": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        }
+      },
+      "state_columns": {
+        "qpos": [
+          0,
+          9
+        ],
+        "qvel": [
+          9,
+          18
+        ],
+        "tcp_pose_wxyz": [
+          18,
+          25
+        ],
+        "gripper_width": [
+          25,
+          26
+        ],
+        "cube_pose_wxyz": [
+          26,
+          33
+        ],
+        "cube_linear_velocity": [
+          33,
+          36
+        ],
+        "cube_angular_velocity": [
+          36,
+          39
+        ]
+      },
+      "action_columns": [
+        "dx",
+        "dy",
+        "dz",
+        "opening",
+        "strength"
+      ],
+      "constant_columns": [
+        "mass_kg",
+        "cube_friction",
+        "table_friction",
+        "grip_scale",
+        "damping_scale",
+        "stiffness_scale",
+        "delay_steps",
+        "com_x_m",
+        "com_y_m",
+        "com_z_m"
+      ],
+      "labels": {
+        "storage": "constants[episode,0]=mass_kg; constants[episode,1]=cube friction; other columns describe nuisance physics. GPU also saves requested_constants.",
+        "constancy": "Stored once per episode. Collector sets physics before rollout and does not change mass or friction during it; no repeated per-step mass/friction readback is saved."
+      },
+      "split": {
+        "rule": "validation if (episode_id // 4) % 10 == 9; whole episodes",
+        "train_episodes": 5400,
+        "validation_episodes": 600,
+        "shared_full_physics_configurations": 0,
+        "shared_mass_friction_pairs": 0,
+        "cube_disjoint": "No persistent cube IDs. Whole-episode split; exact sampled-configuration overlap checked above."
+      },
+      "collection_config": {
+        "policy_manifest": "runs/failure_collection/varied_fixed40g/manifest.json",
+        "seed": 812037,
+        "episodes": 6000,
+        "steps": 50,
+        "shard_episodes": 100,
+        "mass_kg": [
+          0.02,
+          1.0
+        ],
+        "cube_friction": [
+          0.1,
+          1.5
+        ],
+        "table_friction": [
+          0.2,
+          1.2
+        ],
+        "grip_scale": [
+          0.3,
+          1.5
+        ],
+        "damping_scale": [
+          0.5,
+          2.0
+        ],
+        "stiffness_scale": [
+          0.5,
+          1.5
+        ],
+        "delay_steps": [
+          0,
+          3
+        ],
+        "com_m": [
+          -0.01,
+          0.01
+        ],
+        "goal_clearance_m": 0.2,
+        "finger_friction": 0.2,
+        "action_noise_sd": 0.075,
+        "motion_variant": "grip_probe"
+      },
+      "manifest_sha256": "c8f280204c55bbb4b274e8be7c731bc13700f2704cf23fdf9b141058a584e409",
+      "completion": {
+        "episodes": 6000,
+        "transition_count": 300000,
+        "shards": 60
+      },
+      "direct_mass_friction_in_saved_state_action": false,
+      "generator": "CPU Pick policy+noise, Push/Pull scripts, poke/grip scripts, occasional random command segments",
+      "grip": "Opening/strength commands; effective motor force is scaled by independently randomized grip_scale. Finger material friction is fixed in config.",
+      "physics_conditioned_commands": "Policy mass guess sampled independently from true mass; motion RNG separated from physics. Applied delay and effective grip caps do depend on randomized delay/grip-scale nuisance constants. Feedback actions respond to observed physical motion.",
+      "source_evidence": [
+        "experiments/context_dynamics/collect.py:100-154",
+        "experiments/context_dynamics/collect_gpu.py:22-40,74-116",
+        "robot_adaptation/simulation/context_dynamics.py:11-14,64-99,118-124"
+      ],
+      "limitations": [
+        "Raw state omits joint effort and force sensing.",
+        "Historical z encoders explicitly consume constants; their z is privileged, not an inferred belief."
+      ],
+      "true_mass_vs_independent_policy_guess_pearson": -0.0020946554750378185
+    },
+    {
+      "family": "context_dynamics",
+      "path": "runs/context_dynamics/nov13/matched_train",
+      "npz_files": 80,
+      "task_names": [
+        "PickCube-v1",
+        "PushCube-v1",
+        "PullCube-v1",
+        "poke"
+      ],
+      "task_id_counts": {
+        "0": 2000,
+        "1": 2000,
+        "2": 2000,
+        "3": 2000
+      },
+      "episodes": 8000,
+      "action_steps": 400000,
+      "observed_state_samples": 408000,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "episode_id identifies a reset, not a persistent cube. Physics configurations below are not claimed to be cube IDs.",
+      "unique_full_physics_configurations": 8000,
+      "unique_mass_friction_pairs": 5317,
+      "episodes_per_full_configuration": {
+        "min": 1,
+        "max": 1,
+        "histogram": {
+          "1": 8000
+        }
+      },
+      "mass_kg_range": [
+        0.020010844521190882,
+        0.9971081040770572
+      ],
+      "friction_range": [
+        0.10062724725098096,
+        1.4995877359921834
+      ],
+      "mass_friction_pearson_unique_full_configurations": -0.010085787654398966,
+      "mass_friction_pearson_unique_mass_friction_pairs": 0.001999828401789318,
+      "mass_friction_pearson_episode_weighted": -0.010085787654398985,
+      "null_correlation_reason": null,
+      "fields_example_file": "runs/context_dynamics/nov13/matched_train/shard_0000.npz",
+      "all_saved_fields": {
+        "episode_id": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "seed": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "task_id": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "constants": {
+          "shape": [
+            100,
+            10
+          ],
+          "dtype": "float64"
+        },
+        "state": {
+          "shape": [
+            100,
+            51,
+            39
+          ],
+          "dtype": "float32"
+        },
+        "command": {
+          "shape": [
+            100,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "applied": {
+          "shape": [
+            100,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "policy_guess_kg": {
+          "shape": [
+            100
+          ],
+          "dtype": "float64"
+        },
+        "random_start": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "random_end": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "pair_id": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "changed_index": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        }
+      },
+      "state_columns": {
+        "qpos": [
+          0,
+          9
+        ],
+        "qvel": [
+          9,
+          18
+        ],
+        "tcp_pose_wxyz": [
+          18,
+          25
+        ],
+        "gripper_width": [
+          25,
+          26
+        ],
+        "cube_pose_wxyz": [
+          26,
+          33
+        ],
+        "cube_linear_velocity": [
+          33,
+          36
+        ],
+        "cube_angular_velocity": [
+          36,
+          39
+        ]
+      },
+      "action_columns": [
+        "dx",
+        "dy",
+        "dz",
+        "opening",
+        "strength"
+      ],
+      "constant_columns": [
+        "mass_kg",
+        "cube_friction",
+        "table_friction",
+        "grip_scale",
+        "damping_scale",
+        "stiffness_scale",
+        "delay_steps",
+        "com_x_m",
+        "com_y_m",
+        "com_z_m"
+      ],
+      "labels": {
+        "storage": "constants[episode,0]=mass_kg; constants[episode,1]=cube friction; other columns describe nuisance physics. GPU also saves requested_constants.",
+        "constancy": "Stored once per episode. Collector sets physics before rollout and does not change mass or friction during it; no repeated per-step mass/friction readback is saved."
+      },
+      "split": {
+        "rule": "validation if (episode_id // 4) % 10 == 9; whole episodes",
+        "train_episodes": 7200,
+        "validation_episodes": 800,
+        "shared_full_physics_configurations": 0,
+        "shared_mass_friction_pairs": 0,
+        "cube_disjoint": "No persistent cube IDs. Whole-episode split; exact sampled-configuration overlap checked above."
+      },
+      "collection_config": {
+        "policy_manifest": "runs/failure_collection/varied_fixed40g/manifest.json",
+        "seed": 628512,
+        "episodes": 8000,
+        "steps": 50,
+        "shard_episodes": 100,
+        "mass_kg": [
+          0.02,
+          1.0
+        ],
+        "cube_friction": [
+          0.1,
+          1.5
+        ],
+        "table_friction": [
+          0.2,
+          1.2
+        ],
+        "grip_scale": [
+          0.3,
+          1.5
+        ],
+        "damping_scale": [
+          0.5,
+          2.0
+        ],
+        "stiffness_scale": [
+          0.5,
+          1.5
+        ],
+        "delay_steps": [
+          0,
+          3
+        ],
+        "com_m": [
+          -0.01,
+          0.01
+        ],
+        "goal_clearance_m": 0.2,
+        "finger_friction": 0.2,
+        "action_noise_sd": 0.075,
+        "motion_variant": "paired"
+      },
+      "manifest_sha256": "7eb8da621bfe72f39179d53037f14ac8c0cbde2bc862c15d270b82bdcf6703e7",
+      "completion": {
+        "episodes": 8000,
+        "transition_count": 400000,
+        "shards": 80
+      },
+      "direct_mass_friction_in_saved_state_action": false,
+      "generator": "CPU Pick policy+noise, Push/Pull scripts, poke/grip scripts, occasional random command segments",
+      "grip": "Opening/strength commands; effective motor force is scaled by independently randomized grip_scale. Finger material friction is fixed in config.",
+      "physics_conditioned_commands": "Policy mass guess sampled independently from true mass; motion RNG separated from physics. Applied delay and effective grip caps do depend on randomized delay/grip-scale nuisance constants. Feedback actions respond to observed physical motion.",
+      "source_evidence": [
+        "experiments/context_dynamics/collect.py:100-154",
+        "experiments/context_dynamics/collect_gpu.py:22-40,74-116",
+        "robot_adaptation/simulation/context_dynamics.py:11-14,64-99,118-124"
+      ],
+      "limitations": [
+        "Raw state omits joint effort and force sensing.",
+        "Historical z encoders explicitly consume constants; their z is privileged, not an inferred belief."
+      ],
+      "paired_replay_groups": 4000,
+      "true_mass_vs_independent_policy_guess_pearson": 0.0043032997735725
+    },
+    {
+      "family": "context_dynamics",
+      "path": "runs/context_dynamics/pick_gpu_2m/data",
+      "npz_files": 160,
+      "task_names": [
+        "PickCube-v1"
+      ],
+      "task_id_counts": {
+        "0": 40000
+      },
+      "episodes": 40000,
+      "action_steps": 2000000,
+      "observed_state_samples": 2040000,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "episode_id identifies a reset, not a persistent cube. Physics configurations below are not claimed to be cube IDs.",
+      "unique_full_physics_configurations": 40000,
+      "unique_mass_friction_pairs": 40000,
+      "episodes_per_full_configuration": {
+        "min": 1,
+        "max": 1,
+        "histogram": {
+          "1": 40000
+        }
+      },
+      "mass_kg_range": [
+        0.02000015787780285,
+        0.9998388290405273
+      ],
+      "friction_range": [
+        0.1000119000673294,
+        1.4999860525131226
+      ],
+      "mass_friction_pearson_unique_full_configurations": -0.0029878450649346447,
+      "mass_friction_pearson_unique_mass_friction_pairs": -0.0029878450649346447,
+      "mass_friction_pearson_episode_weighted": -0.002987845064934645,
+      "null_correlation_reason": null,
+      "fields_example_file": "runs/context_dynamics/pick_gpu_2m/data/shard_0000.npz",
+      "all_saved_fields": {
+        "episode_id": {
+          "shape": [
+            250
+          ],
+          "dtype": "int64"
+        },
+        "seed": {
+          "shape": [
+            250
+          ],
+          "dtype": "int64"
+        },
+        "task_id": {
+          "shape": [
+            250
+          ],
+          "dtype": "uint8"
+        },
+        "source_id": {
+          "shape": [
+            250
+          ],
+          "dtype": "uint8"
+        },
+        "is_validation": {
+          "shape": [
+            250
+          ],
+          "dtype": "bool"
+        },
+        "policy_guess_kg": {
+          "shape": [
+            250
+          ],
+          "dtype": "float64"
+        },
+        "constants": {
+          "shape": [
+            250,
+            10
+          ],
+          "dtype": "float64"
+        },
+        "requested_constants": {
+          "shape": [
+            250,
+            10
+          ],
+          "dtype": "float64"
+        },
+        "state": {
+          "shape": [
+            250,
+            51,
+            39
+          ],
+          "dtype": "float32"
+        },
+        "command": {
+          "shape": [
+            250,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "applied": {
+          "shape": [
+            250,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "finger_drive_limit_n": {
+          "shape": [
+            250,
+            50,
+            2
+          ],
+          "dtype": "float32"
+        }
+      },
+      "state_columns": {
+        "qpos": [
+          0,
+          9
+        ],
+        "qvel": [
+          9,
+          18
+        ],
+        "tcp_pose_wxyz": [
+          18,
+          25
+        ],
+        "gripper_width": [
+          25,
+          26
+        ],
+        "cube_pose_wxyz": [
+          26,
+          33
+        ],
+        "cube_linear_velocity": [
+          33,
+          36
+        ],
+        "cube_angular_velocity": [
+          36,
+          39
+        ]
+      },
+      "action_columns": [
+        "delta_x",
+        "delta_y",
+        "delta_z",
+        "opening",
+        "strength"
+      ],
+      "constant_columns": [
+        "mass_kg",
+        "cube_friction",
+        "table_friction",
+        "grip_scale",
+        "damping_scale",
+        "stiffness_scale",
+        "delay_steps",
+        "com_x_m",
+        "com_y_m",
+        "com_z_m"
+      ],
+      "labels": {
+        "storage": "constants[episode,0]=mass_kg; constants[episode,1]=cube friction; other columns describe nuisance physics. GPU also saves requested_constants.",
+        "constancy": "Stored once per episode. Collector sets physics before rollout and does not change mass or friction during it; no repeated per-step mass/friction readback is saved."
+      },
+      "split": {
+        "rule": "validation if (episode_id // 4) % 10 == 9",
+        "train_episodes": 36000,
+        "validation_episodes": 4000,
+        "shared_full_physics_configurations": 0,
+        "shared_mass_friction_pairs": 0,
+        "cube_disjoint": "No persistent cube IDs. Whole-episode split; exact sampled-configuration overlap checked above."
+      },
+      "collection_config": {
+        "policy_manifest": "runs/failure_collection/varied_fixed40g/manifest.json",
+        "seed": 9110329,
+        "episodes": 40000,
+        "steps": 50,
+        "shard_episodes": 250,
+        "mass_kg": [
+          0.02,
+          1.0
+        ],
+        "cube_friction": [
+          0.1,
+          1.5
+        ],
+        "table_friction": [
+          0.2,
+          1.2
+        ],
+        "grip_scale": [
+          0.3,
+          1.5
+        ],
+        "damping_scale": [
+          0.5,
+          2.0
+        ],
+        "stiffness_scale": [
+          0.5,
+          1.5
+        ],
+        "delay_steps": [
+          0,
+          3
+        ],
+        "com_m": [
+          -0.01,
+          0.01
+        ],
+        "goal_clearance_m": 0.2,
+        "finger_friction": 0.2,
+        "action_noise_sd": 0.075,
+        "scene_spacing_m": 64.0
+      },
+      "manifest_sha256": "20bcd632581de65b5b695e4fa57aa36f3d350b29eb231caab8631dae715c9416",
+      "completion": {
+        "verified": true,
+        "episodes": 40000,
+        "shards": 160,
+        "transition_count": 2000000,
+        "train_episodes": 36000,
+        "validation_episodes": 4000,
+        "train_transitions": 1800000,
+        "validation_transitions": 200000,
+        "moved_over_1cm": 38428,
+        "sources": {
+          "policy_noise": {
+            "episodes": 20000,
+            "train": 18000,
+            "validation": 2000,
+            "moved_over_1cm": 19657,
+            "median_peak_mm": 223.13846588134766
+          },
+          "scripted_push": {
+            "episodes": 10000,
+            "train": 9000,
+            "validation": 1000,
+            "moved_over_1cm": 9752,
+            "median_peak_mm": 213.10987091064453
+          },
+          "random_poke": {
+            "episodes": 10000,
+            "train": 9000,
+            "validation": 1000,
+            "moved_over_1cm": 9019,
+            "median_peak_mm": 100.18502807617188
+          }
+        },
+        "max_abs_cube_xy_m": 18.892608642578125,
+        "realized_ranges": {
+          "mass_kg": [
+            0.02000015787780285,
+            0.9998388290405273
+          ],
+          "cube_friction": [
+            0.1000119000673294,
+            1.4999860525131226
+          ],
+          "table_friction": [
+            0.20002108812332153,
+            1.1999809741973877
+          ],
+          "grip_scale": [
+            0.3000021457672119,
+            1.4999357223510743
+          ],
+          "damping_scale": [
+            0.5000547409057617,
+            1.9999212646484374
+          ],
+          "stiffness_scale": [
+            0.5000139465332031,
+            1.499939697265625
+          ],
+          "delay_steps": [
+            0.0,
+            3.0
+          ],
+          "com_x_m": [
+            -0.009999643079936504,
+            0.00999995693564415
+          ],
+          "com_y_m": [
+            -0.009999899193644524,
+            0.009999901987612247
+          ],
+          "com_z_m": [
+            -0.009999732486903667,
+            0.00999924261122942
+          ]
+        },
+        "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+        "sim_backend": "physx_cuda"
+      },
+      "direct_mass_friction_in_saved_state_action": false,
+      "generator": "GPU policy+noise/scripted push/random poke in PickCube",
+      "grip": "Opening/strength commands; effective motor force is scaled by independently randomized grip_scale. Finger material friction is fixed in config.",
+      "physics_conditioned_commands": "Policy mass guess sampled independently from true mass; motion RNG separated from physics. Applied delay and effective grip caps do depend on randomized delay/grip-scale nuisance constants. Feedback actions respond to observed physical motion.",
+      "source_evidence": [
+        "experiments/context_dynamics/collect.py:100-154",
+        "experiments/context_dynamics/collect_gpu.py:22-40,74-116",
+        "robot_adaptation/simulation/context_dynamics.py:11-14,64-99,118-124"
+      ],
+      "limitations": [
+        "Raw state omits joint effort and force sensing.",
+        "Historical z encoders explicitly consume constants; their z is privileged, not an inferred belief."
+      ],
+      "source_counts": {
+        "scripted_push": 10000,
+        "random_poke": 10000,
+        "policy_noise": 20000
+      },
+      "true_mass_vs_independent_policy_guess_pearson": -0.005344887241187301
+    },
+    {
+      "family": "context_dynamics",
+      "path": "runs/context_dynamics/pick_gpu_2m/pilot",
+      "npz_files": 1,
+      "task_names": [
+        "PickCube-v1"
+      ],
+      "task_id_counts": {
+        "0": 10
+      },
+      "episodes": 10,
+      "action_steps": 500,
+      "observed_state_samples": 510,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "episode_id identifies a reset, not a persistent cube. Physics configurations below are not claimed to be cube IDs.",
+      "unique_full_physics_configurations": 10,
+      "unique_mass_friction_pairs": 10,
+      "episodes_per_full_configuration": {
+        "min": 1,
+        "max": 1,
+        "histogram": {
+          "1": 10
+        }
+      },
+      "mass_kg_range": [
+        0.03301854059100151,
+        0.84822016954422
+      ],
+      "friction_range": [
+        0.11023180186748505,
+        1.4229336977005005
+      ],
+      "mass_friction_pearson_unique_full_configurations": -0.12720542775120955,
+      "mass_friction_pearson_unique_mass_friction_pairs": -0.12720542775120955,
+      "mass_friction_pearson_episode_weighted": -0.12720542775120952,
+      "null_correlation_reason": null,
+      "fields_example_file": "runs/context_dynamics/pick_gpu_2m/pilot/shard_0000.npz",
+      "all_saved_fields": {
+        "episode_id": {
+          "shape": [
+            10
+          ],
+          "dtype": "int64"
+        },
+        "seed": {
+          "shape": [
+            10
+          ],
+          "dtype": "int64"
+        },
+        "task_id": {
+          "shape": [
+            10
+          ],
+          "dtype": "uint8"
+        },
+        "source_id": {
+          "shape": [
+            10
+          ],
+          "dtype": "uint8"
+        },
+        "is_validation": {
+          "shape": [
+            10
+          ],
+          "dtype": "bool"
+        },
+        "policy_guess_kg": {
+          "shape": [
+            10
+          ],
+          "dtype": "float64"
+        },
+        "constants": {
+          "shape": [
+            10,
+            10
+          ],
+          "dtype": "float64"
+        },
+        "requested_constants": {
+          "shape": [
+            10,
+            10
+          ],
+          "dtype": "float64"
+        },
+        "state": {
+          "shape": [
+            10,
+            51,
+            39
+          ],
+          "dtype": "float32"
+        },
+        "command": {
+          "shape": [
+            10,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "applied": {
+          "shape": [
+            10,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "finger_drive_limit_n": {
+          "shape": [
+            10,
+            50,
+            2
+          ],
+          "dtype": "float32"
+        }
+      },
+      "state_columns": {
+        "qpos": [
+          0,
+          9
+        ],
+        "qvel": [
+          9,
+          18
+        ],
+        "tcp_pose_wxyz": [
+          18,
+          25
+        ],
+        "gripper_width": [
+          25,
+          26
+        ],
+        "cube_pose_wxyz": [
+          26,
+          33
+        ],
+        "cube_linear_velocity": [
+          33,
+          36
+        ],
+        "cube_angular_velocity": [
+          36,
+          39
+        ]
+      },
+      "action_columns": [
+        "delta_x",
+        "delta_y",
+        "delta_z",
+        "opening",
+        "strength"
+      ],
+      "constant_columns": [
+        "mass_kg",
+        "cube_friction",
+        "table_friction",
+        "grip_scale",
+        "damping_scale",
+        "stiffness_scale",
+        "delay_steps",
+        "com_x_m",
+        "com_y_m",
+        "com_z_m"
+      ],
+      "labels": {
+        "storage": "constants[episode,0]=mass_kg; constants[episode,1]=cube friction; other columns describe nuisance physics. GPU also saves requested_constants.",
+        "constancy": "Stored once per episode. Collector sets physics before rollout and does not change mass or friction during it; no repeated per-step mass/friction readback is saved."
+      },
+      "split": {
+        "rule": "pilot episode 9 reserved",
+        "train_episodes": 9,
+        "validation_episodes": 1,
+        "shared_full_physics_configurations": 0,
+        "shared_mass_friction_pairs": 0,
+        "cube_disjoint": "No persistent cube IDs. Whole-episode split; exact sampled-configuration overlap checked above."
+      },
+      "collection_config": {
+        "policy_manifest": "runs/failure_collection/varied_fixed40g/manifest.json",
+        "seed": 9100329,
+        "episodes": 10,
+        "steps": 50,
+        "shard_episodes": 10,
+        "mass_kg": [
+          0.02,
+          1.0
+        ],
+        "cube_friction": [
+          0.1,
+          1.5
+        ],
+        "table_friction": [
+          0.2,
+          1.2
+        ],
+        "grip_scale": [
+          0.3,
+          1.5
+        ],
+        "damping_scale": [
+          0.5,
+          2.0
+        ],
+        "stiffness_scale": [
+          0.5,
+          1.5
+        ],
+        "delay_steps": [
+          0,
+          3
+        ],
+        "com_m": [
+          -0.01,
+          0.01
+        ],
+        "goal_clearance_m": 0.2,
+        "finger_friction": 0.2,
+        "action_noise_sd": 0.075,
+        "scene_spacing_m": 64.0
+      },
+      "manifest_sha256": "cc3af45ccae3ddd17b21d3423e73c389fc153b11ca56d8505b8c490559382f3c",
+      "completion": {
+        "verified": true,
+        "episodes": 10,
+        "shards": 1,
+        "transition_count": 500,
+        "train_episodes": 9,
+        "validation_episodes": 1,
+        "train_transitions": 450,
+        "validation_transitions": 50,
+        "moved_over_1cm": 10,
+        "sources": {
+          "policy_noise": {
+            "episodes": 6,
+            "train": 5,
+            "validation": 1,
+            "moved_over_1cm": 6,
+            "median_peak_mm": 213.56031036376953
+          },
+          "scripted_push": {
+            "episodes": 2,
+            "train": 2,
+            "validation": 0,
+            "moved_over_1cm": 2,
+            "median_peak_mm": 227.99127197265625
+          },
+          "random_poke": {
+            "episodes": 2,
+            "train": 2,
+            "validation": 0,
+            "moved_over_1cm": 2,
+            "median_peak_mm": 316.7341003417969
+          }
+        },
+        "max_abs_cube_xy_m": 0.5251541137695312,
+        "realized_ranges": {
+          "mass_kg": [
+            0.03301854059100151,
+            0.84822016954422
+          ],
+          "cube_friction": [
+            0.11023180186748505,
+            1.4229336977005005
+          ],
+          "table_friction": [
+            0.20530129969120026,
+            1.0552822351455688
+          ],
+          "grip_scale": [
+            0.3448127269744873,
+            1.424906349182129
+          ],
+          "damping_scale": [
+            0.6486855316162109,
+            1.8849172973632813
+          ],
+          "stiffness_scale": [
+            0.7507785034179687,
+            1.3596378173828125
+          ],
+          "delay_steps": [
+            0.0,
+            3.0
+          ],
+          "com_x_m": [
+            -0.009928325191140175,
+            0.006783845368772745
+          ],
+          "com_y_m": [
+            -0.006821147631853819,
+            0.008949877694249153
+          ],
+          "com_z_m": [
+            -0.009799206629395485,
+            0.006976937409490347
+          ]
+        },
+        "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+        "sim_backend": "physx_cuda"
+      },
+      "direct_mass_friction_in_saved_state_action": false,
+      "generator": "GPU policy+noise/scripted push/random poke in PickCube",
+      "grip": "Opening/strength commands; effective motor force is scaled by independently randomized grip_scale. Finger material friction is fixed in config.",
+      "physics_conditioned_commands": "Policy mass guess sampled independently from true mass; motion RNG separated from physics. Applied delay and effective grip caps do depend on randomized delay/grip-scale nuisance constants. Feedback actions respond to observed physical motion.",
+      "source_evidence": [
+        "experiments/context_dynamics/collect.py:100-154",
+        "experiments/context_dynamics/collect_gpu.py:22-40,74-116",
+        "robot_adaptation/simulation/context_dynamics.py:11-14,64-99,118-124"
+      ],
+      "limitations": [
+        "Raw state omits joint effort and force sensing.",
+        "Historical z encoders explicitly consume constants; their z is privileged, not an inferred belief."
+      ],
+      "source_counts": {
+        "random_poke": 2,
+        "scripted_push": 2,
+        "policy_noise": 6
+      },
+      "true_mass_vs_independent_policy_guess_pearson": 0.10932158810186196
+    },
+    {
+      "family": "context_dynamics",
+      "path": "runs/context_dynamics/pick_gpu_5m_excluded/data",
+      "npz_files": 56,
+      "task_names": [
+        "PickCube-v1"
+      ],
+      "task_id_counts": {
+        "0": 14000
+      },
+      "episodes": 14000,
+      "action_steps": 700000,
+      "observed_state_samples": 714000,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "episode_id identifies a reset, not a persistent cube. Physics configurations below are not claimed to be cube IDs.",
+      "unique_full_physics_configurations": 14000,
+      "unique_mass_friction_pairs": 14000,
+      "episodes_per_full_configuration": {
+        "min": 1,
+        "max": 1,
+        "histogram": {
+          "1": 14000
+        }
+      },
+      "mass_kg_range": [
+        0.020001789554953575,
+        0.9996393918991089
+      ],
+      "friction_range": [
+        0.10001714527606964,
+        1.4999860525131226
+      ],
+      "mass_friction_pearson_unique_full_configurations": -0.003602895332837629,
+      "mass_friction_pearson_unique_mass_friction_pairs": -0.003602895332837629,
+      "mass_friction_pearson_episode_weighted": -0.0036028953328376325,
+      "null_correlation_reason": null,
+      "fields_example_file": "runs/context_dynamics/pick_gpu_5m_excluded/data/shard_0000.npz",
+      "all_saved_fields": {
+        "episode_id": {
+          "shape": [
+            250
+          ],
+          "dtype": "int64"
+        },
+        "seed": {
+          "shape": [
+            250
+          ],
+          "dtype": "int64"
+        },
+        "task_id": {
+          "shape": [
+            250
+          ],
+          "dtype": "uint8"
+        },
+        "source_id": {
+          "shape": [
+            250
+          ],
+          "dtype": "uint8"
+        },
+        "is_validation": {
+          "shape": [
+            250
+          ],
+          "dtype": "bool"
+        },
+        "policy_guess_kg": {
+          "shape": [
+            250
+          ],
+          "dtype": "float64"
+        },
+        "constants": {
+          "shape": [
+            250,
+            10
+          ],
+          "dtype": "float64"
+        },
+        "requested_constants": {
+          "shape": [
+            250,
+            10
+          ],
+          "dtype": "float64"
+        },
+        "state": {
+          "shape": [
+            250,
+            51,
+            39
+          ],
+          "dtype": "float32"
+        },
+        "command": {
+          "shape": [
+            250,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "applied": {
+          "shape": [
+            250,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "finger_drive_limit_n": {
+          "shape": [
+            250,
+            50,
+            2
+          ],
+          "dtype": "float32"
+        }
+      },
+      "state_columns": {
+        "qpos": [
+          0,
+          9
+        ],
+        "qvel": [
+          9,
+          18
+        ],
+        "tcp_pose_wxyz": [
+          18,
+          25
+        ],
+        "gripper_width": [
+          25,
+          26
+        ],
+        "cube_pose_wxyz": [
+          26,
+          33
+        ],
+        "cube_linear_velocity": [
+          33,
+          36
+        ],
+        "cube_angular_velocity": [
+          36,
+          39
+        ]
+      },
+      "action_columns": [
+        "delta_x",
+        "delta_y",
+        "delta_z",
+        "opening",
+        "strength"
+      ],
+      "constant_columns": [
+        "mass_kg",
+        "cube_friction",
+        "table_friction",
+        "grip_scale",
+        "damping_scale",
+        "stiffness_scale",
+        "delay_steps",
+        "com_x_m",
+        "com_y_m",
+        "com_z_m"
+      ],
+      "labels": {
+        "storage": "constants[episode,0]=mass_kg; constants[episode,1]=cube friction; other columns describe nuisance physics. GPU also saves requested_constants.",
+        "constancy": "Stored once per episode. Collector sets physics before rollout and does not change mass or friction during it; no repeated per-step mass/friction readback is saved."
+      },
+      "split": {
+        "rule": "validation if (episode_id // 4) % 10 == 9",
+        "train_episodes": 12600,
+        "validation_episodes": 1400,
+        "shared_full_physics_configurations": 0,
+        "shared_mass_friction_pairs": 0,
+        "cube_disjoint": "No persistent cube IDs. Whole-episode split; exact sampled-configuration overlap checked above."
+      },
+      "collection_config": {
+        "policy_manifest": "runs/failure_collection/varied_fixed40g/manifest.json",
+        "seed": 9110329,
+        "episodes": 40000,
+        "steps": 50,
+        "shard_episodes": 250,
+        "mass_kg": [
+          0.02,
+          1.0
+        ],
+        "cube_friction": [
+          0.1,
+          1.5
+        ],
+        "table_friction": [
+          0.2,
+          1.2
+        ],
+        "grip_scale": [
+          0.3,
+          1.5
+        ],
+        "damping_scale": [
+          0.5,
+          2.0
+        ],
+        "stiffness_scale": [
+          0.5,
+          1.5
+        ],
+        "delay_steps": [
+          0,
+          3
+        ],
+        "com_m": [
+          -0.01,
+          0.01
+        ],
+        "goal_clearance_m": 0.2,
+        "finger_friction": 0.2,
+        "action_noise_sd": 0.075
+      },
+      "manifest_sha256": "d449a4be746d0bacf809d5ccfb73d31bb4ace105eadedd0cf1e3c7a8b5651008",
+      "completion": null,
+      "direct_mass_friction_in_saved_state_action": false,
+      "generator": "GPU policy+noise/scripted push/random poke in PickCube",
+      "grip": "Opening/strength commands; effective motor force is scaled by independently randomized grip_scale. Finger material friction is fixed in config.",
+      "physics_conditioned_commands": "Policy mass guess sampled independently from true mass; motion RNG separated from physics. Applied delay and effective grip caps do depend on randomized delay/grip-scale nuisance constants. Feedback actions respond to observed physical motion.",
+      "source_evidence": [
+        "experiments/context_dynamics/collect.py:100-154",
+        "experiments/context_dynamics/collect_gpu.py:22-40,74-116",
+        "robot_adaptation/simulation/context_dynamics.py:11-14,64-99,118-124"
+      ],
+      "limitations": [
+        "Raw state omits joint effort and force sensing.",
+        "Historical z encoders explicitly consume constants; their z is privileged, not an inferred belief."
+      ],
+      "source_counts": {
+        "scripted_push": 3500,
+        "random_poke": 3500,
+        "policy_noise": 7000
+      },
+      "true_mass_vs_independent_policy_guess_pearson": -0.010286917806687704,
+      "excluded_warning": "Incomplete excluded 5m scene-spacing dataset; do not pool with corrected 64m collection. Count reflects actual saved shards, not requested episodes."
+    },
+    {
+      "family": "context_dynamics",
+      "path": "runs/context_dynamics/pick_gpu_5m_excluded/pilot",
+      "npz_files": 1,
+      "task_names": [
+        "PickCube-v1"
+      ],
+      "task_id_counts": {
+        "0": 10
+      },
+      "episodes": 10,
+      "action_steps": 500,
+      "observed_state_samples": 510,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "episode_id identifies a reset, not a persistent cube. Physics configurations below are not claimed to be cube IDs.",
+      "unique_full_physics_configurations": 10,
+      "unique_mass_friction_pairs": 10,
+      "episodes_per_full_configuration": {
+        "min": 1,
+        "max": 1,
+        "histogram": {
+          "1": 10
+        }
+      },
+      "mass_kg_range": [
+        0.03301854059100151,
+        0.84822016954422
+      ],
+      "friction_range": [
+        0.11023180186748505,
+        1.4229336977005005
+      ],
+      "mass_friction_pearson_unique_full_configurations": -0.12720542775120955,
+      "mass_friction_pearson_unique_mass_friction_pairs": -0.12720542775120955,
+      "mass_friction_pearson_episode_weighted": -0.12720542775120952,
+      "null_correlation_reason": null,
+      "fields_example_file": "runs/context_dynamics/pick_gpu_5m_excluded/pilot/shard_0000.npz",
+      "all_saved_fields": {
+        "episode_id": {
+          "shape": [
+            10
+          ],
+          "dtype": "int64"
+        },
+        "seed": {
+          "shape": [
+            10
+          ],
+          "dtype": "int64"
+        },
+        "task_id": {
+          "shape": [
+            10
+          ],
+          "dtype": "uint8"
+        },
+        "source_id": {
+          "shape": [
+            10
+          ],
+          "dtype": "uint8"
+        },
+        "is_validation": {
+          "shape": [
+            10
+          ],
+          "dtype": "bool"
+        },
+        "policy_guess_kg": {
+          "shape": [
+            10
+          ],
+          "dtype": "float64"
+        },
+        "constants": {
+          "shape": [
+            10,
+            10
+          ],
+          "dtype": "float64"
+        },
+        "requested_constants": {
+          "shape": [
+            10,
+            10
+          ],
+          "dtype": "float64"
+        },
+        "state": {
+          "shape": [
+            10,
+            51,
+            39
+          ],
+          "dtype": "float32"
+        },
+        "command": {
+          "shape": [
+            10,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "applied": {
+          "shape": [
+            10,
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "finger_drive_limit_n": {
+          "shape": [
+            10,
+            50,
+            2
+          ],
+          "dtype": "float32"
+        }
+      },
+      "state_columns": {
+        "qpos": [
+          0,
+          9
+        ],
+        "qvel": [
+          9,
+          18
+        ],
+        "tcp_pose_wxyz": [
+          18,
+          25
+        ],
+        "gripper_width": [
+          25,
+          26
+        ],
+        "cube_pose_wxyz": [
+          26,
+          33
+        ],
+        "cube_linear_velocity": [
+          33,
+          36
+        ],
+        "cube_angular_velocity": [
+          36,
+          39
+        ]
+      },
+      "action_columns": [
+        "delta_x",
+        "delta_y",
+        "delta_z",
+        "opening",
+        "strength"
+      ],
+      "constant_columns": [
+        "mass_kg",
+        "cube_friction",
+        "table_friction",
+        "grip_scale",
+        "damping_scale",
+        "stiffness_scale",
+        "delay_steps",
+        "com_x_m",
+        "com_y_m",
+        "com_z_m"
+      ],
+      "labels": {
+        "storage": "constants[episode,0]=mass_kg; constants[episode,1]=cube friction; other columns describe nuisance physics. GPU also saves requested_constants.",
+        "constancy": "Stored once per episode. Collector sets physics before rollout and does not change mass or friction during it; no repeated per-step mass/friction readback is saved."
+      },
+      "split": {
+        "rule": "pilot episode 9 reserved",
+        "train_episodes": 9,
+        "validation_episodes": 1,
+        "shared_full_physics_configurations": 0,
+        "shared_mass_friction_pairs": 0,
+        "cube_disjoint": "No persistent cube IDs. Whole-episode split; exact sampled-configuration overlap checked above."
+      },
+      "collection_config": {
+        "policy_manifest": "runs/failure_collection/varied_fixed40g/manifest.json",
+        "seed": 9100329,
+        "episodes": 10,
+        "steps": 50,
+        "shard_episodes": 10,
+        "mass_kg": [
+          0.02,
+          1.0
+        ],
+        "cube_friction": [
+          0.1,
+          1.5
+        ],
+        "table_friction": [
+          0.2,
+          1.2
+        ],
+        "grip_scale": [
+          0.3,
+          1.5
+        ],
+        "damping_scale": [
+          0.5,
+          2.0
+        ],
+        "stiffness_scale": [
+          0.5,
+          1.5
+        ],
+        "delay_steps": [
+          0,
+          3
+        ],
+        "com_m": [
+          -0.01,
+          0.01
+        ],
+        "goal_clearance_m": 0.2,
+        "finger_friction": 0.2,
+        "action_noise_sd": 0.075
+      },
+      "manifest_sha256": "5a663b54b82cd1fa29f953d70c27ad0e3868c2a4a322d5509db0e463088bdd3d",
+      "completion": {
+        "verified": true,
+        "episodes": 10,
+        "shards": 1,
+        "transition_count": 500,
+        "train_episodes": 9,
+        "validation_episodes": 1,
+        "train_transitions": 450,
+        "validation_transitions": 50,
+        "moved_over_1cm": 10,
+        "sources": {
+          "policy_noise": {
+            "episodes": 6,
+            "train": 5,
+            "validation": 1,
+            "moved_over_1cm": 6,
+            "median_peak_mm": 328.5120849609375
+          },
+          "scripted_push": {
+            "episodes": 2,
+            "train": 2,
+            "validation": 0,
+            "moved_over_1cm": 2,
+            "median_peak_mm": 238.95230102539062
+          },
+          "random_poke": {
+            "episodes": 2,
+            "train": 2,
+            "validation": 0,
+            "moved_over_1cm": 2,
+            "median_peak_mm": 269.4676742553711
+          }
+        },
+        "realized_ranges": {
+          "mass_kg": [
+            0.03301854059100151,
+            0.84822016954422
+          ],
+          "cube_friction": [
+            0.11023180186748505,
+            1.4229336977005005
+          ],
+          "table_friction": [
+            0.20530129969120026,
+            1.0552822351455688
+          ],
+          "grip_scale": [
+            0.3448127269744873,
+            1.424906349182129
+          ],
+          "damping_scale": [
+            0.6486855316162109,
+            1.8849172973632813
+          ],
+          "stiffness_scale": [
+            0.7507785034179687,
+            1.3596378173828125
+          ],
+          "delay_steps": [
+            0.0,
+            3.0
+          ],
+          "com_x_m": [
+            -0.009928325191140175,
+            0.006783845368772745
+          ],
+          "com_y_m": [
+            -0.006821147631853819,
+            0.008949877694249153
+          ],
+          "com_z_m": [
+            -0.009799206629395485,
+            0.006976937409490347
+          ]
+        },
+        "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+        "sim_backend": "physx_cuda"
+      },
+      "direct_mass_friction_in_saved_state_action": false,
+      "generator": "GPU policy+noise/scripted push/random poke in PickCube",
+      "grip": "Opening/strength commands; effective motor force is scaled by independently randomized grip_scale. Finger material friction is fixed in config.",
+      "physics_conditioned_commands": "Policy mass guess sampled independently from true mass; motion RNG separated from physics. Applied delay and effective grip caps do depend on randomized delay/grip-scale nuisance constants. Feedback actions respond to observed physical motion.",
+      "source_evidence": [
+        "experiments/context_dynamics/collect.py:100-154",
+        "experiments/context_dynamics/collect_gpu.py:22-40,74-116",
+        "robot_adaptation/simulation/context_dynamics.py:11-14,64-99,118-124"
+      ],
+      "limitations": [
+        "Raw state omits joint effort and force sensing.",
+        "Historical z encoders explicitly consume constants; their z is privileged, not an inferred belief."
+      ],
+      "source_counts": {
+        "random_poke": 2,
+        "scripted_push": 2,
+        "policy_noise": 6
+      },
+      "true_mass_vs_independent_policy_guess_pearson": 0.10932158810186196,
+      "excluded_warning": "Incomplete excluded 5m scene-spacing dataset; do not pool with corrected 64m collection. Count reflects actual saved shards, not requested episodes."
+    },
+    {
+      "family": "mass_belief",
+      "path": "runs/mass_belief/nov17_v1/calibration",
+      "npz_files": 40,
+      "episodes": 40,
+      "task": "Pick, lift, hold",
+      "action_steps": 4000,
+      "steps_per_episode": [
+        100
+      ],
+      "cube_ids_present": false,
+      "identity": "No cube ID. train/validation/calibration have independently sampled scalar masses; fixed test/closed-loop/switch groups repeat one physical configuration with fresh reset seeds.",
+      "unique_full_physics_configurations": 40,
+      "unique_mass_friction_pairs": 40,
+      "episodes_per_full_configuration": {
+        "min": 1,
+        "max": 1,
+        "histogram": {
+          "1": 40
+        }
+      },
+      "mass_kg_range": [
+        0.04251088947057724,
+        0.4968753755092621
+      ],
+      "friction_range": [
+        0.4,
+        0.4
+      ],
+      "mass_friction_pearson_unique_full_configurations": null,
+      "mass_friction_pearson_unique_mass_friction_pairs": null,
+      "mass_friction_pearson_episode_weighted": null,
+      "null_correlation_reason": "Fewer than two configurations or a constant variable.",
+      "all_saved_fields": {
+        "x": {
+          "shape": [
+            100,
+            25
+          ],
+          "dtype": "float32"
+        },
+        "success": {
+          "shape": [
+            100
+          ],
+          "dtype": "bool"
+        },
+        "supplied_g": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "mass_g": {
+          "shape": [],
+          "dtype": "float64"
+        },
+        "seed": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "initial": {
+          "shape": [
+            45
+          ],
+          "dtype": "float32"
+        }
+      },
+      "fields_example_file": "runs/mass_belief/nov17_v1/calibration/0000.npz",
+      "feature_columns": {
+        "x[0:9]": "post-action qpos including fingers",
+        "x[9:18]": "post-action qvel",
+        "x[18:20]": "post-action measured finger compression forces",
+        "x[20:25]": "preceding applied five-dimensional command"
+      },
+      "labels": {
+        "storage": "mass_g scalar in every NPZ; friction is scalar in switch NPZ, otherwise constant config.json friction only.",
+        "constancy": "Physics set once per episode. Each file stores one mass; no per-step true physics series."
+      },
+      "existing_split": "calibration",
+      "cube_disjoint_split": "Explicit episode directories; no cube-ID split. Test and closed-loop use the same 400g condition; switch uses 80g/friction1.",
+      "generator": "Frozen v1 policy, five command channels including opening and strength",
+      "grip": "Fixed trained force range; policy selects strength from observations and supplied mass estimate.",
+      "controller_modes": {
+        "probe": 40
+      },
+      "supplied_mass_g_range": [
+        40,
+        40
+      ],
+      "initial_observation_weight_n_range": [
+        0.39239999651908875,
+        0.39239999651908875
+      ],
+      "physics_conditioned_commands": "closed_loop *_true passes actual mass to policy at every step; *_belief passes inferred mass; other recordings use fixed40g or independent random training guesses. x excludes the supplied-weight observation, but oracle commands can carry privileged-controller information.",
+      "direct_mass_friction_in_saved_x": false,
+      "initial_observation_warning": "initial[42] is the configured40g reported weight at reset, not actual object mass. Do not mistake the45-vector for the25 estimator inputs.",
+      "configuration": {
+        "calibration_episodes": 40,
+        "calibration_seed": 430000,
+        "friction": 0.4,
+        "goal_clearance_m": 0.2,
+        "heavy_g": 400,
+        "horizon": 100,
+        "mass_range_g": [
+          40,
+          500
+        ],
+        "probe_g": 40,
+        "seed": 1711,
+        "sequences": 12,
+        "settle_consecutive_steps": 10,
+        "settle_tolerance_g": 40,
+        "source": "runs/failure_collection/varied_fixed40g",
+        "test_seed": 440000,
+        "train_episodes": 100,
+        "train_seed": 410000,
+        "trials": 5,
+        "validation_episodes": 24,
+        "validation_seed": 420000,
+        "window": 25
+      },
+      "source_evidence": [
+        "experiments/mass_belief/collect.py:16-18,29-54",
+        "experiments/mass_belief/evaluate.py:74-97",
+        "experiments/mass_belief/switch.py:44-57"
+      ]
+    },
+    {
+      "family": "mass_belief",
+      "path": "runs/mass_belief/nov17_v1/closed_loop",
+      "npz_files": 120,
+      "episodes": 120,
+      "task": "Pick, lift, hold",
+      "action_steps": 12000,
+      "steps_per_episode": [
+        100
+      ],
+      "cube_ids_present": false,
+      "identity": "No cube ID. train/validation/calibration have independently sampled scalar masses; fixed test/closed-loop/switch groups repeat one physical configuration with fresh reset seeds.",
+      "unique_full_physics_configurations": 1,
+      "unique_mass_friction_pairs": 1,
+      "episodes_per_full_configuration": {
+        "min": 120,
+        "max": 120,
+        "histogram": {
+          "120": 1
+        }
+      },
+      "mass_kg_range": [
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "friction_range": [
+        0.4,
+        0.4
+      ],
+      "mass_friction_pearson_unique_full_configurations": null,
+      "mass_friction_pearson_unique_mass_friction_pairs": null,
+      "mass_friction_pearson_episode_weighted": null,
+      "null_correlation_reason": "Fewer than two configurations or a constant variable.",
+      "all_saved_fields": {
+        "x": {
+          "shape": [
+            100,
+            25
+          ],
+          "dtype": "float32"
+        },
+        "success": {
+          "shape": [
+            100
+          ],
+          "dtype": "bool"
+        },
+        "supplied_g": {
+          "shape": [
+            100
+          ],
+          "dtype": "float64"
+        },
+        "mass_g": {
+          "shape": [],
+          "dtype": "float64"
+        },
+        "seed": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "initial": {
+          "shape": [
+            45
+          ],
+          "dtype": "float32"
+        }
+      },
+      "fields_example_file": "runs/mass_belief/nov17_v1/closed_loop/00_1_belief.npz",
+      "feature_columns": {
+        "x[0:9]": "post-action qpos including fingers",
+        "x[9:18]": "post-action qvel",
+        "x[18:20]": "post-action measured finger compression forces",
+        "x[20:25]": "preceding applied five-dimensional command"
+      },
+      "labels": {
+        "storage": "mass_g scalar in every NPZ; friction is scalar in switch NPZ, otherwise constant config.json friction only.",
+        "constancy": "Physics set once per episode. Each file stores one mass; no per-step true physics series."
+      },
+      "existing_split": "closed_loop",
+      "cube_disjoint_split": "Explicit episode directories; no cube-ID split. Test and closed-loop use the same 400g condition; switch uses 80g/friction1.",
+      "generator": "Frozen v1 policy, five command channels including opening and strength",
+      "grip": "Fixed trained force range; policy selects strength from observations and supplied mass estimate.",
+      "controller_modes": {
+        "belief": 60,
+        "oracle_true_mass": 60
+      },
+      "supplied_mass_g_range": [
+        253.11356426292883,
+        448.4978748082949
+      ],
+      "initial_observation_weight_n_range": [
+        0.39239999651908875,
+        0.39239999651908875
+      ],
+      "physics_conditioned_commands": "closed_loop *_true passes actual mass to policy at every step; *_belief passes inferred mass; other recordings use fixed40g or independent random training guesses. x excludes the supplied-weight observation, but oracle commands can carry privileged-controller information.",
+      "direct_mass_friction_in_saved_x": false,
+      "initial_observation_warning": "initial[42] is the configured40g reported weight at reset, not actual object mass. Do not mistake the45-vector for the25 estimator inputs.",
+      "configuration": {
+        "calibration_episodes": 40,
+        "calibration_seed": 430000,
+        "friction": 0.4,
+        "goal_clearance_m": 0.2,
+        "heavy_g": 400,
+        "horizon": 100,
+        "mass_range_g": [
+          40,
+          500
+        ],
+        "probe_g": 40,
+        "seed": 1711,
+        "sequences": 12,
+        "settle_consecutive_steps": 10,
+        "settle_tolerance_g": 40,
+        "source": "runs/failure_collection/varied_fixed40g",
+        "test_seed": 440000,
+        "train_episodes": 100,
+        "train_seed": 410000,
+        "trials": 5,
+        "validation_episodes": 24,
+        "validation_seed": 420000,
+        "window": 25
+      },
+      "source_evidence": [
+        "experiments/mass_belief/collect.py:16-18,29-54",
+        "experiments/mass_belief/evaluate.py:74-97",
+        "experiments/mass_belief/switch.py:44-57"
+      ]
+    },
+    {
+      "family": "mass_belief",
+      "path": "runs/mass_belief/nov17_v1/test",
+      "npz_files": 60,
+      "episodes": 60,
+      "task": "Pick, lift, hold",
+      "action_steps": 6000,
+      "steps_per_episode": [
+        100
+      ],
+      "cube_ids_present": false,
+      "identity": "No cube ID. train/validation/calibration have independently sampled scalar masses; fixed test/closed-loop/switch groups repeat one physical configuration with fresh reset seeds.",
+      "unique_full_physics_configurations": 1,
+      "unique_mass_friction_pairs": 1,
+      "episodes_per_full_configuration": {
+        "min": 60,
+        "max": 60,
+        "histogram": {
+          "60": 1
+        }
+      },
+      "mass_kg_range": [
+        0.4000000059604645,
+        0.4000000059604645
+      ],
+      "friction_range": [
+        0.4,
+        0.4
+      ],
+      "mass_friction_pearson_unique_full_configurations": null,
+      "mass_friction_pearson_unique_mass_friction_pairs": null,
+      "mass_friction_pearson_episode_weighted": null,
+      "null_correlation_reason": "Fewer than two configurations or a constant variable.",
+      "all_saved_fields": {
+        "x": {
+          "shape": [
+            100,
+            25
+          ],
+          "dtype": "float32"
+        },
+        "success": {
+          "shape": [
+            100
+          ],
+          "dtype": "bool"
+        },
+        "supplied_g": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "mass_g": {
+          "shape": [],
+          "dtype": "float64"
+        },
+        "seed": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "initial": {
+          "shape": [
+            45
+          ],
+          "dtype": "float32"
+        }
+      },
+      "fields_example_file": "runs/mass_belief/nov17_v1/test/0000.npz",
+      "feature_columns": {
+        "x[0:9]": "post-action qpos including fingers",
+        "x[9:18]": "post-action qvel",
+        "x[18:20]": "post-action measured finger compression forces",
+        "x[20:25]": "preceding applied five-dimensional command"
+      },
+      "labels": {
+        "storage": "mass_g scalar in every NPZ; friction is scalar in switch NPZ, otherwise constant config.json friction only.",
+        "constancy": "Physics set once per episode. Each file stores one mass; no per-step true physics series."
+      },
+      "existing_split": "test",
+      "cube_disjoint_split": "Explicit episode directories; no cube-ID split. Test and closed-loop use the same 400g condition; switch uses 80g/friction1.",
+      "generator": "Frozen v1 policy, five command channels including opening and strength",
+      "grip": "Fixed trained force range; policy selects strength from observations and supplied mass estimate.",
+      "controller_modes": {
+        "probe": 60
+      },
+      "supplied_mass_g_range": [
+        40,
+        40
+      ],
+      "initial_observation_weight_n_range": [
+        0.39239999651908875,
+        0.39239999651908875
+      ],
+      "physics_conditioned_commands": "closed_loop *_true passes actual mass to policy at every step; *_belief passes inferred mass; other recordings use fixed40g or independent random training guesses. x excludes the supplied-weight observation, but oracle commands can carry privileged-controller information.",
+      "direct_mass_friction_in_saved_x": false,
+      "initial_observation_warning": "initial[42] is the configured40g reported weight at reset, not actual object mass. Do not mistake the45-vector for the25 estimator inputs.",
+      "configuration": {
+        "calibration_episodes": 40,
+        "calibration_seed": 430000,
+        "friction": 0.4,
+        "goal_clearance_m": 0.2,
+        "heavy_g": 400,
+        "horizon": 100,
+        "mass_range_g": [
+          40,
+          500
+        ],
+        "probe_g": 40,
+        "seed": 1711,
+        "sequences": 12,
+        "settle_consecutive_steps": 10,
+        "settle_tolerance_g": 40,
+        "source": "runs/failure_collection/varied_fixed40g",
+        "test_seed": 440000,
+        "train_episodes": 100,
+        "train_seed": 410000,
+        "trials": 5,
+        "validation_episodes": 24,
+        "validation_seed": 420000,
+        "window": 25
+      },
+      "source_evidence": [
+        "experiments/mass_belief/collect.py:16-18,29-54",
+        "experiments/mass_belief/evaluate.py:74-97",
+        "experiments/mass_belief/switch.py:44-57"
+      ]
+    },
+    {
+      "family": "mass_belief",
+      "path": "runs/mass_belief/nov17_v1/train",
+      "npz_files": 100,
+      "episodes": 100,
+      "task": "Pick, lift, hold",
+      "action_steps": 10000,
+      "steps_per_episode": [
+        100
+      ],
+      "cube_ids_present": false,
+      "identity": "No cube ID. train/validation/calibration have independently sampled scalar masses; fixed test/closed-loop/switch groups repeat one physical configuration with fresh reset seeds.",
+      "unique_full_physics_configurations": 100,
+      "unique_mass_friction_pairs": 100,
+      "episodes_per_full_configuration": {
+        "min": 1,
+        "max": 1,
+        "histogram": {
+          "1": 100
+        }
+      },
+      "mass_kg_range": [
+        0.040828902274370193,
+        0.49776691198349
+      ],
+      "friction_range": [
+        0.4,
+        0.4
+      ],
+      "mass_friction_pearson_unique_full_configurations": null,
+      "mass_friction_pearson_unique_mass_friction_pairs": null,
+      "mass_friction_pearson_episode_weighted": null,
+      "null_correlation_reason": "Fewer than two configurations or a constant variable.",
+      "all_saved_fields": {
+        "x": {
+          "shape": [
+            100,
+            25
+          ],
+          "dtype": "float32"
+        },
+        "success": {
+          "shape": [
+            100
+          ],
+          "dtype": "bool"
+        },
+        "supplied_g": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "mass_g": {
+          "shape": [],
+          "dtype": "float64"
+        },
+        "seed": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "initial": {
+          "shape": [
+            45
+          ],
+          "dtype": "float32"
+        }
+      },
+      "fields_example_file": "runs/mass_belief/nov17_v1/train/0000.npz",
+      "feature_columns": {
+        "x[0:9]": "post-action qpos including fingers",
+        "x[9:18]": "post-action qvel",
+        "x[18:20]": "post-action measured finger compression forces",
+        "x[20:25]": "preceding applied five-dimensional command"
+      },
+      "labels": {
+        "storage": "mass_g scalar in every NPZ; friction is scalar in switch NPZ, otherwise constant config.json friction only.",
+        "constancy": "Physics set once per episode. Each file stores one mass; no per-step true physics series."
+      },
+      "existing_split": "train",
+      "cube_disjoint_split": "Explicit episode directories; no cube-ID split. Test and closed-loop use the same 400g condition; switch uses 80g/friction1.",
+      "generator": "Frozen v1 policy, five command channels including opening and strength",
+      "grip": "Fixed trained force range; policy selects strength from observations and supplied mass estimate.",
+      "controller_modes": {
+        "probe": 100
+      },
+      "supplied_mass_g_range": [
+        40,
+        498.61286989605367
+      ],
+      "initial_observation_weight_n_range": [
+        0.39239999651908875,
+        0.39239999651908875
+      ],
+      "physics_conditioned_commands": "closed_loop *_true passes actual mass to policy at every step; *_belief passes inferred mass; other recordings use fixed40g or independent random training guesses. x excludes the supplied-weight observation, but oracle commands can carry privileged-controller information.",
+      "direct_mass_friction_in_saved_x": false,
+      "initial_observation_warning": "initial[42] is the configured40g reported weight at reset, not actual object mass. Do not mistake the45-vector for the25 estimator inputs.",
+      "configuration": {
+        "calibration_episodes": 40,
+        "calibration_seed": 430000,
+        "friction": 0.4,
+        "goal_clearance_m": 0.2,
+        "heavy_g": 400,
+        "horizon": 100,
+        "mass_range_g": [
+          40,
+          500
+        ],
+        "probe_g": 40,
+        "seed": 1711,
+        "sequences": 12,
+        "settle_consecutive_steps": 10,
+        "settle_tolerance_g": 40,
+        "source": "runs/failure_collection/varied_fixed40g",
+        "test_seed": 440000,
+        "train_episodes": 100,
+        "train_seed": 410000,
+        "trials": 5,
+        "validation_episodes": 24,
+        "validation_seed": 420000,
+        "window": 25
+      },
+      "source_evidence": [
+        "experiments/mass_belief/collect.py:16-18,29-54",
+        "experiments/mass_belief/evaluate.py:74-97",
+        "experiments/mass_belief/switch.py:44-57"
+      ]
+    },
+    {
+      "family": "mass_belief",
+      "path": "runs/mass_belief/nov17_v1/validation",
+      "npz_files": 24,
+      "episodes": 24,
+      "task": "Pick, lift, hold",
+      "action_steps": 2400,
+      "steps_per_episode": [
+        100
+      ],
+      "cube_ids_present": false,
+      "identity": "No cube ID. train/validation/calibration have independently sampled scalar masses; fixed test/closed-loop/switch groups repeat one physical configuration with fresh reset seeds.",
+      "unique_full_physics_configurations": 24,
+      "unique_mass_friction_pairs": 24,
+      "episodes_per_full_configuration": {
+        "min": 1,
+        "max": 1,
+        "histogram": {
+          "1": 24
+        }
+      },
+      "mass_kg_range": [
+        0.04656752571463585,
+        0.4967794716358185
+      ],
+      "friction_range": [
+        0.4,
+        0.4
+      ],
+      "mass_friction_pearson_unique_full_configurations": null,
+      "mass_friction_pearson_unique_mass_friction_pairs": null,
+      "mass_friction_pearson_episode_weighted": null,
+      "null_correlation_reason": "Fewer than two configurations or a constant variable.",
+      "all_saved_fields": {
+        "x": {
+          "shape": [
+            100,
+            25
+          ],
+          "dtype": "float32"
+        },
+        "success": {
+          "shape": [
+            100
+          ],
+          "dtype": "bool"
+        },
+        "supplied_g": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "mass_g": {
+          "shape": [],
+          "dtype": "float64"
+        },
+        "seed": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "initial": {
+          "shape": [
+            45
+          ],
+          "dtype": "float32"
+        }
+      },
+      "fields_example_file": "runs/mass_belief/nov17_v1/validation/0000.npz",
+      "feature_columns": {
+        "x[0:9]": "post-action qpos including fingers",
+        "x[9:18]": "post-action qvel",
+        "x[18:20]": "post-action measured finger compression forces",
+        "x[20:25]": "preceding applied five-dimensional command"
+      },
+      "labels": {
+        "storage": "mass_g scalar in every NPZ; friction is scalar in switch NPZ, otherwise constant config.json friction only.",
+        "constancy": "Physics set once per episode. Each file stores one mass; no per-step true physics series."
+      },
+      "existing_split": "validation",
+      "cube_disjoint_split": "Explicit episode directories; no cube-ID split. Test and closed-loop use the same 400g condition; switch uses 80g/friction1.",
+      "generator": "Frozen v1 policy, five command channels including opening and strength",
+      "grip": "Fixed trained force range; policy selects strength from observations and supplied mass estimate.",
+      "controller_modes": {
+        "probe": 24
+      },
+      "supplied_mass_g_range": [
+        40,
+        40
+      ],
+      "initial_observation_weight_n_range": [
+        0.39239999651908875,
+        0.39239999651908875
+      ],
+      "physics_conditioned_commands": "closed_loop *_true passes actual mass to policy at every step; *_belief passes inferred mass; other recordings use fixed40g or independent random training guesses. x excludes the supplied-weight observation, but oracle commands can carry privileged-controller information.",
+      "direct_mass_friction_in_saved_x": false,
+      "initial_observation_warning": "initial[42] is the configured40g reported weight at reset, not actual object mass. Do not mistake the45-vector for the25 estimator inputs.",
+      "configuration": {
+        "calibration_episodes": 40,
+        "calibration_seed": 430000,
+        "friction": 0.4,
+        "goal_clearance_m": 0.2,
+        "heavy_g": 400,
+        "horizon": 100,
+        "mass_range_g": [
+          40,
+          500
+        ],
+        "probe_g": 40,
+        "seed": 1711,
+        "sequences": 12,
+        "settle_consecutive_steps": 10,
+        "settle_tolerance_g": 40,
+        "source": "runs/failure_collection/varied_fixed40g",
+        "test_seed": 440000,
+        "train_episodes": 100,
+        "train_seed": 410000,
+        "trials": 5,
+        "validation_episodes": 24,
+        "validation_seed": 420000,
+        "window": 25
+      },
+      "source_evidence": [
+        "experiments/mass_belief/collect.py:16-18,29-54",
+        "experiments/mass_belief/evaluate.py:74-97",
+        "experiments/mass_belief/switch.py:44-57"
+      ]
+    },
+    {
+      "family": "mass_belief",
+      "path": "runs/mass_belief/switch_80g_mu1/episodes",
+      "npz_files": 60,
+      "episodes": 60,
+      "task": "Pick, lift, hold",
+      "action_steps": 6000,
+      "steps_per_episode": [
+        100
+      ],
+      "cube_ids_present": false,
+      "identity": "No cube ID. train/validation/calibration have independently sampled scalar masses; fixed test/closed-loop/switch groups repeat one physical configuration with fresh reset seeds.",
+      "unique_full_physics_configurations": 1,
+      "unique_mass_friction_pairs": 1,
+      "episodes_per_full_configuration": {
+        "min": 60,
+        "max": 60,
+        "histogram": {
+          "60": 1
+        }
+      },
+      "mass_kg_range": [
+        0.07999999821186066,
+        0.07999999821186066
+      ],
+      "friction_range": [
+        1.0,
+        1.0
+      ],
+      "mass_friction_pearson_unique_full_configurations": null,
+      "mass_friction_pearson_unique_mass_friction_pairs": null,
+      "mass_friction_pearson_episode_weighted": null,
+      "null_correlation_reason": "Fewer than two configurations or a constant variable.",
+      "all_saved_fields": {
+        "x": {
+          "shape": [
+            100,
+            25
+          ],
+          "dtype": "float32"
+        },
+        "success": {
+          "shape": [
+            100
+          ],
+          "dtype": "bool"
+        },
+        "supplied_g": {
+          "shape": [
+            100
+          ],
+          "dtype": "int64"
+        },
+        "mass_g": {
+          "shape": [],
+          "dtype": "float64"
+        },
+        "seed": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "initial": {
+          "shape": [
+            45
+          ],
+          "dtype": "float32"
+        },
+        "static_friction": {
+          "shape": [],
+          "dtype": "float64"
+        },
+        "dynamic_friction": {
+          "shape": [],
+          "dtype": "float64"
+        }
+      },
+      "fields_example_file": "runs/mass_belief/switch_80g_mu1/episodes/00_1.npz",
+      "feature_columns": {
+        "x[0:9]": "post-action qpos including fingers",
+        "x[9:18]": "post-action qvel",
+        "x[18:20]": "post-action measured finger compression forces",
+        "x[20:25]": "preceding applied five-dimensional command"
+      },
+      "labels": {
+        "storage": "mass_g scalar in every NPZ; friction is scalar in switch NPZ, otherwise constant config.json friction only.",
+        "constancy": "Physics set once per episode. Each file stores one mass; no per-step true physics series."
+      },
+      "existing_split": "episodes",
+      "cube_disjoint_split": "Explicit episode directories; no cube-ID split. Test and closed-loop use the same 400g condition; switch uses 80g/friction1.",
+      "generator": "Frozen v1 policy, five command channels including opening and strength",
+      "grip": "Fixed trained force range; policy selects strength from observations and supplied mass estimate.",
+      "controller_modes": {
+        "probe": 60
+      },
+      "supplied_mass_g_range": [
+        40,
+        40
+      ],
+      "initial_observation_weight_n_range": [
+        0.39239999651908875,
+        0.39239999651908875
+      ],
+      "physics_conditioned_commands": "closed_loop *_true passes actual mass to policy at every step; *_belief passes inferred mass; other recordings use fixed40g or independent random training guesses. x excludes the supplied-weight observation, but oracle commands can carry privileged-controller information.",
+      "direct_mass_friction_in_saved_x": false,
+      "initial_observation_warning": "initial[42] is the configured40g reported weight at reset, not actual object mass. Do not mistake the45-vector for the25 estimator inputs.",
+      "configuration": {
+        "base": "/home/ubuntu/faliure/runs/mass_belief/nov17_v1",
+        "friction": 1.0,
+        "mass_g": 80.0,
+        "post_trials": 5,
+        "sequences": 12,
+        "start_seed": 450000
+      },
+      "source_evidence": [
+        "experiments/mass_belief/collect.py:16-18,29-54",
+        "experiments/mass_belief/evaluate.py:74-97",
+        "experiments/mass_belief/switch.py:44-57"
+      ]
+    },
+    {
+      "family": "rma",
+      "path": "runs/rma/adapter_validation_20261107",
+      "npz_files": 216,
+      "episodes": 216,
+      "task": "Randomized lift task; in-range validation or integration smoke",
+      "action_steps": 10800,
+      "observed_state_samples": 10800,
+      "reconstructable_next_state_transitions": 10584,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "Physical grid cell (mass,friction) plus reset seed and oracle/adapted controller mode; no persistent cube ID.",
+      "unique_full_physics_configurations": 9,
+      "unique_mass_friction_pairs": 9,
+      "episodes_per_full_configuration": {
+        "min": 24,
+        "max": 24,
+        "histogram": {
+          "24": 9
+        }
+      },
+      "mass_kg_range": [
+        0.02,
+        0.12
+      ],
+      "friction_range": [
+        0.3,
+        1.0
+      ],
+      "mass_friction_pearson_unique_full_configurations": 2.643388153869423e-18,
+      "mass_friction_pearson_unique_mass_friction_pairs": 2.643388153869423e-18,
+      "mass_friction_pearson_episode_weighted": 2.2413728721351133e-17,
+      "null_correlation_reason": null,
+      "generator": "RMA policy with true-physics encoder in oracle mode, history adapter in adapted mode",
+      "grip": "Policy opening/strength commands; configured finger friction and force range",
+      "controller_modes": {
+        "oracle": 108,
+        "adapted": 108
+      },
+      "all_saved_fields": {
+        "state": {
+          "shape": [
+            50,
+            44
+          ],
+          "dtype": "float32"
+        },
+        "action": {
+          "shape": [
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "z": {
+          "shape": [
+            50,
+            8
+          ],
+          "dtype": "float32"
+        },
+        "z_hat": {
+          "shape": [
+            50,
+            8
+          ],
+          "dtype": "float32"
+        },
+        "success": {
+          "shape": [
+            50
+          ],
+          "dtype": "bool"
+        },
+        "reward": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        },
+        "clearance_m": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        },
+        "goal_distance_m": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        }
+      },
+      "fields_example_file": "runs/rma/adapter_validation_20261107/episode_00000.npz",
+      "labels": {
+        "storage": "episodes.csv mass_kg and friction joined by trace filename; NPZ z is the eight-dimensional true-physics encoding and z_hat is the controller latent.",
+        "constancy": "One grid mass/friction per episode; z is exactly constant across all stored steps in every file.",
+        "constant_z_verified_all_files": true
+      },
+      "state_columns": "state44 selects original46 observation coordinates except42(weight) and45(friction). Last two retained force coordinates divided by40. qpos/qvel/pose/goal/grasp/contact-force observations remain.",
+      "direct_mass_friction_in_saved_state_action": false,
+      "privileged_sidefields": [
+        "z (derived from true mass/friction)",
+        "z_hat equals privileged z in oracle mode"
+      ],
+      "physics_conditioned_commands": "Oracle mode action=policy(state,encode(true_mass,true_friction)); adapted mode uses observed history. These must not be pooled as label-free acquisition.",
+      "existing_split": "Development validation grid or integration smoke. These files do not define cube-disjoint train/test datasets.",
+      "manifest": {
+        "stage": "evaluation",
+        "status": "completed",
+        "config": {
+          "seed": 73001,
+          "masses_kg": [
+            0.02,
+            0.04,
+            0.06,
+            0.08,
+            0.1,
+            0.12
+          ],
+          "frictions": [
+            0.3,
+            0.475,
+            0.65,
+            0.825,
+            1.0
+          ],
+          "num_envs": 60,
+          "num_eval_envs": 30,
+          "horizon": 50,
+          "history_length": 50,
+          "goal_clearance_m": [
+            0.1,
+            0.3
+          ],
+          "finger_friction": 0.2,
+          "learning_rate": 0.0003,
+          "iterations": 1000,
+          "adaptation_episodes": 1000,
+          "eval_seed": 83000,
+          "test_seed": 95000,
+          "test_mass_kg": [
+            0.02,
+            0.07,
+            0.12,
+            0.15,
+            0.2,
+            0.25
+          ],
+          "test_friction": [
+            0.05,
+            0.15,
+            0.25,
+            0.3,
+            0.65,
+            1.0
+          ]
+        },
+        "source_sha256": {
+          "robot_adaptation/policy/rma/model.py": "67b3bec9daf32648342ec009a5d42cab866b57166139e59249acb9224c6d1474",
+          "robot_adaptation/policy/rma/__init__.py": "aa082fa9002c2eec161299809e96be04f1c07a015bd3b8fcc640b673ddd333d8",
+          "experiments/rma/adapt.py": "c9da5f35e0aa07c65a7aeb25cd40bab5948cb2bee87a18994af0d8d29804e9e4",
+          "experiments/rma/common.py": "2a0122e47779ea47bd9b7d9dc09f7471e6d41721ec4047f90b8a6b65b00e4e47",
+          "experiments/rma/train.py": "d009b684717fc9c993daefd2eb8aee18e98d919e20dfdea6553d4be81047b9a6",
+          "experiments/rma/plot.py": "a938ea093b5bef231227b5d476ca804bb310eb1ec7405bfad86a3d1011b17485",
+          "experiments/rma/progress.py": "184358138bb8fc04c2bd5c3d30387232d47d0d15ab8453cfc5fd8c705bf74c84",
+          "experiments/rma/decoder.py": "178df755e68de8e492e673f8f93335ba784641a66fd035a3024a792cf60ca9de",
+          "experiments/rma/run.py": "cc46493cd410933919a1a311dc929f8016373bd5b7f250528eba89e1a84e8c52",
+          "experiments/rma/evaluate.py": "61a1ccaebcbe419b8621230bc02c6ec9e67c7bc9930c13c373ae3d93e87b6308",
+          "experiments/rma/__init__.py": "3d6c11331f530d1661bab8ce3a1d76bb78345ce9d594f4292ba4e92045b22982",
+          "robot_adaptation/simulation/collection_lift.py": "70e8b435c014876954104e459ae791312cda9cb1cb4c1ee5205b25997b93d2b9",
+          "robot_adaptation/simulation/training_lift.py": "562673950e99435702bf03fd1d60b15989d4a6b760a5da4fc4bdcc4a85ed5b68",
+          "robot_adaptation/simulation/grip_controller.py": "18246271be78889e7828e33cf12af9a67d57b445428d53e3aa1ffb9c150ff26b",
+          "robot_adaptation/simulation/environment.py": "ffa561c974ac083ea0a78bb09ea5a9570de9b14b13735cf39924b144e11ec67a",
+          "robot_adaptation/simulation/training_hold.py": "b41ef42b3929e5fc6f452fbe70e1f64858492fb69953ab51ce05e66a7c112371",
+          "robot_adaptation/simulation/__init__.py": "0285f24a5f1d7e643fba8016fd49de716131022e7a865e00e9ad8f2a0e18ce04",
+          "robot_adaptation/policy/examples/maniskill_pick_cube/ppo_upstream.py": "3fa4818861d428480244aae889bc679b2c8e89b59d6289014003c266a84dbab0"
+        },
+        "git_commit": "d88232d87919998d2e91f8186b2e3c3282d456d3",
+        "method": "RMA2-inspired state-based cube baseline; independent implementation",
+        "reference": "https://github.com/yichao-liang/rma4rma",
+        "policy_sha256": "904f47f726b4d7b64e83bf79a7b89650ed9d97baeb696d9769a580464ececf98",
+        "adapter_sha256": "78333bd673185d84831621f09f91ecf1d4e39a91592aa3505f3171e865f76e48",
+        "smoke": false,
+        "validation": true,
+        "seeds_per_cell": 12,
+        "episodes": 216
+      },
+      "source_evidence": [
+        "robot_adaptation/policy/rma/model.py:10-19,40-51",
+        "experiments/rma/evaluate.py:64-98"
+      ]
+    },
+    {
+      "family": "rma",
+      "path": "runs/rma/baseline_20261106_persistent/base_validation_01",
+      "npz_files": 108,
+      "episodes": 108,
+      "task": "Randomized lift task; in-range validation or integration smoke",
+      "action_steps": 5400,
+      "observed_state_samples": 5400,
+      "reconstructable_next_state_transitions": 5292,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "Physical grid cell (mass,friction) plus reset seed and oracle/adapted controller mode; no persistent cube ID.",
+      "unique_full_physics_configurations": 9,
+      "unique_mass_friction_pairs": 9,
+      "episodes_per_full_configuration": {
+        "min": 12,
+        "max": 12,
+        "histogram": {
+          "12": 9
+        }
+      },
+      "mass_kg_range": [
+        0.02,
+        0.12
+      ],
+      "friction_range": [
+        0.3,
+        1.0
+      ],
+      "mass_friction_pearson_unique_full_configurations": 2.643388153869423e-18,
+      "mass_friction_pearson_unique_mass_friction_pairs": 2.643388153869423e-18,
+      "mass_friction_pearson_episode_weighted": 4.625929269271472e-18,
+      "null_correlation_reason": null,
+      "generator": "RMA policy with true-physics encoder in oracle mode, history adapter in adapted mode",
+      "grip": "Policy opening/strength commands; configured finger friction and force range",
+      "controller_modes": {
+        "oracle": 108
+      },
+      "all_saved_fields": {
+        "state": {
+          "shape": [
+            50,
+            44
+          ],
+          "dtype": "float32"
+        },
+        "action": {
+          "shape": [
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "z": {
+          "shape": [
+            50,
+            8
+          ],
+          "dtype": "float32"
+        },
+        "z_hat": {
+          "shape": [
+            50,
+            8
+          ],
+          "dtype": "float32"
+        },
+        "success": {
+          "shape": [
+            50
+          ],
+          "dtype": "bool"
+        },
+        "reward": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        },
+        "clearance_m": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        },
+        "goal_distance_m": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        }
+      },
+      "fields_example_file": "runs/rma/baseline_20261106_persistent/base_validation_01/episode_00000.npz",
+      "labels": {
+        "storage": "episodes.csv mass_kg and friction joined by trace filename; NPZ z is the eight-dimensional true-physics encoding and z_hat is the controller latent.",
+        "constancy": "One grid mass/friction per episode; z is exactly constant across all stored steps in every file.",
+        "constant_z_verified_all_files": true
+      },
+      "state_columns": "state44 selects original46 observation coordinates except42(weight) and45(friction). Last two retained force coordinates divided by40. qpos/qvel/pose/goal/grasp/contact-force observations remain.",
+      "direct_mass_friction_in_saved_state_action": false,
+      "privileged_sidefields": [
+        "z (derived from true mass/friction)",
+        "z_hat equals privileged z in oracle mode"
+      ],
+      "physics_conditioned_commands": "Oracle mode action=policy(state,encode(true_mass,true_friction)); adapted mode uses observed history. These must not be pooled as label-free acquisition.",
+      "existing_split": "Development validation grid or integration smoke. These files do not define cube-disjoint train/test datasets.",
+      "manifest": {
+        "stage": "evaluation",
+        "status": "completed",
+        "config": {
+          "seed": 73001,
+          "masses_kg": [
+            0.02,
+            0.04,
+            0.06,
+            0.08,
+            0.1,
+            0.12
+          ],
+          "frictions": [
+            0.3,
+            0.475,
+            0.65,
+            0.825,
+            1.0
+          ],
+          "num_envs": 60,
+          "num_eval_envs": 30,
+          "horizon": 50,
+          "history_length": 50,
+          "goal_clearance_m": [
+            0.1,
+            0.3
+          ],
+          "finger_friction": 0.2,
+          "learning_rate": 0.0003,
+          "iterations": 1000,
+          "adaptation_episodes": 1000,
+          "eval_seed": 83000,
+          "test_seed": 95000,
+          "test_mass_kg": [
+            0.02,
+            0.07,
+            0.12,
+            0.15,
+            0.2,
+            0.25
+          ],
+          "test_friction": [
+            0.05,
+            0.15,
+            0.25,
+            0.3,
+            0.65,
+            1.0
+          ]
+        },
+        "source_sha256": {
+          "robot_adaptation/policy/rma/model.py": "67b3bec9daf32648342ec009a5d42cab866b57166139e59249acb9224c6d1474",
+          "robot_adaptation/policy/rma/__init__.py": "aa082fa9002c2eec161299809e96be04f1c07a015bd3b8fcc640b673ddd333d8",
+          "experiments/rma/adapt.py": "c9da5f35e0aa07c65a7aeb25cd40bab5948cb2bee87a18994af0d8d29804e9e4",
+          "experiments/rma/common.py": "2a0122e47779ea47bd9b7d9dc09f7471e6d41721ec4047f90b8a6b65b00e4e47",
+          "experiments/rma/train.py": "d009b684717fc9c993daefd2eb8aee18e98d919e20dfdea6553d4be81047b9a6",
+          "experiments/rma/plot.py": "a938ea093b5bef231227b5d476ca804bb310eb1ec7405bfad86a3d1011b17485",
+          "experiments/rma/progress.py": "184358138bb8fc04c2bd5c3d30387232d47d0d15ab8453cfc5fd8c705bf74c84",
+          "experiments/rma/run.py": "cc46493cd410933919a1a311dc929f8016373bd5b7f250528eba89e1a84e8c52",
+          "experiments/rma/evaluate.py": "61a1ccaebcbe419b8621230bc02c6ec9e67c7bc9930c13c373ae3d93e87b6308",
+          "experiments/rma/__init__.py": "3d6c11331f530d1661bab8ce3a1d76bb78345ce9d594f4292ba4e92045b22982",
+          "robot_adaptation/simulation/collection_lift.py": "70e8b435c014876954104e459ae791312cda9cb1cb4c1ee5205b25997b93d2b9",
+          "robot_adaptation/simulation/training_lift.py": "562673950e99435702bf03fd1d60b15989d4a6b760a5da4fc4bdcc4a85ed5b68",
+          "robot_adaptation/simulation/grip_controller.py": "18246271be78889e7828e33cf12af9a67d57b445428d53e3aa1ffb9c150ff26b",
+          "robot_adaptation/simulation/environment.py": "ffa561c974ac083ea0a78bb09ea5a9570de9b14b13735cf39924b144e11ec67a",
+          "robot_adaptation/simulation/training_hold.py": "b41ef42b3929e5fc6f452fbe70e1f64858492fb69953ab51ce05e66a7c112371",
+          "robot_adaptation/simulation/__init__.py": "0285f24a5f1d7e643fba8016fd49de716131022e7a865e00e9ad8f2a0e18ce04",
+          "robot_adaptation/policy/examples/maniskill_pick_cube/ppo_upstream.py": "3fa4818861d428480244aae889bc679b2c8e89b59d6289014003c266a84dbab0"
+        },
+        "git_commit": "d88232d87919998d2e91f8186b2e3c3282d456d3",
+        "method": "RMA2-inspired state-based cube baseline; independent implementation",
+        "reference": "https://github.com/yichao-liang/rma4rma",
+        "policy_sha256": "904f47f726b4d7b64e83bf79a7b89650ed9d97baeb696d9769a580464ececf98",
+        "adapter_sha256": null,
+        "smoke": false,
+        "validation": true,
+        "seeds_per_cell": 12,
+        "episodes": 108
+      },
+      "source_evidence": [
+        "robot_adaptation/policy/rma/model.py:10-19,40-51",
+        "experiments/rma/evaluate.py:64-98"
+      ]
+    },
+    {
+      "family": "rma",
+      "path": "runs/rma/baseline_20261106_persistent/base_validation_02",
+      "npz_files": 108,
+      "episodes": 108,
+      "task": "Randomized lift task; in-range validation or integration smoke",
+      "action_steps": 5400,
+      "observed_state_samples": 5400,
+      "reconstructable_next_state_transitions": 5292,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "Physical grid cell (mass,friction) plus reset seed and oracle/adapted controller mode; no persistent cube ID.",
+      "unique_full_physics_configurations": 9,
+      "unique_mass_friction_pairs": 9,
+      "episodes_per_full_configuration": {
+        "min": 12,
+        "max": 12,
+        "histogram": {
+          "12": 9
+        }
+      },
+      "mass_kg_range": [
+        0.02,
+        0.12
+      ],
+      "friction_range": [
+        0.3,
+        1.0
+      ],
+      "mass_friction_pearson_unique_full_configurations": 2.643388153869423e-18,
+      "mass_friction_pearson_unique_mass_friction_pairs": 2.643388153869423e-18,
+      "mass_friction_pearson_episode_weighted": 4.625929269271472e-18,
+      "null_correlation_reason": null,
+      "generator": "RMA policy with true-physics encoder in oracle mode, history adapter in adapted mode",
+      "grip": "Policy opening/strength commands; configured finger friction and force range",
+      "controller_modes": {
+        "oracle": 108
+      },
+      "all_saved_fields": {
+        "state": {
+          "shape": [
+            50,
+            44
+          ],
+          "dtype": "float32"
+        },
+        "action": {
+          "shape": [
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "z": {
+          "shape": [
+            50,
+            8
+          ],
+          "dtype": "float32"
+        },
+        "z_hat": {
+          "shape": [
+            50,
+            8
+          ],
+          "dtype": "float32"
+        },
+        "success": {
+          "shape": [
+            50
+          ],
+          "dtype": "bool"
+        },
+        "reward": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        },
+        "clearance_m": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        },
+        "goal_distance_m": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        }
+      },
+      "fields_example_file": "runs/rma/baseline_20261106_persistent/base_validation_02/episode_00000.npz",
+      "labels": {
+        "storage": "episodes.csv mass_kg and friction joined by trace filename; NPZ z is the eight-dimensional true-physics encoding and z_hat is the controller latent.",
+        "constancy": "One grid mass/friction per episode; z is exactly constant across all stored steps in every file.",
+        "constant_z_verified_all_files": true
+      },
+      "state_columns": "state44 selects original46 observation coordinates except42(weight) and45(friction). Last two retained force coordinates divided by40. qpos/qvel/pose/goal/grasp/contact-force observations remain.",
+      "direct_mass_friction_in_saved_state_action": false,
+      "privileged_sidefields": [
+        "z (derived from true mass/friction)",
+        "z_hat equals privileged z in oracle mode"
+      ],
+      "physics_conditioned_commands": "Oracle mode action=policy(state,encode(true_mass,true_friction)); adapted mode uses observed history. These must not be pooled as label-free acquisition.",
+      "existing_split": "Development validation grid or integration smoke. These files do not define cube-disjoint train/test datasets.",
+      "manifest": {
+        "stage": "evaluation",
+        "status": "completed",
+        "config": {
+          "seed": 74001,
+          "masses_kg": [
+            0.02,
+            0.04,
+            0.06,
+            0.08,
+            0.1,
+            0.12
+          ],
+          "frictions": [
+            0.3,
+            0.475,
+            0.65,
+            0.825,
+            1.0
+          ],
+          "num_envs": 60,
+          "num_eval_envs": 30,
+          "horizon": 50,
+          "history_length": 50,
+          "goal_clearance_m": [
+            0.1,
+            0.3
+          ],
+          "finger_friction": 0.2,
+          "learning_rate": 0.0003,
+          "iterations": 1000,
+          "adaptation_episodes": 1000,
+          "eval_seed": 83000,
+          "test_seed": 95000,
+          "test_mass_kg": [
+            0.02,
+            0.07,
+            0.12,
+            0.15,
+            0.2,
+            0.25
+          ],
+          "test_friction": [
+            0.05,
+            0.15,
+            0.25,
+            0.3,
+            0.65,
+            1.0
+          ]
+        },
+        "source_sha256": {
+          "robot_adaptation/policy/rma/model.py": "67b3bec9daf32648342ec009a5d42cab866b57166139e59249acb9224c6d1474",
+          "robot_adaptation/policy/rma/__init__.py": "aa082fa9002c2eec161299809e96be04f1c07a015bd3b8fcc640b673ddd333d8",
+          "experiments/rma/adapt.py": "c9da5f35e0aa07c65a7aeb25cd40bab5948cb2bee87a18994af0d8d29804e9e4",
+          "experiments/rma/common.py": "2a0122e47779ea47bd9b7d9dc09f7471e6d41721ec4047f90b8a6b65b00e4e47",
+          "experiments/rma/train.py": "d009b684717fc9c993daefd2eb8aee18e98d919e20dfdea6553d4be81047b9a6",
+          "experiments/rma/plot.py": "a938ea093b5bef231227b5d476ca804bb310eb1ec7405bfad86a3d1011b17485",
+          "experiments/rma/progress.py": "184358138bb8fc04c2bd5c3d30387232d47d0d15ab8453cfc5fd8c705bf74c84",
+          "experiments/rma/run.py": "cc46493cd410933919a1a311dc929f8016373bd5b7f250528eba89e1a84e8c52",
+          "experiments/rma/evaluate.py": "61a1ccaebcbe419b8621230bc02c6ec9e67c7bc9930c13c373ae3d93e87b6308",
+          "experiments/rma/__init__.py": "3d6c11331f530d1661bab8ce3a1d76bb78345ce9d594f4292ba4e92045b22982",
+          "robot_adaptation/simulation/collection_lift.py": "70e8b435c014876954104e459ae791312cda9cb1cb4c1ee5205b25997b93d2b9",
+          "robot_adaptation/simulation/training_lift.py": "562673950e99435702bf03fd1d60b15989d4a6b760a5da4fc4bdcc4a85ed5b68",
+          "robot_adaptation/simulation/grip_controller.py": "18246271be78889e7828e33cf12af9a67d57b445428d53e3aa1ffb9c150ff26b",
+          "robot_adaptation/simulation/environment.py": "ffa561c974ac083ea0a78bb09ea5a9570de9b14b13735cf39924b144e11ec67a",
+          "robot_adaptation/simulation/training_hold.py": "b41ef42b3929e5fc6f452fbe70e1f64858492fb69953ab51ce05e66a7c112371",
+          "robot_adaptation/simulation/__init__.py": "0285f24a5f1d7e643fba8016fd49de716131022e7a865e00e9ad8f2a0e18ce04",
+          "robot_adaptation/policy/examples/maniskill_pick_cube/ppo_upstream.py": "3fa4818861d428480244aae889bc679b2c8e89b59d6289014003c266a84dbab0"
+        },
+        "git_commit": "d88232d87919998d2e91f8186b2e3c3282d456d3",
+        "method": "RMA2-inspired state-based cube baseline; independent implementation",
+        "reference": "https://github.com/yichao-liang/rma4rma",
+        "policy_sha256": "b33d37da1b77de55e167f28755b71a5b307e829629acebcfe83d98d09693103a",
+        "adapter_sha256": null,
+        "smoke": false,
+        "validation": true,
+        "seeds_per_cell": 12,
+        "episodes": 108
+      },
+      "source_evidence": [
+        "robot_adaptation/policy/rma/model.py:10-19,40-51",
+        "experiments/rma/evaluate.py:64-98"
+      ]
+    },
+    {
+      "family": "rma",
+      "path": "runs/rma/baseline_20261106_persistent/base_validation_03",
+      "npz_files": 108,
+      "episodes": 108,
+      "task": "Randomized lift task; in-range validation or integration smoke",
+      "action_steps": 5400,
+      "observed_state_samples": 5400,
+      "reconstructable_next_state_transitions": 5292,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "Physical grid cell (mass,friction) plus reset seed and oracle/adapted controller mode; no persistent cube ID.",
+      "unique_full_physics_configurations": 9,
+      "unique_mass_friction_pairs": 9,
+      "episodes_per_full_configuration": {
+        "min": 12,
+        "max": 12,
+        "histogram": {
+          "12": 9
+        }
+      },
+      "mass_kg_range": [
+        0.02,
+        0.12
+      ],
+      "friction_range": [
+        0.3,
+        1.0
+      ],
+      "mass_friction_pearson_unique_full_configurations": 2.643388153869423e-18,
+      "mass_friction_pearson_unique_mass_friction_pairs": 2.643388153869423e-18,
+      "mass_friction_pearson_episode_weighted": 4.625929269271472e-18,
+      "null_correlation_reason": null,
+      "generator": "RMA policy with true-physics encoder in oracle mode, history adapter in adapted mode",
+      "grip": "Policy opening/strength commands; configured finger friction and force range",
+      "controller_modes": {
+        "oracle": 108
+      },
+      "all_saved_fields": {
+        "state": {
+          "shape": [
+            50,
+            44
+          ],
+          "dtype": "float32"
+        },
+        "action": {
+          "shape": [
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "z": {
+          "shape": [
+            50,
+            8
+          ],
+          "dtype": "float32"
+        },
+        "z_hat": {
+          "shape": [
+            50,
+            8
+          ],
+          "dtype": "float32"
+        },
+        "success": {
+          "shape": [
+            50
+          ],
+          "dtype": "bool"
+        },
+        "reward": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        },
+        "clearance_m": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        },
+        "goal_distance_m": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        }
+      },
+      "fields_example_file": "runs/rma/baseline_20261106_persistent/base_validation_03/episode_00000.npz",
+      "labels": {
+        "storage": "episodes.csv mass_kg and friction joined by trace filename; NPZ z is the eight-dimensional true-physics encoding and z_hat is the controller latent.",
+        "constancy": "One grid mass/friction per episode; z is exactly constant across all stored steps in every file.",
+        "constant_z_verified_all_files": true
+      },
+      "state_columns": "state44 selects original46 observation coordinates except42(weight) and45(friction). Last two retained force coordinates divided by40. qpos/qvel/pose/goal/grasp/contact-force observations remain.",
+      "direct_mass_friction_in_saved_state_action": false,
+      "privileged_sidefields": [
+        "z (derived from true mass/friction)",
+        "z_hat equals privileged z in oracle mode"
+      ],
+      "physics_conditioned_commands": "Oracle mode action=policy(state,encode(true_mass,true_friction)); adapted mode uses observed history. These must not be pooled as label-free acquisition.",
+      "existing_split": "Development validation grid or integration smoke. These files do not define cube-disjoint train/test datasets.",
+      "manifest": {
+        "stage": "evaluation",
+        "status": "completed",
+        "config": {
+          "seed": 75001,
+          "masses_kg": [
+            0.02,
+            0.04,
+            0.06,
+            0.08,
+            0.1,
+            0.12
+          ],
+          "frictions": [
+            0.3,
+            0.475,
+            0.65,
+            0.825,
+            1.0
+          ],
+          "num_envs": 60,
+          "num_eval_envs": 30,
+          "horizon": 50,
+          "history_length": 50,
+          "goal_clearance_m": [
+            0.1,
+            0.3
+          ],
+          "finger_friction": 0.2,
+          "learning_rate": 0.0003,
+          "iterations": 1000,
+          "adaptation_episodes": 1000,
+          "eval_seed": 83000,
+          "test_seed": 95000,
+          "test_mass_kg": [
+            0.02,
+            0.07,
+            0.12,
+            0.15,
+            0.2,
+            0.25
+          ],
+          "test_friction": [
+            0.05,
+            0.15,
+            0.25,
+            0.3,
+            0.65,
+            1.0
+          ]
+        },
+        "source_sha256": {
+          "robot_adaptation/policy/rma/model.py": "67b3bec9daf32648342ec009a5d42cab866b57166139e59249acb9224c6d1474",
+          "robot_adaptation/policy/rma/__init__.py": "aa082fa9002c2eec161299809e96be04f1c07a015bd3b8fcc640b673ddd333d8",
+          "experiments/rma/adapt.py": "c9da5f35e0aa07c65a7aeb25cd40bab5948cb2bee87a18994af0d8d29804e9e4",
+          "experiments/rma/common.py": "2a0122e47779ea47bd9b7d9dc09f7471e6d41721ec4047f90b8a6b65b00e4e47",
+          "experiments/rma/train.py": "d009b684717fc9c993daefd2eb8aee18e98d919e20dfdea6553d4be81047b9a6",
+          "experiments/rma/plot.py": "a938ea093b5bef231227b5d476ca804bb310eb1ec7405bfad86a3d1011b17485",
+          "experiments/rma/progress.py": "184358138bb8fc04c2bd5c3d30387232d47d0d15ab8453cfc5fd8c705bf74c84",
+          "experiments/rma/run.py": "cc46493cd410933919a1a311dc929f8016373bd5b7f250528eba89e1a84e8c52",
+          "experiments/rma/evaluate.py": "61a1ccaebcbe419b8621230bc02c6ec9e67c7bc9930c13c373ae3d93e87b6308",
+          "experiments/rma/__init__.py": "3d6c11331f530d1661bab8ce3a1d76bb78345ce9d594f4292ba4e92045b22982",
+          "robot_adaptation/simulation/collection_lift.py": "70e8b435c014876954104e459ae791312cda9cb1cb4c1ee5205b25997b93d2b9",
+          "robot_adaptation/simulation/training_lift.py": "562673950e99435702bf03fd1d60b15989d4a6b760a5da4fc4bdcc4a85ed5b68",
+          "robot_adaptation/simulation/grip_controller.py": "18246271be78889e7828e33cf12af9a67d57b445428d53e3aa1ffb9c150ff26b",
+          "robot_adaptation/simulation/environment.py": "ffa561c974ac083ea0a78bb09ea5a9570de9b14b13735cf39924b144e11ec67a",
+          "robot_adaptation/simulation/training_hold.py": "b41ef42b3929e5fc6f452fbe70e1f64858492fb69953ab51ce05e66a7c112371",
+          "robot_adaptation/simulation/__init__.py": "0285f24a5f1d7e643fba8016fd49de716131022e7a865e00e9ad8f2a0e18ce04",
+          "robot_adaptation/policy/examples/maniskill_pick_cube/ppo_upstream.py": "3fa4818861d428480244aae889bc679b2c8e89b59d6289014003c266a84dbab0"
+        },
+        "git_commit": "d88232d87919998d2e91f8186b2e3c3282d456d3",
+        "method": "RMA2-inspired state-based cube baseline; independent implementation",
+        "reference": "https://github.com/yichao-liang/rma4rma",
+        "policy_sha256": "d1e9f6d1ed5c229f00ca4df60aa7fdc5a2f5f64384737fbc6f0aa6df741511bf",
+        "adapter_sha256": null,
+        "smoke": false,
+        "validation": true,
+        "seeds_per_cell": 12,
+        "episodes": 108
+      },
+      "source_evidence": [
+        "robot_adaptation/policy/rma/model.py:10-19,40-51",
+        "experiments/rma/evaluate.py:64-98"
+      ]
+    },
+    {
+      "family": "rma",
+      "path": "runs/rma/integration_evaluation",
+      "npz_files": 2,
+      "episodes": 2,
+      "task": "Randomized lift task; in-range validation or integration smoke",
+      "action_steps": 100,
+      "observed_state_samples": 100,
+      "reconstructable_next_state_transitions": 98,
+      "steps_per_episode": [
+        50
+      ],
+      "cube_ids_present": false,
+      "identity": "Physical grid cell (mass,friction) plus reset seed and oracle/adapted controller mode; no persistent cube ID.",
+      "unique_full_physics_configurations": 1,
+      "unique_mass_friction_pairs": 1,
+      "episodes_per_full_configuration": {
+        "min": 2,
+        "max": 2,
+        "histogram": {
+          "2": 1
+        }
+      },
+      "mass_kg_range": [
+        0.07,
+        0.07
+      ],
+      "friction_range": [
+        0.65,
+        0.65
+      ],
+      "mass_friction_pearson_unique_full_configurations": null,
+      "mass_friction_pearson_unique_mass_friction_pairs": null,
+      "mass_friction_pearson_episode_weighted": null,
+      "null_correlation_reason": "Fewer than two configurations or a constant variable.",
+      "generator": "RMA policy with true-physics encoder in oracle mode, history adapter in adapted mode",
+      "grip": "Policy opening/strength commands; configured finger friction and force range",
+      "controller_modes": {
+        "oracle": 1,
+        "adapted": 1
+      },
+      "all_saved_fields": {
+        "state": {
+          "shape": [
+            50,
+            44
+          ],
+          "dtype": "float32"
+        },
+        "action": {
+          "shape": [
+            50,
+            5
+          ],
+          "dtype": "float32"
+        },
+        "z": {
+          "shape": [
+            50,
+            8
+          ],
+          "dtype": "float32"
+        },
+        "z_hat": {
+          "shape": [
+            50,
+            8
+          ],
+          "dtype": "float32"
+        },
+        "success": {
+          "shape": [
+            50
+          ],
+          "dtype": "bool"
+        },
+        "reward": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        },
+        "clearance_m": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        },
+        "goal_distance_m": {
+          "shape": [
+            50
+          ],
+          "dtype": "float32"
+        }
+      },
+      "fields_example_file": "runs/rma/integration_evaluation/episode_00000.npz",
+      "labels": {
+        "storage": "episodes.csv mass_kg and friction joined by trace filename; NPZ z is the eight-dimensional true-physics encoding and z_hat is the controller latent.",
+        "constancy": "One grid mass/friction per episode; z is exactly constant across all stored steps in every file.",
+        "constant_z_verified_all_files": true
+      },
+      "state_columns": "state44 selects original46 observation coordinates except42(weight) and45(friction). Last two retained force coordinates divided by40. qpos/qvel/pose/goal/grasp/contact-force observations remain.",
+      "direct_mass_friction_in_saved_state_action": false,
+      "privileged_sidefields": [
+        "z (derived from true mass/friction)",
+        "z_hat equals privileged z in oracle mode"
+      ],
+      "physics_conditioned_commands": "Oracle mode action=policy(state,encode(true_mass,true_friction)); adapted mode uses observed history. These must not be pooled as label-free acquisition.",
+      "existing_split": "Development validation grid or integration smoke. These files do not define cube-disjoint train/test datasets.",
+      "manifest": {
+        "stage": "evaluation",
+        "status": "completed",
+        "config": {
+          "seed": 73001,
+          "masses_kg": [
+            0.02,
+            0.04,
+            0.06,
+            0.08,
+            0.1,
+            0.12
+          ],
+          "frictions": [
+            0.3,
+            0.475,
+            0.65,
+            0.825,
+            1.0
+          ],
+          "num_envs": 60,
+          "num_eval_envs": 30,
+          "horizon": 50,
+          "history_length": 50,
+          "goal_clearance_m": [
+            0.1,
+            0.3
+          ],
+          "finger_friction": 0.2,
+          "learning_rate": 0.0003,
+          "iterations": 2,
+          "adaptation_episodes": 1000,
+          "eval_seed": 83000,
+          "test_seed": 93000,
+          "test_mass_kg": [
+            0.02,
+            0.07,
+            0.12,
+            0.15,
+            0.2,
+            0.25
+          ],
+          "test_friction": [
+            0.05,
+            0.15,
+            0.25,
+            0.3,
+            0.65,
+            1.0
+          ]
+        },
+        "source_sha256": {
+          "robot_adaptation/policy/rma/model.py": "67b3bec9daf32648342ec009a5d42cab866b57166139e59249acb9224c6d1474",
+          "robot_adaptation/policy/rma/__init__.py": "aa082fa9002c2eec161299809e96be04f1c07a015bd3b8fcc640b673ddd333d8",
+          "experiments/rma/adapt.py": "05960f8c17786618e658a1b562a0718b2e5d91ee4ebb5aefdb3c47365ec23477",
+          "experiments/rma/common.py": "2a0122e47779ea47bd9b7d9dc09f7471e6d41721ec4047f90b8a6b65b00e4e47",
+          "experiments/rma/train.py": "8b61f42af20e741bf6156ebd87632913ee775c0e68e4925c36598c8400289599",
+          "experiments/rma/plot.py": "a938ea093b5bef231227b5d476ca804bb310eb1ec7405bfad86a3d1011b17485",
+          "experiments/rma/evaluate.py": "da409355df50f83e0b8149771f80c8fd874e197ac05ec71a2b49fc2aa2ff80f7",
+          "experiments/rma/__init__.py": "3d6c11331f530d1661bab8ce3a1d76bb78345ce9d594f4292ba4e92045b22982",
+          "robot_adaptation/simulation/collection_lift.py": "70e8b435c014876954104e459ae791312cda9cb1cb4c1ee5205b25997b93d2b9",
+          "robot_adaptation/simulation/training_lift.py": "562673950e99435702bf03fd1d60b15989d4a6b760a5da4fc4bdcc4a85ed5b68",
+          "robot_adaptation/simulation/grip_controller.py": "18246271be78889e7828e33cf12af9a67d57b445428d53e3aa1ffb9c150ff26b",
+          "robot_adaptation/simulation/environment.py": "ffa561c974ac083ea0a78bb09ea5a9570de9b14b13735cf39924b144e11ec67a",
+          "robot_adaptation/simulation/training_hold.py": "b41ef42b3929e5fc6f452fbe70e1f64858492fb69953ab51ce05e66a7c112371",
+          "robot_adaptation/simulation/__init__.py": "0285f24a5f1d7e643fba8016fd49de716131022e7a865e00e9ad8f2a0e18ce04",
+          "robot_adaptation/policy/examples/maniskill_pick_cube/ppo_upstream.py": "3fa4818861d428480244aae889bc679b2c8e89b59d6289014003c266a84dbab0"
+        },
+        "git_commit": "0e473fdf93ba67c7b3657e0b36166f798938e64b",
+        "method": "RMA2-inspired state-based cube baseline; independent implementation",
+        "reference": "https://github.com/yichao-liang/rma4rma",
+        "policy_sha256": "8f0a1d5148fb897e89578861bb8b6f7ddd48e58365a874abe383c5c914c3cc96",
+        "adapter_sha256": "cbf2d5127367a3b87ceb3492bad5e1f893ff08232337a58d9ad1acaaa6602e22",
+        "smoke": true,
+        "seeds_per_cell": 1,
+        "episodes": 2
+      },
+      "source_evidence": [
+        "robot_adaptation/policy/rma/model.py:10-19,40-51",
+        "experiments/rma/evaluate.py:64-98"
+      ]
+    },
+    {
+      "family": "interaction_estimator",
+      "path": "runs/interaction_estimator/contact_dataset_v1",
+      "task": "Contact snippets from independent fixed-policy lift attempts",
+      "npz_files": 1,
+      "source_episodes": 440,
+      "snippets": 2369,
+      "recorded_feature_rows": 20927,
+      "source_steps_per_episode": 100,
+      "source_action_steps": 44000,
+      "snippet_lengths": {
+        "min": 1,
+        "median": 6.0,
+        "max": 86
+      },
+      "cube_ids_present": false,
+      "identity": "condition_id identifies repeated physical configuration, not persistent object identity.",
+      "unique_full_physics_configurations": 44,
+      "unique_mass_friction_pairs": 44,
+      "episodes_per_full_configuration": {
+        "min": 10,
+        "max": 10,
+        "histogram": {
+          "10": 44
+        }
+      },
+      "mass_kg_range": [
+        0.03999999910593033,
+        0.5
+      ],
+      "friction_range": [
+        0.10000000149011612,
+        1.0
+      ],
+      "mass_friction_pearson_unique_full_configurations": -0.035092884578675806,
+      "mass_friction_pearson_unique_mass_friction_pairs": -0.035092884578675806,
+      "mass_friction_pearson_episode_weighted": -0.03509288457867618,
+      "null_correlation_reason": null,
+      "generator": "Fixed40g-report frozen policy, independently reset attempts; contact bouts aligned by measured compression.",
+      "grip": "Policy strength/opening; measured actuator cap and force included in x",
+      "all_saved_fields": {
+        "x": {
+          "shape": [
+            20927,
+            51
+          ],
+          "dtype": "float32"
+        },
+        "offsets": {
+          "shape": [
+            2370
+          ],
+          "dtype": "int64"
+        },
+        "outcomes": {
+          "shape": [
+            2369,
+            4
+          ],
+          "dtype": "float32"
+        }
+      },
+      "feature_columns": [
+        "input__joint_position_rad_m[0]",
+        "input__joint_position_rad_m[1]",
+        "input__joint_position_rad_m[2]",
+        "input__joint_position_rad_m[3]",
+        "input__joint_position_rad_m[4]",
+        "input__joint_position_rad_m[5]",
+        "input__joint_position_rad_m[6]",
+        "input__joint_position_rad_m[7]",
+        "input__joint_position_rad_m[8]",
+        "input__joint_velocity_rad_m_s[0]",
+        "input__joint_velocity_rad_m_s[1]",
+        "input__joint_velocity_rad_m_s[2]",
+        "input__joint_velocity_rad_m_s[3]",
+        "input__joint_velocity_rad_m_s[4]",
+        "input__joint_velocity_rad_m_s[5]",
+        "input__joint_velocity_rad_m_s[6]",
+        "input__joint_velocity_rad_m_s[7]",
+        "input__joint_velocity_rad_m_s[8]",
+        "input__finger_width_m[0]",
+        "input__finger_width_velocity_m_s[0]",
+        "input__object_pose_tcp_m_wxyz[0]",
+        "input__object_pose_tcp_m_wxyz[1]",
+        "input__object_pose_tcp_m_wxyz[2]",
+        "input__object_pose_tcp_m_wxyz[3]",
+        "input__object_pose_tcp_m_wxyz[4]",
+        "input__object_pose_tcp_m_wxyz[5]",
+        "input__object_pose_tcp_m_wxyz[6]",
+        "input__action_applied[0]",
+        "input__action_applied[1]",
+        "input__action_applied[2]",
+        "input__action_applied[3]",
+        "input__action_applied[4]",
+        "input__grip_motor_limit_n[0]",
+        "input__grip_motor_limit_n[1]",
+        "input__finger_compression_mean_n[0]",
+        "input__finger_compression_mean_n[1]",
+        "input__finger_force_mean_world_n[0]",
+        "input__finger_force_mean_world_n[1]",
+        "input__finger_force_mean_world_n[2]",
+        "input__finger_force_mean_world_n[3]",
+        "input__finger_force_mean_world_n[4]",
+        "input__finger_force_mean_world_n[5]",
+        "input__object_translation_response_world_m[0]",
+        "input__object_translation_response_world_m[1]",
+        "input__object_translation_response_world_m[2]",
+        "input__relative_translation_response_tcp_m[0]",
+        "input__relative_translation_response_tcp_m[1]",
+        "input__relative_translation_response_tcp_m[2]",
+        "input__tcp_translation_response_world_m[0]",
+        "input__tcp_translation_response_world_m[1]",
+        "input__tcp_translation_response_world_m[2]"
+      ],
+      "labels": {
+        "storage": "target=[mass_kg,object_friction] in episodes.json/snippets.json, constant within condition.",
+        "constancy_verified": true
+      },
+      "split": {
+        "test": {
+          "conditions": 9,
+          "episodes": 90,
+          "snippets": 387
+        },
+        "train": {
+          "conditions": 26,
+          "episodes": 260,
+          "snippets": 1501
+        },
+        "validation": {
+          "conditions": 9,
+          "episodes": 90,
+          "snippets": 481
+        }
+      },
+      "split_rule": "Condition-disjoint train/validation/test, seed73; all snippets from a condition share split.",
+      "source_root": "/home/ubuntu/faliure/runs/failure_collection/dense_single_pair_fixed40g",
+      "direct_label_injection_found": false,
+      "verification": "Stored51-column manifest exactly matches current FEATURE_NAMES selecting measured input__ signals. No label__ column selected by the feature builder. Raw source files are covered by the separate acquisition audit.",
+      "nuisance_physics_audit": {
+        "checked_episodes": 440,
+        "fixed_fields": {
+          "inertia_per_kg": [
+            0.00026666666201975513,
+            0.00026666666201975513,
+            0.00026666666201975513
+          ],
+          "label__angular_damping": 0.05000000074505806,
+          "label__com_offset_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "label__finger_dynamic_friction": [
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "label__finger_restitution": [
+            0.0,
+            0.0
+          ],
+          "label__finger_static_friction": [
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "label__goal_clearance_m": 0.2,
+          "label__gravity_world_m_s2": [
+            0.0,
+            0.0,
+            -9.8100004196167
+          ],
+          "label__linear_damping": 0.0,
+          "label__object_restitution": 0.0,
+          "label__size_xyz_m": [
+            0.03999999910593033,
+            0.03999999910593033,
+            0.03999999910593033
+          ],
+          "label__spawn_offset_xy_m": [
+            0.0,
+            0.0
+          ],
+          "label__spawn_yaw_offset_rad": 0.0,
+          "label__table_dynamic_friction": 0.30000001192092896,
+          "label__table_restitution": 0.0,
+          "label__table_static_friction": 0.30000001192092896,
+          "shape": "cube"
+        },
+        "status": "passed"
+      },
+      "scope": "single-factor sweeps and two pair diagonals; not full crossed coverage",
+      "physics_conditioned_commands": "Supplied mass fixed40g independently of actual physics; feedback naturally depends on observed dynamics.",
+      "source_evidence": [
+        "robot_adaptation/estimators/interaction/data.py:18-33,57-71,140-182"
+      ]
+    },
+    {
+      "family": "visual_mass",
+      "path": "runs/visual_mass/initial_rgb_mass/dataset",
+      "task": "Initial RGB before any interaction",
+      "objects": 96,
+      "images": 384,
+      "missing_images": [],
+      "views_per_object": {
+        "4": 96
+      },
+      "image_shapes": {
+        "((96, 96), 'RGB')": 384
+      },
+      "action_steps": 0,
+      "per_step_fields": null,
+      "fields": "PNG RGB uint8 pixels only as model input. dataset.json records image path, object_id, split, mass_kg, size_m, seed, initial_pose_world.",
+      "labels": {
+        "storage": "Per-image manifest mass_kg; fixed friction in configuration",
+        "constancy": "Mass and split verified identical across each object's views."
+      },
+      "unique_full_physics_configurations": 96,
+      "unique_mass_friction_pairs": 96,
+      "episodes_per_full_configuration": {
+        "min": 1,
+        "max": 1,
+        "histogram": {
+          "1": 96
+        }
+      },
+      "mass_kg_range": [
+        0.015625,
+        0.421875
+      ],
+      "friction_range": [
+        0.3,
+        0.3
+      ],
+      "mass_friction_pearson_unique_full_configurations": null,
+      "mass_friction_pearson_unique_mass_friction_pairs": null,
+      "mass_friction_pearson_episode_weighted": null,
+      "null_correlation_reason": "Fewer than two configurations or a constant variable.",
+      "cube_ids_present": true,
+      "split_objects": {
+        "test": 12,
+        "train": 72,
+        "val": 12
+      },
+      "split_images": {
+        "test": 48,
+        "train": 288,
+        "val": 48
+      },
+      "generator": "Rendering only; no policy or grip action",
+      "direct_label_injection_found": false,
+      "physical_confound": "Mass is defined as density1000kg/m3 \u00d7 side_length^3. Visible size predicts mass by construction; this is not independently varied hidden mass. No text label is rendered by generator.",
+      "config": {
+        "objects": 96,
+        "views": 4,
+        "seed": 42,
+        "image_size": 96,
+        "shape": "cube",
+        "side_range_m": [
+          0.025,
+          0.075
+        ],
+        "density_kg_m3": 1000.0,
+        "object_color_rgba": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "static_friction": 0.3,
+        "dynamic_friction": 0.3,
+        "finger_friction": 2.0,
+        "table_friction": 0.3,
+        "camera": {
+          "uid": "base_camera",
+          "eye_m": [
+            0.22,
+            0.22,
+            0.2
+          ],
+          "target_m": [
+            0.0,
+            0.0,
+            0.025
+          ],
+          "fov_rad": 0.65,
+          "near_m": 0.005,
+          "far_m": 10.0
+        },
+        "pose_nuisance": {
+          "xy_range_m": [
+            -0.01,
+            0.01
+          ],
+          "yaw_range_rad": [
+            -3.141592653589793,
+            3.141592653589793
+          ]
+        },
+        "split_rule": "per_8_sorted_sizes_random_6train_1val_1test",
+        "sim_backend": "physx_cpu",
+        "render_backend": "cpu",
+        "capture": "initial_reset_before_contact_or_any_action",
+        "label_source": "PhysX body mass readback in kilograms",
+        "purpose": "controlled_constant_density_visual_size_mass_prior",
+        "limitation": "Not general mass inference: size predicts mass by construction; not the original independently varied mass dataset."
+      },
+      "manifest_sha256": "945b8b9009d3f221443e2b70e18f3c600975f51991642b8dca34f3da1ab3a186",
+      "source_evidence": [
+        "robot_adaptation/estimators/visual_mass/generate.py:76-88,132-168"
+      ]
+    }
+  ],
+  "derived_npz_groups": [
+    {
+      "path": "runs/context_dynamics/nov13/z4_grip/checks_1",
+      "role": "Derived diagnostic/model-output arrays, not raw acquisition episodes",
+      "files": {
+        "readout.npz": {
+          "z_mean": {
+            "shape": [
+              4
+            ],
+            "dtype": "float32"
+          },
+          "z_sd": {
+            "shape": [
+              4
+            ],
+            "dtype": "float32"
+          },
+          "weights": {
+            "shape": [
+              4,
+              10
+            ],
+            "dtype": "float32"
+          },
+          "y_mean": {
+            "shape": [
+              10
+            ],
+            "dtype": "float32"
+          },
+          "y_sd": {
+            "shape": [
+              10
+            ],
+            "dtype": "float32"
+          }
+        },
+        "sweeps.npz": {
+          "episode_ids": {
+            "shape": [
+              1000
+            ],
+            "dtype": "int64"
+          },
+          "offsets": {
+            "shape": [
+              17
+            ],
+            "dtype": "float64"
+          },
+          "loss": {
+            "shape": [
+              4,
+              17,
+              1000
+            ],
+            "dtype": "float32"
+          }
+        }
+      }
+    },
+    {
+      "path": "runs/context_dynamics/nov13/z4_matched/checks_1",
+      "role": "Derived diagnostic/model-output arrays, not raw acquisition episodes",
+      "files": {
+        "readout.npz": {
+          "z_mean": {
+            "shape": [
+              4
+            ],
+            "dtype": "float32"
+          },
+          "z_sd": {
+            "shape": [
+              4
+            ],
+            "dtype": "float32"
+          },
+          "weights": {
+            "shape": [
+              4,
+              10
+            ],
+            "dtype": "float32"
+          },
+          "y_mean": {
+            "shape": [
+              10
+            ],
+            "dtype": "float32"
+          },
+          "y_sd": {
+            "shape": [
+              10
+            ],
+            "dtype": "float32"
+          }
+        },
+        "sweeps.npz": {
+          "episode_ids": {
+            "shape": [
+              1000
+            ],
+            "dtype": "int64"
+          },
+          "offsets": {
+            "shape": [
+              17
+            ],
+            "dtype": "float64"
+          },
+          "loss": {
+            "shape": [
+              4,
+              17,
+              1000
+            ],
+            "dtype": "float32"
+          }
+        }
+      }
+    },
+    {
+      "path": "runs/context_dynamics/nov13/z4_matched/checks_external",
+      "role": "Derived diagnostic/model-output arrays, not raw acquisition episodes",
+      "files": {
+        "readout.npz": {
+          "z_mean": {
+            "shape": [
+              4
+            ],
+            "dtype": "float32"
+          },
+          "z_sd": {
+            "shape": [
+              4
+            ],
+            "dtype": "float32"
+          },
+          "weights": {
+            "shape": [
+              4,
+              10
+            ],
+            "dtype": "float32"
+          },
+          "y_mean": {
+            "shape": [
+              10
+            ],
+            "dtype": "float32"
+          },
+          "y_sd": {
+            "shape": [
+              10
+            ],
+            "dtype": "float32"
+          }
+        },
+        "sweeps.npz": {
+          "episode_ids": {
+            "shape": [
+              1000
+            ],
+            "dtype": "int64"
+          },
+          "offsets": {
+            "shape": [
+              17
+            ],
+            "dtype": "float64"
+          },
+          "loss": {
+            "shape": [
+              4,
+              17,
+              1000
+            ],
+            "dtype": "float32"
+          }
+        }
+      }
+    },
+    {
+      "path": "runs/context_dynamics/nov13/z8/checks_0",
+      "role": "Derived diagnostic/model-output arrays, not raw acquisition episodes",
+      "files": {
+        "readout.npz": {
+          "z_mean": {
+            "shape": [
+              8
+            ],
+            "dtype": "float32"
+          },
+          "z_sd": {
+            "shape": [
+              8
+            ],
+            "dtype": "float32"
+          },
+          "weights": {
+            "shape": [
+              8,
+              10
+            ],
+            "dtype": "float32"
+          },
+          "y_mean": {
+            "shape": [
+              10
+            ],
+            "dtype": "float32"
+          },
+          "y_sd": {
+            "shape": [
+              10
+            ],
+            "dtype": "float32"
+          }
+        },
+        "sweeps.npz": {
+          "episode_ids": {
+            "shape": [
+              1000
+            ],
+            "dtype": "int64"
+          },
+          "offsets": {
+            "shape": [
+              17
+            ],
+            "dtype": "float64"
+          },
+          "loss": {
+            "shape": [
+              8,
+              17,
+              1000
+            ],
+            "dtype": "float32"
+          }
+        }
+      }
+    },
+    {
+      "path": "runs/context_dynamics/pick_gpu_2m/world_model_z8",
+      "role": "Derived diagnostic/model-output arrays, not raw acquisition episodes",
+      "files": {
+        "forecast_errors.npz": {
+          "episode_ids": {
+            "shape": [
+              4000
+            ],
+            "dtype": "int64"
+          },
+          "source": {
+            "shape": [
+              4000
+            ],
+            "dtype": "<U13"
+          },
+          "W": {
+            "shape": [
+              4000,
+              5
+            ],
+            "dtype": "float64"
+          },
+          "W_noz": {
+            "shape": [
+              4000,
+              5
+            ],
+            "dtype": "float64"
+          }
+        },
+        "intervention_errors.npz": {
+          "episode_ids": {
+            "shape": [
+              4000
+            ],
+            "dtype": "int64"
+          },
+          "donor_ids": {
+            "shape": [
+              4000
+            ],
+            "dtype": "int64"
+          },
+          "W": {
+            "shape": [
+              4000,
+              5
+            ],
+            "dtype": "float64"
+          },
+          "swapped": {
+            "shape": [
+              4000,
+              5
+            ],
+            "dtype": "float64"
+          },
+          "mean": {
+            "shape": [
+              4000,
+              5
+            ],
+            "dtype": "float64"
+          }
+        },
+        "readout.npz": {
+          "z_mean": {
+            "shape": [
+              8
+            ],
+            "dtype": "float64"
+          },
+          "z_sd": {
+            "shape": [
+              8
+            ],
+            "dtype": "float64"
+          },
+          "weights": {
+            "shape": [
+              8,
+              10
+            ],
+            "dtype": "float64"
+          },
+          "y_mean": {
+            "shape": [
+              10
+            ],
+            "dtype": "float64"
+          },
+          "y_sd": {
+            "shape": [
+              10
+            ],
+            "dtype": "float64"
+          }
+        }
+      }
+    },
+    {
+      "path": "runs/mass_belief/nov17_v1",
+      "role": "Derived diagnostic/model-output arrays, not raw acquisition episodes",
+      "files": {
+        "calibration_predictions.npz": {
+          "mass_g": {
+            "shape": [
+              40
+            ],
+            "dtype": "float64"
+          },
+          "predictions_g": {
+            "shape": [
+              40,
+              100
+            ],
+            "dtype": "float32"
+          }
+        }
+      }
+    }
+  ],
+  "derived_csv_tables": [
+    {
+      "path": "runs/context_dynamics/nov13/fresh_physics/paired_physics.csv",
+      "rows": 192,
+      "columns": [
+        "source",
+        "episode",
+        "seed",
+        "change",
+        "peak_width_difference_mm",
+        "peak_cube_position_difference_mm",
+        "repeat_width_mm",
+        "repeat_cube_mm"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/context_dynamics/nov13/matched_physics/paired_physics.csv",
+      "rows": 192,
+      "columns": [
+        "source",
+        "episode",
+        "seed",
+        "change",
+        "peak_width_difference_mm",
+        "peak_cube_position_difference_mm",
+        "repeat_width_mm",
+        "repeat_cube_mm"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/context_dynamics/nov13/physics_replays/paired_physics.csv",
+      "rows": 192,
+      "columns": [
+        "source",
+        "episode",
+        "seed",
+        "change",
+        "peak_width_difference_mm",
+        "peak_cube_position_difference_mm"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/context_dynamics/nov13/z4_grip/checks_1/episode_errors.csv",
+      "rows": 1000,
+      "columns": [
+        "episode",
+        "task",
+        "swapped_episode",
+        "Encoded",
+        "Swapped",
+        "Mean",
+        "Zero"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/context_dynamics/nov13/z4_matched/checks_1/episode_errors.csv",
+      "rows": 1000,
+      "columns": [
+        "episode",
+        "task",
+        "swapped_episode",
+        "Encoded",
+        "Swapped",
+        "Mean",
+        "Zero"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/context_dynamics/nov13/z4_matched/checks_external/episode_errors.csv",
+      "rows": 1000,
+      "columns": [
+        "episode",
+        "task",
+        "swapped_episode",
+        "Encoded",
+        "Swapped",
+        "Mean",
+        "Zero"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/context_dynamics/nov13/z8/checks_0/episode_errors.csv",
+      "rows": 1000,
+      "columns": [
+        "episode",
+        "task",
+        "swapped_episode",
+        "Encoded",
+        "Swapped",
+        "Mean",
+        "Zero"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/context_dynamics/pick_gpu_2m/world_model_z8/by_horizon.csv",
+      "rows": 25,
+      "columns": [
+        "source",
+        "horizon",
+        "W",
+        "alternative",
+        "difference",
+        "gain_pct",
+        "increase_over_W_pct",
+        "episode_count",
+        "W_ci_lo",
+        "W_ci_hi",
+        "alternative_ci_lo",
+        "alternative_ci_hi",
+        "difference_ci_lo",
+        "difference_ci_hi"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/context_dynamics/pick_gpu_2m/world_model_z8/interpolation.csv",
+      "rows": 66,
+      "columns": [
+        "episode",
+        "source",
+        "donor",
+        "alpha",
+        "error"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/context_dynamics/pick_gpu_2m/world_model_z8/probe.csv",
+      "rows": 10,
+      "columns": [
+        "constant",
+        "r2"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/mass_belief/nov17_v1/side_check.csv",
+      "rows": 120,
+      "columns": [
+        "sequence",
+        "trial",
+        "seed",
+        "mode",
+        "first_supplied_g",
+        "final_supplied_g",
+        "success",
+        "ever_success"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/mass_belief/nov17_v1/steps.csv",
+      "rows": 6000,
+      "columns": [
+        "sequence",
+        "trial",
+        "seed",
+        "step",
+        "truth_g",
+        "raw_g",
+        "reset_mean_g",
+        "reset_variance_g2",
+        "carry_mean_g",
+        "carry_variance_g2"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/mass_belief/nov17_v1/trials.csv",
+      "rows": 180,
+      "columns": [
+        "sequence",
+        "trial",
+        "seed",
+        "arm",
+        "truth_g",
+        "estimate_g",
+        "abs_error_g",
+        "variance_g2",
+        "fixed_probe_success"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/mass_belief/switch_80g_mu1/trials.csv",
+      "rows": 240,
+      "columns": [
+        "sequence",
+        "trial",
+        "seed",
+        "arm",
+        "mass_g",
+        "estimate_g",
+        "variance_g2",
+        "error_g"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/visual_mass/initial_rgb_mass/model/predictions.csv",
+      "rows": 384,
+      "columns": [
+        "split",
+        "object_id",
+        "image",
+        "true_mass_kg",
+        "predicted_mass_kg",
+        "absolute_error_g",
+        "baseline_mass_kg"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/rma/decoder_20261107/predictions.csv",
+      "rows": 50,
+      "columns": [
+        "split",
+        "true_mass_g",
+        "decoded_mass_g",
+        "true_friction",
+        "decoded_friction"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/rma/decoder_history_20261107/predictions.csv",
+      "rows": 5400,
+      "columns": [
+        "seed",
+        "step",
+        "true_mass_g",
+        "true_friction",
+        "adapted_mass_g",
+        "adapted_friction",
+        "teacher_mass_g",
+        "teacher_friction"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    },
+    {
+      "path": "runs/rma/decoder_roundtrip_20261107_b/episodes.csv",
+      "rows": 108,
+      "columns": [
+        "seed",
+        "mass_kg",
+        "friction",
+        "decoded_mass_g",
+        "decoded_friction",
+        "oracle",
+        "roundtrip"
+      ],
+      "role": "Derived summary/prediction table; no additional raw trajectory assumed"
+    }
+  ],
+  "manifests_without_direct_raw_npz": [
+    {
+      "path": "runs/context_dynamics/nov13",
+      "manifest": "runs/context_dynamics/nov13/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/interaction_estimator/gru_seed102",
+      "manifest": "runs/interaction_estimator/gru_seed102/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/interaction_estimator/gru_seed103",
+      "manifest": "runs/interaction_estimator/gru_seed103/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/interaction_estimator/gru_v1",
+      "manifest": "runs/interaction_estimator/gru_v1/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/interaction_estimator/gru_v2_corrected",
+      "manifest": "runs/interaction_estimator/gru_v2_corrected/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/interaction_estimator/gru_v2_seed102",
+      "manifest": "runs/interaction_estimator/gru_v2_seed102/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/interaction_estimator/gru_v2_seed103",
+      "manifest": "runs/interaction_estimator/gru_v2_seed103/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/rma/adapter_20261107",
+      "manifest": "runs/rma/adapter_20261107/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/rma/baseline_20261106/base_01",
+      "manifest": "runs/rma/baseline_20261106/base_01/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/rma/baseline_20261106",
+      "manifest": "runs/rma/baseline_20261106/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/rma/baseline_20261106_persistent/base_01",
+      "manifest": "runs/rma/baseline_20261106_persistent/base_01/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/rma/baseline_20261106_persistent/base_02",
+      "manifest": "runs/rma/baseline_20261106_persistent/base_02/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/rma/baseline_20261106_persistent/base_03",
+      "manifest": "runs/rma/baseline_20261106_persistent/base_03/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/rma/baseline_20261106_persistent",
+      "manifest": "runs/rma/baseline_20261106_persistent/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/rma/continuation_prepare_check",
+      "manifest": "runs/rma/continuation_prepare_check/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/rma/decoder_20261107",
+      "manifest": "runs/rma/decoder_20261107/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/rma/decoder_history_20261107",
+      "manifest": "runs/rma/decoder_history_20261107/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/rma/decoder_roundtrip_20261107_b",
+      "manifest": "runs/rma/decoder_roundtrip_20261107_b/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/rma/integration_phase1",
+      "manifest": "runs/rma/integration_phase1/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    },
+    {
+      "path": "runs/rma/integration_phase2",
+      "manifest": "runs/rma/integration_phase2/manifest.json",
+      "note": "Manifest/checkpoints/logs present; no raw NPZ directly in this directory. Nested datasets are listed separately."
+    }
+  ],
+  "associated_raw_roots": [
+    {
+      "path": "runs/failure_collection/dense_single_pair_fixed40g",
+      "relationship": "Raw source of440 selected interaction episodes",
+      "inventory": "results/probe/inventory_other.json"
+    },
+    {
+      "path": "runs/failure_collection/varied_fixed40g",
+      "relationship": "Policy/checkpoint provenance for context and mass_belief; not their recorded trajectories",
+      "inventory": "results/probe/inventory_other.json"
+    }
+  ],
+  "duplicate_audit": {
+    "paths": [
+      "runs/context_dynamics/nov13/grip_data",
+      "runs/context_dynamics/nov13/grip_pulses"
+    ],
+    "same_named_shards": 60,
+    "byte_identical_shards": 0,
+    "shards_with_identical_arrays": {
+      "constants": 60,
+      "episode_id": 60,
+      "seed": 60,
+      "command": 0,
+      "state": 0
+    },
+    "warning": "Matching seeds/physics do not represent independently sampled objects. Different actions/states are separate acquisition variants; original source revision explaining their difference is not reconstructed here."
+  },
+  "stop_rule": {
+    "global_probe_training_status": "STOPPED: parent verified true-mode label injection in separate interaction_adaptation retries and physics_conditioning data; see results/probe/inventory_other.json. The two fixed40g raw source roots themselves do not supply actual mass.",
+    "proven_true_mass_friction_copy_in_these_audited_saved_state_or_action": false,
+    "privileged_controller_groups": [
+      "rma oracle trajectories",
+      "mass_belief closed_loop *_true"
+    ],
+    "privileged_sidefields": [
+      "context constants and encoded physics z",
+      "rma z and oracle z_hat",
+      "all explicitly named physical labels"
+    ],
+    "distinction": "Measured kinematics/contact forces are dynamic physical observations. Direct true-physics encoder inputs and truth-conditioned controllers are privileged, even when raw saved state columns exclude the labels."
+  },
+  "limitations": [
+    "Current source paths/line references document the inspected builders; equality with every historical source revision is not asserted.",
+    "All trajectory file counts and physical labels were read from actual archives or their explicit per-trace CSV joins; field schemas are shown from a representative file per group.",
+    "No persistent cube IDs are invented from mass/friction values, reset seeds, or filenames.",
+    "Raw failure_collection roots are inventoried separately by the acquisition auditor; no duplicate scan or probe training was performed."
+  ],
+  "audit_source_sha256": "7c7bfad2b997bf41d1424d340b7f59e9efadaf1b139f28bdd866878bfd2d1e46"
+}

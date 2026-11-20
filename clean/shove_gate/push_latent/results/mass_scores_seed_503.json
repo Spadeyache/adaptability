@@ -1,0 +1,135 @@
+{
+  "seed": 503,
+  "r2": 0.8741240557942109,
+  "mae_kg": 0.028524732359859164,
+  "rmse_kg": 0.03496210779744229,
+  "baseline": {
+    "r2": -0.12058719813177987,
+    "mae_kg": 0.0968598434782813,
+    "rmse_kg": 0.10431555312921555
+  },
+  "cubes": 30,
+  "predicted_mass_by_cube": [
+    {
+      "cube_id": 260,
+      "prediction_kg": 0.416545517048514
+    },
+    {
+      "cube_id": 261,
+      "prediction_kg": 0.2099948914629059
+    },
+    {
+      "cube_id": 262,
+      "prediction_kg": 0.2192916409592274
+    },
+    {
+      "cube_id": 263,
+      "prediction_kg": 0.3518931117998572
+    },
+    {
+      "cube_id": 264,
+      "prediction_kg": 0.22294493636819965
+    },
+    {
+      "cube_id": 265,
+      "prediction_kg": 0.40758843484458446
+    },
+    {
+      "cube_id": 266,
+      "prediction_kg": 0.24437425852278594
+    },
+    {
+      "cube_id": 267,
+      "prediction_kg": 0.4173501455669528
+    },
+    {
+      "cube_id": 268,
+      "prediction_kg": 0.29619421047438005
+    },
+    {
+      "cube_id": 269,
+      "prediction_kg": 0.16477584868234169
+    },
+    {
+      "cube_id": 270,
+      "prediction_kg": 0.2951753348470839
+    },
+    {
+      "cube_id": 271,
+      "prediction_kg": 0.2558497886486958
+    },
+    {
+      "cube_id": 272,
+      "prediction_kg": 0.41513243213949014
+    },
+    {
+      "cube_id": 273,
+      "prediction_kg": 0.20539063499508675
+    },
+    {
+      "cube_id": 274,
+      "prediction_kg": 0.2363005936744591
+    },
+    {
+      "cube_id": 275,
+      "prediction_kg": 0.4875807843454243
+    },
+    {
+      "cube_id": 276,
+      "prediction_kg": 0.26275469207816016
+    },
+    {
+      "cube_id": 277,
+      "prediction_kg": 0.22661949106468707
+    },
+    {
+      "cube_id": 278,
+      "prediction_kg": 0.178312400329981
+    },
+    {
+      "cube_id": 279,
+      "prediction_kg": 0.30153204530751365
+    },
+    {
+      "cube_id": 280,
+      "prediction_kg": 0.426193855246809
+    },
+    {
+      "cube_id": 281,
+      "prediction_kg": 0.4327061625303307
+    },
+    {
+      "cube_id": 282,
+      "prediction_kg": 0.41591748294385056
+    },
+    {
+      "cube_id": 283,
+      "prediction_kg": 0.3255878744332503
+    },
+    {
+      "cube_id": 284,
+      "prediction_kg": 0.4164006717735611
+    },
+    {
+      "cube_id": 285,
+      "prediction_kg": 0.3051877244648757
+    },
+    {
+      "cube_id": 286,
+      "prediction_kg": 0.21727577649775787
+    },
+    {
+      "cube_id": 287,
+      "prediction_kg": 0.42716528011526517
+    },
+    {
+      "cube_id": 288,
+      "prediction_kg": 0.4556321114021549
+    },
+    {
+      "cube_id": 289,
+      "prediction_kg": 0.24836791294700328
+    }
+  ],
+  "label_storage": "True masses read only from cubes.json; not copied here"
+}

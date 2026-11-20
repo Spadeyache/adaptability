@@ -1,0 +1,80 @@
+{
+  "revision": "horizontal_velocity_delta_v1",
+  "source_physics_revision": 5,
+  "fresh_test_seed": 2026111517,
+  "retired_test_ids": [
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229
+  ],
+  "mass_range_kg": [
+    0.18,
+    0.5
+  ],
+  "cube_friction_range": [
+    0.4,
+    1.0
+  ],
+  "floor_material_friction": 0.3,
+  "force_range_n": [
+    4.0,
+    7.0
+  ],
+  "duration_range_s": [
+    0.06,
+    0.1
+  ],
+  "duration_grid_s": 0.005,
+  "physics_dt_s": 0.001,
+  "model_dt_s": 0.005,
+  "coast_s": 1.5,
+  "settle_s": 0.1,
+  "trim_after_stop_steps": 5,
+  "revised_protocol_sha256": "986ca6b5b06b582891e0c5145ce4c22c8965eaa3c32dcdd2fb9eac3abff59f6d",
+  "test_randomization": "Fresh seed; independent property stream100, command stream200, duration stream300; no rejection or resampling.",
+  "reused_training": "Existing v5 train cubes0..199 and alltenepisodes; symlinks verified against old saved SHA256.",
+  "old_test_policy": "IDs200..229 excluded; old results untouched.",
+  "state": "Cube physical state15",
+  "action": "Applied forceXYZ only; exactlyzero coast",
+  "forbidden_features": [
+    "cube_id",
+    "episode_id",
+    "step",
+    "phase",
+    "length",
+    "padding_mask",
+    "stop_time"
+  ],
+  "score_groups": [
+    "push",
+    "moving_coast",
+    "all_steps"
+  ]
+}

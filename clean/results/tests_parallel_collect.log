@@ -1,0 +1,8 @@
+test_atomic_publication_never_overwrites_an_existing_episode (clean.test_parallel_collect.ParallelCollectionTests) ... ok
+test_gate_rejects_stale_source_and_changed_pilot_data (clean.test_parallel_collect.ParallelCollectionTests) ... ok
+test_receipt_requires_identity_data_and_generator_integrity (clean.test_parallel_collect.ParallelCollectionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.010s
+
+OK

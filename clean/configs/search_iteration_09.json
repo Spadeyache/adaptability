@@ -1,0 +1,12 @@
+{
+  "width": 128,
+  "depth": 2,
+  "z_dim": 4,
+  "lr": 0.001,
+  "z_l2": 0.0,
+  "fit_steps": 1000,
+  "fit_lr": 0.005,
+  "moving_weight": 1.0,
+  "prediction_horizon": 1,
+  "grip_force_max": 8.0
+}

@@ -1,0 +1,18 @@
+{
+  "iteration": 10,
+  "config": {
+    "width": 64,
+    "depth": 2,
+    "z_dim": 4,
+    "lr": 0.001,
+    "z_l2": 0.0,
+    "fit_steps": 1000,
+    "fit_lr": 0.005,
+    "moving_weight": 1.0,
+    "prediction_horizon": 1,
+    "grip_force_max": 8.0
+  },
+  "hypothesis": "The retained reference fails validation F4. Oracle has not established a positive Plain-to-Oracle error gap. A smaller shared network may reduce memorization of shared trajectories and increase the useful contribution of z.",
+  "change": "Change only width from 128 to 64; every other configuration setting is retained.",
+  "base_iteration": 9
+}

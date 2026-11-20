@@ -1,0 +1,24 @@
+{
+  "status": "passed_source_review",
+  "reviewed_unix_seconds": 1794799600.3335059,
+  "reviewer": "velocity_physics independent code review",
+  "checks": [
+    "Primary is raw horizontal modeldelta*state_std minus raw observed delta, squared then divided by shared training scalar; validation/test both float64 arithmetic.",
+    "Training delta scalar uses only fit episodes0..7 IDs0..199 and equal cube/episode/step weights; independently compared against physics floor scalar before fitting.",
+    "Checkpoint selection uses validation moving-coast horizontal velocity delta NMSE while training objective stays full15 normalized delta.",
+    "Both members of a seed pair receive identical sample stream and update budget; >=0.1% best improvement in final2500 of each10000 block extendsboth; max100000 and cap warning.",
+    "Retired IDs200..229 rejected; fresh IDs230..259 only used after allten checkpoints frozen and ledgerbegun; heldoutprefitread limited tobytehashing.",
+    "Old allstate/rollout/stopping metrics and phasegroups preserved; horizon from preplannedrelease+1.5s, notobservedstop.",
+    "Exact unclipped physics reference retained; stop clipping remains separate diagnostic.",
+    "Protocol and physics measurements/interpretation exist before revisedmodeltraining."
+  ],
+  "hashes": {
+    "models_gate.py": "7e66858198f37002f9f782fb33c7089a694271aaf4c16e46a8bd47d4b8337ba9",
+    "physics_floor.py": "63cab7b56209603f61990d4316249413783c9cb012c500d63cb72f2f36627161",
+    "REVISED_PROTOCOL.md": "986ca6b5b06b582891e0c5145ce4c22c8965eaa3c32dcdd2fb9eac3abff59f6d",
+    "results/physics_floor.json": "922b9b33ff43e20aea1e6077241160b39e46b91160bb10b051d0fd28a9511cd5",
+    "PHYSICS_FLOOR_REPORT.md": "2ddb9b455dcb1223f1bcad52758acbb250f30a0c560017d5a410c1680c553410",
+    "results/physics_motion_categories.json": "5309b65bd157d4a2a4c8befa3d62626ac00bc7eb7e708eb61c570964361eb42a"
+  },
+  "test_execution": "Contract tests owned/run by model implementer; this artifact records independent source and physics checks, not a second test run."
+}

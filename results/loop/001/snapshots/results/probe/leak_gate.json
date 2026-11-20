@@ -1,0 +1,52 @@
+{
+  "status": "STOPPED_BEFORE_TRAINING",
+  "direct_leak_found": true,
+  "evidence": [
+    {
+      "path": "runs/interaction_adaptation/initial_policy_probe/episodes/condition2_sequence0_true_attempt0.npz",
+      "kind": "true_mass_times_gravity_in_observation",
+      "true_mass_kg": 0.5,
+      "reported_mass_kg": 0.5,
+      "observation_field": "sim__policy_observation",
+      "observation_shape": [
+        51,
+        45
+      ],
+      "zero_based_column": 42,
+      "observed_values_n": [
+        4.90500020980835
+      ],
+      "equals_true_mass_times_gravity": true,
+      "sources": [
+        "robot_adaptation/simulation/collection_lift.py:50-54",
+        "experiments/interaction_adaptation/evaluate.py:175-182"
+      ]
+    },
+    {
+      "path": "runs/physics_conditioning/baseline_freshscene_diagnostic/traces.jsonl",
+      "kind": "mass_and_friction_in_observation",
+      "label_path": "runs/physics_conditioning/baseline_freshscene_diagnostic/episodes.json",
+      "seed": 81000,
+      "mode": "true",
+      "batch_size": 15,
+      "observation_width": 46,
+      "weight_column": 42,
+      "friction_column": 45,
+      "weight_equals_true_mass_times_gravity": true,
+      "friction_equals_true_friction": true,
+      "first_cube": {
+        "true_mass_kg": 0.04,
+        "true_friction": 0.2,
+        "input_weight_n": 0.39239999651908875,
+        "input_friction": 0.20000000298023224
+      },
+      "sources": [
+        "experiments/physics_conditioning/evaluate.py:25-35",
+        "experiments/physics_conditioning/evaluate.py:113-130"
+      ]
+    }
+  ],
+  "script_sha256": "f0354012f252a399b708239f64286ecfd87c4ebaa6ca5616a80fb2568bbee68e",
+  "probe_runs": 0,
+  "scope": "These are exact examples, not an exhaustive all-file safety certification."
+}

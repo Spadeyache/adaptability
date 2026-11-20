@@ -1,0 +1,17 @@
+{
+  "iteration": 2,
+  "config": {
+    "width": 128,
+    "depth": 2,
+    "z_dim": 2,
+    "lr": 0.001,
+    "z_l2": 0.0001,
+    "fit_steps": 200,
+    "fit_lr": 0.02,
+    "moving_weight": 10.0,
+    "prediction_horizon": 1
+  },
+  "hypothesis": "Validation fails F4 and Oracle fails to improve on Plain; weighting moving steps more strongly should focus the shared dynamics and latent on the scored physical responses.",
+  "change": "Increase moving-step training and fitting loss weight from 1 to 10; all other settings unchanged.",
+  "base_iteration": 1
+}

@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "cubes": 10,
+  "episodes": 100,
+  "transitions": 3741,
+  "untrimmed_transitions": 21600,
+  "trimmed_transitions": 17859,
+  "trimmed_fraction": 0.8268055555555556,
+  "episode_length_min": 21,
+  "episode_length_max": 118,
+  "push_transitions": 1600,
+  "coast_transitions": 2141,
+  "moving_coast_transitions": 1641,
+  "moving_coast_fraction": 0.7664642690331621,
+  "untrimmed_coast_transitions": 20000,
+  "untrimmed_moving_coast_transitions": 1641,
+  "untrimmed_moving_coast_fraction": 0.08205,
+  "moving_all_transitions": 2801,
+  "launch_threshold_m_s": 0.02,
+  "launches": 55,
+  "launch_fraction": 0.55,
+  "launch_target_passed": false,
+  "launches_over_1mm_s": 57,
+  "maximum_coast_distance_m": 0.404131465640164,
+  "contact_loss_diagnostic": {
+    "forceful_threshold_n": 0.1,
+    "push_duration_ms": 80,
+    "moved_during_push": 99,
+    "release_launches": 55,
+    "groups": {
+      "not_launched_at_release": {
+        "episodes": 45,
+        "moved_during_push": 44,
+        "median_peak_push_speed_m_s": 0.09530706010719661,
+        "median_mean_push_force_n": 0.37873907233715187,
+        "median_last_forceful_push_time_ms": 8.0,
+        "median_forceful_push_steps": 8.0
+      },
+      "launched_at_release": {
+        "episodes": 55,
+        "moved_during_push": 55,
+        "median_peak_push_speed_m_s": 0.6150550221920256,
+        "median_mean_push_force_n": 3.474460163208785,
+        "median_last_forceful_push_time_ms": 60.0,
+        "median_forceful_push_steps": 60.0
+      }
+    },
+    "interpretation": "Movement during push is not the release-launch criterion. A shove may move early and stop after losing contact before scheduled release."
+  },
+  "all_stopped": true,
+  "maximum_actual_contact_force_over_cap": 0.9563964451674302,
+  "maximum_coast_contact_force_n": 0.0,
+  "maximum_normal_projection_impulse_error_Ns": 1.3902351912904731e-08,
+  "maximum_normal_only_force_underestimate_n": 0.6607965773846836,
+  "unique_randomized_values": {
+    "cap": 100,
+    "direction": 100,
+    "contact_offset": 100,
+    "start_x": 100,
+    "start_y": 100,
+    "yaw": 100
+  },
+  "checks": [
+    "original and probe source/data seals",
+    "only authorized ten cubes collected",
+    "separate property and per-shove RNG streams",
+    "physical properties used only by setup setter",
+    "state/action whitelist and raw-to-model transition alignment",
+    "same cube identities and non-cap nuisance settings as v3",
+    "caps uniformly remapped from2\u20134N to4\u20137N using unchanged random quantiles",
+    "all push steps retained; coast trimmed five steps after independently confirmed rest",
+    "trim removes only stationary steps; reported counts independently recomputed",
+    "actions exactly reconstructible from property-blind plans",
+    "full 3D transmitted force from pusher momentum",
+    "zero impulse from non-cube pusher proximity contacts",
+    "normal-only API projection agrees with momentum sensor",
+    "cap compliance and zero force after release",
+    "independent stop-window and endpoint metrics"
+  ],
+  "limitation": "This is a data/physics audit, not the Oracle-vs-Plain prediction gate. Trimmed file length is outcome-dependent and must never be a model feature or label-revealing mask. No model training or added simulation."
+}

@@ -1,0 +1,559 @@
+{
+  "scope": "Generator-only action probe using all preplanned commands; no additional physical cubes collected and no dynamics inputs.",
+  "input_sha256": {
+    "data/cubes.json": "fecb7e660781b149cf932fbdf56fa6e49f54e408f3a63dea5828efbf3da5b9a0",
+    "data/plans.json": "d27775504663c99593e824f8824f1f25e71558fa9137c4d8d0361d05c9d5079c"
+  },
+  "source_sha256": "15520fd31dab5f2bbe9e8c3741e295b53f400b13ad484a89948ddbbf7923a610",
+  "feature_names": [
+    "force_cap_n",
+    "cos_push_direction",
+    "sin_push_direction",
+    "contact_offset_m",
+    "cube_start_x_m",
+    "cube_start_y_m",
+    "cos_start_yaw",
+    "sin_start_yaw",
+    "commanded_push_force_x_n",
+    "commanded_push_force_y_n"
+  ],
+  "targets": [
+    "mass_kg",
+    "friction",
+    "combined_friction"
+  ],
+  "no_numeric_identifier_features": true,
+  "no_episode_duration_or_termination_features": true,
+  "no_measured_contact_force_features": true,
+  "train_cubes": 200,
+  "test_cubes": 30,
+  "train_episodes": 2000,
+  "test_episodes": 300,
+  "selection": "Per seed,180 training cubes for fit and20 training cubes for validation; choose hyperparameter by validation standardized MSE; refit all200 training cubes. No test-label tuning.",
+  "confidence_interval": "Percentile95% over1000 held-out-cube cluster bootstrap resamples; ten episodes retained together. Diagnostic, not proof of independence.",
+  "constant_train_mean_test_r2": {
+    "mass_kg": -0.05661678694417738,
+    "friction": -0.0155928470805613,
+    "combined_friction": -0.015592847080559746
+  },
+  "seeds": [
+    101,
+    211,
+    307,
+    401,
+    503
+  ],
+  "models": [
+    {
+      "family": "polynomial_ridge",
+      "seed": 101,
+      "validation_fit_cubes": 180,
+      "validation_cubes": 20,
+      "selected_parameter": 10000.0,
+      "validation_standardized_mse": 1.1379525251606992,
+      "validation_candidates": [
+        {
+          "parameter": 1.0,
+          "mse": 1.181995344559065
+        },
+        {
+          "parameter": 10.0,
+          "mse": 1.177129839502404
+        },
+        {
+          "parameter": 100.0,
+          "mse": 1.1698509336979688
+        },
+        {
+          "parameter": 1000.0,
+          "mse": 1.1564075420022006
+        },
+        {
+          "parameter": 10000.0,
+          "mse": 1.1379525251606992
+        }
+      ],
+      "test_r2": {
+        "mass_kg": -0.05056438456713197,
+        "friction": -0.01722618490427652,
+        "combined_friction": -0.017226184904279407
+      },
+      "test_cube_bootstrap_95_percent_interval": {
+        "mass_kg": [
+          -0.4581806809783342,
+          0.01054587599703316
+        ],
+        "friction": [
+          -0.3399430191166277,
+          0.0031225926300406685
+        ],
+        "combined_friction": [
+          -0.33994301911662994,
+          0.003122592630040591
+        ]
+      },
+      "all_test_r2_below_0_1": true
+    },
+    {
+      "family": "extra_trees",
+      "seed": 101,
+      "validation_fit_cubes": 180,
+      "validation_cubes": 20,
+      "selected_parameter": 128,
+      "validation_standardized_mse": 1.140683697778278,
+      "validation_candidates": [
+        {
+          "parameter": 8,
+          "mse": 1.1529123280574887
+        },
+        {
+          "parameter": 32,
+          "mse": 1.1450589792020656
+        },
+        {
+          "parameter": 128,
+          "mse": 1.140683697778278
+        }
+      ],
+      "test_r2": {
+        "mass_kg": -0.05561205379852319,
+        "friction": -0.024061443151034867,
+        "combined_friction": -0.024061443151037976
+      },
+      "test_cube_bootstrap_95_percent_interval": {
+        "mass_kg": [
+          -0.4632162849717532,
+          0.004311217878320624
+        ],
+        "friction": [
+          -0.35062332246927724,
+          -0.0013602949348704093
+        ],
+        "combined_friction": [
+          -0.35062332246928707,
+          -0.001360294934869066
+        ]
+      },
+      "all_test_r2_below_0_1": true
+    },
+    {
+      "family": "polynomial_ridge",
+      "seed": 211,
+      "validation_fit_cubes": 180,
+      "validation_cubes": 20,
+      "selected_parameter": 10000.0,
+      "validation_standardized_mse": 0.8862904892170012,
+      "validation_candidates": [
+        {
+          "parameter": 1.0,
+          "mse": 0.9213765504270733
+        },
+        {
+          "parameter": 10.0,
+          "mse": 0.9169830477264165
+        },
+        {
+          "parameter": 100.0,
+          "mse": 0.907164327984839
+        },
+        {
+          "parameter": 1000.0,
+          "mse": 0.8979127250004137
+        },
+        {
+          "parameter": 10000.0,
+          "mse": 0.8862904892170012
+        }
+      ],
+      "test_r2": {
+        "mass_kg": -0.05056438456713197,
+        "friction": -0.01722618490427652,
+        "combined_friction": -0.017226184904279407
+      },
+      "test_cube_bootstrap_95_percent_interval": {
+        "mass_kg": [
+          -0.45329259452305914,
+          0.009049573533024028
+        ],
+        "friction": [
+          -0.26726408755437475,
+          0.0027197889072676125
+        ],
+        "combined_friction": [
+          -0.2672640875543807,
+          0.002719788907265889
+        ]
+      },
+      "all_test_r2_below_0_1": true
+    },
+    {
+      "family": "extra_trees",
+      "seed": 211,
+      "validation_fit_cubes": 180,
+      "validation_cubes": 20,
+      "selected_parameter": 128,
+      "validation_standardized_mse": 0.888390199854002,
+      "validation_candidates": [
+        {
+          "parameter": 8,
+          "mse": 0.8989985819878038
+        },
+        {
+          "parameter": 32,
+          "mse": 0.8894707448046286
+        },
+        {
+          "parameter": 128,
+          "mse": 0.888390199854002
+        }
+      ],
+      "test_r2": {
+        "mass_kg": -0.055924137220325854,
+        "friction": -0.026764158714320363,
+        "combined_friction": -0.02676415871432325
+      },
+      "test_cube_bootstrap_95_percent_interval": {
+        "mass_kg": [
+          -0.45786399697489194,
+          0.0038454909184906143
+        ],
+        "friction": [
+          -0.2793570162159957,
+          -0.004106625274031762
+        ],
+        "combined_friction": [
+          -0.2793570162159917,
+          -0.004106625274030241
+        ]
+      },
+      "all_test_r2_below_0_1": true
+    },
+    {
+      "family": "polynomial_ridge",
+      "seed": 307,
+      "validation_fit_cubes": 180,
+      "validation_cubes": 20,
+      "selected_parameter": 10000.0,
+      "validation_standardized_mse": 0.8754231216732292,
+      "validation_candidates": [
+        {
+          "parameter": 1.0,
+          "mse": 0.9031267425196038
+        },
+        {
+          "parameter": 10.0,
+          "mse": 0.8965588863586779
+        },
+        {
+          "parameter": 100.0,
+          "mse": 0.8878009228443545
+        },
+        {
+          "parameter": 1000.0,
+          "mse": 0.8822155981779553
+        },
+        {
+          "parameter": 10000.0,
+          "mse": 0.8754231216732292
+        }
+      ],
+      "test_r2": {
+        "mass_kg": -0.05056438456713197,
+        "friction": -0.01722618490427652,
+        "combined_friction": -0.017226184904279407
+      },
+      "test_cube_bootstrap_95_percent_interval": {
+        "mass_kg": [
+          -0.41082902386738274,
+          0.010721331362889077
+        ],
+        "friction": [
+          -0.3270748644318434,
+          0.002218859403765051
+        ],
+        "combined_friction": [
+          -0.32707486443184763,
+          0.002218859403764779
+        ]
+      },
+      "all_test_r2_below_0_1": true
+    },
+    {
+      "family": "extra_trees",
+      "seed": 307,
+      "validation_fit_cubes": 180,
+      "validation_cubes": 20,
+      "selected_parameter": 128,
+      "validation_standardized_mse": 0.8787544841997547,
+      "validation_candidates": [
+        {
+          "parameter": 8,
+          "mse": 0.8917057943833211
+        },
+        {
+          "parameter": 32,
+          "mse": 0.878979494065367
+        },
+        {
+          "parameter": 128,
+          "mse": 0.8787544841997547
+        }
+      ],
+      "test_r2": {
+        "mass_kg": -0.055315265498138144,
+        "friction": -0.02604255032303815,
+        "combined_friction": -0.026042550323041036
+      },
+      "test_cube_bootstrap_95_percent_interval": {
+        "mass_kg": [
+          -0.4189053555343218,
+          0.0045427847844245195
+        ],
+        "friction": [
+          -0.34174639106140886,
+          -0.004446186270755729
+        ],
+        "combined_friction": [
+          -0.34174639106141286,
+          -0.004446186270753059
+        ]
+      },
+      "all_test_r2_below_0_1": true
+    },
+    {
+      "family": "polynomial_ridge",
+      "seed": 401,
+      "validation_fit_cubes": 180,
+      "validation_cubes": 20,
+      "selected_parameter": 10000.0,
+      "validation_standardized_mse": 0.8827873007532261,
+      "validation_candidates": [
+        {
+          "parameter": 1.0,
+          "mse": 0.9173299803266585
+        },
+        {
+          "parameter": 10.0,
+          "mse": 0.9118894579822566
+        },
+        {
+          "parameter": 100.0,
+          "mse": 0.8977344590105492
+        },
+        {
+          "parameter": 1000.0,
+          "mse": 0.8884237881118541
+        },
+        {
+          "parameter": 10000.0,
+          "mse": 0.8827873007532261
+        }
+      ],
+      "test_r2": {
+        "mass_kg": -0.05056438456713197,
+        "friction": -0.01722618490427652,
+        "combined_friction": -0.017226184904279407
+      },
+      "test_cube_bootstrap_95_percent_interval": {
+        "mass_kg": [
+          -0.46081774414110327,
+          0.00979150825654079
+        ],
+        "friction": [
+          -0.3392422346938977,
+          0.002897185623836542
+        ],
+        "combined_friction": [
+          -0.33924223469390796,
+          0.0028971856238362006
+        ]
+      },
+      "all_test_r2_below_0_1": true
+    },
+    {
+      "family": "extra_trees",
+      "seed": 401,
+      "validation_fit_cubes": 180,
+      "validation_cubes": 20,
+      "selected_parameter": 128,
+      "validation_standardized_mse": 0.8842975259864413,
+      "validation_candidates": [
+        {
+          "parameter": 8,
+          "mse": 0.9217149084442235
+        },
+        {
+          "parameter": 32,
+          "mse": 0.8958898346846401
+        },
+        {
+          "parameter": 128,
+          "mse": 0.8842975259864413
+        }
+      ],
+      "test_r2": {
+        "mass_kg": -0.053590138377272334,
+        "friction": -0.02470643175856413,
+        "combined_friction": -0.02470643175856657
+      },
+      "test_cube_bootstrap_95_percent_interval": {
+        "mass_kg": [
+          -0.4592894668553716,
+          0.00485407209197487
+        ],
+        "friction": [
+          -0.34508915575894356,
+          7.390770796864503e-05
+        ],
+        "combined_friction": [
+          -0.34508915575894866,
+          7.390770796626638e-05
+        ]
+      },
+      "all_test_r2_below_0_1": true
+    },
+    {
+      "family": "polynomial_ridge",
+      "seed": 503,
+      "validation_fit_cubes": 180,
+      "validation_cubes": 20,
+      "selected_parameter": 10000.0,
+      "validation_standardized_mse": 0.8963796538222643,
+      "validation_candidates": [
+        {
+          "parameter": 1.0,
+          "mse": 0.9258420225373137
+        },
+        {
+          "parameter": 10.0,
+          "mse": 0.9181026273266164
+        },
+        {
+          "parameter": 100.0,
+          "mse": 0.9062290940112117
+        },
+        {
+          "parameter": 1000.0,
+          "mse": 0.8981636916622472
+        },
+        {
+          "parameter": 10000.0,
+          "mse": 0.8963796538222643
+        }
+      ],
+      "test_r2": {
+        "mass_kg": -0.05056438456713197,
+        "friction": -0.01722618490427652,
+        "combined_friction": -0.017226184904279407
+      },
+      "test_cube_bootstrap_95_percent_interval": {
+        "mass_kg": [
+          -0.4506317577611277,
+          0.010486212368200918
+        ],
+        "friction": [
+          -0.27658857775013435,
+          0.0032442106641095056
+        ],
+        "combined_friction": [
+          -0.2765885777501386,
+          0.0032442106641104966
+        ]
+      },
+      "all_test_r2_below_0_1": true
+    },
+    {
+      "family": "extra_trees",
+      "seed": 503,
+      "validation_fit_cubes": 180,
+      "validation_cubes": 20,
+      "selected_parameter": 128,
+      "validation_standardized_mse": 0.8968848055274798,
+      "validation_candidates": [
+        {
+          "parameter": 8,
+          "mse": 0.9184966997613782
+        },
+        {
+          "parameter": 32,
+          "mse": 0.901245465018863
+        },
+        {
+          "parameter": 128,
+          "mse": 0.8968848055274798
+        }
+      ],
+      "test_r2": {
+        "mass_kg": -0.05540732635039802,
+        "friction": -0.026313685782735075,
+        "combined_friction": -0.02631368578273796
+      },
+      "test_cube_bootstrap_95_percent_interval": {
+        "mass_kg": [
+          -0.45699688809422034,
+          0.004491271557927194
+        ],
+        "friction": [
+          -0.2886685853552286,
+          -0.0019060947306408817
+        ],
+        "combined_friction": [
+          -0.28866858535523293,
+          -0.0019060947306415144
+        ]
+      },
+      "all_test_r2_below_0_1": true
+    }
+  ],
+  "aggregate": {
+    "polynomial_ridge": {
+      "mass_kg": {
+        "mean_r2": -0.05056438456713197,
+        "seed_std_r2": 0.0,
+        "min_r2": -0.05056438456713197,
+        "max_r2": -0.05056438456713197,
+        "mean_r2_minus_constant_baseline": 0.006052402377045407
+      },
+      "friction": {
+        "mean_r2": -0.01722618490427652,
+        "seed_std_r2": 0.0,
+        "min_r2": -0.01722618490427652,
+        "max_r2": -0.01722618490427652,
+        "mean_r2_minus_constant_baseline": -0.0016333378237152196
+      },
+      "combined_friction": {
+        "mean_r2": -0.017226184904279407,
+        "seed_std_r2": 0.0,
+        "min_r2": -0.017226184904279407,
+        "max_r2": -0.017226184904279407,
+        "mean_r2_minus_constant_baseline": -0.0016333378237196605
+      }
+    },
+    "extra_trees": {
+      "mass_kg": {
+        "mean_r2": -0.05516978424893151,
+        "seed_std_r2": 0.0009134444268313793,
+        "min_r2": -0.055924137220325854,
+        "max_r2": -0.053590138377272334,
+        "mean_r2_minus_constant_baseline": 0.0014470026952458706
+      },
+      "friction": {
+        "mean_r2": -0.025577653945938517,
+        "seed_std_r2": 0.0011427585425153367,
+        "min_r2": -0.026764158714320363,
+        "max_r2": -0.024061443151034867,
+        "mean_r2_minus_constant_baseline": -0.009984806865377217
+      },
+      "combined_friction": {
+        "mean_r2": -0.02557765394594136,
+        "seed_std_r2": 0.0011427585425153478,
+        "min_r2": -0.02676415871432325,
+        "max_r2": -0.024061443151037976,
+        "mean_r2_minus_constant_baseline": -0.009984806865381612
+      }
+    }
+  },
+  "all_fitted_probe_r2_below_0_1": true,
+  "interpretation": "R2<=0 means no advantage over the held-out target mean. Negative scores are reported literally, not described as mathematically equal to zero. The empirical criterion flags positive predictability at R2>=0.1; it does not prove generator independence.",
+  "elapsed_seconds": 9.405127029021969
+}

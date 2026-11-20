@@ -1,0 +1,10 @@
+{
+  "fresh_cubes": 30,
+  "fresh_episodes": 300,
+  "reused_training_cubes": 200,
+  "reused_training_episodes": 2000,
+  "this_invocation_seconds": 17.903021760983393,
+  "fresh_episode_seconds_sum": 11.365403392963344,
+  "fresh_transitions": 21167,
+  "fresh_trimmed_steps": 73587
+}

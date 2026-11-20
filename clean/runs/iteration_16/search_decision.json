@@ -1,0 +1,41 @@
+{
+  "iteration": 16,
+  "audit_sha256": "a87f6ba1bbe1fb999d533f60c99fbc17064bd25769be8620ec624305600d8d30",
+  "result_sha256": "073435b6191222426fb708989c759d53c888317717f2c7d11c616b2dd2f852c5",
+  "base_iteration": 6,
+  "retained_iteration": 6,
+  "decision": "reverted",
+  "reason": "Fitted-z validation NMSE did not decrease; retained the lower-error eligible reference.",
+  "option_id": "moving_weight=10.0",
+  "one_step_nmse": {
+    "mean": 0.3990003831697164,
+    "std": 0.006915854590290907,
+    "values": [
+      0.38855081163315414,
+      0.4028110175462433,
+      0.39800475993448303,
+      0.3984894317789391,
+      0.40714589495576253
+    ]
+  },
+  "failure_checks": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": true,
+    "F5": true,
+    "F6": true,
+    "F7": true,
+    "F8": true,
+    "F9": true
+  },
+  "success": {
+    "S1": false,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "plain_oracle_gap": -0.013819785072203716,
+    "gap_recovery": null
+  },
+  "command": "PYTHONPATH=clean/vendor:. OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m clean.run candidate --iteration 16 --config /home/ubuntu/faliure/clean/configs/search_iteration_16.json --base-iteration 6 --hypothesis 'Oracle has not established a positive Plain-to-Oracle error gap. Giving moving transitions more loss weight may focus fitting on the transitions used by the locked metric.' --change 'Change only moving_weight from 1.0 to 10.0; every other configuration setting is retained.' --device cuda"
+}
